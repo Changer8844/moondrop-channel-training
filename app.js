@@ -96,7 +96,8 @@
 
   function productCard(product) {
     const ui = currentUi();
-    const href = `${product.href}?lang=${currentLanguage}`;
+    const rawHref = `${product.href}?lang=${currentLanguage}`;
+    const href = window.MoondropAuth?.protectHref(rawHref) || rawHref;
     return `
       <a class="product-card" href="${href}">
         <span class="product-card__image-wrap">
@@ -139,6 +140,10 @@
   }
 
   function openCategory(categoryId, options = {}) {
+    if (!options.authenticated && window.MoondropAuth && !window.MoondropAuth.isAuthenticated()) {
+      window.MoondropAuth.requireAccess(() => openCategory(categoryId, { ...options, authenticated: true }));
+      return;
+    }
     const category = catalog.categories.find((item) => item.id === categoryId);
     if (!category) return;
     const { historyMode = "push", focusClose = true } = options;
@@ -215,6 +220,7 @@
       const activeCategory = catalog.categories.find((item) => item.id === activeCategoryId);
       renderOverlay(activeCategory);
     }
+    window.MoondropAuth?.setLanguage(currentLanguage);
     rememberLanguage();
     setUrlLanguage();
   }

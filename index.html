@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="MOONDROP offline channel product training portal" />
   <title>MOONDROP · Channel Training</title>
-  <link rel="stylesheet" href="styles.css?v=20260825b" />
+  <link rel="stylesheet" href="styles.css?v=20260825c" />
+  <link rel="stylesheet" href="auth.css?v=20260825a" />
   <script defer src="catalog.js"></script>
+  <script defer src="auth.js?v=20260825a"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -20,11 +22,20 @@
           <span class="brand-kicker" id="brandKicker">CHANNEL TRAINING</span>
         </span>
       </div>
-      <button class="language-toggle" id="languageToggle" type="button" aria-label="切换至中文" aria-pressed="false">
-        <span class="language-option" data-language-option="zh">中文</span>
-        <span class="language-divider" aria-hidden="true">/</span>
-        <span class="language-option active" data-language-option="en">EN</span>
-      </button>
+      <div class="topbar-actions">
+        <button class="auth-login-button" id="loginButton" type="button" aria-haspopup="dialog" aria-controls="authDialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="10" rx="1.5" />
+            <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10" />
+          </svg>
+          <span id="loginButtonLabel">LOGIN</span>
+        </button>
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="切换至中文" aria-pressed="false">
+          <span class="language-option" data-language-option="zh">中文</span>
+          <span class="language-divider" aria-hidden="true">/</span>
+          <span class="language-option active" data-language-option="en">EN</span>
+        </button>
+      </div>
     </header>
 
     <main class="portal">
@@ -44,6 +55,34 @@
         <div class="category-grid" id="categoryGrid"></div>
       </section>
     </main>
+  </div>
+
+  <div class="auth-gate" id="authDialog" aria-hidden="true">
+    <div class="auth-gate__backdrop" data-auth-close aria-hidden="true"></div>
+    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-describedby="authDescription">
+      <button class="auth-card__close" id="authClose" type="button" aria-label="Close login">×</button>
+      <div class="auth-card__kicker" id="authKicker">CHANNEL ACCESS</div>
+      <h2 class="auth-card__title" id="authTitle">Enter the training portal</h2>
+      <p class="auth-card__description" id="authDescription">Enter the channel password to open product categories and training pages.</p>
+      <form class="auth-form" id="authForm" novalidate>
+        <label class="auth-form__label" for="authPassword" id="authPasswordLabel">Password</label>
+        <div class="auth-form__field">
+          <input id="authPassword" name="password" type="password" autocomplete="off" spellcheck="false" required />
+          <button class="auth-form__reveal" id="authReveal" type="button" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2.5 12s3.5-5 9.5-5 9.5 5 9.5 5-3.5 5-9.5 5-9.5-5-9.5-5Z" />
+              <circle cx="12" cy="12" r="2.3" />
+            </svg>
+          </button>
+        </div>
+        <p class="auth-form__message" id="authMessage" role="alert" aria-live="polite"></p>
+        <div class="auth-form__actions">
+          <button class="auth-form__cancel" id="authCancel" type="button">Cancel</button>
+          <button class="auth-form__submit" id="authSubmit" type="submit">Enter training</button>
+        </div>
+      </form>
+      <p class="auth-card__note" id="authNote">Access is remembered on this browser for 12 hours.</p>
+    </section>
   </div>
 
   <section class="category-overlay" id="categoryOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Product category training">
