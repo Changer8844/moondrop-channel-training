@@ -1,0 +1,2238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SPACE TRAVEL 2 single-image guided product inspection for offline channel training" />
+  <title>SPACE TRAVEL 2 · HD Photo Channel Training</title>
+  <style>
+    :root {
+      --ink: #080b0b;
+      --ink-soft: #111615;
+      --fog: #eef1ed;
+      --paper: #f7f8f5;
+      --line: rgba(192, 214, 206, .18);
+      --line-dark: rgba(9, 15, 14, .14);
+      --text: #f2f5f2;
+      --muted: #87928e;
+      --graphite: #25302c;
+      --lime: #c7f64a;
+      --orange: #ff7c32;
+      --cyan: #6ce4e7;
+      --violet: #b49cf7;
+      --blue: #78a8ff;
+      --accent: var(--lime);
+      --ease: cubic-bezier(.2, .82, .22, 1);
+      color-scheme: dark;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; background: var(--ink); }
+    body { color: var(--text); overflow-x: hidden; }
+    body.gallery-open, body.board-open { overflow: hidden; }
+    button { color: inherit; font: inherit; }
+    button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
+    .app {
+      min-height: 100vh;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 68px minmax(0, 1fr);
+      background:
+        radial-gradient(circle at 52% 18%, rgba(199, 246, 74, .065), transparent 28%),
+        linear-gradient(125deg, #070909, #0d1211 58%, #080a0a);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 11, 11, .88);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 20;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-orbit {
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(199, 246, 74, .82);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 24px rgba(199, 246, 74, .16);
+    }
+    .brand-orbit::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      top: 50%;
+      height: 1px;
+      background: var(--lime);
+      transform: rotate(-22deg);
+    }
+    .brand-orbit::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      right: 0;
+      top: 5px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 10px var(--lime);
+    }
+    .brand-kicker, .utility, .view-kicker, .eyebrow, .panel-kicker {
+      font-family: Menlo, Monaco, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    .brand-kicker { color: var(--lime); font-size: 9px; font-weight: 700; }
+    .brand-name { margin-top: 3px; font-size: 14px; font-weight: 650; letter-spacing: .03em; white-space: nowrap; }
+
+    .top-status { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+    .training-home-link {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #b8c1bd;
+      text-decoration: none;
+      transition: color .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .training-home-link:hover { color: var(--lime); border-color: rgba(199, 246, 74, .4); background: rgba(199, 246, 74, .035); }
+    .training-home-link svg { width: 15px; height: 15px; display: block; }
+    .language-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 36px;
+      min-height: 36px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .025);
+      color: #7d8884;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      cursor: pointer;
+      transition: border-color .25s ease, background .25s ease;
+    }
+    .language-toggle:hover { border-color: rgba(199, 246, 74, .38); background: rgba(199, 246, 74, .035); }
+    .language-option {
+      min-width: 35px;
+      padding: 5px 8px 4px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: .06em;
+      text-align: center;
+      transition: color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .language-option.active { color: #10160d; background: var(--lime); box-shadow: 0 0 14px rgba(199, 246, 74, .18); }
+    .language-divider { color: #45504c; font-size: 8px; }
+    .library-button {
+      width: 100%;
+      min-height: 44px;
+      margin-top: 15px;
+      padding: 0 14px;
+      border: 1px solid var(--lime);
+      border-radius: 10px;
+      background: var(--lime);
+      color: #11160e;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 8px;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s ease;
+    }
+    .library-button:hover { transform: translateY(-1px); box-shadow: 0 0 22px rgba(199, 246, 74, .24); }
+
+    .training-hub {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #030505;
+    }
+    .app.hub-mode .workspace { display: none; }
+    .app:not(.hub-mode) .training-hub { display: none; }
+    .hub-hero-image {
+      position: absolute;
+      inset: -1.5%;
+      width: 103%;
+      height: 103%;
+      object-fit: cover;
+      object-position: 50% 45%;
+      transform: translateX(-18%);
+      filter: saturate(.9) contrast(1.06) brightness(.82);
+      z-index: -3;
+    }
+    .training-hub::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(2,4,4,.88) 0, rgba(2,4,4,.42) 34%, rgba(2,4,4,.12) 57%, rgba(2,4,4,.74) 100%),
+        linear-gradient(0deg, rgba(2,4,4,.9) 0, transparent 52%);
+    }
+    .training-hub::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(rgba(199,246,74,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(199,246,74,.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(90deg, #000, transparent 64%);
+    }
+    .hub-layout {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(390px, 520px);
+      gap: clamp(24px, 4vw, 64px);
+      align-items: end;
+      padding: clamp(30px, 5vw, 74px);
+    }
+    .hub-copy { align-self: end; max-width: 690px; padding-bottom: 4px; }
+    .hub-kicker, .hub-menu-kicker, .board-kicker, .review-channel, .support-label {
+      font-family: Menlo, Monaco, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+    .hub-kicker { color: var(--lime); font-size: 10px; font-weight: 750; }
+    .hub-copy h1 {
+      max-width: 660px;
+      margin: 15px 0 13px;
+      font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      font-size: clamp(58px, 7vw, 112px);
+      font-weight: 500;
+      line-height: .82;
+      letter-spacing: -.055em;
+    }
+    .hub-copy p { max-width: 520px; margin: 0; color: #c1cac6; font-size: clamp(13px, 1.2vw, 17px); line-height: 1.55; }
+    .hub-mark { width: min(410px, 58vw); max-height: 150px; margin-top: 22px; object-fit: contain; object-position: left center; opacity: .82; mix-blend-mode: screen; }
+    .hub-menu {
+      align-self: end;
+      padding: 19px;
+      border: 1px solid rgba(199,246,74,.24);
+      background: rgba(6,9,8,.82);
+      box-shadow: 0 22px 70px rgba(0,0,0,.34);
+      backdrop-filter: blur(18px);
+    }
+    .hub-menu-kicker { margin-bottom: 11px; color: #8d9994; font-size: 8px; }
+    .hub-section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .hub-section-button {
+      --section-accent: var(--lime);
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto 1fr;
+      gap: 6px 12px;
+      padding: 14px;
+      border: 1px solid rgba(203,219,213,.16);
+      border-radius: 0;
+      background: rgba(255,255,255,.025);
+      text-align: left;
+      cursor: pointer;
+      transition: transform .28s var(--ease), border-color .25s ease, background .25s ease;
+    }
+    .hub-section-button:first-child { grid-column: 1 / -1; min-height: 116px; border-color: rgba(199,246,74,.45); background: rgba(199,246,74,.08); }
+    .hub-section-button:hover { transform: translateY(-3px); border-color: var(--section-accent); background: rgba(255,255,255,.055); }
+    .hub-section-number { color: var(--section-accent); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; }
+    .hub-section-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--section-accent); font-size: 21px; }
+    .hub-section-copy { align-self: end; }
+    .hub-section-copy b { display: block; font-size: 15px; font-weight: 650; line-height: 1.15; }
+    .hub-section-copy span { display: block; margin-top: 5px; color: #808c87; font-size: 9px; line-height: 1.35; }
+
+    .section-board {
+      position: fixed;
+      inset: 68px 0 0;
+      z-index: 70;
+      overflow-y: auto;
+      visibility: hidden;
+      opacity: 0;
+      background: #090c0b;
+      transition: opacity .32s ease, visibility .32s ease;
+    }
+    .section-board.open { visibility: visible; opacity: 1; }
+    .section-board-header {
+      min-height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,11,11,.9);
+      backdrop-filter: blur(18px);
+    }
+    .section-board-header h2 { margin: 3px 0 0; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 28px; font-weight: 560; letter-spacing: -.025em; }
+    .board-kicker { color: var(--lime); font-size: 8px; }
+    .board-kicker:empty { display: none; }
+    .section-board-close { width: 36px; height: 36px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aab4b0; cursor: pointer; font-size: 20px; }
+    .section-board-close:hover { color: var(--lime); border-color: rgba(199,246,74,.42); }
+    .section-board-content { max-width: 1440px; min-height: calc(100% - 68px); margin: 0 auto; padding: clamp(22px, 3vw, 46px); }
+    .board-intro {
+      min-height: 230px;
+      position: relative;
+      display: grid;
+      align-content: end;
+      margin-bottom: 14px;
+      padding: clamp(24px, 4vw, 52px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background-position: center 48%;
+      background-size: cover;
+      isolation: isolate;
+    }
+    .board-intro::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(4,7,7,.94), rgba(4,7,7,.4) 58%, rgba(4,7,7,.05)); }
+    .comparison-intro {
+      background-color: #030505;
+      background-position: 112% 50%;
+      background-repeat: no-repeat;
+      background-size: 72% auto;
+    }
+    .comparison-intro::before { background: linear-gradient(90deg, rgba(4,7,7,.99) 0, rgba(4,7,7,.86) 34%, rgba(4,7,7,.28) 66%, rgba(4,7,7,.06) 100%); }
+    .support-intro {
+      background-color: #030505;
+      background-position: right 47%;
+      background-repeat: no-repeat;
+      background-size: 66% auto;
+    }
+    .support-intro::before { background: linear-gradient(90deg, rgba(4,7,7,.99) 0, rgba(4,7,7,.88) 37%, rgba(4,7,7,.25) 70%, rgba(4,7,7,.05) 100%); }
+    .review-intro {
+      background-color: #030505;
+      background-position: right 43%;
+      background-repeat: no-repeat;
+      background-size: 74% auto;
+    }
+    .review-intro::before { background: linear-gradient(90deg, rgba(4,7,7,.98) 0, rgba(4,7,7,.76) 35%, rgba(4,7,7,.22) 68%, rgba(4,7,7,.04) 100%); }
+    .board-intro h3 { max-width: 820px; margin: 0; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: clamp(38px, 4.2vw, 66px); font-weight: 520; line-height: .98; letter-spacing: -.04em; text-wrap: balance; }
+    .board-intro p { max-width: 660px; margin: 14px 0 0; color: #a9b3af; font-size: 12px; line-height: 1.65; }
+    .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .comparison-card { min-width: 0; padding: 24px; border: 1px solid var(--line); background: #111615; }
+    .comparison-card h3 { margin: 0 0 15px; color: #eef3f0; font-size: 19px; text-wrap: balance; }
+    .comparison-customer { margin: 0 0 12px; color: var(--lime); font-size: 14px; line-height: 1.45; }
+    .comparison-answer { margin: 0; color: #9ca7a2; font-size: 12px; line-height: 1.7; }
+    .comparison-proof { margin-top: 18px; padding-top: 13px; border-top: 1px solid var(--line); color: #6f7a76; font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; letter-spacing: .05em; text-transform: uppercase; }
+    .support-layout { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: stretch; }
+    .support-block { border: 1px solid var(--line); background: #111615; }
+    .support-block--package { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(340px,.8fr); }
+    .support-visual { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: cover; object-position: center; background: #eef0ed; }
+    .support-copy { padding: 22px; }
+    .support-block--package .support-copy { align-self: center; padding: clamp(28px, 3.2vw, 46px); }
+    .support-copy--warranty { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(340px,.95fr); gap: clamp(28px,4vw,64px); padding: clamp(28px,3.2vw,46px); }
+    .support-warranty-summary, .support-exclusions { min-width: 0; }
+    .support-exclusions { padding-left: clamp(0px,2vw,30px); border-left: 1px solid var(--line); }
+    .support-label { color: var(--lime); font-size: 8px; }
+    .support-copy h3 { margin: 9px 0 16px; font-size: 24px; text-wrap: balance; }
+    .package-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: #a7b1ad; font-size: 11px; }
+    .package-list li { padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .warranty-periods { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 16px 0; background: var(--line); }
+    .warranty-period { display: flex; justify-content: space-between; gap: 14px; padding: 12px; background: #151b19; color: #a7b1ad; font-size: 10px; }
+    .warranty-period b { color: var(--lime); }
+    .support-policy { color: #a4afaa; font-size: 11px; line-height: 1.65; }
+    .exclusion-list { margin: 13px 0 0; padding-left: 18px; color: #7f8a85; font-size: 10px; line-height: 1.65; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+    .review-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); background: #111615; color: inherit; text-decoration: none; transition: transform .28s var(--ease), border-color .25s ease; }
+    .review-card:hover { transform: translateY(-4px); border-color: rgba(199,246,74,.5); }
+    .review-image-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #050707; }
+    .review-image-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .review-play { position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,7,7,.78); color: var(--lime); }
+    .review-copy { display: grid; align-content: start; gap: 8px; padding: 15px; }
+    .review-channel { color: var(--lime); font-size: 7px; }
+    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; text-wrap: balance; }
+    .review-copy span { color: #7f8a85; font-size: 9px; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(236px, 272px) minmax(520px, 1fr) minmax(332px, 390px);
+      min-height: 0;
+    }
+
+    .story-rail {
+      border-right: 1px solid var(--line);
+      padding: 24px 18px 18px 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: auto;
+    }
+    .eyebrow { color: var(--lime); font-size: 9px; font-weight: 700; }
+    .story-rail h1 {
+      margin: 11px 0 8px;
+      font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      font-size: clamp(31px, 2.5vw, 44px);
+      font-weight: 520;
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+    .feature-list { display: grid; gap: 4px; margin-top: 14px; }
+    .feature-button {
+      --feature-accent: var(--lime);
+      width: 100%;
+      display: grid;
+      grid-template-columns: 30px 1fr 18px;
+      align-items: center;
+      gap: 9px;
+      padding: 8px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background .25s ease, border-color .25s ease, transform .25s var(--ease);
+    }
+    .feature-button:hover { background: rgba(255, 255, 255, .04); transform: translateX(3px); }
+    .feature-button.active { background: rgba(255, 255, 255, .055); border-color: var(--line); }
+    .feature-number {
+      color: #65706c;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: .04em;
+    }
+    .feature-button.active .feature-number { color: var(--feature-accent); }
+    .feature-copy b { display: block; font-size: 11px; font-weight: 650; line-height: 1.25; }
+    .feature-copy span { display: block; margin-top: 3px; color: #74807c; font-size: 9px; line-height: 1.2; }
+    .feature-arrow { color: #4d5753; transition: color .2s ease, transform .2s ease; }
+    .feature-button.active .feature-arrow { color: var(--feature-accent); transform: translateX(2px); }
+
+    .product-overview-button {
+      width: 100%;
+      min-height: 42px;
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      align-items: center;
+      gap: 9px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .025);
+      color: #88938f;
+      text-align: left;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 650;
+      transition: color .22s ease, border-color .22s ease, background .22s ease, transform .22s var(--ease);
+    }
+    .product-overview-button::before {
+      content: "";
+      width: 12px;
+      height: 9px;
+      justify-self: center;
+      border: 1px solid currentColor;
+      box-shadow: inset 0 0 0 2px #0b0f0e;
+    }
+    .product-overview-button:hover { color: #e2e8e5; border-color: rgba(199, 246, 74, .36); transform: translateX(3px); }
+    .product-overview-button.active {
+      color: var(--lime);
+      border-color: var(--lime);
+      background: rgba(199, 246, 74, .065);
+      box-shadow: 0 0 18px rgba(199, 246, 74, .07);
+    }
+
+    .rail-footer { margin-top: auto; padding-top: 12px; }
+    .overview-button {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .025);
+      cursor: pointer;
+      color: #b8c2be;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+    .overview-button:hover { border-color: rgba(199, 246, 74, .34); color: var(--lime); }
+    .viewer-column {
+      min-width: 0;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 11px;
+      position: relative;
+    }
+    .viewer-meta { display: flex; align-items: end; justify-content: space-between; gap: 14px; min-height: 34px; }
+    .view-kicker { color: var(--muted); font-size: 8px; }
+    .view-title { margin-top: 1px; line-height: 1.15; }
+    .view-title b { display: block; color: #dbe1de; font-size: 15px; font-weight: 650; }
+    .view-title span { display: block; margin-top: 4px; color: #78837f; font-size: 10px; font-weight: 500; }
+    .angle-readout { text-align: right; }
+    .angle-value { font-family: Menlo, Monaco, Consolas, monospace; white-space: nowrap; }
+    .angle-value b { display: block; color: var(--lime); font-size: 12px; font-weight: 650; }
+    .angle-value span { display: block; margin-top: 3px; color: #7e8984; font-size: 8px; font-weight: 500; }
+
+    .stage {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid rgba(228, 241, 233, .16);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35), 0 24px 60px rgba(0,0,0,.24);
+      cursor: default;
+      touch-action: none;
+      isolation: isolate;
+    }
+    .stage.is-draggable { cursor: grab; }
+    .stage.dragging { cursor: grabbing; }
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      background:
+        linear-gradient(rgba(23, 31, 28, .052) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 31, 28, .052) 1px, transparent 1px),
+        radial-gradient(circle at 50% 45%, transparent 45%, rgba(111, 129, 121, .12) 100%);
+      background-size: 36px 36px, 36px 36px, auto;
+    }
+    .stage::after {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      bottom: 9%;
+      height: 12%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(9, 13, 12, .18), transparent 68%);
+      filter: blur(15px);
+      z-index: -1;
+      transform: scaleX(.75);
+    }
+    .orbit-guide {
+      position: absolute;
+      width: min(78%, 720px);
+      aspect-ratio: 1;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -49%) rotateX(70deg);
+      border: 1px solid rgba(36, 49, 44, .14);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .orbit-guide::before, .orbit-guide::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border: 1px dashed rgba(36, 49, 44, .11);
+      border-radius: 50%;
+    }
+    .orbit-guide::after { inset: 24%; border-style: solid; }
+
+    .photo-rig {
+      --pan-x: 0%;
+      --pan-y: 2%;
+      --drag-x: 0px;
+      --drag-y: 0px;
+      --zoom: 1;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform:
+        translate(calc(-50% + var(--pan-x) + var(--drag-x)), calc(-50% + var(--pan-y) + var(--drag-y)))
+        scale(var(--zoom));
+      transition: transform 720ms var(--ease), filter 420ms ease, opacity 260ms ease;
+      will-change: transform;
+    }
+    .photo-rig.no-transition { transition: none; }
+    .photo-rig.turning { filter: saturate(1.05) contrast(1.025); }
+    .product-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.02) contrast(1.015);
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .hotspot {
+      --hotspot-accent: var(--lime);
+      position: absolute;
+      left: var(--hx);
+      top: var(--hy);
+      width: 36px;
+      height: 36px;
+      transform: translate(-50%, -50%);
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      z-index: 10;
+      transition: opacity .3s ease, transform .3s var(--ease);
+    }
+    .hotspot::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      background: var(--hotspot-accent);
+      border: 2px solid rgba(255,255,255,.9);
+      box-shadow: 0 0 0 4px rgba(12,18,16,.18), 0 0 22px var(--hotspot-accent);
+    }
+    .hotspot::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border: 1px solid var(--hotspot-accent);
+      border-radius: 50%;
+      animation: breathe 2s ease-out infinite;
+    }
+    .hotspot:hover { transform: translate(-50%, -50%) scale(1.18); }
+    .hotspot.active { transform: translate(-50%, -50%) scale(1.25); }
+    .photo-rig[data-focus] .hotspot:not(.active) { opacity: .68; pointer-events: auto; transform: translate(-50%, -50%) scale(.86); }
+    .photo-rig[data-focus] .hotspot:not(.active):hover,
+    .photo-rig[data-focus] .hotspot:not(.active):focus-visible { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+    .hotspot-label {
+      position: absolute;
+      left: 38px;
+      top: 50%;
+      width: max-content;
+      min-width: 0;
+      max-width: 160px;
+      padding: 8px 12px 7px;
+      transform: translateY(-50%);
+      border: 1px solid rgba(15, 22, 19, .24);
+      border-radius: 7px;
+      background: rgba(249, 251, 248, .96);
+      color: #111815;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 750;
+      line-height: 1.15;
+      letter-spacing: .035em;
+      text-align: left;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: opacity .2s ease, transform .2s ease;
+      box-shadow: 0 9px 24px rgba(18,26,23,.16), inset 3px 0 0 var(--hotspot-accent);
+    }
+    .hotspot-label::selection { background: transparent; color: #111815; }
+    .hotspot[data-feature="noise"] .hotspot-label,
+    .hotspot[data-feature="wear"] .hotspot-label { left: auto; right: 38px; text-align: right; box-shadow: 0 9px 24px rgba(18,26,23,.16), inset -3px 0 0 var(--hotspot-accent); }
+    .hotspot:hover .hotspot-label, .hotspot:focus-visible .hotspot-label, .hotspot.active .hotspot-label { opacity: 1; transform: translate(3px, -50%); }
+    .hotspot[data-feature="noise"]:hover .hotspot-label,
+    .hotspot[data-feature="noise"]:focus-visible .hotspot-label,
+    .hotspot[data-feature="noise"].active .hotspot-label,
+    .hotspot[data-feature="wear"]:hover .hotspot-label,
+    .hotspot[data-feature="wear"]:focus-visible .hotspot-label,
+    .hotspot[data-feature="wear"].active .hotspot-label { transform: translate(-3px, -50%); }
+    @keyframes breathe { 0% { opacity: .82; transform: scale(.6); } 70%, 100% { opacity: 0; transform: scale(1.42); } }
+
+    .sequence-bar {
+      min-height: 48px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 14px;
+      padding: 0 2px;
+    }
+    .angle-track { display: grid; grid-template-columns: repeat(7, minmax(8px, 16px)); justify-content: start; align-items: center; height: 26px; gap: 3px; }
+    .angle-tick { height: 5px; background: #303936; border-radius: 1px; transition: height .3s var(--ease), background .3s ease; }
+    .angle-tick.major { height: 11px; }
+    .angle-tick.active { height: 22px; background: var(--lime); box-shadow: 0 0 10px rgba(199, 246, 74, .35); }
+    .sequence-state { min-width: 96px; text-align: right; color: #a6b1ad; font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; }
+
+    .detail-panel {
+      min-width: 0;
+      border-left: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(17,22,21,.98), rgba(9,12,12,.98));
+      position: relative;
+      overflow: hidden;
+    }
+    .panel-empty, .panel-content { position: absolute; inset: 0; padding: 30px 28px; }
+    .panel-empty { display: grid; align-content: center; color: #67726e; transition: opacity .3s ease; }
+    .panel-empty span { color: var(--lime); font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; letter-spacing: .12em; }
+    .panel-empty h2 { margin: 15px 0 10px; color: #dce3df; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 36px; font-weight: 520; line-height: 1.08; letter-spacing: -.025em; }
+    .panel-empty p { margin: 0; max-width: 280px; font-size: 12px; line-height: 1.65; }
+    .panel-content {
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateX(22px);
+      pointer-events: none;
+      transition: opacity .35s ease, transform .5s var(--ease);
+    }
+    .detail-panel.open .panel-empty { opacity: 0; pointer-events: none; }
+    .detail-panel.open .panel-content { opacity: 1; transform: none; pointer-events: auto; }
+    .panel-head { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
+    .panel-kicker { color: var(--accent); font-size: 8px; }
+    .panel-number { margin-top: 6px; color: #626d69; font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; }
+    .close-panel { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #89948f; cursor: pointer; }
+    .close-panel:hover { color: var(--lime); border-color: rgba(199,246,74,.35); }
+    .panel-content h2 {
+      margin: 25px 0 12px;
+      font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      font-size: clamp(29px, 2.4vw, 40px);
+      font-weight: 520;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      text-wrap: balance;
+    }
+    .panel-body { margin: 0; color: #a7b1ad; font-size: 12px; line-height: 1.68; }
+    .panel-media { margin: 18px 0 20px; border: 1px solid var(--line); border-radius: 0; overflow: hidden; background: #090c0b; }
+    .panel-media-stage { position: relative; height: clamp(190px, 20vh, 240px); overflow: hidden; background: #eef0f4; }
+    .panel-media-stage[data-layout^="driver"] { height: clamp(230px, 24vh, 300px); }
+    .panel-media-stage[data-layout="app"] { height: clamp(206px, 20vh, 228px); }
+    .panel-media-visual { position: absolute; inset: 0; overflow: hidden; background: #eef0f4; }
+    .panel-media-image { width: 100%; height: 100%; display: block; object-fit: cover; transition: opacity .18s ease; }
+    .panel-media-image[data-fit="contain"] { object-fit: contain; }
+    .media-driver {
+      height: 100%;
+      display: grid;
+      grid-template-rows: minmax(0, 1.35fr) minmax(72px, .8fr);
+      color: #2e3436;
+      background: #e8e9ee;
+    }
+    .media-driver-art {
+      min-height: 0;
+      border-bottom: 1px solid rgba(35, 42, 44, .14);
+      background-color: #e8e9ee;
+      background-position: var(--driver-position, 55% 50%);
+      background-repeat: no-repeat;
+      background-size: var(--driver-size, 140% auto);
+    }
+    .media-driver-parts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin: 0;
+      padding: 1px;
+      list-style: none;
+      background: rgba(35, 42, 44, .12);
+    }
+    .media-driver-parts li {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 19px minmax(0, 1fr);
+      align-items: center;
+      gap: 5px;
+      padding: 5px 7px;
+      background: #f1f2f5;
+      font-size: 8px;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+    .media-driver-parts em {
+      color: #71787a;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 7px;
+      font-style: normal;
+      letter-spacing: .04em;
+    }
+    .media-schematic-full { width: 100%; height: 100%; display: grid; place-items: center; padding: 10px 8px; background: #e5e6eb; }
+    .media-schematic-full img { width: 100%; height: 100%; min-width: 0; min-height: 0; display: block; object-fit: contain; }
+    .media-app {
+      height: 100%;
+      display: grid;
+      grid-template-columns: minmax(110px, .72fr) minmax(0, 1.55fr);
+      background: #e5e7ec;
+      color: #303638;
+    }
+    .media-app-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px 12px;
+      border-right: 1px solid rgba(35, 42, 44, .14);
+      background: #121716;
+      color: #edf1ef;
+    }
+    .media-app-copy small {
+      color: var(--accent);
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .media-app-copy strong {
+      display: block;
+      margin-top: 7px;
+      font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      font-size: clamp(18px, 1.35vw, 23px);
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .media-app-points {
+      display: grid;
+      gap: 4px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #939e99;
+      font-size: 7px;
+      line-height: 1.25;
+    }
+    .media-app-points li { padding-left: 8px; border-left: 1px solid var(--accent); }
+    .media-app-visual {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      padding-top: 7px;
+      background: #e5e7ec;
+    }
+    .media-app img {
+      width: 108%;
+      height: auto;
+      min-width: 0;
+      min-height: 0;
+      display: block;
+      transform: translateX(-3.7%);
+      padding: 0;
+      background: #e5e7ec;
+    }
+    .media-hero {
+      position: relative;
+      height: 100%;
+      isolation: isolate;
+      background-color: #e8e9ed;
+      background-image: var(--media-image);
+      background-position: var(--media-position, 50% 50%);
+      background-repeat: no-repeat;
+      background-size: var(--media-size, cover);
+    }
+    .media-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(4, 7, 7, .76) 0, rgba(4, 7, 7, .22) 47%, transparent 76%);
+    }
+    .media-hero-copy {
+      position: absolute;
+      z-index: 1;
+      top: 14px;
+      left: 14px;
+      max-width: 58%;
+      padding-left: 9px;
+      border-left: 2px solid var(--accent);
+      color: #f3f6f4;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, .35);
+    }
+    .media-hero-copy small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-family: Menlo, Monaco, Consolas, monospace;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .media-hero-copy strong {
+      display: block;
+      font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+      font-size: clamp(18px, 1.45vw, 25px);
+      font-weight: 650;
+      line-height: .98;
+      letter-spacing: -.025em;
+      white-space: pre-line;
+    }
+    .panel-media-controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      min-height: 40px;
+      padding: 6px 8px;
+      border-top: 1px solid var(--line);
+      background: #0d1110;
+    }
+    .panel-media-controls[hidden] { display: none; }
+    .panel-media-nav { width: 28px; height: 25px; padding: 0; border: 1px solid rgba(255,255,255,.16); border-radius: 0; background: transparent; color: #e0e6e3; cursor: pointer; }
+    .panel-media-nav:hover { color: #11160d; border-color: var(--accent); background: var(--accent); }
+    .panel-media-count { min-width: 42px; color: #b6c0bc; font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; text-align: center; }
+    .panel-media figcaption { padding: 8px 10px; color: #78837f; font-size: 8px; line-height: 1.45; letter-spacing: .04em; }
+    .subfeatures { display: grid; gap: 7px; margin: 20px 0 22px; }
+    .subfeature { padding: 10px 11px; border-left: 2px solid var(--accent); background: rgba(255,255,255,.035); }
+    .subfeature b { display: block; color: #dde4e0; font-size: 10px; }
+    .subfeature span { display: block; margin-top: 4px; color: #7e8984; font-size: 10px; line-height: 1.45; }
+    .training-cue { padding: 15px 0; border-top: 1px solid var(--line); }
+    .training-cue h3 { margin: 0 0 7px; color: var(--accent); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .training-cue p { margin: 0; color: #a5afab; font-size: 11px; line-height: 1.58; }
+    .training-cue.say p { color: #e3e8e5; font-size: 13px; }
+    .panel-source { margin-top: 13px; color: #5f6965; font-size: 8px; line-height: 1.5; }
+    .panel-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; }
+    .panel-nav button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); cursor: pointer; font-size: 9px; }
+    .panel-nav button:hover { color: var(--lime); border-color: rgba(199,246,74,.3); }
+
+    .gallery-board {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      overflow-y: auto;
+      visibility: hidden;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(199, 246, 74, .08), transparent 28%),
+        #080b0b;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    .gallery-board.open { visibility: visible; opacity: 1; }
+    .gallery-header {
+      min-height: 78px;
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 11, 11, .88);
+      backdrop-filter: blur(18px);
+    }
+    .gallery-header h2 { margin: 3px 0 0; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 30px; font-weight: 540; letter-spacing: -.025em; }
+    .gallery-kicker { color: var(--lime); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+    .gallery-close, .lightbox-close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255,255,255,.025);
+      color: #a9b3af;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .gallery-close:hover, .lightbox-close:hover { color: var(--lime); border-color: rgba(199,246,74,.4); }
+    .gallery-intro { max-width: 1480px; margin: 0 auto; padding: 24px 28px 10px; color: #8b9692; font-size: 11px; line-height: 1.6; }
+    .gallery-grid {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 16px 28px 42px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .gallery-card {
+      min-width: 0;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #101514;
+      text-align: left;
+      cursor: zoom-in;
+      transition: transform .35s var(--ease), border-color .25s ease;
+    }
+    .gallery-card:hover { transform: translateY(-4px); border-color: rgba(199,246,74,.42); }
+    .gallery-card img { width: 100%; height: 210px; display: block; object-fit: cover; background: #eef0ed; transition: transform .55s var(--ease); }
+    .gallery-card:hover img { transform: scale(1.025); }
+    .gallery-card-copy { display: grid; gap: 4px; padding: 11px 12px 12px; }
+    .gallery-card-copy b { font-size: 11px; font-weight: 650; }
+    .gallery-card-copy span { color: #6f7a76; font-family: Menlo, Monaco, Consolas, monospace; font-size: 7px; letter-spacing: .06em; text-transform: uppercase; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) 64px;
+      grid-template-rows: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 22px;
+      visibility: hidden;
+      opacity: 0;
+      background: rgba(3, 5, 5, .96);
+      backdrop-filter: blur(18px);
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .lightbox.open { visibility: visible; opacity: 1; }
+    .lightbox-image { grid-column: 2; max-width: 100%; max-height: calc(100vh - 118px); justify-self: center; object-fit: contain; box-shadow: 0 22px 80px rgba(0,0,0,.38); }
+    .lightbox-nav { width: 48px; height: 48px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.035); color: #dbe1de; cursor: pointer; font-size: 22px; }
+    .lightbox-nav:hover { color: var(--lime); border-color: rgba(199,246,74,.38); }
+    .lightbox-prev { grid-column: 1; justify-self: center; }
+    .lightbox-next { grid-column: 3; justify-self: center; }
+    .lightbox-close { position: absolute; top: 20px; right: 22px; z-index: 2; }
+    .lightbox-caption { grid-column: 1 / -1; text-align: center; color: #9aa5a1; font-size: 10px; line-height: 1.5; }
+    .lightbox-caption b { display: block; color: #eef2ef; font-size: 12px; }
+
+    @media (max-width: 1180px) {
+      .hub-layout { grid-template-columns: minmax(0,1fr) minmax(340px, 430px); padding: 34px; }
+      .support-layout { grid-template-columns: 1fr; }
+      .workspace { grid-template-columns: 230px minmax(470px, 1fr); }
+      .detail-panel { position: fixed; top: 68px; right: 0; bottom: 0; width: min(390px, 92vw); z-index: 30; transform: translateX(100%); transition: transform .5s var(--ease); box-shadow: -20px 0 50px rgba(0,0,0,.32); }
+      .detail-panel.open { transform: none; }
+      .panel-empty { display: none; }
+    }
+    @media (max-width: 760px) {
+      .app { height: auto; grid-template-rows: auto auto; }
+      .topbar { min-height: 62px; padding: 10px 14px; }
+      .top-status { gap: 7px; }
+      .language-option { min-width: 30px; padding-inline: 6px; }
+      .workspace { display: block; }
+      .training-hub { min-height: calc(100vh - 62px); }
+      .hub-hero-image { transform: translateX(-6%); }
+      .hub-layout { min-height: calc(100vh - 62px); display: flex; flex-direction: column; justify-content: flex-end; gap: 22px; padding: 24px 14px; }
+      .hub-copy { align-self: stretch; }
+      .hub-copy h1 { font-size: 58px; }
+      .hub-copy p { max-width: 90%; font-size: 12px; }
+      .hub-mark { width: 220px; margin-top: 13px; }
+      .hub-menu { width: 100%; padding: 10px; }
+      .hub-section-grid { grid-template-columns: 1fr 1fr; }
+      .hub-section-button, .hub-section-button:first-child { min-height: 82px; padding: 11px; }
+      .hub-section-copy b { font-size: 12px; }
+      .section-board { inset: 62px 0 0; }
+      .section-board-header { padding: 10px 14px; }
+      .section-board-content { padding: 14px; }
+      .board-intro { min-height: 190px; padding: 22px; }
+      .comparison-intro, .support-intro, .review-intro { background-size: auto 100%; background-position: center; }
+      .comparison-grid, .review-grid, .support-layout { grid-template-columns: 1fr; }
+      .support-block--package, .support-copy--warranty { grid-template-columns: 1fr; }
+      .support-visual { min-height: 0; aspect-ratio: 16/10; }
+      .support-exclusions { padding-left: 0; padding-top: 22px; border-left: 0; border-top: 1px solid var(--line); }
+      .package-list, .warranty-periods { grid-template-columns: 1fr; }
+      .story-rail { border-right: 0; padding: 20px 14px 6px; overflow: visible; }
+      .story-rail h1 { font-size: 35px; }
+      .feature-list { grid-template-columns: 1fr 1fr; margin-top: 16px; }
+      .product-overview-button { margin-top: 10px; }
+      .rail-footer { display: none; }
+      .viewer-column { height: 590px; padding: 10px 12px 16px; }
+      .sequence-bar { grid-template-columns: 1fr; }
+      .photo-rig { width: 100%; }
+      .hotspot-label { display: none; }
+      .detail-panel { top: 0; width: 100%; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 12px 14px 30px; }
+      .gallery-card img { height: 170px; }
+      .gallery-header { padding: 12px 14px; }
+      .gallery-intro { padding: 18px 14px 8px; }
+      .lightbox { grid-template-columns: 42px minmax(0, 1fr) 42px; padding: 12px; }
+      .lightbox-nav { width: 38px; height: 38px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    }
+    html[lang^="zh"] body { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
+    html[lang^="zh"] .brand-kicker,
+    html[lang^="zh"] .view-kicker,
+    html[lang^="zh"] .eyebrow,
+    html[lang^="zh"] .panel-kicker { letter-spacing: .08em; }
+    html[lang^="zh"] .story-rail h1 { line-height: 1.08; letter-spacing: -.02em; }
+    html[lang^="zh"] .panel-empty h2,
+    html[lang^="zh"] .panel-content h2 {
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+    html[lang^="zh"] .media-hero-copy strong { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; line-height: 1.08; }
+    html[lang^="zh"] .media-app-copy strong { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; line-height: 1.12; }
+    html[lang^="zh"] .hub-copy h1,
+    html[lang^="zh"] .board-intro h3,
+    html[lang^="zh"] .section-board-header h2 { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.025em; }
+    html[lang^="zh"] .board-intro h3 {
+      max-width: 820px;
+      font-size: clamp(34px, 3.45vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.018em;
+      white-space: nowrap;
+    }
+    html[lang^="zh"] .hub-copy h1 { line-height: .95; }
+    html[lang^="zh"] .hub-copy h1 { font-size: clamp(42px, 6vw, 88px); white-space: nowrap; }
+    @media (max-width: 760px) {
+      html[lang^="zh"] .board-intro h3 {
+        max-width: 100%;
+        font-size: clamp(30px, 8.4vw, 40px);
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app hub-mode" id="trainingApp">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-orbit" aria-hidden="true"></span>
+        <div>
+          <div class="brand-kicker" id="brandKicker">MOONDROP · CHANNEL TRAINING</div>
+          <div class="brand-name">SPACE TRAVEL 2</div>
+        </div>
+      </div>
+      <div class="top-status" id="topStatus" aria-label="Page tools">
+        <a class="training-home-link" id="trainingHomeLink" href="../../index.html?lang=en" aria-label="Training home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3.5 10.5 12 3.8l8.5 6.7" />
+            <path d="M5.8 9.2v10.4h12.4V9.2" />
+            <path d="M9.4 19.6v-6.2h5.2v6.2" />
+          </svg>
+        </a>
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="切换至中文" aria-pressed="false">
+          <span class="language-option" data-language-option="zh">中文</span>
+          <span class="language-divider" aria-hidden="true">/</span>
+          <span class="language-option active" data-language-option="en">EN</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="training-hub" id="trainingHub" aria-label="SPACE TRAVEL 2 training menu">
+      <img class="hub-hero-image" id="hubHeroImage" src="assets/campaign/space-travel-2-hero.jpg" alt="SPACE TRAVEL 2 campaign visual with the product held beside a futuristic portrait" />
+      <div class="hub-layout">
+        <div class="hub-copy">
+          <div class="hub-kicker" id="hubKicker">MOONDROP · PRODUCT TRAINING ATLAS</div>
+          <h1 id="hubTitle">SPACE<br />TRAVEL 2</h1>
+          <p id="hubIntro">Choose one focused training module. Product fit and wearing guidance are integrated into the core selling points instead of becoming a separate lesson.</p>
+          <img class="hub-mark" src="assets/campaign/space-travel-2-mark.png" alt="SPACE TRAVEL 2 graphic mark" />
+        </div>
+        <nav class="hub-menu" aria-label="Training sections">
+          <div class="hub-section-grid" id="hubSectionGrid"></div>
+        </nav>
+      </div>
+    </main>
+
+    <main class="workspace">
+      <nav class="story-rail" aria-label="Product feature stories">
+        <div class="eyebrow" id="storyEyebrow">Six core sales stories</div>
+        <h1 id="storyHeadline">Learn it by<br />touching it.</h1>
+        <div class="feature-list" id="featureList"></div>
+        <button class="product-overview-button active" id="productOverviewButton" type="button" aria-pressed="true">Overview</button>
+        <div class="rail-footer">
+          <button class="overview-button" id="overviewButton" type="button">Return to training menu</button>
+        </div>
+      </nav>
+
+      <section class="viewer-column" aria-label="Interactive product view">
+        <div class="viewer-meta">
+          <div>
+            <div class="view-title" id="viewTitle"><b>Product overview</b></div>
+          </div>
+          <div class="angle-readout" aria-live="polite">
+            <div class="angle-value" id="angleValue"><b>MAIN VIEW</b></div>
+          </div>
+        </div>
+
+        <div class="stage" id="stage" aria-label="Select a product signal to inspect its detail">
+          <div class="orbit-guide" aria-hidden="true"></div>
+          <div class="photo-rig" id="photoRig">
+            <img class="product-photo" id="productPhoto" src="assets/hd-gallery/front-symmetry.jpg" alt="Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case" draggable="false" />
+          </div>
+        </div>
+
+        <div class="sequence-bar" aria-label="Detail focus progress">
+          <div class="angle-track" id="angleTrack" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <aside class="detail-panel" id="detailPanel" aria-label="Feature training detail">
+        <div class="panel-empty">
+          <span id="emptyKicker">READY FOR INPUT</span>
+          <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
+          <p id="emptyBody">Each signal groups related specifications into one retail story, so you can remember fewer, stronger talking points.</p>
+        </div>
+        <div class="panel-content">
+          <div class="panel-head">
+            <div>
+              <div class="panel-kicker" id="panelKicker"></div>
+              <div class="panel-number" id="panelNumber"></div>
+            </div>
+            <button class="close-panel" id="closePanel" type="button" aria-label="Close feature detail">×</button>
+          </div>
+          <h2 id="panelTitle"></h2>
+          <p class="panel-body" id="panelBody"></p>
+          <figure class="panel-media">
+            <div class="panel-media-stage">
+              <div class="panel-media-visual" id="panelMediaVisual" role="img"></div>
+            </div>
+            <div class="panel-media-controls" id="panelMediaControls" hidden>
+              <button class="panel-media-nav" id="previousPanelMedia" type="button" aria-label="Previous feature image">←</button>
+              <span class="panel-media-count" id="panelMediaCount"></span>
+              <button class="panel-media-nav" id="nextPanelMedia" type="button" aria-label="Next feature image">→</button>
+            </div>
+            <figcaption id="panelPhotoCaption"></figcaption>
+          </figure>
+          <div class="subfeatures" id="subfeatures"></div>
+          <div class="training-cue">
+            <h3 id="showLabel">Show it</h3>
+            <p id="panelShow"></p>
+          </div>
+          <div class="training-cue say">
+            <h3 id="sayLabel">Say this</h3>
+            <p id="panelSay"></p>
+          </div>
+          <div class="training-cue">
+            <h3 id="specLabel">Key spec</h3>
+            <p id="panelSpec"></p>
+          </div>
+          <div class="panel-nav">
+            <button id="previousFeature" type="button">← Previous story</button>
+            <button id="nextFeature" type="button">Next story →</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <section class="section-board" id="sectionBoard" aria-hidden="true">
+    <header class="section-board-header">
+      <div>
+        <h2 id="sectionBoardTitle"></h2>
+      </div>
+      <button class="section-board-close" id="closeSectionBoard" type="button" aria-label="Close training section">×</button>
+    </header>
+    <div class="section-board-content" id="sectionBoardContent"></div>
+  </section>
+
+  <section class="gallery-board" id="galleryBoard" aria-label="SPACE TRAVEL 2 HD image library" aria-hidden="true">
+    <header class="gallery-header">
+      <div>
+        <div class="gallery-kicker" id="galleryKicker">MOONDROP · SOURCE PHOTOGRAPHY · 11 FILES</div>
+        <h2 id="galleryTitle">SPACE TRAVEL 2 HD Image Library</h2>
+      </div>
+      <button class="gallery-close" id="closeGallery" type="button" aria-label="Close HD image library">×</button>
+    </header>
+    <p class="gallery-intro" id="galleryIntro">Use the gallery for free inspection, colorway comparison, packaging confirmation, and full-screen retail demonstrations. Select any image to open the original high-resolution file.</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="closeLightbox" type="button" aria-label="Close full-screen image">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrevious" type="button" aria-label="Previous image">←</button>
+    <img class="lightbox-image" id="lightboxImage" alt="" />
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Next image">→</button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <script src="content.js"></script>
+  <script>
+    (() => {
+      const data = window.SPACE_TRAVEL_2_DATA;
+      const features = data.features.filter((feature) => feature.hotspot !== false);
+      const accentMap = { lime: '#c7f64a', orange: '#ff7c32', cyan: '#6ce4e7', violet: '#b49cf7', blue: '#78a8ff' };
+      const featureAccentMap = {
+        design: '#ff4fb8',
+        sound: '#ffb020',
+        noise: '#00cfe8',
+        app: '#c7f64a',
+        wear: '#9a6cff',
+        daily: '#347dff'
+      };
+      const masterView = {
+        id: 'master',
+        index: 0,
+        image: 'assets/hd-gallery/front-symmetry.jpg',
+        alt: 'Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case',
+        label: 'PRODUCT OVERVIEW',
+        preset: { x: 0, y: 0, zoom: 1.02, yaw: 0, pitch: 0 }
+      };
+      const masterHotspots = {
+        design: [50, 27], sound: [19, 45], noise: [74, 45],
+        app: [63, 58], wear: [80, 49], daily: [50, 58]
+      };
+      const featureViews = {
+        design: {
+          id: 'design', index: 1, label: 'SHELL · TRANSPARENT CRADLE', hotspot: [50, 27],
+          preset: { x: 0, y: 15, zoom: 1.55, yaw: 0, pitch: -1 },
+          panelImage: 'assets/hd-gallery/dark-material.jpg', panelPosition: '50% 34%',
+          panelCaption: 'Directional light makes the thickness, edges, and internal charging geometry easier to inspect.'
+        },
+        sound: {
+          id: 'sound', index: 2, label: 'SOUND · LEFT EARBUD BODY', hotspot: [19, 45],
+          preset: { x: 24, y: 3, zoom: 1.86, yaw: -5, pitch: -1 },
+          panelImage: 'assets/hd-gallery/oblique-close.jpg', panelPosition: '50% 48%',
+          panelCaption: 'The oblique earbud view gives staff a clear physical anchor for the 13mm driver story.'
+        },
+        noise: {
+          id: 'noise', index: 3, label: 'NOISE · RIGHT EARBUD', hotspot: [74, 45],
+          preset: { x: -24, y: 3, zoom: 1.84, yaw: 5, pitch: -1 },
+          panelImage: 'assets/hd-gallery/front-symmetry.jpg', panelPosition: '50% 44%',
+          panelCaption: 'Both earbuds are visible together, supporting the ANC, transparency, and call-mode demonstration.'
+        },
+        app: {
+          id: 'app', index: 4, label: 'APP · DSP & PERSONALIZATION', hotspot: [63, 58],
+          preset: { x: -8, y: -12, zoom: 1.66, yaw: 2, pitch: 1 },
+          panelImage: 'assets/official/app-dsp-en.jpg', panelPosition: '50% 50%',
+          panelCaption: 'The MOONDROP app adds a DSP graphic interface, AutoEQ, tune sharing, touch mapping, and ANC switching.'
+        },
+        wear: {
+          id: 'wear', index: 5, label: 'WEAR · FORM & SCALE', hotspot: [80, 49],
+          preset: { x: -24, y: 0, zoom: 1.82, yaw: 6, pitch: -1 },
+          panelImage: 'assets/wearing-guide.jpg', panelPosition: '50% 39%',
+          panelCaption: 'The on-ear reference shows the semi-in-ear scale and how the long stem sits in daily use.'
+        },
+        daily: {
+          id: 'daily', index: 6, label: 'DAILY · CASE & BATTERY', hotspot: [50, 58],
+          preset: { x: 0, y: -13, zoom: 1.62, yaw: 0, pitch: 2 },
+          panelImage: 'assets/hd-gallery/package-spread.jpg', panelPosition: '50% 50%',
+          panelCaption: 'The packaging spread helps staff close with battery, Bluetooth, codec, and in-box proof.'
+        }
+      };
+      const featureMedia = {
+        design: {
+          en: [
+            { image: 'assets/hd-gallery/dark-material.jpg', position: '50% 34%', caption: 'Directional light makes the thickness, edges, and internal charging geometry easier to inspect.' }
+          ],
+          zh: [
+            { image: 'assets/hd-gallery/dark-material.jpg', position: '50% 34%', caption: '定向光线清楚呈现透明材质的厚度、边缘与内部充电结构。' }
+          ]
+        },
+        sound: {
+          en: [
+            { layout: 'driver-parts', image: 'assets/official/driver-art-en.jpg', position: '100% 50%', size: '114% auto', labels: ['Beryllium-plated dome diaphragm', 'Flexible diaphragm suspension', 'Ultra-thin CCAW voice coil', 'N52 magnetic assembly'], caption: 'Exploded driver structure: beryllium-plated dome, flexible suspension, CCAW voice coil, and N52 magnetic assembly.' },
+            { layout: 'driver-schematic-full', image: 'assets/official/driver-schematic.png', caption: 'The complete schematic shows the low-distortion large dynamic driver and beryllium-plated dome diaphragm together.' }
+          ],
+          zh: [
+            { layout: 'driver-parts', image: 'assets/official/driver-art-zh.jpg', position: '100% 50%', size: '114% auto', labels: ['镀铍振膜球顶', '柔性振膜悬边', '特细 CCAW 音圈', 'N52 钕磁体和磁路组件'], caption: '驱动单元分解结构：镀铍振膜球顶、柔性振膜悬边、特细 CCAW 音圈与 N52 钕磁体和磁路组件。' },
+            { layout: 'driver-schematic-full', image: 'assets/official/driver-schematic.png', caption: '完整结构图同时呈现低失真大尺寸动圈单元与镀铍球顶振膜。' }
+          ]
+        },
+        noise: {
+          en: [
+            { layout: 'hero', image: 'assets/official/ST2-6.jpg', position: '50% 89%', size: 'cover', eyebrow: 'SINGLE FEEDFORWARD', label: 'WIDE-BAND\nANC', caption: 'The official ANC graphic visualizes single-feedforward wide-band noise reduction while preserving sound quality.' },
+            { layout: 'hero', image: 'assets/official/ST2-7.jpg', position: '50% 88%', size: 'cover', eyebrow: 'BUILT-IN NPU', label: 'AI NOISE\nCANCELING', caption: 'The built-in NPU provides the hardware foundation for AI environmental-noise reduction during calls.' }
+          ],
+          zh: [
+            { layout: 'hero', image: 'assets/official/CN-6.jpg', position: '50% 89%', size: 'cover', eyebrow: '单前馈', label: '宽频 ANC\n主动降噪', caption: '官网 ANC 图直观呈现单前馈宽频主动降噪与音质兼顾的原理。' },
+            { layout: 'hero', image: 'assets/official/CN-7.jpg', position: '50% 88%', size: 'cover', eyebrow: '内置 NPU 内核', label: '硬件级 AI\n通话降噪', caption: '内置 NPU 为通话中的 AI 环境噪声抑制提供硬件基础。' }
+          ]
+        },
+        app: {
+          en: [
+            { layout: 'app', image: 'assets/official/app-dsp-en.jpg', eyebrow: 'MOONDROP APP', label: 'DSP GRAPHIC INTERFACE', points: ['Parameterized equalizer', 'Filter / frequency / gain / Q', 'Original response reference'], caption: 'The DSP graphic interface supports precise parameterized equalizer adjustment with the original frequency response as a reference.' },
+            { layout: 'app', image: 'assets/official/app-control-en.jpg', eyebrow: 'MOONDROP APP', label: 'CUSTOM TOUCH & ANC', points: ['Custom touch operation', 'ANC / transparency / standard mode', 'Custom switching logic'], caption: 'The app can customize touch operation and the switching logic for ANC, transparency, and standard modes.' }
+          ],
+          zh: [
+            { layout: 'app', image: 'assets/official/app-dsp-zh.jpg', eyebrow: 'MOONDROP APP', label: '专业 DSP 图形化界面', points: ['参数化均衡器', '滤波器类型 / 频点 / 增益 / Q 值', '原始频响曲线参考'], caption: '专业 DSP 图形化界面支持对参数化均衡器进行精确调节，并以原始频响曲线作为调音参考。' },
+            { layout: 'app', image: 'assets/official/app-control-zh.jpg', eyebrow: 'MOONDROP APP', label: '自定义触控与降噪切换', points: ['自定义耳机触控操作', '降噪 / 透传 / 普通模式', '自定义切换逻辑'], caption: 'App 支持自定义耳机触控操作，并调整降噪、透传与普通模式的切换逻辑。' }
+          ]
+        },
+        wear: {
+          en: [
+            { image: 'assets/wearing-guide.jpg', position: '50% 39%', caption: 'The on-ear reference shows the semi-in-ear scale and how the long stem sits in daily use.' }
+          ],
+          zh: [
+            { image: 'assets/wearing-guide.jpg', position: '50% 39%', caption: '佩戴参考图展示半入耳结构的实际大小，以及长柄在日常佩戴中的位置。' }
+          ]
+        },
+        daily: {
+          en: [
+            { layout: 'hero', image: 'assets/hd-gallery/hero-earbuds-launch.jpg', position: '77% 66%', size: 'cover', eyebrow: 'BATTERY LIFE', label: '7 + 24 HOURS', caption: 'The earbuds provide about 7 hours of playback, with about 24 additional hours from the charging case.' },
+            { layout: 'hero', image: 'assets/official/ST2-14.jpg', position: '50% 82%', size: '124% auto', eyebrow: 'DUAL-DEVICE CONNECTIVITY', label: 'SEAMLESS\nSWITCHING', caption: 'Dual-device connectivity supports seamless switching between two devices.' },
+            { layout: 'hero', image: 'assets/official/ST2-15.jpg', position: '50% 82%', size: 'cover', eyebrow: 'AUTOMATIC RECONNECTION', label: 'MONAURAL /\nBINAURAL', caption: 'Automatic reconnection and seamless monaural-binaural switching support an easier daily routine.' }
+          ],
+          zh: [
+            { layout: 'hero', image: 'assets/hd-gallery/hero-earbuds-launch.jpg', position: '77% 66%', size: 'cover', eyebrow: '耳机续航 + 充电仓续航', label: '7 + 24 小时', caption: '耳机单次续航约 7 小时，充电仓可额外提供约 24 小时续航。' },
+            { layout: 'hero', image: 'assets/official/CN-14.jpg', position: '50% 82%', size: '124% auto', eyebrow: '支持双设备连接', label: '手机平板\n无缝切换', caption: '双设备连接支持手机、平板或电脑之间的无缝切换。' },
+            { layout: 'hero', image: 'assets/official/CN-15.jpg', position: '50% 82%', size: 'cover', eyebrow: '出仓自动回连', label: '单双耳\n无缝切换', caption: '出仓自动回连与单双耳无缝切换，让日常使用更加顺畅。' }
+          ]
+        }
+      };
+      const galleryItems = [
+        { image: 'assets/hd-gallery/hero-earbuds-launch.jpg', title: 'Earbuds launch hero', meta: 'Hero · Both colorways' },
+        { image: 'assets/hd-gallery/front-symmetry.jpg', title: 'Front symmetry', meta: 'Product · Black / Green' },
+        { image: 'assets/hd-gallery/oblique-close.jpg', title: 'Oblique earbud close-up', meta: 'Detail · Black / Green' },
+        { image: 'assets/hd-gallery/wide-lineup.jpg', title: 'Wide product lineup', meta: 'Product · Black / Green' },
+        { image: 'assets/hd-gallery/colorway-detail.png', title: 'Transparent structure', meta: 'Detail · Both colorways' },
+        { image: 'assets/hd-gallery/dual-colorways.jpg', title: 'Dual colorways', meta: 'Product · White / Orange + Black / Green' },
+        { image: 'assets/hd-gallery/design-process.jpg', title: 'Design-process composition', meta: 'Product · Three-quarter view' },
+        { image: 'assets/hd-gallery/topdown-layout.jpg', title: 'Top-down layout', meta: 'Product · Black / Green' },
+        { image: 'assets/hd-gallery/dark-material.jpg', title: 'Transparent material under light', meta: 'Material · Low-light close-up' },
+        { image: 'assets/hd-gallery/package-spread.jpg', title: 'Packaging spread', meta: 'Package · Both colorways' },
+        { image: 'assets/hd-gallery/package-specs.jpg', title: 'Packaging and specifications', meta: 'Package · Retail proof' }
+      ];
+      const languagePacks = {
+        en: {
+          ui: {
+            documentTitle: 'SPACE TRAVEL 2 · HD Photo Channel Training',
+            brandKicker: 'MOONDROP · CHANNEL TRAINING', languageLabel: '切换至中文', trainingHome: 'Training home',
+            storyEyebrow: 'Six core sales stories', storyHeadline: 'Learn it by<br />touching it.',
+            productOverview: 'Overview', overviewButton: 'Return to training menu',
+            viewKicker: 'Real-photo inspection field', overviewTitle: 'Product overview',
+            master: 'MAIN VIEW', masterNumber: 'MAIN VIEW / HD', masterLabel: 'FRONT · PRODUCT & EARBUDS', focusNumber: 'FOCUS',
+            stageAria: 'Select a product signal to inspect its detail', dragStageAria: 'Drag the enlarged product to find another signal, or use the feature list.', masterState: 'PRODUCT OVERVIEW',
+            emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.',
+            emptyBody: 'Each signal groups related specifications into one retail story, so you can remember fewer, stronger talking points.',
+            showLabel: 'Show it', sayLabel: 'Say this', specLabel: 'Key spec', sourcePrefix: 'Source: ',
+            previous: '← Previous story', next: 'Next story →', previousMedia: 'Previous feature image', nextMedia: 'Next feature image',
+            galleryKicker: 'MOONDROP · SOURCE PHOTOGRAPHY · 11 FILES', galleryTitle: 'SPACE TRAVEL 2 HD Image Library',
+            galleryIntro: 'Use the gallery for free inspection, colorway comparison, packaging confirmation, and full-screen retail demonstrations. Select any image to open the original high-resolution file.',
+            closeDetail: 'Return to product overview', closeGallery: 'Close HD image library', closeFullscreen: 'Close full-screen image',
+            previousImage: 'Previous image', nextImage: 'Next image', openFeature: 'Open', openImage: 'Open high-resolution image:',
+            masterAlt: 'Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case'
+          },
+          viewLabels: {}, panelCaptions: {}, features: {}, gallery: galleryItems
+        },
+        zh: {
+          ui: {
+            documentTitle: 'SPACE TRAVEL 2 · 高清产品渠道培训',
+            brandKicker: 'MOONDROP · 渠道培训', languageLabel: 'Switch to English', trainingHome: '返回培训首页',
+            storyEyebrow: '六个核心销售卖点', storyHeadline: '点击产品，<br />掌握卖点。',
+            productOverview: '产品总览', overviewButton: '返回培训菜单',
+            viewKicker: '实拍产品检视区', overviewTitle: '产品总览',
+            master: '主图', masterNumber: '主图 / 高清', masterLabel: '正面 · 产品与耳机', focusNumber: '聚焦',
+            stageAria: '点击产品卖点查看对应细节', dragStageAria: '拖曳放大后的产品画面寻找其他光点，也可以使用左侧卖点列表。', masterState: '产品总览',
+            emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。',
+            emptyBody: '每个入口都把相关参数整理成一个零售讲解主题，帮助你记住更少但更有力的销售话术。',
+            showLabel: '现场展示', sayLabel: '推荐话术', specLabel: '关键参数', sourcePrefix: '资料来源：',
+            previous: '← 上一个卖点', next: '下一个卖点 →', previousMedia: '上一张卖点图片', nextMedia: '下一张卖点图片',
+            galleryKicker: 'MOONDROP · 产品高清素材 · 11 张', galleryTitle: 'SPACE TRAVEL 2 高清图库',
+            galleryIntro: '图库可用于自由查看产品、比较配色、确认包装信息或进行全屏零售演示。点击任意图片即可查看高清原图。',
+            closeDetail: '返回产品总览', closeGallery: '关闭高清图库', closeFullscreen: '关闭全屏图片',
+            previousImage: '上一张图片', nextImage: '下一张图片', openFeature: '打开', openImage: '打开高清图片：',
+            masterAlt: 'SPACE TRAVEL 2 黑绿配色充电盒与两只盒外耳机的正面产品照片'
+          },
+          viewLabels: {
+            design: '外壳 · 透明充电座', sound: '声音 · 左侧耳机腔体', noise: '降噪 · 右侧耳机',
+            app: '手机 App · DSP 与个性化', wear: '佩戴 · 形态与尺寸', daily: '日用 · 充电盒与续航'
+          },
+          panelCaptions: {
+            design: '定向光线清楚呈现透明材质的厚度、边缘与内部充电结构。',
+            sound: '斜侧耳机特写，让你可以从真实结构自然过渡到 13mm 驱动单元的讲解。',
+            noise: '两只耳机同时可见，方便连贯讲解主动降噪、通透模式与通话降噪。',
+            app: 'MOONDROP App 提供专业 DSP 调音、自定义触控以及降噪模式切换。',
+            wear: '佩戴参考图展示半入耳结构的实际大小，以及长柄在日常佩戴中的位置。',
+            daily: '包装与产品同框，可作为续航、蓝牙、编码格式和包装内容的成交佐证。'
+          },
+          features: {
+            design: {
+              chapter: '设计', label: '透明充电盒 + 太空设计', title: '透明太空舱设计，内部结构一目了然', kicker: '设计与材质',
+              subfeatures: [
+                { label: '透明外壳', text: '半透明上层充电座，让内部耳机槽与充电结构清晰可见。' },
+                { label: '太空视觉', text: '独特图形与配色让产品在演示开始前就具有辨识度。' },
+                { label: '开放式充电座', text: '无盒盖的上层结构让耳机与充电槽始终一眼可见。' }
+              ],
+              body: '先从充电盒讲起：无盒盖的透明上层、可见的充电槽与太空主题图形，让产品一眼就有辨识度。',
+              show: '让顾客同时看到开放式上层、充电槽、正面指示灯、充电接口与 SPACE TRAVEL 2 图形。',
+              say: '“开放式充电座就像一枚小型太空舱——透明、紧凑，而且一眼就能认出来。”',
+              spec: '无盒盖半透明充电座 · 可见充电槽 · 太空幻想视觉语言', source: '原培训材料第 5、7 页；水月雨官网产品页与官方图片'
+            },
+            sound: {
+              chapter: '声音', label: '13mm 铍镀层球顶', title: '更大尺寸的驱动单元，兼顾细节、规模感与更低失真', kicker: '声音表现',
+              subfeatures: [
+                { label: '驱动单元', text: '13mm 动圈单元提供更充足的声学基础。' },
+                { label: '球顶振膜', text: '铍镀层球顶搭配柔性悬边复合振膜。' },
+                { label: '零售表达', text: '用具体硬件解释更清晰的细节、更饱满的低频与更低失真。' }
+              ],
+              body: '13mm 动圈单元采用柔性悬边复合振膜与铍镀层球顶，让你可以从真实硬件自然讲到声音细节、低频表现与失真控制。',
+              show: '从充电盒旁拿起一只耳机，指向紧凑的声学腔体，再引出更大尺寸驱动单元的故事。',
+              say: '“13mm 驱动单元给声音更充足的发挥空间，细节更清晰，低频也更饱满。”',
+              spec: '13mm 动圈单元 · 铍镀层球顶 · CCAW 音圈 · N52 磁路', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 4、6 页'
+            },
+            noise: {
+              chapter: '降噪', label: 'ANC + 通透 + AI 通话降噪', title: '安静专注、环境感知与清晰通话', kicker: '降噪与通话',
+              subfeatures: [
+                { label: '宽频主动降噪', text: '单前馈 ANC 适用于学习、办公、火车与飞行场景。' },
+                { label: '通透模式', text: '无需摘下耳机，也能听到周围环境声音。' },
+                { label: 'AI ENC', text: '内置 NPU 支持环境噪声抑制，让通话语音更清晰。' }
+              ],
+              body: '把三种模式对应到简单场景：需要专注时用 ANC，需要感知环境时用通透模式，嘈杂环境通话时用 AI ENC。',
+              show: '用三个简单场景切换演示：书桌或列车对应 ANC，附近交谈对应通透模式，嘈杂街道通话对应 AI ENC。',
+              say: '“环境变化时，同一副耳机可以帮你安静下来、保持对周围的感知，或让自己的声音更清楚。”',
+              spec: '单前馈宽频 ANC · 通透模式 · 内置 NPU AI ENC', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 4、6、10 页'
+            },
+            app: {
+              chapter: '手机 App', label: 'DSP + AutoEQ + 调音分享', title: '专业调音与个性化控制集中在一个 App 中', kicker: 'MOONDROP APP',
+              subfeatures: [
+                { label: 'DSP 图形化界面', text: '可调节滤波器类型、频点、增益和 Q 值，并参考原始频响曲线。' },
+                { label: 'AutoEQ 与分享', text: '可在 MOONDROP App 中使用 AutoEQ 与调音分享功能。' },
+                { label: '自定义控制', text: '可自定义触控操作，以及降噪、透传、普通模式的切换逻辑。' }
+              ],
+              body: '顾客希望进一步个性化时，可用 MOONDROP App 调节参数化 DSP EQ，并使用 AutoEQ、调音分享、自定义触控与降噪切换。',
+              show: '在 App 中打开 SPACE TRAVEL 2 设备页，先展示 DSP 图形化界面，再进入触控设置与降噪设置。',
+              say: '“App 可以精细调整声音，也能使用 AutoEQ 或分享调音，并自定义触控和降噪模式的切换方式。”',
+              spec: 'MOONDROP App · 参数化 DSP EQ · AutoEQ · 调音分享 · 自定义触控 · 自定义降噪切换', source: '水月雨 SPACE TRAVEL 2 官网产品页'
+            },
+            wear: {
+              chapter: '佩戴与便利', label: '半入耳 + 佩戴检测 + 单耳使用', title: '轻巧的半入耳结构，适应日常活动', kicker: '舒适与便利',
+              subfeatures: [
+                { label: '半入耳佩戴', text: '先确认 L/R 标识，再将左右耳机自然放入对应耳道。' },
+                { label: '佩戴检测', text: '耳机取下或戴上时，可自然响应使用状态。' },
+                { label: '独立使用', text: '左右耳机可独立工作，也支持单耳聆听。' }
+              ],
+              body: '先讲轻巧的半入耳佩戴，再补充佩戴检测与左右耳独立使用，说明它在日常行动中的便利性。',
+              show: '把两只耳机拿到盒外，先指出 L/R 标识，再展示圆润声学腔体如何自然放入对应耳朵。',
+              say: '“半入耳结构让日常佩戴与携带更轻巧，而且左右两边都能独立使用。”',
+              spec: '半入耳结构 · 佩戴检测 · 左右耳独立工作 · 支持单耳使用', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 5、7、10 页'
+            },
+            daily: {
+              chapter: '续航与连接', label: '7 + 24 小时 + Bluetooth 6.0', title: '全天续航与稳定连接，支撑真实日常使用', kicker: '续航与连接',
+              subfeatures: [
+                { label: '续航', text: '耳机单次约 7 小时，充电盒额外提供约 24 小时续航。' },
+                { label: '蓝牙', text: 'Bluetooth 6.0，支持 SBC/AAC，开放环境标称距离 10m。' },
+                { label: '双设备日常使用', text: '支持双设备连接、自动回连与单双耳切换。' }
+              ],
+              body: '顾客问到日常使用时，用续航、Bluetooth 6.0 与双设备连接说明它如何适配通勤、工作日和手机加电脑的使用流程。',
+              show: '最后把充电盒拿在手中，将 7 + 24 小时换算成真实的一天，再结合顾客的手机、平板或电脑使用习惯。',
+              say: '“耳机负责一次完整使用，充电盒接力全天续航，两台设备也能保持在同一套使用流程里。”',
+              spec: '耳机约 7 小时 + 充电盒约 24 小时 · Bluetooth 6.0 · SBC/AAC · 10m · 双设备连接', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 6、7 页'
+            }
+          },
+          gallery: [
+            { title: '耳机飞出主视觉', meta: '主视觉 · 两种配色' },
+            { title: '正面对称产品图', meta: '产品 · 黑绿配色' },
+            { title: '耳机斜侧特写', meta: '细节 · 黑绿配色' },
+            { title: '横向产品组合', meta: '产品 · 黑绿配色' },
+            { title: '透明结构细节', meta: '细节 · 两种配色' },
+            { title: '双配色组合', meta: '产品 · 白橙与黑绿' },
+            { title: '设计过程构图', meta: '产品 · 四分之三视角' },
+            { title: '俯拍产品布局', meta: '产品 · 黑绿配色' },
+            { title: '暗光透明材质', meta: '材质 · 低光特写' },
+            { title: '包装与产品组合', meta: '包装 · 两种配色' },
+            { title: '包装与规格信息', meta: '包装 · 零售佐证' }
+          ]
+        }
+      };
+
+      const portalLanguagePacks = {
+        en: {
+          hubKicker: 'MOONDROP · PRODUCT TRAINING ATLAS',
+          hubTitle: 'SPACE<br />TRAVEL 2',
+          hubIntro: 'Understand the product from five different dimensions: what to sell, how to position it, what ownership includes, what reviewers show, and which visuals to use.',
+          hubMenuKicker: 'FIVE WAYS TO UNDERSTAND THE PRODUCT',
+          sectionClose: 'Close training section',
+          sections: {
+            core: { tag: 'SELL', title: 'Core Selling Points', subtitle: 'What makes the product worth recommending' },
+            comparison: { tag: 'POSITION', title: 'Product Positioning', subtitle: 'Who it fits and how it compares' },
+            support: { tag: 'OWNERSHIP', title: 'Package & After-sales', subtitle: 'What the customer receives and what follows' },
+            reviews: { tag: 'REVIEWS', title: 'Media Reviews', subtitle: 'Independent real-world perspectives' },
+            gallery: { tag: 'ASSETS', title: 'HD Image Library', subtitle: 'Visual material for product demonstrations' }
+          },
+          boards: {
+            comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
+            support: { kicker: 'PACKAGE & SERVICE', title: 'Package & After-sales', introTitle: 'Check the box. Explain the warranty.', intro: 'Use this page when a customer asks what is included or what happens after purchase.', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
+            reviews: { kicker: 'EXTERNAL REVIEW LINKS', title: 'Media Reviews', introTitle: 'Six real-world reviews, one click away.', intro: 'Need a third-party perspective? Select a cover to open the matching YouTube review.', open: 'Open review on YouTube ↗' }
+          }
+        },
+        zh: {
+          hubKicker: 'MOONDROP · 产品渠道培训地图',
+          hubTitle: '太空漫游 2',
+          hubIntro: '从五个不同维度了解产品：卖什么、如何定位、顾客买到什么、外部评测怎么看，以及现场可以展示什么。',
+          hubMenuKicker: '从五个维度了解产品',
+          sectionClose: '关闭培训模块',
+          sections: {
+            core: { tag: '卖点', title: '核心卖点', subtitle: '这款产品为什么值得推荐' },
+            comparison: { tag: '定位', title: '产品定位', subtitle: '适合谁，以及应该跟谁比较' },
+            support: { tag: '售后', title: '包装与售后', subtitle: '顾客买到什么，以及购买后的保障' },
+            reviews: { tag: '评测', title: '媒体评测', subtitle: '来自外部的真实使用视角' },
+            gallery: { tag: '素材', title: '高清图库', subtitle: '用于现场展示的产品视觉素材' }
+          },
+          boards: {
+            comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
+            support: { kicker: '包装与服务', title: '包装与售后', introTitle: '先核对包装，再讲清保障。', intro: '顾客问到配件或售后时，用这页快速核对。', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
+            reviews: { kicker: '外部评测链接', title: '媒体评测', introTitle: '六个真实评测，一键直达。', intro: '需要第三方观点时，点击封面即可打开对应的 YouTube 评测。', open: '前往 YouTube 观看 ↗' }
+          }
+        }
+      };
+
+      const featureList = document.getElementById('featureList');
+      const photoRig = document.getElementById('photoRig');
+      const productPhoto = document.getElementById('productPhoto');
+      const stage = document.getElementById('stage');
+      const detailPanel = document.getElementById('detailPanel');
+      const viewTitle = document.getElementById('viewTitle');
+      const angleValue = document.getElementById('angleValue');
+      const angleTrack = document.getElementById('angleTrack');
+      const productOverviewButton = document.getElementById('productOverviewButton');
+      const trainingApp = document.getElementById('trainingApp');
+      const sectionBoard = document.getElementById('sectionBoard');
+      const sectionBoardContent = document.getElementById('sectionBoardContent');
+      let activeIndex = -1;
+      let activePreset = masterView.preset;
+      let panelTimer = 0;
+      let lightboxIndex = 0;
+      let panelMediaIndex = 0;
+      let dragOffset = { x: 0, y: 0 };
+      let stageDrag = null;
+      let currentSection = 'hub';
+      const languageStorageKey = 'moondropChannelTrainingLanguage';
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+      let currentLanguage = requestedLanguage === 'zh' ? 'zh' : 'en';
+      const currentPack = () => languagePacks[currentLanguage];
+      const currentPortalPack = () => portalLanguagePacks[currentLanguage];
+      const localizedFeature = (feature) => currentLanguage === 'zh'
+        ? { ...feature, ...currentPack().features[feature.id] }
+        : feature;
+      const localizedGalleryItem = (index) => ({ ...galleryItems[index], ...currentPack().gallery[index] });
+      const localizedViewLabel = (view) => currentPack().viewLabels[view.id] || view.label;
+
+      function rememberLanguage() {
+        try {
+          window.localStorage.setItem(languageStorageKey, currentLanguage);
+        } catch (error) {
+          // The URL remains the fallback when storage is unavailable.
+        }
+      }
+
+      function renderHubButtons() {
+        const pack = currentPortalPack();
+        const sectionAccentMap = { core: '#c7f64a', comparison: '#ff9a45', support: '#6ce4e7', reviews: '#b49cf7', gallery: '#78a8ff' };
+        const grid = document.getElementById('hubSectionGrid');
+        grid.innerHTML = '';
+        data.portal.sections.forEach((section) => {
+          const copy = pack.sections[section.id];
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'hub-section-button';
+          button.dataset.section = section.id;
+          button.style.setProperty('--section-accent', sectionAccentMap[section.id] || '#c7f64a');
+          button.innerHTML = `
+            <span class="hub-section-number">${copy.tag}</span>
+            <span class="hub-section-arrow" aria-hidden="true">↗</span>
+            <span class="hub-section-copy"><b>${copy.title}</b><span>${copy.subtitle}</span></span>`;
+          button.setAttribute('aria-label', `${copy.title}: ${copy.subtitle}`);
+          button.addEventListener('click', () => navigateSection(section.id));
+          grid.appendChild(button);
+        });
+      }
+
+      function comparisonBoardMarkup(copy) {
+        const cards = data.portal.comparisons[currentLanguage];
+        return `
+          <section class="board-intro comparison-intro" style="background-image:url('${data.portal.campaign.hero}')">
+            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+          </section>
+          <div class="comparison-grid">
+            ${cards.map((card) => `
+              <article class="comparison-card">
+                <h3>${card.title}</h3>
+                <p class="comparison-customer">${card.customer}</p>
+                <p class="comparison-answer">${card.answer}</p>
+                <div class="comparison-proof">${card.proof}</div>
+              </article>`).join('')}
+          </div>`;
+      }
+
+      function supportBoardMarkup(copy) {
+        const support = data.portal.support[currentLanguage];
+        return `
+          <section class="board-intro support-intro" style="background-image:url('${data.portal.support.packageImage}')">
+            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+          </section>
+          <div class="support-layout">
+            <article class="support-block support-block--package">
+              <img class="support-visual" src="${data.portal.support.contentsImage}" alt="SPACE TRAVEL 2 package contents" />
+              <div class="support-copy">
+                <div class="support-label">${copy.packageLabel}</div>
+                <h3>${copy.packageTitle}</h3>
+                <ul class="package-list">${support.contents.map((item) => `<li>${item}</li>`).join('')}</ul>
+              </div>
+            </article>
+            <article class="support-block support-block--warranty">
+              <div class="support-copy support-copy--warranty">
+                <div class="support-warranty-summary">
+                  <div class="support-label">${copy.warrantyLabel}</div>
+                  <h3>${copy.warrantyTitle}</h3>
+                  <div class="warranty-periods">${support.periods.map(([label, value]) => `<div class="warranty-period"><span>${label}</span><b>${value}</b></div>`).join('')}</div>
+                  <p class="support-policy">${support.policy}</p>
+                </div>
+                <div class="support-exclusions">
+                  <div class="support-label">${copy.exclusions}</div>
+                  <ol class="exclusion-list">${support.exclusions.map((item) => `<li>${item}</li>`).join('')}</ol>
+                </div>
+              </div>
+            </article>
+          </div>`;
+      }
+
+      function reviewsBoardMarkup(copy) {
+        return `
+          <section class="board-intro review-intro" style="background-image:url('${data.portal.campaign.portrait}')">
+            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+          </section>
+          <div class="review-grid">
+            ${data.portal.reviews.map((review) => `
+              <a class="review-card" href="${review.url}" target="_blank" rel="noopener noreferrer">
+                <span class="review-image-wrap">
+                  <img src="${review.image}" alt="${review.title}" loading="lazy"${review.fallback ? ` data-fallback="${review.fallback}"` : ''} />
+                  <span class="review-play" aria-hidden="true">▶</span>
+                </span>
+                <span class="review-copy">
+                  <span class="review-channel">${review.channel}</span>
+                  <h3>${review.title}</h3>
+                  <span>${copy.open}</span>
+                </span>
+              </a>`).join('')}
+          </div>`;
+      }
+
+      function renderSectionBoard(id) {
+        const portalPack = currentPortalPack();
+        const copy = portalPack.boards[id];
+        if (!copy) return;
+        document.getElementById('sectionBoardTitle').textContent = copy.title;
+        sectionBoardContent.innerHTML = id === 'comparison'
+          ? comparisonBoardMarkup(copy)
+          : id === 'support'
+            ? supportBoardMarkup(copy)
+            : reviewsBoardMarkup(copy);
+        sectionBoardContent.querySelectorAll('img[data-fallback]').forEach((image) => {
+          image.addEventListener('error', () => {
+            const fallback = image.dataset.fallback;
+            if (fallback && image.getAttribute('src') !== fallback) image.src = fallback;
+          }, { once: true });
+        });
+      }
+
+      function showSectionVisual(id) {
+        currentSection = id;
+        sectionBoard.classList.remove('open');
+        sectionBoard.setAttribute('aria-hidden', 'true');
+        hideGallery();
+        document.body.classList.remove('board-open');
+
+        if (id === 'core') {
+          trainingApp.classList.remove('hub-mode');
+          return;
+        }
+
+        trainingApp.classList.add('hub-mode');
+        if (id === 'gallery') {
+          showGallery();
+          return;
+        }
+        if (id !== 'hub') {
+          renderSectionBoard(id);
+          sectionBoard.classList.add('open');
+          sectionBoard.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('board-open');
+        }
+      }
+
+      function sectionUrl(id) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', currentLanguage);
+        if (id === 'hub') url.searchParams.delete('section');
+        else url.searchParams.set('section', id);
+        return url;
+      }
+
+      function navigateSection(id, options = {}) {
+        const valid = id === 'hub' || data.portal.sections.some((section) => section.id === id);
+        const target = valid ? id : 'hub';
+        showSectionVisual(target);
+        if (options.history === false) return;
+        try {
+          const method = options.replace ? 'replaceState' : 'pushState';
+          window.history[method]({ st2Section: target }, '', sectionUrl(target));
+        } catch (error) {
+          // Direct file opening can limit history updates; the visual state still works.
+        }
+      }
+
+      function closeActiveSection() {
+        if (document.getElementById('lightbox').classList.contains('open')) {
+          closeLightbox();
+          return;
+        }
+        try {
+          if (window.history.state?.st2Section && window.history.state.st2Section !== 'hub') {
+            window.history.back();
+            return;
+          }
+        } catch (error) {
+          // Fall through to a direct visual reset.
+        }
+        navigateSection('hub', { replace: true });
+      }
+
+      features.forEach((feature, index) => {
+        const accent = featureAccentMap[feature.id] || accentMap.lime;
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'feature-button';
+        item.dataset.feature = feature.id;
+        item.style.setProperty('--feature-accent', accent);
+        item.innerHTML = `
+          <span class="feature-number">${String(index + 1).padStart(2, '0')}</span>
+          <span class="feature-copy"><b>${feature.chapter}</b><span>${feature.label}</span></span>
+          <span class="feature-arrow">›</span>`;
+        item.addEventListener('click', () => openFeature(feature.id));
+        featureList.appendChild(item);
+
+        const position = masterHotspots[feature.id];
+        const hotspot = document.createElement('button');
+        hotspot.type = 'button';
+        hotspot.className = 'hotspot';
+        hotspot.dataset.feature = feature.id;
+        hotspot.style.setProperty('--hx', `${position[0]}%`);
+        hotspot.style.setProperty('--hy', `${position[1]}%`);
+        hotspot.style.setProperty('--hotspot-accent', accent);
+        hotspot.setAttribute('aria-label', `Open ${feature.chapter}: ${feature.label}`);
+        hotspot.innerHTML = `<span class="hotspot-label">${feature.chapter}</span>`;
+        hotspot.addEventListener('click', (event) => {
+          event.stopPropagation();
+          openFeature(feature.id);
+        });
+        photoRig.appendChild(hotspot);
+      });
+
+      for (let index = 0; index <= features.length; index += 1) {
+        const tick = document.createElement('span');
+        tick.className = `angle-tick${index === 0 || index === features.length ? ' major' : ''}`;
+        tick.dataset.view = String(index);
+        angleTrack.appendChild(tick);
+      }
+
+      const galleryGrid = document.getElementById('galleryGrid');
+      galleryItems.forEach((item, index) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'gallery-card';
+        card.setAttribute('aria-label', `Open high-resolution image: ${item.title}`);
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <span class="gallery-card-copy"><b>${item.title}</b><span>${item.meta}</span></span>`;
+        card.addEventListener('click', () => openLightbox(index));
+        galleryGrid.appendChild(card);
+      });
+
+      const featureById = (id) => features.find((feature) => feature.id === id);
+
+      function applyLanguage() {
+        const pack = currentPack();
+        const ui = pack.ui;
+        const portalPack = currentPortalPack();
+        rememberLanguage();
+        document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : 'en';
+        document.title = ui.documentTitle;
+        document.getElementById('brandKicker').textContent = ui.brandKicker;
+        document.getElementById('hubKicker').textContent = portalPack.hubKicker;
+        document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
+        document.getElementById('hubIntro').textContent = portalPack.hubIntro;
+        document.getElementById('trainingHub').setAttribute('aria-label', currentLanguage === 'zh' ? 'SPACE TRAVEL 2 培训菜单' : 'SPACE TRAVEL 2 training menu');
+        document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? '模特手持 SPACE TRAVEL 2 的太空主题主视觉' : 'SPACE TRAVEL 2 campaign visual with the product held beside a futuristic portrait';
+        document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
+        renderHubButtons();
+        document.getElementById('trainingHomeLink').href = `../../index.html?lang=${currentLanguage}`;
+        document.getElementById('trainingHomeLink').setAttribute('aria-label', ui.trainingHome);
+        document.getElementById('storyEyebrow').textContent = ui.storyEyebrow;
+        document.getElementById('storyHeadline').innerHTML = ui.storyHeadline;
+        productOverviewButton.textContent = ui.productOverview;
+        productOverviewButton.setAttribute('aria-label', ui.closeDetail);
+        document.getElementById('overviewButton').textContent = ui.overviewButton;
+        document.getElementById('emptyKicker').textContent = ui.emptyKicker;
+        document.getElementById('emptyTitle').innerHTML = ui.emptyTitle;
+        document.getElementById('emptyBody').textContent = ui.emptyBody;
+        document.getElementById('showLabel').textContent = ui.showLabel;
+        document.getElementById('sayLabel').textContent = ui.sayLabel;
+        document.getElementById('specLabel').textContent = ui.specLabel;
+        document.getElementById('previousFeature').textContent = ui.previous;
+        document.getElementById('nextFeature').textContent = ui.next;
+        document.getElementById('galleryKicker').textContent = ui.galleryKicker;
+        document.getElementById('galleryTitle').textContent = ui.galleryTitle;
+        document.getElementById('galleryIntro').textContent = ui.galleryIntro;
+
+        const toggle = document.getElementById('languageToggle');
+        toggle.setAttribute('aria-label', ui.languageLabel);
+        toggle.setAttribute('aria-pressed', String(currentLanguage === 'zh'));
+        toggle.querySelectorAll('[data-language-option]').forEach((option) => {
+          option.classList.toggle('active', option.dataset.languageOption === currentLanguage);
+        });
+
+        document.querySelector('.story-rail').setAttribute('aria-label', currentLanguage === 'zh' ? '产品卖点列表' : 'Product feature stories');
+        document.querySelector('.viewer-column').setAttribute('aria-label', currentLanguage === 'zh' ? '互动产品视图' : 'Interactive product view');
+        stage.setAttribute('aria-label', ui.stageAria);
+        document.querySelector('.sequence-bar').setAttribute('aria-label', currentLanguage === 'zh' ? '细节聚焦进度' : 'Detail focus progress');
+        detailPanel.setAttribute('aria-label', currentLanguage === 'zh' ? '卖点培训详情' : 'Feature training detail');
+        document.getElementById('closePanel').setAttribute('aria-label', ui.closeDetail);
+        document.getElementById('galleryBoard').setAttribute('aria-label', currentLanguage === 'zh' ? 'SPACE TRAVEL 2 高清图库' : 'SPACE TRAVEL 2 HD image library');
+        document.getElementById('closeGallery').setAttribute('aria-label', ui.closeGallery);
+        document.getElementById('closeLightbox').setAttribute('aria-label', ui.closeFullscreen);
+        document.getElementById('lightboxPrevious').setAttribute('aria-label', ui.previousImage);
+        document.getElementById('lightboxNext').setAttribute('aria-label', ui.nextImage);
+        document.getElementById('previousPanelMedia').setAttribute('aria-label', ui.previousMedia);
+        document.getElementById('nextPanelMedia').setAttribute('aria-label', ui.nextMedia);
+
+        if (currentSection !== 'hub' && currentSection !== 'core' && currentSection !== 'gallery') renderSectionBoard(currentSection);
+
+        features.forEach((feature, index) => {
+          const localized = localizedFeature(feature);
+          const button = document.querySelector(`.feature-button[data-feature="${feature.id}"]`);
+          button.querySelector('.feature-copy b').textContent = localized.chapter;
+          button.querySelector('.feature-copy span').textContent = localized.label;
+          button.setAttribute('aria-label', `${ui.openFeature} ${localized.chapter}：${localized.label}`);
+          const hotspot = document.querySelector(`.hotspot[data-feature="${feature.id}"]`);
+          hotspot.querySelector('.hotspot-label').textContent = localized.chapter;
+          hotspot.setAttribute('aria-label', `${ui.openFeature} ${localized.chapter}：${localized.label}`);
+          button.querySelector('.feature-number').textContent = String(index + 1).padStart(2, '0');
+        });
+
+        document.querySelectorAll('.gallery-card').forEach((card, index) => {
+          const item = localizedGalleryItem(index);
+          card.setAttribute('aria-label', `${ui.openImage} ${item.title}`);
+          card.querySelector('img').alt = item.title;
+          card.querySelector('.gallery-card-copy b').textContent = item.title;
+          card.querySelector('.gallery-card-copy span').textContent = item.meta;
+        });
+
+        if (activeIndex >= 0) {
+          const feature = features[activeIndex];
+          const localized = localizedFeature(feature);
+          viewTitle.innerHTML = `<b>${localized.chapter}</b><span>${localized.label}</span>`;
+          populatePanel(feature, activeIndex);
+          updateViewIndicator(featureViews[feature.id]);
+        } else {
+          viewTitle.innerHTML = `<b>${ui.overviewTitle}</b>`;
+          updateViewIndicator(masterView);
+        }
+        productPhoto.alt = ui.masterAlt;
+        if (document.getElementById('lightbox').classList.contains('open')) openLightbox(lightboxIndex);
+      }
+
+      function updateViewIndicator(view) {
+        const ui = currentPack().ui;
+        const label = localizedViewLabel(view);
+        angleValue.innerHTML = view.index === 0
+          ? `<b>${ui.master}</b>`
+          : `<b>${String(view.index).padStart(2, '0')} / ${String(features.length).padStart(2, '0')}</b>`;
+        angleTrack.querySelectorAll('.angle-tick').forEach((tick) => {
+          tick.classList.toggle('active', Number(tick.dataset.view) === view.index);
+        });
+        const overviewActive = view.index === 0;
+        productOverviewButton.classList.toggle('active', overviewActive);
+        productOverviewButton.setAttribute('aria-pressed', String(overviewActive));
+        stage.setAttribute('aria-label', overviewActive ? ui.stageAria : ui.dragStageAria);
+      }
+
+      function applyPreset(immediate = false) {
+        photoRig.classList.toggle('no-transition', immediate);
+        photoRig.style.setProperty('--pan-x', `${activePreset.x}%`);
+        photoRig.style.setProperty('--pan-y', `${activePreset.y}%`);
+        photoRig.style.setProperty('--zoom', activePreset.zoom);
+        if (immediate) requestAnimationFrame(() => photoRig.classList.remove('no-transition'));
+      }
+
+      function resetDragOffset() {
+        dragOffset = { x: 0, y: 0 };
+        photoRig.style.setProperty('--drag-x', '0px');
+        photoRig.style.setProperty('--drag-y', '0px');
+      }
+
+      function dragBounds() {
+        const stageRect = stage.getBoundingClientRect();
+        const rigWidth = photoRig.offsetWidth;
+        const rigHeight = photoRig.offsetHeight;
+        const scaledWidth = rigWidth * activePreset.zoom;
+        const scaledHeight = rigHeight * activePreset.zoom;
+        const presetX = rigWidth * activePreset.x / 100;
+        const presetY = rigHeight * activePreset.y / 100;
+        const maxCenterX = Math.max(Math.abs(presetX), Math.max(0, (scaledWidth - stageRect.width) / 2));
+        const maxCenterY = Math.max(Math.abs(presetY), Math.max(0, (scaledHeight - stageRect.height) / 2));
+        return {
+          minX: -maxCenterX - presetX,
+          maxX: maxCenterX - presetX,
+          minY: -maxCenterY - presetY,
+          maxY: maxCenterY - presetY
+        };
+      }
+
+      function setDragOffset(x, y) {
+        const bounds = dragBounds();
+        dragOffset = {
+          x: Math.min(bounds.maxX, Math.max(bounds.minX, x)),
+          y: Math.min(bounds.maxY, Math.max(bounds.minY, y))
+        };
+        photoRig.style.setProperty('--drag-x', `${dragOffset.x}px`);
+        photoRig.style.setProperty('--drag-y', `${dragOffset.y}px`);
+      }
+
+      function finishStageDrag(pointerId) {
+        if (!stageDrag || (pointerId != null && stageDrag.pointerId !== pointerId)) return;
+        if (stage.hasPointerCapture(stageDrag.pointerId)) stage.releasePointerCapture(stageDrag.pointerId);
+        stageDrag = null;
+        stage.classList.remove('dragging');
+        photoRig.classList.remove('no-transition');
+      }
+
+      function updateHotspots(view, activeId = null) {
+        document.querySelectorAll('.hotspot').forEach((hotspot) => {
+          const position = activeId && hotspot.dataset.feature === activeId
+            ? view.hotspot
+            : masterHotspots[hotspot.dataset.feature];
+          hotspot.style.setProperty('--hx', `${position[0]}%`);
+          hotspot.style.setProperty('--hy', `${position[1]}%`);
+        });
+      }
+
+      function focusMaster(view, activeId = null, instant = false) {
+        activePreset = view.preset;
+        resetDragOffset();
+        stage.classList.toggle('is-draggable', view.index !== 0);
+        productPhoto.src = masterView.image;
+        productPhoto.alt = currentPack().ui.masterAlt;
+        updateViewIndicator(view);
+        updateHotspots(view, activeId);
+        applyPreset(instant);
+      }
+
+      function panelMediaFor(featureId) {
+        return featureMedia[featureId]?.[currentLanguage] || featureMedia[featureId]?.en || [];
+      }
+
+      function panelMediaMarkup(slide) {
+        if (slide.layout === 'driver-parts') {
+          return `
+            <div class="media-driver">
+              <div class="media-driver-art" style="background-image:url('${slide.image}');--driver-position:${slide.position || '55% 50%'};--driver-size:${slide.size || '140% auto'}"></div>
+              <ol class="media-driver-parts">
+                ${slide.labels.map((label, index) => `<li><em>${String(index + 1).padStart(2, '0')}</em><span>${label}</span></li>`).join('')}
+              </ol>
+            </div>`;
+        }
+        if (slide.layout === 'driver-schematic-full') {
+          return `
+            <div class="media-schematic-full"><img src="${slide.image}" alt="" /></div>`;
+        }
+        if (slide.layout === 'app') {
+          return `
+            <div class="media-app">
+              <div class="media-app-copy">
+                <small>${slide.eyebrow}</small>
+                <strong>${slide.label}</strong>
+                <ul class="media-app-points">${slide.points.map((point) => `<li>${point}</li>`).join('')}</ul>
+              </div>
+              <div class="media-app-visual"><img src="${slide.image}" alt="" /></div>
+            </div>`;
+        }
+        if (slide.layout === 'hero') {
+          return `
+            <div class="media-hero" style="--media-image:url('${slide.image}');--media-position:${slide.position || '50% 50%'};--media-size:${slide.size || 'cover'}">
+              <div class="media-hero-copy"><small>${slide.eyebrow}</small><strong>${slide.label}</strong></div>
+            </div>`;
+        }
+        return `<img class="panel-media-image" src="${slide.image}" alt="" style="object-position:${slide.position || '50% 50%'}" data-fit="${slide.fit || 'cover'}" />`;
+      }
+
+      function renderPanelMedia(featureId, reset = false) {
+        const slides = panelMediaFor(featureId);
+        if (!slides.length) return;
+        if (reset || panelMediaIndex >= slides.length) panelMediaIndex = 0;
+        const slide = slides[panelMediaIndex];
+        const panelMediaVisual = document.getElementById('panelMediaVisual');
+        panelMediaVisual.innerHTML = panelMediaMarkup(slide);
+        panelMediaVisual.setAttribute('aria-label', slide.caption);
+        document.querySelector('.panel-media-stage').dataset.layout = slide.layout || 'image';
+        document.getElementById('panelPhotoCaption').textContent = slide.caption;
+        document.getElementById('panelMediaCount').textContent = `${String(panelMediaIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        document.getElementById('panelMediaControls').hidden = slides.length < 2;
+      }
+
+      function stepPanelMedia(direction) {
+        if (activeIndex < 0) return;
+        const featureId = features[activeIndex].id;
+        const slides = panelMediaFor(featureId);
+        if (slides.length < 2) return;
+        panelMediaIndex = (panelMediaIndex + direction + slides.length) % slides.length;
+        renderPanelMedia(featureId);
+      }
+
+      function populatePanel(feature, index) {
+        const localized = localizedFeature(feature);
+        const accent = featureAccentMap[localized.id] || accentMap.lime;
+        document.documentElement.style.setProperty('--accent', accent);
+        document.getElementById('panelKicker').textContent = localized.kicker;
+        document.getElementById('panelNumber').textContent = `${String(index + 1).padStart(2, '0')} / ${String(features.length).padStart(2, '0')}`;
+        document.getElementById('panelTitle').textContent = localized.title;
+        document.getElementById('panelBody').textContent = localized.body;
+        renderPanelMedia(localized.id, true);
+        document.getElementById('subfeatures').innerHTML = localized.subfeatures.map((item) => `<div class="subfeature"><b>${item.label}</b><span>${item.text}</span></div>`).join('');
+        document.getElementById('panelShow').textContent = localized.show;
+        document.getElementById('panelSay').textContent = localized.say;
+        document.getElementById('panelSpec').textContent = localized.spec;
+      }
+
+      function openFeature(id, options = {}) {
+        const index = features.findIndex((feature) => feature.id === id);
+        if (index < 0) return;
+        const feature = features[index];
+        const localized = localizedFeature(feature);
+        const view = featureViews[id];
+        window.clearTimeout(panelTimer);
+        activeIndex = index;
+        photoRig.dataset.focus = id;
+        photoRig.classList.add('turning');
+        detailPanel.classList.remove('open');
+        viewTitle.innerHTML = `<b>${localized.chapter}</b><span>${localized.label}</span>`;
+        populatePanel(feature, index);
+
+        document.querySelectorAll('[data-feature]').forEach((element) => {
+          element.classList.toggle('active', element.dataset.feature === id);
+        });
+
+        focusMaster(view, id, options.instant);
+        panelTimer = window.setTimeout(() => {
+          detailPanel.classList.add('open');
+          photoRig.classList.remove('turning');
+        }, options.instant ? 0 : 620);
+      }
+
+      function resetOverview() {
+        window.clearTimeout(panelTimer);
+        activeIndex = -1;
+        photoRig.removeAttribute('data-focus');
+        detailPanel.classList.remove('open');
+        document.documentElement.style.setProperty('--accent', accentMap.lime);
+        document.querySelectorAll('[data-feature]').forEach((element) => element.classList.remove('active'));
+        viewTitle.innerHTML = `<b>${currentPack().ui.overviewTitle}</b>`;
+        focusMaster(masterView, null, false);
+      }
+
+      function showGallery() {
+        const gallery = document.getElementById('galleryBoard');
+        gallery.classList.add('open');
+        gallery.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('gallery-open');
+      }
+
+      function hideGallery() {
+        closeLightbox();
+        const gallery = document.getElementById('galleryBoard');
+        gallery.classList.remove('open');
+        gallery.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('gallery-open');
+      }
+
+      function openLightbox(index) {
+        lightboxIndex = (index + galleryItems.length) % galleryItems.length;
+        const item = localizedGalleryItem(lightboxIndex);
+        const lightbox = document.getElementById('lightbox');
+        const image = document.getElementById('lightboxImage');
+        image.src = item.image;
+        image.alt = item.title;
+        document.getElementById('lightboxCaption').innerHTML = `<b>${item.title}</b>${item.meta} · ${String(lightboxIndex + 1).padStart(2, '0')} / ${String(galleryItems.length).padStart(2, '0')}`;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+      }
+
+      function stepLightbox(direction) {
+        openLightbox(lightboxIndex + direction);
+      }
+
+      productOverviewButton.addEventListener('click', resetOverview);
+      document.getElementById('overviewButton').addEventListener('click', closeActiveSection);
+      document.getElementById('closePanel').addEventListener('click', resetOverview);
+      document.getElementById('previousFeature').addEventListener('click', () => openFeature(features[(activeIndex - 1 + features.length) % features.length].id));
+      document.getElementById('nextFeature').addEventListener('click', () => openFeature(features[(activeIndex + 1) % features.length].id));
+      document.getElementById('previousPanelMedia').addEventListener('click', () => stepPanelMedia(-1));
+      document.getElementById('nextPanelMedia').addEventListener('click', () => stepPanelMedia(1));
+      document.getElementById('languageToggle').addEventListener('click', () => {
+        currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('lang', currentLanguage);
+          window.history.replaceState(window.history.state, '', url);
+        } catch (error) {
+          // Direct file opening can restrict history updates; links still keep the language.
+        }
+        applyLanguage();
+      });
+      document.getElementById('closeGallery').addEventListener('click', closeActiveSection);
+      document.getElementById('closeSectionBoard').addEventListener('click', closeActiveSection);
+      document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+      document.getElementById('lightboxPrevious').addEventListener('click', () => stepLightbox(-1));
+      document.getElementById('lightboxNext').addEventListener('click', () => stepLightbox(1));
+
+      stage.addEventListener('pointerdown', (event) => {
+        if (activeIndex < 0 || event.button !== 0 || event.target.closest('.hotspot')) return;
+        stageDrag = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          offsetX: dragOffset.x,
+          offsetY: dragOffset.y
+        };
+        stage.setPointerCapture(event.pointerId);
+        stage.classList.add('dragging');
+        photoRig.classList.add('no-transition');
+        event.preventDefault();
+      });
+
+      stage.addEventListener('pointermove', (event) => {
+        if (!stageDrag || stageDrag.pointerId !== event.pointerId) return;
+        setDragOffset(
+          stageDrag.offsetX + event.clientX - stageDrag.startX,
+          stageDrag.offsetY + event.clientY - stageDrag.startY
+        );
+      });
+
+      stage.addEventListener('pointerup', (event) => finishStageDrag(event.pointerId));
+      stage.addEventListener('pointercancel', (event) => finishStageDrag(event.pointerId));
+      window.addEventListener('resize', () => {
+        if (activeIndex >= 0) setDragOffset(dragOffset.x, dragOffset.y);
+      });
+
+      window.addEventListener('keydown', (event) => {
+        const lightboxOpen = document.getElementById('lightbox').classList.contains('open');
+        const galleryOpen = document.getElementById('galleryBoard').classList.contains('open');
+        if (event.key === 'Escape') {
+          if (lightboxOpen) closeLightbox();
+          else if (galleryOpen || sectionBoard.classList.contains('open')) closeActiveSection();
+          else if (!trainingApp.classList.contains('hub-mode') && activeIndex >= 0) resetOverview();
+          else if (!trainingApp.classList.contains('hub-mode')) closeActiveSection();
+          return;
+        }
+        if (lightboxOpen && event.key === 'ArrowRight') stepLightbox(1);
+        else if (lightboxOpen && event.key === 'ArrowLeft') stepLightbox(-1);
+        else if (!galleryOpen && !sectionBoard.classList.contains('open') && !trainingApp.classList.contains('hub-mode') && event.key === 'ArrowRight') openFeature(features[(activeIndex + 1 + features.length) % features.length].id);
+        else if (!galleryOpen && !sectionBoard.classList.contains('open') && !trainingApp.classList.contains('hub-mode') && event.key === 'ArrowLeft') openFeature(features[(activeIndex - 1 + features.length) % features.length].id);
+      });
+
+      window.addEventListener('popstate', (event) => {
+        const requested = event.state?.st2Section || new URLSearchParams(window.location.search).get('section') || 'hub';
+        showSectionVisual(requested);
+        applyLanguage();
+      });
+
+      function initializeSectionHistory() {
+        const requested = new URLSearchParams(window.location.search).get('section') || 'hub';
+        const valid = requested === 'hub' || data.portal.sections.some((section) => section.id === requested);
+        const initial = valid ? requested : 'hub';
+        try {
+          if (initial !== 'hub') {
+            const targetUrl = sectionUrl(initial);
+            window.history.replaceState({ st2Section: 'hub' }, '', sectionUrl('hub'));
+            window.history.pushState({ st2Section: initial }, '', targetUrl);
+          } else {
+            window.history.replaceState({ st2Section: 'hub' }, '', sectionUrl('hub'));
+          }
+        } catch (error) {
+          // Direct file opening can restrict history updates; section navigation still works.
+        }
+        showSectionVisual(initial);
+      }
+
+      applyLanguage();
+      focusMaster(masterView, null, true);
+      initializeSectionHistory();
+    })();
+  </script>
+</body>
+</html>
