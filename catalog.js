@@ -106,6 +106,16 @@ window.MOONDROP_TRAINING_CATALOG = {
       imagePosition: "50% 45%",
       href: "products/space-travel-2/index.html",
       status: "live"
+    },
+    {
+      id: "pill",
+      categoryId: "true-wireless",
+      name: { en: "PILL", zh: "音乐胶囊 PILL" },
+      type: { en: "Open-ear ear-clip wireless", zh: "开放式耳夹式无线耳机" },
+      image: "products/pill/assets/gallery/pill-blue-earbuds-out.jpg",
+      imagePosition: "50% 52%",
+      href: "products/pill/index.html",
+      status: "live"
     }
   ]
 };

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
-  <link rel="stylesheet" href="../../auth.css?v=20260825a" />
+  <link rel="stylesheet" href="../../auth.css?v=20260826a" />
   <meta name="description" content="SPACE TRAVEL 2 single-image guided product inspection for offline channel training" />
   <title>SPACE TRAVEL 2 · HD Photo Channel Training</title>
   <style>
@@ -257,8 +257,8 @@
     .hub-section-number { color: var(--section-accent); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; }
     .hub-section-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--section-accent); font-size: 21px; }
     .hub-section-copy { align-self: end; }
-    .hub-section-copy b { display: block; font-size: 15px; font-weight: 650; line-height: 1.15; }
-    .hub-section-copy span { display: block; margin-top: 5px; color: #808c87; font-size: 9px; line-height: 1.35; }
+    .hub-section-copy b { display: block; font-size: 17px; font-weight: 700; line-height: 1.15; }
+    .hub-section-copy span { display: block; margin-top: 5px; color: #a9b4ae; font-size: 11px; line-height: 1.35; }
 
     .section-board {
       position: fixed;
@@ -701,7 +701,13 @@
       letter-spacing: -.025em;
       text-wrap: balance;
     }
-    .panel-body { margin: 0; color: #a7b1ad; font-size: 12px; line-height: 1.68; }
+    .panel-body { margin: 0; color: #c2cbc6; font-size: 14px; line-height: 1.65; }
+    .panel-priority { display: grid; gap: 8px; margin: 18px 0 20px; }
+    .panel-priority__item { padding: 14px 16px; border-left: 3px solid var(--accent); background: rgba(255,255,255,.055); }
+    .panel-priority__item h3 { margin: 0 0 7px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .panel-priority__item p { margin: 0; color: #e7ece9; font-size: 14px; line-height: 1.55; }
+    .panel-priority__spec p { font-size: 15px; font-weight: 750; }
+    .panel-priority__say p { font-size: 16px; line-height: 1.5; }
     .panel-media { margin: 18px 0 20px; border: 1px solid var(--line); border-radius: 0; overflow: hidden; background: #090c0b; }
     .panel-media-stage { position: relative; height: clamp(190px, 20vh, 240px); overflow: hidden; background: #eef0f4; }
     .panel-media-stage[data-layout^="driver"] { height: clamp(230px, 24vh, 300px); }
@@ -880,12 +886,11 @@
     .panel-media figcaption { padding: 8px 10px; color: #78837f; font-size: 8px; line-height: 1.45; letter-spacing: .04em; }
     .subfeatures { display: grid; gap: 7px; margin: 20px 0 22px; }
     .subfeature { padding: 10px 11px; border-left: 2px solid var(--accent); background: rgba(255,255,255,.035); }
-    .subfeature b { display: block; color: #dde4e0; font-size: 10px; }
-    .subfeature span { display: block; margin-top: 4px; color: #7e8984; font-size: 10px; line-height: 1.45; }
+    .subfeature b { display: block; color: #dde4e0; font-size: 11px; }
+    .subfeature span { display: block; margin-top: 4px; color: #8e9993; font-size: 11px; line-height: 1.45; }
     .training-cue { padding: 15px 0; border-top: 1px solid var(--line); }
-    .training-cue h3 { margin: 0 0 7px; color: var(--accent); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
-    .training-cue p { margin: 0; color: #a5afab; font-size: 11px; line-height: 1.58; }
-    .training-cue.say p { color: #e3e8e5; font-size: 13px; }
+    .training-cue h3 { margin: 0 0 7px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .training-cue p { margin: 0; color: #aeb8b3; font-size: 12px; line-height: 1.58; }
     .panel-source { margin-top: 13px; color: #5f6965; font-size: 8px; line-height: 1.5; }
     .panel-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; }
     .panel-nav button { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.025); cursor: pointer; font-size: 9px; }
@@ -1009,6 +1014,7 @@
       .hub-section-grid { grid-template-columns: 1fr 1fr; }
       .hub-section-button, .hub-section-button:first-child { min-height: 82px; padding: 11px; }
       .hub-section-copy b { font-size: 12px; }
+      .hub-section-copy span { font-size: 10px; }
       .section-board { inset: 62px 0 0; }
       .section-board-header { padding: 10px 14px; }
       .section-board-content { padding: 14px; }
@@ -1072,6 +1078,10 @@
         white-space: normal;
       }
     }
+
+    /* Unified black sans type system: hierarchy comes from size, weight, color, and spacing. */
+    :root { --font-sans: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+    html, body, body *, button, input { font-family: var(--font-sans) !important; }
   </style>
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/space-travel-2/index.html">
@@ -1106,7 +1116,7 @@
         <div class="hub-copy">
           <div class="hub-kicker" id="hubKicker">MOONDROP · PRODUCT TRAINING ATLAS</div>
           <h1 id="hubTitle">SPACE<br />TRAVEL 2</h1>
-          <p id="hubIntro">Choose one focused training module. Product fit and wearing guidance are integrated into the core selling points instead of becoming a separate lesson.</p>
+          <p id="hubIntro">A compact TWS story built around design, sound, noise control, app control, fit, and battery life.</p>
           <img class="hub-mark" src="assets/campaign/space-travel-2-mark.png" alt="SPACE TRAVEL 2 graphic mark" />
         </div>
         <nav class="hub-menu" aria-label="Training sections">
@@ -1122,7 +1132,6 @@
         <div class="feature-list" id="featureList"></div>
         <button class="product-overview-button active" id="productOverviewButton" type="button" aria-pressed="true">Overview</button>
         <div class="rail-footer">
-          <button class="overview-button" id="overviewButton" type="button">Return to training menu</button>
         </div>
       </nav>
 
@@ -1152,7 +1161,7 @@
         <div class="panel-empty">
           <span id="emptyKicker">READY FOR INPUT</span>
           <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
-          <p id="emptyBody">Each signal groups related specifications into one retail story, so you can remember fewer, stronger talking points.</p>
+          <p id="emptyBody">Each story gives you the customer benefit, the core specification, and the sales line to use on the floor.</p>
         </div>
         <div class="panel-content">
           <div class="panel-head">
@@ -1164,6 +1173,16 @@
           </div>
           <h2 id="panelTitle"></h2>
           <p class="panel-body" id="panelBody"></p>
+          <div class="panel-priority">
+            <div class="panel-priority__item panel-priority__spec">
+              <h3 id="specLabel">Core spec</h3>
+              <p id="panelSpec"></p>
+            </div>
+            <div class="panel-priority__item panel-priority__say">
+              <h3 id="sayLabel">Sales line</h3>
+              <p id="panelSay"></p>
+            </div>
+          </div>
           <figure class="panel-media">
             <div class="panel-media-stage">
               <div class="panel-media-visual" id="panelMediaVisual" role="img"></div>
@@ -1179,14 +1198,6 @@
           <div class="training-cue">
             <h3 id="showLabel">Show it</h3>
             <p id="panelShow"></p>
-          </div>
-          <div class="training-cue say">
-            <h3 id="sayLabel">Say this</h3>
-            <p id="panelSay"></p>
-          </div>
-          <div class="training-cue">
-            <h3 id="specLabel">Key spec</h3>
-            <p id="panelSpec"></p>
           </div>
           <div class="panel-nav">
             <button id="previousFeature" type="button">← Previous story</button>
@@ -1227,7 +1238,7 @@
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
-  <script src="../../auth.js?v=20260825a"></script>
+  <script src="../../auth.js?v=20260826a"></script>
   <script src="content.js"></script>
   <script>
     (() => {
@@ -1376,12 +1387,12 @@
             master: 'MAIN VIEW', masterNumber: 'MAIN VIEW / HD', masterLabel: 'FRONT · PRODUCT & EARBUDS', focusNumber: 'FOCUS',
             stageAria: 'Select a product signal to inspect its detail', dragStageAria: 'Drag the enlarged product to find another signal, or use the feature list.', masterState: 'PRODUCT OVERVIEW',
             emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.',
-            emptyBody: 'Each signal groups related specifications into one retail story, so you can remember fewer, stronger talking points.',
-            showLabel: 'Show it', sayLabel: 'Say this', specLabel: 'Key spec', sourcePrefix: 'Source: ',
+            emptyBody: 'Each story gives you the customer benefit, the core specification, and the sales line to use on the floor.',
+            showLabel: 'Show it', sayLabel: 'Sales line', specLabel: 'Core spec', sourcePrefix: 'Source: ',
             previous: '← Previous story', next: 'Next story →', previousMedia: 'Previous feature image', nextMedia: 'Next feature image',
             galleryKicker: 'MOONDROP · SOURCE PHOTOGRAPHY · 11 FILES', galleryTitle: 'SPACE TRAVEL 2 HD Image Library',
             galleryIntro: 'Use the gallery for free inspection, colorway comparison, packaging confirmation, and full-screen retail demonstrations. Select any image to open the original high-resolution file.',
-            closeDetail: 'Return to product overview', closeGallery: 'Close HD image library', closeFullscreen: 'Close full-screen image',
+            closeDetail: 'Return to training menu', closeGallery: 'Close HD image library', closeFullscreen: 'Close full-screen image',
             previousImage: 'Previous image', nextImage: 'Next image', openFeature: 'Open', openImage: 'Open high-resolution image:',
             masterAlt: 'Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case'
           },
@@ -1397,12 +1408,12 @@
             master: '主图', masterNumber: '主图 / 高清', masterLabel: '正面 · 产品与耳机', focusNumber: '聚焦',
             stageAria: '点击产品卖点查看对应细节', dragStageAria: '拖曳放大后的产品画面寻找其他光点，也可以使用左侧卖点列表。', masterState: '产品总览',
             emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。',
-            emptyBody: '每个入口都把相关参数整理成一个零售讲解主题，帮助你记住更少但更有力的销售话术。',
-            showLabel: '现场展示', sayLabel: '推荐话术', specLabel: '关键参数', sourcePrefix: '资料来源：',
+            emptyBody: '每个卖点都整理了顾客利益、核心规格和现场可用的话术，方便你快速讲清楚。',
+            showLabel: '现场展示', sayLabel: '核心话术', specLabel: '核心规格', sourcePrefix: '资料来源：',
             previous: '← 上一个卖点', next: '下一个卖点 →', previousMedia: '上一张卖点图片', nextMedia: '下一张卖点图片',
             galleryKicker: 'MOONDROP · 产品高清素材 · 11 张', galleryTitle: 'SPACE TRAVEL 2 高清图库',
             galleryIntro: '图库可用于自由查看产品、比较配色、确认包装信息或进行全屏零售演示。点击任意图片即可查看高清原图。',
-            closeDetail: '返回产品总览', closeGallery: '关闭高清图库', closeFullscreen: '关闭全屏图片',
+            closeDetail: '返回培训菜单', closeGallery: '关闭高清图库', closeFullscreen: '关闭全屏图片',
             previousImage: '上一张图片', nextImage: '下一张图片', openFeature: '打开', openImage: '打开高清图片：',
             masterAlt: 'SPACE TRAVEL 2 黑绿配色充电盒与两只盒外耳机的正面产品照片'
           },
@@ -1512,11 +1523,11 @@
         en: {
           hubKicker: 'MOONDROP · PRODUCT TRAINING ATLAS',
           hubTitle: 'SPACE<br />TRAVEL 2',
-          hubIntro: 'Understand the product from five different dimensions: what to sell, how to position it, what ownership includes, what reviewers show, and which visuals to use.',
-          hubMenuKicker: 'FIVE WAYS TO UNDERSTAND THE PRODUCT',
+          hubIntro: 'A compact TWS story built around design, sound, noise control, app control, fit, and battery life.',
+          hubMenuKicker: 'SALES TRAINING MODULES',
           sectionClose: 'Close training section',
           sections: {
-            core: { tag: 'SELL', title: 'Core Selling Points', subtitle: 'What makes the product worth recommending' },
+            core: { tag: 'SELL', title: 'Core Selling Points', subtitle: 'Core specs + sales talk tracks' },
             comparison: { tag: 'POSITION', title: 'Product Positioning', subtitle: 'Who it fits and how it compares' },
             support: { tag: 'OWNERSHIP', title: 'Package & After-sales', subtitle: 'What the customer receives and what follows' },
             reviews: { tag: 'REVIEWS', title: 'Media Reviews', subtitle: 'Independent real-world perspectives' },
@@ -1531,11 +1542,11 @@
         zh: {
           hubKicker: 'MOONDROP · 产品渠道培训地图',
           hubTitle: '太空漫游 2',
-          hubIntro: '从五个不同维度了解产品：卖什么、如何定位、顾客买到什么、外部评测怎么看，以及现场可以展示什么。',
-          hubMenuKicker: '从五个维度了解产品',
+          hubIntro: '围绕设计、声音、降噪、App、佩戴与续航，快速掌握 SPACE TRAVEL 2 的销售重点。',
+          hubMenuKicker: '渠道培训模块',
           sectionClose: '关闭培训模块',
           sections: {
-            core: { tag: '卖点', title: '核心卖点', subtitle: '这款产品为什么值得推荐' },
+            core: { tag: '卖点', title: '核心卖点', subtitle: '核心规格 + 核心话术' },
             comparison: { tag: '定位', title: '产品定位', subtitle: '适合谁，以及应该跟谁比较' },
             support: { tag: '售后', title: '包装与售后', subtitle: '顾客买到什么，以及购买后的保障' },
             reviews: { tag: '评测', title: '媒体评测', subtitle: '来自外部的真实使用视角' },
@@ -1707,6 +1718,7 @@
 
         if (id === 'core') {
           trainingApp.classList.remove('hub-mode');
+          if (activeIndex < 0) openFeature(features[0].id, { instant: true });
           return;
         }
 
@@ -1833,8 +1845,7 @@
         document.getElementById('storyEyebrow').textContent = ui.storyEyebrow;
         document.getElementById('storyHeadline').innerHTML = ui.storyHeadline;
         productOverviewButton.textContent = ui.productOverview;
-        productOverviewButton.setAttribute('aria-label', ui.closeDetail);
-        document.getElementById('overviewButton').textContent = ui.overviewButton;
+        productOverviewButton.setAttribute('aria-label', ui.productOverview);
         document.getElementById('emptyKicker').textContent = ui.emptyKicker;
         document.getElementById('emptyTitle').innerHTML = ui.emptyTitle;
         document.getElementById('emptyBody').textContent = ui.emptyBody;
@@ -2140,8 +2151,7 @@
       }
 
       productOverviewButton.addEventListener('click', resetOverview);
-      document.getElementById('overviewButton').addEventListener('click', closeActiveSection);
-      document.getElementById('closePanel').addEventListener('click', resetOverview);
+      document.getElementById('closePanel').addEventListener('click', closeActiveSection);
       document.getElementById('previousFeature').addEventListener('click', () => openFeature(features[(activeIndex - 1 + features.length) % features.length].id));
       document.getElementById('nextFeature').addEventListener('click', () => openFeature(features[(activeIndex + 1) % features.length].id));
       document.getElementById('previousPanelMedia').addEventListener('click', () => stepPanelMedia(-1));
@@ -2198,7 +2208,6 @@
         if (event.key === 'Escape') {
           if (lightboxOpen) closeLightbox();
           else if (galleryOpen || sectionBoard.classList.contains('open')) closeActiveSection();
-          else if (!trainingApp.classList.contains('hub-mode') && activeIndex >= 0) resetOverview();
           else if (!trainingApp.classList.contains('hub-mode')) closeActiveSection();
           return;
         }

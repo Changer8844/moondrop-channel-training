@@ -71,9 +71,15 @@
 }
 .auth-card__close:hover { border-color: rgba(199, 246, 74, .55); color: #c7f64a; }
 .auth-card__kicker { color: #c7f64a; font-family: Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 800; letter-spacing: .16em; }
-.auth-card__title { margin: 20px 54px 0 0; color: #f5f2eb; font-size: clamp(30px, 4vw, 44px); line-height: 1.02; letter-spacing: -.035em; }
-.auth-card__description { max-width: 39ch; margin: 18px 0 0; color: #9ca39e; font-size: 14px; line-height: 1.62; }
-.auth-form { margin-top: 30px; }
+.auth-card__title {
+  margin: 20px 46px 0 0;
+  color: #f5f2eb;
+  font-size: clamp(28px, 2.65vw, 36px);
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  white-space: normal;
+}
+.auth-form { margin-top: 28px; }
 .auth-form__label { display: block; margin-bottom: 9px; color: #d7dbd7; font-size: 12px; font-weight: 700; }
 .auth-form__field { position: relative; }
 .auth-form__field input {
@@ -106,14 +112,18 @@ body.auth-dialog-open { overflow: hidden; }
 html[lang^="zh"] .auth-login-button,
 html[lang^="zh"] .auth-card { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
 html[lang^="zh"] .auth-login-button { letter-spacing: .06em; }
-html[lang^="zh"] .auth-card__title { font-family: "Songti SC", "STSong", "PingFang SC", serif; letter-spacing: .01em; }
+html[lang^="zh"] .auth-card__title { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; font-size: clamp(27px, 2.4vw, 34px); letter-spacing: 0; white-space: nowrap; }
+
+/* Keep the login layer on the same black sans type system as the training pages. */
+:root { --font-sans: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+html, body, body *, button, input { font-family: var(--font-sans) !important; }
 
 @media (max-width: 620px) {
   .topbar-actions { gap: 7px; }
   .auth-login-button { width: 35px; padding: 0; }
   .auth-login-button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .auth-card { padding: 32px 24px 26px; }
-  .auth-card__title { margin-right: 38px; }
+  .auth-card__title { margin-right: 36px; font-size: clamp(25px, 7.4vw, 32px); white-space: normal; }
 }
 
 @media (prefers-reduced-motion: reduce) {

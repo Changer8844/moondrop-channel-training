@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="MOONDROP offline channel product training portal" />
   <title>MOONDROP · Channel Training</title>
-  <link rel="stylesheet" href="styles.css?v=20260825c" />
-  <link rel="stylesheet" href="auth.css?v=20260825a" />
+  <link rel="stylesheet" href="styles.css?v=20260826a" />
+  <link rel="stylesheet" href="auth.css?v=20260826a" />
   <script defer src="catalog.js"></script>
-  <script defer src="auth.js?v=20260825a"></script>
-  <script defer src="app.js"></script>
+  <script defer src="auth.js?v=20260826a"></script>
+  <script defer src="app.js?v=20260826a"></script>
 </head>
 <body>
   <a class="skip-link" href="#categoryGrid">Skip to categories</a>
@@ -59,11 +59,10 @@
 
   <div class="auth-gate" id="authDialog" aria-hidden="true">
     <div class="auth-gate__backdrop" data-auth-close aria-hidden="true"></div>
-    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-describedby="authDescription">
+    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
       <button class="auth-card__close" id="authClose" type="button" aria-label="Close login">×</button>
       <div class="auth-card__kicker" id="authKicker">CHANNEL ACCESS</div>
       <h2 class="auth-card__title" id="authTitle">Enter the training portal</h2>
-      <p class="auth-card__description" id="authDescription">Enter the channel password to open product categories and training pages.</p>
       <form class="auth-form" id="authForm" novalidate>
         <label class="auth-form__label" for="authPassword" id="authPasswordLabel">Password</label>
         <div class="auth-form__field">
@@ -88,6 +87,7 @@
   <section class="category-overlay" id="categoryOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Product category training">
     <div class="overlay-visual">
       <img id="overlayImage" src="assets/categories/true-wireless.jpg" alt="" />
+      <div class="overlay-product-lineup" id="overlayProductLineup" aria-hidden="true"></div>
       <div class="overlay-visual__copy">
         <div class="overlay-kicker" id="overlayKicker">CHANNEL TRAINING</div>
         <h2 class="overlay-title" id="overlayTitle">True Wireless</h2>

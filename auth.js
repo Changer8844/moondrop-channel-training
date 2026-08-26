@@ -13,7 +13,6 @@
       logoutLabel: "Lock the training portal",
       kicker: "CHANNEL ACCESS",
       title: "Enter the training portal",
-      description: "Enter the channel password to open product categories and training pages.",
       password: "Password",
       show: "Show password",
       hide: "Hide password",
@@ -32,7 +31,6 @@
       logoutLabel: "锁定培训系统",
       kicker: "渠道访问",
       title: "进入渠道培训系统",
-      description: "输入渠道培训密码后，方可打开产品分类与培训页面。",
       password: "密码",
       show: "显示密码",
       hide: "隐藏密码",
@@ -170,7 +168,6 @@
       close: document.getElementById("authClose"),
       kicker: document.getElementById("authKicker"),
       title: document.getElementById("authTitle"),
-      description: document.getElementById("authDescription"),
       form: document.getElementById("authForm"),
       password: document.getElementById("authPassword"),
       passwordLabel: document.getElementById("authPasswordLabel"),
@@ -201,7 +198,6 @@
     const ui = copy[currentLanguage];
     elements.kicker.textContent = ui.kicker;
     elements.title.textContent = ui.title;
-    elements.description.textContent = ui.description;
     elements.passwordLabel.textContent = ui.password;
     elements.reveal.setAttribute("aria-label", elements.password.type === "password" ? ui.show : ui.hide);
     elements.close.setAttribute("aria-label", ui.close);
