@@ -36,3 +36,11 @@ node scripts/audit-product-template.mjs
 ```
 
 The audit checks every live product page and fails when a page auto-opens a feature, lacks the three-column template markers, or omits Overview, the product stage, the guidance/detail panel, or the progress indicator.
+
+## Frontline copy rules
+
+- Visible copy must directly help a salesperson explain a product fact, customer benefit, demonstration, comparison, package item, warranty period, or after-sales answer.
+- Never turn the production brief into page copy. Do not explain how the page is organized, how many dimensions it covers, what the training system is trying to achieve, or how a visual helps staff complete the page.
+- Remove duplicate generic headings before adding hierarchy. A support page should name the package contents and warranty facts instead of repeating abstract phrases such as “what the customer receives.”
+- Keep every claim source-led and product-specific in both Chinese and English.
+- The audit scans each live product page and its local JavaScript data for known production-note phrases.

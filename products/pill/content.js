@@ -4,12 +4,12 @@ window.MOONDROP_PILL_DATA = {
     model: "MD-OWS-003",
     eyebrow: "MOONDROP · CHANNEL TRAINING",
     strapline: {
-      en: "Open-ear freedom with a full-size sound story.",
+      en: "Open-ear freedom with full-size sound.",
       zh: "开放式耳夹佩戴，把环境感知、声音表现与日常便利放在一起。"
     },
     intro: {
-      en: "Six focused stories for the moments customers actually ask about: sound, awareness, comfort, calls, control, and the everyday routine.",
-      zh: "六个销售讲解入口，围绕顾客真正关心的声音、环境感知、舒适度、通话、操控与日常使用展开。"
+      en: "Open-ear ear-clip wireless listening for sound, awareness, comfort, calls, control, and everyday use.",
+      zh: "开放式耳夹式无线耳机，兼顾声音、环境感知、舒适、通话、操控与日常使用。"
     }
   },
   master: {
@@ -35,14 +35,14 @@ window.MOONDROP_PILL_DATA = {
       focus: { x: 19, y: 57, zoom: 1.58 },
       media: [
         { image: "assets/gallery/pill-red-case-open.jpg", alt: { en: "Red PILL earbuds in the transparent charging case", zh: "红色 PILL 耳机放在透明充电盒中" }, caption: { en: "The 13mm driver and adaptive bass algorithm build a stronger low-frequency foundation.", zh: "13mm 单元与自适应低频算法，为声音建立更充足的低频基础。" } },
-        { image: "assets/gallery/pill-blue-front.jpg", alt: { en: "Blue PILL open-ear earbud close-up", zh: "蓝色 PILL 开放式耳机特写" }, caption: { en: "Use the earbud itself as the hardware starting point for the sound story.", zh: "从耳机本体开始，把声音故事落到看得见的硬件上。" } }
+        { image: "assets/gallery/pill-blue-front.jpg", alt: { en: "Blue PILL open-ear earbud close-up", zh: "蓝色 PILL 开放式耳机特写" }, caption: { en: "The 13mm driver sits at the acoustic end of the earbud.", zh: "13mm 发声单元位于耳机的发声端。" } }
       ],
       subfeatures: [
         { label: { en: "13mm dynamic driver", zh: "13mm 动圈单元" }, text: { en: "A large circular driver for a fuller acoustic foundation.", zh: "大尺寸圆形单元，提供更充足的声音基础。" } },
         { label: { en: "Adaptive bass enhancement", zh: "自适应低频增强" }, text: { en: "The patented algorithm reinforces bass depth for an open-ear fit.", zh: "专利算法补足开放式形态下的低频深度。" } },
         { label: { en: "Three bass tunings", zh: "三种低频调音" }, text: { en: "Choose the bass presentation that best matches the customer’s taste.", zh: "根据顾客偏好选择更合适的低频听感。" } }
       ],
-      body: { en: "PILL combines a 13mm low-distortion dynamic driver with a patented adaptive bass enhancement algorithm. The result is a fuller, more textured sound story than customers may expect from an open-ear earphone.", zh: "PILL 采用 13mm 低失真圆形动圈单元，搭配专利自适应低频增强算法。即使是开放式耳机，也能呈现更饱满、更有质感的声音。" },
+      body: { en: "PILL combines a 13mm low-distortion dynamic driver with a patented adaptive bass enhancement algorithm. The result is fuller, more textured sound than customers may expect from an open-ear earphone.", zh: "PILL 采用 13mm 低失真圆形动圈单元，搭配专利自适应低频增强算法。即使是开放式耳机，也能呈现更饱满、更有质感的声音。" },
       show: { en: "Play a familiar track, then point to the acoustic end of the earbud. Let the customer hear the bass foundation before you introduce the three bass tunings.", zh: "播放顾客熟悉的音乐，再指向耳机的发声端。先让顾客听到低频基础，再介绍三种低频调音。" },
       say: { en: "“It is open-ear, but the sound is not thin: the 13mm driver and adaptive bass tuning give it a fuller foundation.”", zh: "“它是开放式佩戴，但声音并不单薄；13mm 单元和自适应低频调校让整体听感更饱满。”" },
       spec: { en: "13mm circular low-distortion dynamic driver · patented adaptive bass enhancement · three bass tunings", zh: "13mm 圆形低失真动圈单元 · 专利自适应低频增强算法 · 三种低频调音" },
@@ -100,7 +100,7 @@ window.MOONDROP_PILL_DATA = {
       id: "calls",
       chapter: { en: "Calls & privacy", zh: "通话与防漏音" },
       label: { en: "Clearer voice in noisy places", zh: "嘈杂环境下也更清晰" },
-      title: { en: "Open-ear listening with a clearer call story", zh: "开放式聆听，也把通话讲清楚" },
+      title: { en: "Clearer calls with less sound leakage", zh: "通话更清晰，也减少声音外泄" },
       kicker: { en: "CALLS & SOUND LEAKAGE", zh: "通话与声音控制" },
       accent: "coral",
       position: { x: 77, y: 62 },
@@ -112,9 +112,9 @@ window.MOONDROP_PILL_DATA = {
       subfeatures: [
         { label: { en: "NPU AI noise cancellation", zh: "NPU 硬件级 AI 降噪" }, text: { en: "Environmental noise cancellation helps the microphone focus on your voice.", zh: "环境噪声消除帮助麦克风更集中地拾取人声。" } },
         { label: { en: "Dipole directional transmission", zh: "偶极定向传声" }, text: { en: "Directional sound transmission helps reduce what nearby people hear.", zh: "定向声音传输，帮助减少旁人听到的声音。" } },
-        { label: { en: "Call and negotiation", zh: "通话与沟通" }, text: { en: "A useful story for streets, offices, and quick conversations.", zh: "适合街道、办公室和需要快速沟通的场景。" } }
+        { label: { en: "Everyday calling", zh: "日常通话" }, text: { en: "Suitable for streets, offices, and quick conversations.", zh: "适合街道、办公室和需要快速沟通的场景。" } }
       ],
-      body: { en: "PILL combines an NPU-based AI noise-cancellation microphone with dipole directional sound transmission. That gives you two practical points to explain: clearer voice pickup in noise and less sound leakage around the listener.", zh: "PILL 将 NPU 硬件级 AI 通话降噪与偶极定向传声结合起来，销售时可以清楚讲两件事：嘈杂环境下更好拾取人声，同时减少声音向周围泄漏。" },
+      body: { en: "PILL combines an NPU-based AI noise-cancellation microphone with dipole directional sound transmission to improve voice pickup in noise and reduce sound leakage around the listener.", zh: "PILL 将 NPU 硬件级 AI 通话降噪与偶极定向传声结合起来，在嘈杂环境下更好拾取人声，同时减少声音向周围泄漏。" },
       show: { en: "Make a short call in a noisy area if possible. Then lower the volume and explain that directional transmission is designed to reduce leakage in quieter surroundings.", zh: "条件允许时，在较嘈杂的环境中进行简短通话；再把音量调低，说明定向传声有助于在安静环境中减少漏音。" },
       say: { en: "“For calls, the microphone is built to keep your voice clear, while directional transmission helps keep the sound closer to you.”", zh: "“通话时，麦克风会尽量把人声收清楚；定向传声则帮助声音更集中在你周围，减少旁人听到。”" },
       spec: { en: "NPU hardware-level AI noise-cancellation microphone · dipole directional sound transmission", zh: "NPU 硬件级 AI 通话降噪麦克风 · 偶极定向传声技术" },
@@ -155,7 +155,7 @@ window.MOONDROP_PILL_DATA = {
       focus: { x: 55, y: 69, zoom: 1.62 },
       media: [
         { image: "assets/gallery/pill-blue-rear-light.jpg", alt: { en: "Blue PILL charging case from the rear on a light background", zh: "浅色背景下的蓝色 PILL 充电盒背面" }, caption: { en: "Use the case and USB-C port to make the charging routine tangible.", zh: "用充电盒和 USB-C 接口，把充电日常讲得更具体。" } },
-        { image: "assets/gallery/pill-three-colorways.jpg", alt: { en: "Three PILL colorways arranged together", zh: "三种颜色的 PILL 产品组合" }, caption: { en: "Bluetooth 6.0, dual-device connection, and app control extend the everyday use story.", zh: "Bluetooth 6.0、双设备连接和 App 控制，补足日常使用价值。" } }
+        { image: "assets/gallery/pill-three-colorways.jpg", alt: { en: "Three PILL colorways arranged together", zh: "三种颜色的 PILL 产品组合" }, caption: { en: "Bluetooth 6.0, dual-device connection, and app control support everyday use.", zh: "Bluetooth 6.0、双设备连接和 App 控制，满足日常使用需求。" } }
       ],
       subfeatures: [
         { label: { en: "8 + 20 hours playback", zh: "8 + 20 小时续航" }, text: { en: "Up to 8 hours from the earbuds and 20 hours from the case under the stated AAC condition.", zh: "在标注的 AAC 条件下，耳机最长 8 小时，充电盒额外提供 20 小时。" } },
@@ -174,7 +174,7 @@ window.MOONDROP_PILL_DATA = {
     en: {
       kicker: "PRODUCT POSITIONING",
       title: "For customers who want music without closing off the world.",
-      body: "PILL is an open-ear ear-clip wireless earphone for commuting, exercise, calls, and everyday listening. It sits between conventional OWS products and in-ear Bluetooth earphones: more aware and comfortable than a sealed fit, with a stronger sound and control story than a basic open-ear product.",
+      body: "PILL is an open-ear ear-clip wireless earphone for commuting, exercise, calls, and everyday listening. It sits between conventional OWS products and in-ear Bluetooth earphones: more aware and comfortable than a sealed fit, with fuller sound and more control than a basic open-ear product.",
       question: "Start with one question: “When do you want to keep hearing what is around you?”",
       comparisons: [
         ["Other OWS", "PILL adds a 13mm driver, adaptive bass enhancement, and directional transmission to answer bass depth and leakage concerns."],
@@ -200,23 +200,25 @@ window.MOONDROP_PILL_DATA = {
     image: "assets/gallery/pill-blue-case-open.jpg",
     en: {
       kicker: "PACKAGE & AFTER-SALES",
-      title: "What the customer receives",
-      packageTitle: "Standard package",
+      title: "Package contents and after-sales answers",
+      intro: "Confirm the five standard items first, then explain the applicable warranty period.",
+      packageTitle: "Standard package contents",
       contents: ["PILL earbuds", "Charging cable", "User manual", "Certificate of conformity", "After-sales service card"],
-      warrantyTitle: "Warranty terms from the training material",
-      periods: [["Main unit", "1 year"], ["Charging case, if applicable", "1 year"], ["Upgraded cable, if applicable", "1 year"], ["Package accessories, if applicable", "90 days"]],
-      policy: "The material states 365 days from the purchase date. Non-human-induced performance faults of the main unit are covered within the applicable warranty period.",
+      warrantyTitle: "Warranty periods",
+      periods: [["PILL main unit", "1 year"], ["Charging case", "1 year"], ["Package accessories", "90 days"]],
+      policy: "The warranty period starts on the purchase date. Non-human-induced performance faults of the main unit are covered for 1 year; applicable package accessories are covered for 90 days.",
       exclusionsTitle: "Not covered",
       exclusions: ["Unauthorized modification, disassembly, or repair", "Accidental or human-caused damage, including deformation, corrosion, liquid ingress, drops, or unsuitable voltage", "Expired warranty", "Force majeure such as fire, earthquake, or flood"]
     },
     zh: {
       kicker: "包装与售后",
-      title: "顾客买到什么，也要讲清楚",
-      packageTitle: "标准包装",
+      title: "包装清单与售后回答",
+      intro: "先核对包装内的五项内容，再向顾客说明适用的保修期限。",
+      packageTitle: "标准包装内含",
       contents: ["PILL 耳机", "充电线", "用户手册", "合格证", "售后服务卡"],
-      warrantyTitle: "培训材料中的保修说明",
-      periods: [["主机", "1 年"], ["充电盒（如适用）", "1 年"], ["升级线（如适用）", "1 年"], ["包装配件（如适用）", "90 天"]],
-      policy: "材料说明保修期从购买日起计算 365 天。主机在适用保修期内出现非人为性能故障，可按售后流程处理。",
+      warrantyTitle: "保修期限",
+      periods: [["PILL 主机", "1 年"], ["充电盒", "1 年"], ["包装配件", "90 天"]],
+      policy: "保修期从购买日起计算。主机出现非人为性能故障，保修期为 1 年；适用的包装配件保修 90 天。",
       exclusionsTitle: "不在保修范围",
       exclusions: ["未经授权的改装、拆卸或维修", "人为或意外损坏，包括变形、腐蚀、进液、跌落或输入不适当电压", "超过保修期限", "火灾、地震、洪水等不可抗力造成的故障或损坏"]
     }

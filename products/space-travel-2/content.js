@@ -3,7 +3,7 @@ window.SPACE_TRAVEL_2_DATA = {
     name: 'SPACE TRAVEL 2',
     eyebrow: 'MOONDROP · CHANNEL TRAINING',
     strapline: 'A pocket-sized space fantasy with serious audio ambition.',
-    intro: 'Use six focused retail stories to learn what to show, what to say, and why it matters to the customer.',
+    intro: 'Transparent case design, a 13mm dynamic driver, noise control, app tuning, a light fit, and all-day battery life.',
     version: 'Training prototype · 01'
   },
   colorways: {
@@ -38,10 +38,10 @@ window.SPACE_TRAVEL_2_DATA = {
       subfeatures: [
         { label: 'Driver', text: '13mm dynamic driver for a larger acoustic foundation.' },
         { label: 'Dome', text: 'Beryllium-plated dome with a flexible suspension diaphragm.' },
-        { label: 'Retail translation', text: 'Use the hardware to explain clearer detail, fuller bass, and lower distortion.' }
+        { label: 'Customer benefit', text: 'Clearer detail, fuller bass, and lower distortion.' }
       ],
-      body: 'The 13mm dynamic driver uses a composite flexible suspension diaphragm with a beryllium-plated dome. This gives you a concrete hardware bridge into detail, bass, and distortion.',
-      show: 'Lift one earbud out of the case, point to the compact acoustic body, and connect the visible product to the larger driver story.',
+      body: 'The 13mm dynamic driver combines a composite flexible suspension diaphragm with a beryllium-plated dome for clearer detail, fuller bass, and lower distortion.',
+      show: 'Lift one earbud out of the case, point to the compact acoustic body, then name the 13mm driver.',
       say: '“The 13mm driver gives the sound more room to breathe — with clearer detail and fuller bass.”',
       spec: '13mm dynamic driver · beryllium-plated dome · CCAW voice coil · N52 magnetic assembly', source: 'Official MOONDROP SPACE TRAVEL 2 product page; original training material, pp.4, 6'
     },
@@ -93,7 +93,7 @@ window.SPACE_TRAVEL_2_DATA = {
         { label: 'Two-device routine', text: 'Dual-device connection, automatic reconnection, and monaural-binaural use.' }
       ],
       body: 'Use battery life, Bluetooth 6.0, and dual-device connection to answer how the earbuds fit a commute, a workday, and a phone-plus-computer routine.',
-      show: 'Close the story with the case in hand: translate 7 + 24 hours into a real day, then add the customer’s phone, tablet, or computer routine.',
+      show: 'Hold the case in hand: translate 7 + 24 hours into a real day, then add the customer’s phone, tablet, or computer routine.',
       say: '“The earbuds cover the session, the case keeps the whole day moving, and two devices can stay in the routine.”',
       spec: 'Up to 7 hours earbuds + 24 hours case · Bluetooth 6.0 · SBC/AAC · 10m · dual-device connection', source: 'Official MOONDROP SPACE TRAVEL 2 product page; original training material, pp.6, 7'
     },
@@ -102,10 +102,10 @@ window.SPACE_TRAVEL_2_DATA = {
       image: 'assets/package-and-accessories.jpg', accent: 'lime', focus: { x: 50, y: 52, zoom: 1.24 },
       subfeatures: [
         { label: 'Package', text: 'Charging cable, S/M/L eartips, manual, certificate, and service cards.' },
-        { label: 'Warranty', text: 'The original training material states a one-year main-unit warranty under its terms.' }
+        { label: 'Warranty', text: 'The main unit carries a one-year warranty under the applicable terms.' }
       ],
-      body: 'Package contents and warranty are important closing proof, but they are not physical hotspots on the product model. Keep them in the atlas and use them after the product demonstration.',
-      show: 'Open the box conversation after the customer understands the product. Use the package photo to confirm fit options, cable, documentation, and service support.',
+      body: 'The standard package includes the earbuds, S/M/L eartips, charging cable, user manual, qualification certificate, and service cards. The main unit carries a one-year warranty under the applicable terms.',
+      show: 'Open the package and check each item with the customer: three eartip sizes, charging cable, manual, certificate, and service cards.',
       say: '“Everything needed to start is in the box, with the core after-sales support clearly covered.”',
       spec: 'SPACE TRAVEL 2 · charging cable · S/M/L eartips · manual · cards · certificate · 1-year main-unit warranty', source: 'Original training material, pp.5, 8; Amazon Package List'
     }

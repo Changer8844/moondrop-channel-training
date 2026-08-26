@@ -22,6 +22,8 @@ const failures = [];
 for (const slug of productSlugs) {
   const file = path.join(productDir, slug, 'index.html');
   const html = fs.readFileSync(file, 'utf8');
+  const contentFile = path.join(productDir, slug, 'content.js');
+  const copySource = html + (fs.existsSync(contentFile) ? `\n${fs.readFileSync(contentFile, 'utf8')}` : '');
   const fail = (message) => failures.push(`${slug}: ${message}`);
 
   if (!html.includes(`data-core-template-version="${contract.version}"`)) fail(`missing template version ${contract.version}`);
@@ -44,6 +46,9 @@ for (const slug of productSlugs) {
   if (!/\.hotspot-label\s*\{[^}]*left:\s*38px;/.test(html)) fail('hotspot label spacing drifted from the SPACE TRAVEL 2 template');
   if (!/height:\s*clamp\(190px,\s*20vh,\s*240px\)/.test(html)) fail('feature media frame size drifted from the SPACE TRAVEL 2 template');
   if (!/event\.target\.closest\(['"]\.hotspot['"]\)/.test(html)) fail('drag handler can intercept hotspot switching');
+  for (const pattern of contract.forbiddenCopyPatterns || []) {
+    if (new RegExp(pattern, 'i').test(copySource)) fail(`contains production-note copy matching /${pattern}/i`);
+  }
 }
 
 if (failures.length) {

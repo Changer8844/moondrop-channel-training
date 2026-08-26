@@ -11,8 +11,8 @@ window.MOONDROP_TRAINING_CATALOG = {
       close: "Close category",
       available: "Training available",
       openTraining: "Open product training",
-      emptyTitle: "Training content is being prepared.",
-      emptyBody: "Products will appear here when their channel training page is ready.",
+      emptyTitle: "No product training available yet.",
+      emptyBody: "Please choose another product category.",
       categoryDialog: "Product category training",
       productType: "True wireless stereo"
     },
@@ -27,8 +27,8 @@ window.MOONDROP_TRAINING_CATALOG = {
       close: "关闭产品分类",
       available: "培训内容已上线",
       openTraining: "进入产品培训",
-      emptyTitle: "培训内容准备中",
-      emptyBody: "相应产品的渠道培训页面完成后，将会显示在这里。",
+      emptyTitle: "暂无可用培训内容",
+      emptyBody: "请选择其他产品分类。",
       categoryDialog: "产品分类培训",
       productType: "真无线耳机"
     }
