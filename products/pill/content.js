@@ -106,7 +106,7 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 77, y: 62 },
       focus: { x: 78, y: 60, zoom: 1.62 },
       media: [
-        { image: "assets/gallery/pill-blue-rear.jpg", alt: { en: "Rear view of the blue PILL charging case", zh: "蓝色 PILL 充电盒背面" }, caption: { en: "A clean product view keeps the conversation focused on the call experience.", zh: "用干净的产品视图，把重点放回通话体验。" } },
+        { image: "assets/gallery/pill-blue-rear.jpg", alt: { en: "Rear view of the blue PILL charging case", zh: "蓝色 PILL 充电盒背面" }, caption: { en: "NPU-based AI call noise reduction is designed to improve voice pickup in noisy surroundings.", zh: "NPU 硬件级 AI 通话降噪用于提升嘈杂环境中的人声拾取。" } },
         { image: "assets/gallery/pill-red-side.jpg", alt: { en: "Side view of the red PILL charging case and earbuds", zh: "红色 PILL 充电盒与耳机侧面" }, caption: { en: "Directional transmission helps reduce sound leakage in quiet surroundings.", zh: "定向传声有助于减少安静环境中的声音泄漏。" } }
       ],
       subfeatures: [
@@ -154,7 +154,7 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 55, y: 72 },
       focus: { x: 55, y: 69, zoom: 1.62 },
       media: [
-        { image: "assets/gallery/pill-blue-rear-light.jpg", alt: { en: "Blue PILL charging case from the rear on a light background", zh: "浅色背景下的蓝色 PILL 充电盒背面" }, caption: { en: "Use the case and USB-C port to make the charging routine tangible.", zh: "用充电盒和 USB-C 接口，把充电日常讲得更具体。" } },
+        { image: "assets/gallery/pill-blue-rear-light.jpg", alt: { en: "Blue PILL charging case from the rear on a light background", zh: "浅色背景下的蓝色 PILL 充电盒背面" }, caption: { en: "The charging case uses a USB-C port for everyday recharging.", zh: "充电盒采用 USB-C 接口进行日常充电。" } },
         { image: "assets/gallery/pill-three-colorways.jpg", alt: { en: "Three PILL colorways arranged together", zh: "三种颜色的 PILL 产品组合" }, caption: { en: "Bluetooth 6.0, dual-device connection, and app control support everyday use.", zh: "Bluetooth 6.0、双设备连接和 App 控制，满足日常使用需求。" } }
       ],
       subfeatures: [
@@ -199,9 +199,9 @@ window.MOONDROP_PILL_DATA = {
   support: {
     image: "assets/gallery/pill-blue-case-open.jpg",
     en: {
-      kicker: "PACKAGE & AFTER-SALES",
-      title: "Package contents and after-sales answers",
-      intro: "Confirm the five standard items first, then explain the applicable warranty period.",
+      kicker: "PACKAGE & WARRANTY",
+      title: "Package & After-sales",
+      intro: "",
       packageTitle: "Standard package contents",
       contents: ["PILL earbuds", "Charging cable", "User manual", "Certificate of conformity", "After-sales service card"],
       warrantyTitle: "Warranty periods",
@@ -211,10 +211,10 @@ window.MOONDROP_PILL_DATA = {
       exclusions: ["Unauthorized modification, disassembly, or repair", "Accidental or human-caused damage, including deformation, corrosion, liquid ingress, drops, or unsuitable voltage", "Expired warranty", "Force majeure such as fire, earthquake, or flood"]
     },
     zh: {
-      kicker: "包装与售后",
-      title: "包装清单与售后回答",
-      intro: "先核对包装内的五项内容，再向顾客说明适用的保修期限。",
-      packageTitle: "标准包装内含",
+      kicker: "包装与保修",
+      title: "包装与售后",
+      intro: "",
+      packageTitle: "标准包装清单",
       contents: ["PILL 耳机", "充电线", "用户手册", "合格证", "售后服务卡"],
       warrantyTitle: "保修期限",
       periods: [["PILL 主机", "1 年"], ["充电盒", "1 年"], ["包装配件", "90 天"]],

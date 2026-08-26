@@ -122,16 +122,16 @@
     .overview-button:hover { border-color: var(--lime); color: var(--lime); background: rgba(199,246,74,.035); }
     .overview-button.active { border-color: var(--lime); color: var(--lime); background: rgba(199,246,74,.055); }
 
-    .viewer-column { min-width: 0; min-height: 0; display: grid; grid-template-rows: 82px minmax(0,1fr) 54px; padding: 0 24px; background: radial-gradient(circle at 52% 18%, rgba(199,246,74,.06), transparent 30%); }
-    .viewer-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-width: 0; }
+    .viewer-column { min-width: 0; min-height: 0; display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 11px; padding: 18px; background: radial-gradient(circle at 52% 18%, rgba(199,246,74,.06), transparent 30%); }
+    .viewer-header { min-height: 34px; display: flex; align-items: end; justify-content: space-between; gap: 14px; min-width: 0; }
     .viewer-header h1 { margin: 0; overflow: hidden; font-size: 17px; font-weight: 760; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
     .viewer-header p { margin: 4px 0 0; overflow: hidden; color: #84908a; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
-    .viewer-count { flex: 0 0 auto; color: var(--lime); font: 800 16px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .08em; }
-    .stage-window { min-height: 0; position: relative; overflow: hidden; border: 1px solid rgba(192,214,206,.2); border-radius: 30px; background: #f1f2f0; touch-action: none; cursor: default; }
+    .viewer-count { flex: 0 0 auto; color: var(--lime); font: 800 12px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .08em; }
+    .stage-window { min-height: 0; position: relative; overflow: hidden; border: 1px solid rgba(192,214,206,.2); border-radius: 22px; background: #f1f2f0; touch-action: none; cursor: default; }
     .stage-window.is-draggable { cursor: grab; }
     .stage-window.is-dragging { cursor: grabbing; }
     .photo-rig { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
-    .master-image { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; user-select: none; -webkit-user-drag: none; }
+    .master-image { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 50%; user-select: none; -webkit-user-drag: none; }
     .stage-grid { position: absolute; inset: 0; pointer-events: none; opacity: .37; background-image: linear-gradient(rgba(77,97,93,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(77,97,93,.18) 1px, transparent 1px); background-size: 42px 42px; mix-blend-mode: multiply; }
     .stage-meta { display: none; position: absolute; left: 22px; top: 20px; z-index: 3; color: #4a5550; font: 800 10px/1.35 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; pointer-events: none; }
     .stage-meta span { display: block; margin-top: 5px; color: #85908a; font-size: 9px; font-weight: 500; letter-spacing: .07em; }
@@ -147,10 +147,11 @@
     .hotspot.flip-label .hotspot-label { left: auto; right: 38px; text-align: right; box-shadow: 0 9px 24px rgba(18,26,23,.16), inset -3px 0 0 var(--hotspot-color); }
     .hotspot:hover .hotspot-label, .hotspot:focus-visible .hotspot-label, .hotspot.active .hotspot-label { opacity: 1; transform: translate(3px, -50%); }
     .hotspot.flip-label:hover .hotspot-label, .hotspot.flip-label:focus-visible .hotspot-label, .hotspot.flip-label.active .hotspot-label { transform: translate(-3px, -50%); }
-    .viewer-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-    .progress { display: flex; align-items: center; gap: 5px; }
-    .progress span { width: 24px; height: 7px; display: block; border-radius: 1px; background: #27312d; }
-    .progress span.active { width: 22px; height: 30px; background: var(--lime); box-shadow: 0 0 16px rgba(199,246,74,.26); }
+    .viewer-footer { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 2px; }
+    .progress { display: grid; grid-template-columns: repeat(7, minmax(8px, 16px)); justify-content: start; align-items: center; height: 26px; gap: 3px; }
+    .progress span { height: 5px; display: block; border-radius: 1px; background: #303936; }
+    .progress span:first-child { height: 11px; }
+    .progress span.active { height: 22px; background: var(--lime); box-shadow: 0 0 10px rgba(199,246,74,.35); }
     .viewer-footer-note { color: #8a9590; font: 10px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
 
     .detail-panel { position: relative; min-width: 0; min-height: 0; overflow: hidden; border-left: 1px solid var(--line); background: #0d1211; }
@@ -163,8 +164,7 @@
     .detail-panel.open .panel-empty { opacity: 0; pointer-events: none; }
     .detail-panel.open .panel-content { opacity: 1; pointer-events: auto; transform: translateX(0); }
     .panel-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
-    .panel-kicker { color: var(--accent); font-size: 9px; font-weight: 800; }
-    .panel-count { margin-top: 8px; color: #69756f; font: 10px/1 Menlo, Monaco, Consolas, monospace; }
+    .panel-kicker { color: var(--accent); font-size: 10px; font-weight: 800; }
     .panel-close, .board-close, .lightbox-close { width: 38px; height: 38px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aeb9b3; font-size: 22px; line-height: 1; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
     .panel-close:hover, .board-close:hover, .lightbox-close:hover { color: var(--lime); border-color: rgba(199,246,74,.45); }
     .panel-title { margin: 35px 0 17px; font-size: clamp(27px, 2.55vw, 42px); font-weight: 770; letter-spacing: -.065em; line-height: .99; }
@@ -378,7 +378,7 @@
             <p id="emptyBody">Each selling point includes the customer benefit, key specification, demonstration, and recommended sales line.</p>
           </div>
           <div class="panel-content">
-            <div class="panel-head"><div><div class="panel-kicker" id="panelKicker"></div><div class="panel-count" id="panelCount"></div></div><button class="panel-close" id="panelClose" type="button" aria-label="Close feature details">×</button></div>
+            <div class="panel-head"><div class="panel-kicker" id="panelKicker"></div><button class="panel-close" id="panelClose" type="button" aria-label="Close feature details">×</button></div>
             <h2 class="panel-title" id="panelTitle"></h2>
             <p class="panel-body" id="panelBody"></p>
             <figure class="media-card"><div class="media-frame"><img id="mediaImage" src="" alt="" /></div><div class="media-controls"><button id="mediaPrevious" type="button" aria-label="Previous image">←</button><span class="media-index" id="mediaIndex">01 / 02</span><button id="mediaNext" type="button" aria-label="Next image">→</button></div><figcaption class="media-caption" id="mediaCaption"></figcaption></figure>
@@ -408,10 +408,10 @@
       const accentMap = { sound: '#ffab2f', awareness: '#39d2e5', comfort: '#ad82ff', calls: '#ff4f6a', case: '#c7f64a', everyday: '#6c9cff' };
       const copy = {
         en: {
-          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Specifications, customer benefits, and sales lines', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents, warranty periods, and common after-sales answers', gallery: 'HD Image Library', gallerySub: 'Product visuals for customer demonstrations', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.', emptyBody: 'See the customer benefit, key specification, demonstration, and recommended sales line for each feature.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', galleryNote: 'Choose an image for customer demonstrations, color comparison, or follow-up.'
+          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Specifications, customer benefits, and sales lines', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', gallery: 'HD Image Library', gallerySub: 'Product visuals for customer demonstrations', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.', emptyBody: 'See the customer benefit, key specification, demonstration, and recommended sales line for each feature.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', galleryNote: 'Choose an image for customer demonstrations, color comparison, or follow-up.'
         },
         zh: {
-          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '规格、顾客利益与销售话术', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单、保修期限与常见售后回答', gallery: '高清图库', gallerySub: '用于顾客演示的产品图片', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。', emptyBody: '每个卖点都包含顾客利益、关键规格、现场演示和推荐话术。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', galleryNote: '选择图片用于顾客演示、颜色对比或后续跟进。'
+          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '规格、顾客利益与销售话术', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', gallery: '高清图库', gallerySub: '用于顾客演示的产品图片', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。', emptyBody: '每个卖点都包含顾客利益、关键规格、现场演示和推荐话术。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', galleryNote: '选择图片用于顾客演示、颜色对比或后续跟进。'
         }
       };
       let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -422,7 +422,7 @@
       const $ = (id) => document.getElementById(id);
       const els = {
         hub: $('hubView'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
-        storyList: $('storyList'), overviewButton: $('overviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('photoRig'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelCount: $('panelCount'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
+        storyList: $('storyList'), overviewButton: $('overviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('photoRig'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
       };
 
       function t(value) { return typeof value === 'string' ? value : value[language]; }
@@ -544,7 +544,6 @@
         els.viewerCount.textContent = String(index + 1).padStart(2, '0') + ' / 06';
         els.viewerFooterNote.textContent = t(feature.chapter) + ' · ' + t(feature.label);
         els.panelKicker.textContent = t(feature.kicker);
-        els.panelCount.textContent = String(index + 1).padStart(2, '0') + ' / 06';
         els.panelTitle.textContent = t(feature.title);
         els.panelBody.textContent = t(feature.body);
         els.showKicker.textContent = ui('show');
@@ -575,7 +574,7 @@
         renderFeature(id);
       }
       function navigateSection(section, push = true) {
-        if (push) setQuery({ section });
+        setQuery({ section }, !push);
         renderRoute();
       }
       function renderRoute() {
@@ -610,7 +609,7 @@
       }
       function supportMarkup() {
         const pack = data.support[language];
-        return '<div class="support-intro"><div class="board-copy support-copy"><h3>' + pack.packageTitle + '</h3><p>' + pack.intro + '</p></div><div class="board-image support-image"><img src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 透明充电盒与耳机' : 'PILL transparent charging case and earbuds') + '" /></div></div><div class="support-blocks"><section class="support-block package-list-block"><ul class="contents-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></section><section class="support-block warranty-block"><h4>' + pack.warrantyTitle + '</h4><div class="warranty-grid">' + pack.periods.map((item) => '<div class="warranty-cell"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-note">' + pack.policy + '</p></section><section class="support-block exclusions-block"><h4>' + pack.exclusionsTitle + '</h4><ul class="exclusions-list">' + pack.exclusions.map((item) => '<li>' + item + '</li>').join('') + '</ul></section></div>';
+        return '<div class="support-intro"><div class="board-copy support-copy"><h3>' + pack.packageTitle + '</h3></div><div class="board-image support-image"><img src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 透明充电盒与耳机' : 'PILL transparent charging case and earbuds') + '" /></div></div><div class="support-blocks"><section class="support-block package-list-block"><ul class="contents-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></section><section class="support-block warranty-block"><h4>' + pack.warrantyTitle + '</h4><div class="warranty-grid">' + pack.periods.map((item) => '<div class="warranty-cell"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-note">' + pack.policy + '</p></section><section class="support-block exclusions-block"><h4>' + pack.exclusionsTitle + '</h4><ul class="exclusions-list">' + pack.exclusions.map((item) => '<li>' + item + '</li>').join('') + '</ul></section></div>';
       }
       function galleryMarkup() {
         return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="assets/gallery/' + item[0] + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';

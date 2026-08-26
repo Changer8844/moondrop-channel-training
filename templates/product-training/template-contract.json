@@ -9,12 +9,22 @@
   "featureMediaHeight": "clamp(190px, 20vh, 240px)",
   "forbiddenCopyPatterns": [
     "顾客买到什么.{0,12}讲清楚",
+    "也要讲清楚",
+    "更放心地开始使用",
+    "先核对包装.{0,12}讲清",
+    "把重点放回",
+    "讲得更具体",
     "从.{0,8}个不同维度",
     "制作说明",
     "页面怎么",
     "页面如何",
     "understand (the )?product from",
     "what the customer receives",
+    "package contents and after-sales answers",
+    "confirm the five standard items first",
+    "check the box\\. explain the warranty",
+    "keeps? the conversation focused",
+    "make the charging routine tangible",
     "helps? staff"
   ],
   "requiredRoles": [

@@ -688,8 +688,7 @@
     .detail-panel.open .panel-empty { opacity: 0; pointer-events: none; }
     .detail-panel.open .panel-content { opacity: 1; transform: none; pointer-events: auto; }
     .panel-head { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
-    .panel-kicker { color: var(--accent); font-size: 8px; }
-    .panel-number { margin-top: 6px; color: #626d69; font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; }
+    .panel-kicker { color: var(--accent); font-size: 10px; }
     .close-panel { width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #89948f; cursor: pointer; }
     .close-panel:hover { color: var(--lime); border-color: rgba(199,246,74,.35); }
     .panel-content h2 {
@@ -1167,7 +1166,6 @@
           <div class="panel-head">
             <div>
               <div class="panel-kicker" id="panelKicker"></div>
-              <div class="panel-number" id="panelNumber"></div>
             </div>
             <button class="close-panel" id="closePanel" type="button" aria-label="Close feature detail">×</button>
           </div>
@@ -1529,13 +1527,13 @@
           sections: {
             core: { tag: 'SELL', title: 'Core Selling Points', subtitle: 'Specifications, customer benefits, and sales lines' },
             comparison: { tag: 'POSITION', title: 'Product Positioning', subtitle: 'Who it fits and how it compares' },
-            support: { tag: 'OWNERSHIP', title: 'Package & After-sales', subtitle: 'Package contents, warranty periods, and common after-sales answers' },
+            support: { tag: 'OWNERSHIP', title: 'Package & After-sales', subtitle: 'Package contents and warranty periods' },
             reviews: { tag: 'REVIEWS', title: 'Media Reviews', subtitle: 'Independent real-world perspectives' },
             gallery: { tag: 'ASSETS', title: 'HD Image Library', subtitle: 'Product visuals for customer demonstrations' }
           },
           boards: {
             comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
-            support: { kicker: 'PACKAGE & SERVICE', title: 'Package & After-sales', introTitle: 'Check the box. Explain the warranty.', intro: 'Confirm the standard package contents first, then explain the applicable warranty period.', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
+            support: { kicker: 'PACKAGE & WARRANTY', title: 'Package & After-sales', introTitle: 'Standard package contents', intro: '', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
             reviews: { kicker: 'EXTERNAL REVIEW LINKS', title: 'Media Reviews', introTitle: 'Six real-world reviews, one click away.', intro: 'Need a third-party perspective? Select a cover to open the matching YouTube review.', open: 'Open review on YouTube ↗' }
           }
         },
@@ -1548,13 +1546,13 @@
           sections: {
             core: { tag: '卖点', title: '核心卖点', subtitle: '规格、顾客利益与销售话术' },
             comparison: { tag: '定位', title: '产品定位', subtitle: '适合谁，以及应该跟谁比较' },
-            support: { tag: '售后', title: '包装与售后', subtitle: '包装清单、保修期限与常见售后回答' },
+            support: { tag: '售后', title: '包装与售后', subtitle: '包装清单与保修期限' },
             reviews: { tag: '评测', title: '媒体评测', subtitle: '来自外部的真实使用视角' },
             gallery: { tag: '素材', title: '高清图库', subtitle: '用于顾客演示的产品图片' }
           },
           boards: {
             comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
-            support: { kicker: '包装与服务', title: '包装与售后', introTitle: '先核对包装，再讲清保障。', intro: '先确认标准包装内容，再向顾客说明适用的保修期限。', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
+            support: { kicker: '包装与保修', title: '包装与售后', introTitle: '标准包装清单', intro: '', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
             reviews: { kicker: '外部评测链接', title: '媒体评测', introTitle: '六个真实评测，一键直达。', intro: '需要第三方观点时，点击封面即可打开对应的 YouTube 评测。', open: '前往 YouTube 观看 ↗' }
           }
         }
@@ -1625,7 +1623,7 @@
         const cards = data.portal.comparisons[currentLanguage];
         return `
           <section class="board-intro comparison-intro" style="background-image:url('${data.portal.campaign.hero}')">
-            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+            <div><h3>${copy.introTitle}</h3>${copy.intro ? `<p>${copy.intro}</p>` : ''}</div>
           </section>
           <div class="comparison-grid">
             ${cards.map((card) => `
@@ -1642,7 +1640,7 @@
         const support = data.portal.support[currentLanguage];
         return `
           <section class="board-intro support-intro" style="background-image:url('${data.portal.support.packageImage}')">
-            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+            <div><h3>${copy.introTitle}</h3>${copy.intro ? `<p>${copy.intro}</p>` : ''}</div>
           </section>
           <div class="support-layout">
             <article class="support-block support-block--package">
@@ -2067,7 +2065,6 @@
         const accent = featureAccentMap[localized.id] || accentMap.lime;
         document.documentElement.style.setProperty('--accent', accent);
         document.getElementById('panelKicker').textContent = localized.kicker;
-        document.getElementById('panelNumber').textContent = `${String(index + 1).padStart(2, '0')} / ${String(features.length).padStart(2, '0')}`;
         document.getElementById('panelTitle').textContent = localized.title;
         document.getElementById('panelBody').textContent = localized.body;
         renderPanelMedia(localized.id, true);
