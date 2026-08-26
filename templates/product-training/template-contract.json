@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "referenceProduct": "space-travel-2",
+  "initialState": "overview",
+  "desktopLayout": "three-column",
+  "desktopColumns": "minmax(236px, 272px) minmax(520px, 1fr) minmax(332px, 390px)",
+  "hotspotSize": 36,
+  "hotspotLabelOffset": 38,
+  "featureMediaHeight": "clamp(190px, 20vh, 240px)",
+  "requiredRoles": [
+    "product-overview",
+    "product-stage",
+    "product-progress",
+    "feature-detail"
+  ],
+  "requiredClasses": [
+    "workspace",
+    "panel-empty",
+    "panel-content"
+  ]
+}

@@ -1125,12 +1125,12 @@
       </div>
     </main>
 
-    <main class="workspace">
+    <main class="workspace" data-core-template-version="1.0.0" data-core-initial-state="overview" data-core-layout="three-column">
       <nav class="story-rail" aria-label="Product feature stories">
         <div class="eyebrow" id="storyEyebrow">Six core sales stories</div>
         <h1 id="storyHeadline">Learn it by<br />touching it.</h1>
         <div class="feature-list" id="featureList"></div>
-        <button class="product-overview-button active" id="productOverviewButton" type="button" aria-pressed="true">Overview</button>
+        <button class="product-overview-button active" id="productOverviewButton" data-role="product-overview" type="button" aria-pressed="true">Overview</button>
         <div class="rail-footer">
         </div>
       </nav>
@@ -1145,7 +1145,7 @@
           </div>
         </div>
 
-        <div class="stage" id="stage" aria-label="Select a product signal to inspect its detail">
+        <div class="stage" id="stage" data-role="product-stage" aria-label="Select a product signal to inspect its detail">
           <div class="orbit-guide" aria-hidden="true"></div>
           <div class="photo-rig" id="photoRig">
             <img class="product-photo" id="productPhoto" src="assets/hd-gallery/front-symmetry.jpg" alt="Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case" draggable="false" />
@@ -1153,11 +1153,11 @@
         </div>
 
         <div class="sequence-bar" aria-label="Detail focus progress">
-          <div class="angle-track" id="angleTrack" aria-hidden="true"></div>
+          <div class="angle-track" id="angleTrack" data-role="product-progress" aria-hidden="true"></div>
         </div>
       </section>
 
-      <aside class="detail-panel" id="detailPanel" aria-label="Feature training detail">
+      <aside class="detail-panel" id="detailPanel" data-role="feature-detail" aria-label="Feature training detail">
         <div class="panel-empty">
           <span id="emptyKicker">READY FOR INPUT</span>
           <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
@@ -1718,7 +1718,7 @@
 
         if (id === 'core') {
           trainingApp.classList.remove('hub-mode');
-          if (activeIndex < 0) openFeature(features[0].id, { instant: true });
+          resetOverview();
           return;
         }
 

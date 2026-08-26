@@ -1,0 +1,48 @@
+<!--
+  MOONDROP channel-training core page shell, version 1.0.0.
+  SPACE TRAVEL 2 is the canonical visual reference.
+  Replace {{PLACEHOLDERS}} with source-led bilingual product content.
+-->
+<section
+  class="workspace"
+  data-core-template-version="1.0.0"
+  data-core-initial-state="overview"
+  data-core-layout="three-column"
+  aria-label="{{PRODUCT_NAME}} core selling points"
+>
+  <aside class="story-rail">
+    <div class="rail-kicker">{{SIX_CORE_STORIES}}</div>
+    <h1 class="rail-title">{{LEARN_BY_TOUCHING}}</h1>
+    <div class="story-list" id="storyList"><!-- six source-led feature buttons --></div>
+    <div class="rail-spacer"></div>
+    <button class="overview-button active" data-role="product-overview" type="button" aria-pressed="true">
+      {{OVERVIEW}}
+    </button>
+  </aside>
+
+  <section class="viewer-column">
+    <header class="viewer-header">
+      <div><h1>{{PRODUCT_OVERVIEW}}</h1><p>{{MAIN_VIEW_DESCRIPTION}}</p></div>
+      <div class="viewer-count">{{MAIN_VIEW}}</div>
+    </header>
+    <div class="stage-window" data-role="product-stage">
+      <div class="photo-rig">
+        <img class="master-image" src="{{MASTER_IMAGE}}" alt="{{MASTER_IMAGE_ALT}}" draggable="false" />
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="hotspot-layer"><!-- all six hotspots visible in Overview --></div>
+      </div>
+    </div>
+    <footer class="viewer-footer">
+      <div class="progress" data-role="product-progress" aria-label="Training progress"></div>
+    </footer>
+  </section>
+
+  <aside class="detail-panel" data-role="feature-detail" aria-label="Feature training detail">
+    <div class="panel-empty">
+      <span>{{READY_FOR_INPUT}}</span>
+      <h2>{{SELECT_A_SIGNAL}}</h2>
+      <p>{{OVERVIEW_GUIDANCE}}</p>
+    </div>
+    <div class="panel-content"><!-- selected-feature detail only --></div>
+  </aside>
+</section>

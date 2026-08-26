@@ -10,8 +10,9 @@ This is a lightweight access gate for a static offline/GitHub Pages site. It dis
 
 ## Add a product
 
-1. Create `products/<product-slug>/index.html` with its local assets.
-2. Add one product record to `catalog.js` with the matching `categoryId`.
-3. Set `status` to `live` when the training page is ready.
+1. Start from `templates/product-training/core-selling-points.template.html` and follow the template contract in `templates/product-training/README.md`.
+2. Create `products/<product-slug>/index.html` with its local assets.
+3. Add one product record to `catalog.js` with the matching `categoryId`.
+4. Run `node scripts/audit-product-template.mjs` before setting `status` to `live`.
 
 Only products marked `live` appear in the category showroom.
