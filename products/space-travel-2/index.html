@@ -452,6 +452,7 @@
     }
 
     .rail-footer { margin-top: auto; padding-top: 12px; }
+    .rail-footer .product-overview-button { margin-top: 0; }
     .overview-button {
       width: 100%;
       min-height: 38px;
@@ -1027,8 +1028,8 @@
       .story-rail { border-right: 0; padding: 20px 14px 6px; overflow: visible; }
       .story-rail h1 { font-size: 35px; }
       .feature-list { grid-template-columns: 1fr 1fr; margin-top: 16px; }
-      .product-overview-button { margin-top: 10px; }
-      .rail-footer { display: none; }
+      .product-overview-button { margin-top: 0; }
+      .rail-footer { display: block; margin-top: 10px; padding-top: 0; }
       .viewer-column { height: 590px; padding: 10px 12px 16px; }
       .sequence-bar { grid-template-columns: 1fr; }
       .photo-rig { width: 100%; }
@@ -1129,8 +1130,8 @@
         <div class="eyebrow" id="storyEyebrow">Six core sales stories</div>
         <h1 id="storyHeadline">Learn it by<br />touching it.</h1>
         <div class="feature-list" id="featureList"></div>
-        <button class="product-overview-button active" id="productOverviewButton" data-role="product-overview" type="button" aria-pressed="true">Overview</button>
         <div class="rail-footer">
+          <button class="product-overview-button active" id="productOverviewButton" data-role="product-overview" type="button" aria-pressed="true">Overview</button>
         </div>
       </nav>
 

@@ -3,7 +3,6 @@
   const categoryGrid = document.getElementById("categoryGrid");
   const overlay = document.getElementById("categoryOverlay");
   const overlayImage = document.getElementById("overlayImage");
-  const overlayProductLineup = document.getElementById("overlayProductLineup");
   const overlayKicker = document.getElementById("overlayKicker");
   const overlayTitle = document.getElementById("overlayTitle");
   const overlayDescription = document.getElementById("overlayDescription");
@@ -102,7 +101,7 @@
     return `
       <a class="product-card" href="${href}">
         <span class="product-card__image-wrap">
-          <img src="${product.image}" alt="${localized(product.name)}" style="object-position:${product.imagePosition}" />
+          <img src="${product.image}" alt="${localized(product.name)}" style="object-position:${product.imagePosition};object-fit:${product.imageFit || "contain"}" />
         </span>
         <span class="product-card__copy">
           <span class="product-card__status"><i aria-hidden="true"></i>${ui.available}</span>
@@ -111,14 +110,6 @@
           <span class="product-card__action">${ui.openTraining}<b aria-hidden="true">↗</b></span>
         </span>
       </a>`;
-  }
-
-  function lineupProduct(product, index) {
-    return `
-      <figure class="overlay-lineup-item overlay-lineup-item--${index + 1}">
-        <img src="${product.image}" alt="" style="object-position:${product.imagePosition}" />
-        <figcaption>${localized(product.name)}</figcaption>
-      </figure>`;
   }
 
   function renderOverlay(category) {
@@ -133,10 +124,6 @@
     overlayDescription.textContent = localized(category.description);
     overlay.setAttribute("aria-label", `${ui.categoryDialog}: ${localized(category.name)}`);
     closeOverlayButton.setAttribute("aria-label", ui.close);
-    overlayProductLineup.innerHTML = products.map(lineupProduct).join("");
-    overlayProductLineup.hidden = products.length < 2;
-    overlay.classList.toggle("has-product-lineup", products.length > 1);
-
     if (products.length) {
       overlayProducts.className = "overlay-products has-products";
       overlayProducts.innerHTML = products.map(productCard).join("");

@@ -102,8 +102,9 @@ window.MOONDROP_TRAINING_CATALOG = {
       categoryId: "true-wireless",
       name: { en: "SPACE TRAVEL 2", zh: "太空漫游 2" },
       type: { en: "True wireless stereo", zh: "真无线耳机" },
-      image: "assets/categories/true-wireless.jpg",
-      imagePosition: "50% 45%",
+      image: "assets/products/space-travel-2-category-card.jpg",
+      imagePosition: "50% 43%",
+      imageFit: "cover",
       href: "products/space-travel-2/index.html",
       status: "live"
     },

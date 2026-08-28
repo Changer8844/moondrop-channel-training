@@ -67,7 +67,7 @@
     .brand-orbit::after { content: ""; position: absolute; width: 4px; height: 4px; right: 0; top: 5px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px var(--lime); }
     .brand-kicker, .utility, .view-kicker, .eyebrow, .panel-kicker, .board-kicker { font-family: Menlo, Monaco, Consolas, monospace; text-transform: uppercase; letter-spacing: .14em; }
     .brand-kicker { color: var(--lime); font-size: 9px; font-weight: 800; line-height: 1.1; }
-    .brand-name { margin-top: 4px; font-size: 15px; font-weight: 750; line-height: 1.1; letter-spacing: .04em; white-space: nowrap; }
+    .brand-name { margin-top: 3px; font-size: 14px; font-weight: 650; line-height: 1.1; letter-spacing: .03em; white-space: nowrap; }
     .top-status { display: flex; align-items: center; gap: 10px; }
     .training-home-link { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 50%; color: #b8c1bd; text-decoration: none; transition: color .2s ease, border-color .2s ease, background .2s ease; }
     .training-home-link:hover { color: var(--lime); border-color: rgba(199,246,74,.5); background: rgba(199,246,74,.04); }
@@ -84,48 +84,50 @@
     .hub-view::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(2,5,4,.72) 0%, rgba(2,5,4,.30) 40%, rgba(2,5,4,.08) 73%, rgba(2,5,4,.24) 100%), linear-gradient(0deg, rgba(2,5,4,.48), transparent 58%); pointer-events: none; }
     .hub-view::after { content: ""; position: absolute; inset: 0; z-index: 2; opacity: .22; background-image: linear-gradient(rgba(199,246,74,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(199,246,74,.09) 1px, transparent 1px); background-size: 80px 80px; pointer-events: none; }
     .hub-hero-image { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 56%; opacity: 1; filter: none; }
-    .hub-layout { position: relative; z-index: 3; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, 520px); align-items: end; gap: clamp(34px, 5vw, 92px); padding: clamp(34px, 6vh, 72px) clamp(38px, 5vw, 88px); }
-    .hub-copy { align-self: end; padding-bottom: clamp(18px, 3vh, 38px); }
-    .hub-kicker, .hub-menu-kicker { color: var(--lime); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .17em; text-transform: uppercase; }
-    .hub-copy h1 { margin: 18px 0 16px; color: #f4f2eb; font-size: clamp(72px, 10vw, 138px); font-weight: 300; letter-spacing: -.075em; line-height: .8; white-space: nowrap; }
-    .hub-copy p { max-width: 53ch; margin: 0; color: #c3cbc6; font-size: clamp(14px, 1.25vw, 18px); line-height: 1.55; }
-    .hub-menu { min-width: 0; align-self: end; padding: 22px; border: 1px solid rgba(199,246,74,.36); background: rgba(8,13,11,.88); box-shadow: 0 28px 80px rgba(0,0,0,.3); backdrop-filter: blur(14px); }
-    .hub-menu-kicker { margin-bottom: 14px; color: #87928c; font-size: 9px; }
-    .hub-section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .hub-section-button { --section-accent: var(--lime); position: relative; min-height: 116px; display: flex; flex-direction: column; justify-content: space-between; padding: 16px; border: 1px solid rgba(192,214,206,.18); border-radius: 0; background: rgba(4,8,7,.48); color: var(--text); text-align: left; cursor: pointer; transition: transform .25s var(--ease), border-color .25s ease, background .25s ease; }
-    .hub-section-button:first-child { grid-column: 1 / -1; min-height: 138px; border-color: color-mix(in srgb, var(--section-accent) 60%, transparent); background: linear-gradient(115deg, rgba(199,246,74,.1), rgba(255,255,255,.012) 60%); }
+    .hub-layout { position: relative; z-index: 3; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, 520px); align-items: end; gap: clamp(24px, 4vw, 64px); padding: clamp(30px, 5vw, 74px); }
+    .hub-copy { align-self: end; max-width: 690px; padding-bottom: 4px; }
+    .hub-kicker, .hub-menu-kicker { font-family: Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .hub-kicker { color: var(--lime); font-size: 10px; font-weight: 750; }
+    .hub-copy h1 { max-width: 660px; margin: 15px 0 13px; color: #f4f2eb; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: clamp(58px, 7vw, 112px); font-weight: 500; letter-spacing: -.055em; line-height: .82; white-space: nowrap; }
+    .hub-copy p { max-width: 520px; margin: 0; color: #c1cac6; font-size: clamp(13px, 1.2vw, 17px); line-height: 1.55; }
+    .hub-menu { min-width: 0; align-self: end; padding: 19px; border: 1px solid rgba(199,246,74,.24); background: rgba(6,9,8,.82); box-shadow: 0 22px 70px rgba(0,0,0,.34); backdrop-filter: blur(18px); }
+    .hub-menu-kicker { margin-bottom: 11px; color: #8d9994; font-size: 8px; }
+    .hub-section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .hub-section-button { --section-accent: var(--lime); min-height: 92px; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; gap: 6px 12px; padding: 14px; border: 1px solid rgba(203,219,213,.16); border-radius: 0; background: rgba(255,255,255,.025); color: var(--text); text-align: left; cursor: pointer; transition: transform .28s var(--ease), border-color .25s ease, background .25s ease; }
+    .hub-section-button:first-child { grid-column: 1 / -1; min-height: 116px; border-color: rgba(199,246,74,.45); background: rgba(199,246,74,.08); }
     .hub-section-button:last-child:nth-child(4) { grid-column: 1 / -1; }
     .hub-section-button:hover { transform: translateY(-3px); border-color: var(--section-accent); background: rgba(255,255,255,.05); }
-    .hub-section-number { color: var(--section-accent); font: 800 9px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; }
-    .hub-section-arrow { position: absolute; right: 18px; top: 17px; color: var(--section-accent); font-size: 24px; font-weight: 300; }
-    .hub-section-copy b { display: block; max-width: 19ch; font-size: clamp(17px, 1.55vw, 23px); font-weight: 750; letter-spacing: -.035em; line-height: 1.08; }
-    .hub-section-copy span { display: block; max-width: 36ch; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .hub-section-number { color: var(--section-accent); font: 800 8px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; }
+    .hub-section-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--section-accent); font-size: 21px; font-weight: 300; }
+    .hub-section-copy { align-self: end; }
+    .hub-section-copy b { display: block; max-width: 19ch; font-size: 17px; font-weight: 700; line-height: 1.15; }
+    .hub-section-copy span { display: block; max-width: 36ch; margin-top: 5px; color: #a9b4ae; font-size: 11px; line-height: 1.35; }
 
     .workspace { height: 100%; min-height: 0; display: grid; grid-template-columns: minmax(236px, 272px) minmax(520px, 1fr) minmax(332px, 390px); }
     .story-rail { min-width: 0; min-height: 0; display: flex; flex-direction: column; overflow: auto; padding: 24px 18px 18px 24px; border-right: 1px solid var(--line); background: rgba(6,9,9,.52); }
-    .rail-kicker { color: var(--lime); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; }
-    .rail-title { margin: 11px 0 22px; font-size: clamp(31px, 2.5vw, 44px); font-weight: 760; letter-spacing: -.045em; line-height: 1; }
+    .rail-kicker { color: var(--lime); font: 700 9px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .rail-title { margin: 11px 0 8px; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: clamp(31px, 2.5vw, 44px); font-weight: 520; letter-spacing: -.035em; line-height: 1; }
     .rail-title span { white-space: nowrap; }
     .story-list { display: grid; gap: 4px; }
-    .story-button { min-width: 0; position: relative; display: grid; grid-template-columns: 38px minmax(0, 1fr) 15px; align-items: center; gap: 4px; padding: 13px 10px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: var(--text); text-align: left; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
+    .story-button { min-width: 0; position: relative; display: grid; grid-template-columns: 30px minmax(0, 1fr) 18px; align-items: center; gap: 9px; padding: 8px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--text); text-align: left; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
     .story-button:hover { border-color: var(--line); background: rgba(255,255,255,.035); }
     .story-button.active { border-color: rgba(192,214,206,.23); background: rgba(255,255,255,.055); }
-    .story-number { color: #6b7671; font: 10px/1 Menlo, Monaco, Consolas, monospace; }
+    .story-number { color: #6b7671; font: 9px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .04em; }
     .story-button.active .story-number { color: var(--accent); }
     .story-copy { min-width: 0; }
-    .story-copy b { display: block; overflow: hidden; font-size: 14px; font-weight: 750; letter-spacing: -.02em; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
-    .story-copy span { display: block; overflow: hidden; margin-top: 5px; color: #7d8983; font-size: 10px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .story-copy b { display: block; overflow: hidden; font-size: 11px; font-weight: 650; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+    .story-copy span { display: block; overflow: hidden; margin-top: 3px; color: #74807c; font-size: 9px; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
     .story-arrow { color: #59655f; font-size: 17px; text-align: right; }
     .story-button.active .story-arrow { color: var(--accent); }
     .rail-spacer { flex: 1; min-height: 18px; }
-    .overview-button { width: 100%; min-height: 48px; padding: 0 12px; border: 1px solid rgba(192,214,206,.21); border-radius: 10px; background: transparent; color: #acb6b1; font-size: 12px; font-weight: 750; cursor: pointer; transition: border-color .2s ease, color .2s ease, background .2s ease; }
+    .overview-button { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid rgba(192,214,206,.21); border-radius: 10px; background: transparent; color: #acb6b1; font-size: 10px; font-weight: 650; cursor: pointer; transition: border-color .2s ease, color .2s ease, background .2s ease; }
     .overview-button:hover { border-color: var(--lime); color: var(--lime); background: rgba(199,246,74,.035); }
     .overview-button.active { border-color: var(--lime); color: var(--lime); background: rgba(199,246,74,.055); }
 
     .viewer-column { min-width: 0; min-height: 0; display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 11px; padding: 18px; background: radial-gradient(circle at 52% 18%, rgba(199,246,74,.06), transparent 30%); }
     .viewer-header { min-height: 34px; display: flex; align-items: end; justify-content: space-between; gap: 14px; min-width: 0; }
-    .viewer-header h1 { margin: 0; overflow: hidden; font-size: 17px; font-weight: 760; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
-    .viewer-header p { margin: 4px 0 0; overflow: hidden; color: #84908a; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+    .viewer-header h1 { margin: 0; overflow: hidden; font-size: 15px; font-weight: 650; letter-spacing: -.025em; text-overflow: ellipsis; white-space: nowrap; }
+    .viewer-header p { margin: 4px 0 0; overflow: hidden; color: #84908a; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
     .viewer-count { flex: 0 0 auto; color: var(--lime); font: 800 12px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .08em; }
     .stage-window { min-height: 0; position: relative; overflow: hidden; border: 1px solid rgba(192,214,206,.2); border-radius: 22px; background: #f1f2f0; touch-action: none; cursor: default; }
     .stage-window.is-draggable { cursor: grab; }
@@ -152,7 +154,7 @@
     .progress span { height: 5px; display: block; border-radius: 1px; background: #303936; }
     .progress span:first-child { height: 11px; }
     .progress span.active { height: 22px; background: var(--lime); box-shadow: 0 0 10px rgba(199,246,74,.35); }
-    .viewer-footer-note { color: #8a9590; font: 10px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
+    .viewer-footer-note { color: #8a9590; font: 9px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
 
     .detail-panel { position: relative; min-width: 0; min-height: 0; overflow: hidden; border-left: 1px solid var(--line); background: #0d1211; }
     .panel-empty, .panel-content { position: absolute; inset: 0; }
@@ -167,25 +169,28 @@
     .panel-kicker { color: var(--accent); font-size: 10px; font-weight: 800; }
     .panel-close, .board-close, .lightbox-close { width: 38px; height: 38px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aeb9b3; font-size: 22px; line-height: 1; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
     .panel-close:hover, .board-close:hover, .lightbox-close:hover { color: var(--lime); border-color: rgba(199,246,74,.45); }
-    .panel-title { margin: 35px 0 17px; font-size: clamp(27px, 2.55vw, 42px); font-weight: 770; letter-spacing: -.065em; line-height: .99; }
-    .panel-body { margin: 0; color: #a5afa9; font-size: 14px; line-height: 1.68; }
+    .panel-title { margin: 25px 0 12px; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: clamp(29px, 2.4vw, 40px); font-weight: 520; letter-spacing: -.025em; line-height: 1.08; text-wrap: balance; }
+    .panel-body { margin: 0; color: #c2cbc6; font-size: 14px; line-height: 1.65; }
     .media-card { margin: 18px 0 20px; overflow: hidden; border: 1px solid rgba(192,214,206,.24); background: #0a0f0e; }
     .media-frame { height: clamp(190px, 20vh, 240px); overflow: hidden; background: #121817; }
     .media-frame img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; }
-    .media-caption { min-height: 0; display: flex; align-items: center; padding: 8px 10px; color: #87938d; font-size: 9px; line-height: 1.4; }
+    .media-frame[data-layout="poster"] { height: auto; overflow: visible; background: #eef0ed; }
+    .media-frame[data-layout="poster"][data-tone="dark"] { background: #000; }
+    .media-frame[data-layout="poster"] img { height: auto; object-fit: contain; object-position: 50% 0; }
+    .media-caption { min-height: 0; display: flex; align-items: center; padding: 8px 10px; color: #78837f; font-size: 8px; line-height: 1.45; letter-spacing: .04em; }
     .media-controls { min-height: 40px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 6px 8px; border-top: 1px solid rgba(192,214,206,.16); }
     .media-controls button { width: 28px; height: 25px; border: 1px solid rgba(192,214,206,.25); background: transparent; color: #c0c9c4; cursor: pointer; }
     .media-controls button:hover { color: var(--lime); border-color: var(--lime); }
     .media-index { min-width: 42px; color: #7f8b85; font: 8px/1 Menlo, Monaco, Consolas, monospace; text-align: center; }
-    .subfeature-list { display: grid; gap: 8px; margin-top: 22px; }
-    .subfeature { padding: 13px 14px; border-left: 3px solid var(--accent); background: rgba(255,255,255,.045); }
-    .subfeature b { display: block; font-size: 13px; font-weight: 750; line-height: 1.2; }
-    .subfeature p { margin: 6px 0 0; color: #89948e; font-size: 11px; line-height: 1.45; }
-    .panel-section { margin-top: 27px; padding-top: 20px; border-top: 1px solid var(--line); }
-    .panel-section h3 { margin: 0 0 11px; color: var(--accent); font: 800 9px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
-    .panel-section p { margin: 0; color: #b6beba; font-size: 13px; line-height: 1.6; }
-    .say-line { color: #f0f3ef !important; font-size: 15px !important; font-weight: 700; line-height: 1.45 !important; }
-    .spec-line { color: #8b9690 !important; font-size: 11px !important; line-height: 1.5 !important; }
+    .subfeature-list { display: grid; gap: 7px; margin: 20px 0 22px; }
+    .subfeature { padding: 10px 11px; border-left: 2px solid var(--accent); background: rgba(255,255,255,.035); }
+    .subfeature b { display: block; color: #dde4e0; font-size: 11px; font-weight: 650; }
+    .subfeature p { margin: 4px 0 0; color: #8e9993; font-size: 11px; line-height: 1.45; }
+    .panel-section { margin-top: 0; padding: 15px 0; border-top: 1px solid var(--line); }
+    .panel-section h3 { margin: 0 0 7px; color: var(--accent); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .panel-section p { margin: 0; color: #aeb8b3; font-size: 12px; line-height: 1.58; }
+    .say-line { color: #f0f3ef !important; font-size: 16px !important; font-weight: 700; line-height: 1.5 !important; }
+    .spec-line { color: #e7ece9 !important; font-size: 15px !important; font-weight: 750; line-height: 1.55 !important; }
 
     .board { position: fixed; inset: 68px 0 0; z-index: 12; overflow: auto; background: #0d1211; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .3s ease, transform .35s var(--ease); }
     .board.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
@@ -193,9 +198,10 @@
     .board-kicker { color: var(--accent); font-size: 10px; font-weight: 800; }
     .board-title { margin: 9px 0 0; font-size: clamp(28px, 4vw, 58px); font-weight: 760; letter-spacing: -.065em; line-height: .94; }
     .board-content { max-width: 1450px; margin: 0 auto; padding: clamp(24px, 4vw, 62px); }
-    .positioning-intro, .support-intro { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: clamp(26px, 5vw, 80px); align-items: center; }
+    .positioning-intro { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: clamp(26px, 5vw, 80px); align-items: center; }
     .board-copy h3 { margin: 0; font-size: clamp(32px, 5vw, 68px); font-weight: 350; letter-spacing: -.075em; line-height: .94; }
     .board-copy > p { max-width: 58ch; margin: 22px 0 0; color: #aeb8b2; font-size: 15px; line-height: 1.7; }
+    .positioning-intro .board-copy > p:first-child { margin-top: 0; }
     .board-image { min-height: 280px; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(192,214,206,.24); background: #111; }
     .board-image img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; }
     .position-question { margin-top: 27px !important; padding: 16px 18px; border-left: 3px solid var(--orange); background: rgba(255,171,47,.06); color: #e7ece7 !important; font-weight: 700; }
@@ -203,21 +209,37 @@
     .comparison-card { min-height: 188px; padding: 20px; border: 1px solid rgba(192,214,206,.18); background: rgba(255,255,255,.025); }
     .comparison-card h4 { margin: 24px 0 12px; font-size: 18px; letter-spacing: -.035em; }
     .comparison-card p { margin: 0; color: #89948e; font-size: 12px; line-height: 1.55; }
-    .support-intro { align-items: start; }
-    .support-copy h3 { font-size: clamp(30px, 4vw, 57px); }
-    .support-image { aspect-ratio: 4 / 3; }
-    .support-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 48px; }
-    .package-list-block { grid-column: 1 / -1; }
-    .package-list-block .contents-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .support-block { padding-top: 16px; border-top: 1px solid var(--line); }
-    .support-block h4 { margin: 0 0 17px; color: var(--cyan); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
-    .contents-list, .exclusions-list { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; margin: 0; padding: 0; list-style: none; }
-    .contents-list li, .exclusions-list li { color: #b7c0ba; font-size: 13px; line-height: 1.45; }
-    .contents-list li::before, .exclusions-list li::before { content: "—"; margin-right: 7px; color: var(--lime); }
-    .warranty-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; border: 1px solid rgba(192,214,206,.12); background: rgba(192,214,206,.14); }
-    .warranty-cell { display: flex; justify-content: space-between; gap: 8px; padding: 13px; background: #111816; color: #aeb9b2; font-size: 12px; line-height: 1.4; }
-    .warranty-cell b { color: var(--lime); white-space: nowrap; }
-    .support-note { margin: 15px 0 0; color: #8d9892; font-size: 12px; line-height: 1.55; }
+    .support-layout { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: stretch; }
+    .support-block { border: 1px solid var(--line); background: #111615; }
+    .support-block--package { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(340px, .8fr); }
+    .support-visual { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: cover; object-position: center; background: #eef0ed; }
+    .support-copy { padding: 22px; }
+    .support-block--package .support-copy { align-self: center; padding: clamp(28px, 3.2vw, 46px); }
+    .support-copy--warranty { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr); gap: clamp(28px, 4vw, 64px); padding: clamp(28px, 3.2vw, 46px); }
+    .support-warranty-summary, .support-exclusions { min-width: 0; }
+    .support-exclusions { padding-left: clamp(0px, 2vw, 30px); border-left: 1px solid var(--line); }
+    .support-label { color: var(--cyan); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .support-copy h3 { margin: 9px 0 16px; font-size: 24px; line-height: 1.15; text-wrap: balance; }
+    .package-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: #a7b1ad; font-size: 11px; }
+    .package-list li { padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .warranty-periods { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 16px 0; background: var(--line); }
+    .warranty-period { display: flex; justify-content: space-between; gap: 14px; padding: 12px; background: #151b19; color: #a7b1ad; font-size: 10px; }
+    .warranty-period b { color: var(--lime); white-space: nowrap; }
+    .support-policy { margin: 0; color: #a4afaa; font-size: 11px; line-height: 1.65; }
+    .support-exclusions .support-policy { margin-top: 13px; }
+    .exclusion-list { margin: 13px 0 0; padding-left: 18px; color: #7f8a85; font-size: 10px; line-height: 1.65; }
+    .review-intro { min-height: 200px; position: relative; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background-color: #080c0b; background-image: linear-gradient(90deg, rgba(4,7,7,.97), rgba(4,7,7,.58) 46%, rgba(4,7,7,.12)), url('assets/gallery/pill-colorways.jpg'); background-position: center, right 46%; background-repeat: no-repeat; background-size: cover, 72% auto; }
+    .review-intro h3 { max-width: 650px; margin: 0; font-size: clamp(30px, 4.4vw, 58px); font-weight: 350; letter-spacing: -.075em; line-height: .96; text-wrap: balance; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+    .review-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); background: #111615; color: inherit; text-decoration: none; transition: transform .28s var(--ease), border-color .25s ease; }
+    .review-card:hover { transform: translateY(-4px); border-color: rgba(199,246,74,.5); }
+    .review-image-wrap { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #050707; }
+    .review-image-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .review-play { position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,7,7,.78); color: var(--lime); }
+    .review-copy { display: grid; align-content: start; gap: 8px; padding: 15px; }
+    .review-channel { color: var(--lime); font: 800 8px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; text-wrap: balance; }
+    .review-copy span:last-child { color: #7f8a85; font-size: 9px; }
     .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
     .gallery-heading h3 { margin: 0; font-size: clamp(32px, 5vw, 70px); font-weight: 350; letter-spacing: -.075em; line-height: .9; }
     .gallery-heading p { max-width: 38ch; margin: 0; color: #9aa59f; font-size: 13px; line-height: 1.55; text-align: right; }
@@ -241,7 +263,7 @@
       .story-rail { padding-left: 14px; padding-right: 14px; }
       .viewer-column { padding: 0 16px; }
       .panel-scroll { padding-left: 20px; padding-right: 20px; }
-      .comparison-grid, .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .comparison-grid, .gallery-grid, .review-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
     @media (max-width: 840px) {
       .app { height: auto; min-height: 100vh; grid-template-rows: 64px auto; }
@@ -253,17 +275,18 @@
       .hub-hero-image { object-position: 48% 50%; }
       .hub-layout { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: flex-end; gap: 24px; padding: 32px 18px 36px; }
       .hub-copy { width: 100%; padding-bottom: 0; }
-      .hub-copy h1 { margin: 12px 0 13px; font-size: clamp(64px, 21vw, 94px); }
-      .hub-copy p { max-width: 38ch; }
-      .hub-menu { width: 100%; padding: 15px; }
-      .hub-section-button { min-height: 106px; padding: 14px; }
-      .hub-section-button:first-child { min-height: 124px; }
+      .hub-copy h1 { margin: 12px 0 13px; font-size: 58px; }
+      .hub-copy p { max-width: 90%; font-size: 12px; }
+      .hub-menu { width: 100%; padding: 10px; }
+      .hub-section-button, .hub-section-button:first-child { min-height: 82px; padding: 11px; }
+      .hub-section-copy b { font-size: 12px; }
+      .hub-section-copy span { font-size: 10px; }
       .workspace, .workspace.panel-open { height: auto; min-height: calc(100vh - 64px); grid-template-columns: 1fr; display: flex; flex-direction: column; }
       .story-rail { order: 2; min-height: auto; padding: 15px 14px 22px; border-right: 0; border-top: 1px solid var(--line); }
-      .rail-title { margin: 12px 0 16px; font-size: 33px; }
+      .rail-title { margin: 12px 0 16px; font-size: 35px; }
       .story-list { grid-template-columns: 1fr 1fr; gap: 4px; }
       .story-button { padding: 10px 7px; grid-template-columns: 26px minmax(0,1fr) 11px; }
-      .story-copy b { font-size: 12px; }
+      .story-copy b { font-size: 11px; }
       .story-copy span { font-size: 9px; }
       .rail-spacer { min-height: 12px; }
       .viewer-column { order: 1; min-height: 620px; padding: 0 13px; grid-template-rows: 67px minmax(420px, 58vh) 54px; }
@@ -276,10 +299,13 @@
       .board { inset: 64px 0 0; }
       .board-header { padding: 18px 16px; }
       .board-content { padding: 22px 16px 42px; }
-      .positioning-intro, .support-intro { grid-template-columns: 1fr; gap: 24px; }
+      .positioning-intro { grid-template-columns: 1fr; gap: 24px; }
       .comparison-grid { margin-top: 28px; }
-      .support-blocks { grid-template-columns: 1fr; margin-top: 30px; }
-      .package-list-block .contents-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-intro { background-size: cover, auto 100%; background-position: center, center; }
+      .review-grid { grid-template-columns: 1fr; }
+      .support-block--package, .support-copy--warranty { grid-template-columns: 1fr; }
+      .support-visual { min-height: 300px; }
+      .support-exclusions { padding-top: 24px; padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
       .gallery-heading { display: block; }
       .gallery-heading p { margin-top: 14px; text-align: left; }
     }
@@ -288,26 +314,25 @@
       .training-home-link { width: 34px; height: 34px; }
       .language-toggle { height: 34px; min-height: 34px; }
       .language-option { min-width: 30px; padding-left: 6px; padding-right: 6px; }
-      .hub-section-button, .hub-section-button:first-child { min-height: 125px; padding: 14px; }
-      .hub-section-button:first-child { min-height: 150px; }
-      .hub-section-copy b { font-size: 17px; }
+      .hub-section-button, .hub-section-button:first-child { min-height: 82px; padding: 11px; }
+      .hub-section-copy b { font-size: 12px; }
       .hotspot { width: 29px; height: 29px; }
       .hotspot-label { font-size: 10px; padding: 8px 10px; }
       .viewer-column { min-height: 520px; grid-template-rows: 60px minmax(340px, 55vh) 48px; }
-      .viewer-header h1 { font-size: 14px; }
-      .viewer-header p { font-size: 9px; }
-      .viewer-count { font-size: 13px; }
+      .viewer-header h1 { font-size: 15px; }
+      .viewer-header p { font-size: 10px; }
+      .viewer-count { font-size: 12px; }
       .stage-meta { left: 14px; top: 14px; font-size: 8px; }
       .progress span { width: 17px; height: 5px; }
       .progress span.active { width: 17px; height: 24px; }
-      .comparison-grid, .gallery-grid { grid-template-columns: 1fr; }
-      .contents-list, .exclusions-list, .warranty-grid { grid-template-columns: 1fr; }
-      .package-list-block .contents-list { grid-template-columns: 1fr; }
-      .support-image { min-height: 220px; }
+      .comparison-grid, .gallery-grid, .review-grid { grid-template-columns: 1fr; }
+      .package-list, .warranty-periods { grid-template-columns: 1fr; }
+      .support-visual { min-height: 220px; }
     }
     html[lang^="zh"] .hub-hero-title { font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; letter-spacing: -.08em; }
-    html[lang^="zh"] .rail-title { font-size: clamp(31px, 2.25vw, 40px); line-height: .98; letter-spacing: -.065em; }
-    html[lang^="zh"] .panel-title, html[lang^="zh"] .board-title, html[lang^="zh"] .board-copy h3, html[lang^="zh"] .gallery-heading h3 { letter-spacing: -.08em; }
+    html[lang^="zh"] .rail-title { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; line-height: 1.08; letter-spacing: -.02em; }
+    html[lang^="zh"] .panel-title { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; line-height: 1.18; letter-spacing: -.02em; }
+    html[lang^="zh"] .board-title, html[lang^="zh"] .board-copy h3, html[lang^="zh"] .gallery-heading h3 { letter-spacing: -.08em; }
   </style>
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pill/index.html">
@@ -352,7 +377,7 @@
           <h1 class="rail-title" id="railTitle">Learn it by<br />touching it.</h1>
           <div class="story-list" id="storyList"></div>
           <div class="rail-spacer"></div>
-          <button class="overview-button active" id="overviewButton" data-role="product-overview" type="button">Overview</button>
+          <button class="overview-button active" id="productOverviewButton" data-role="product-overview" type="button">Overview</button>
         </aside>
 
         <section class="viewer-column">
@@ -361,7 +386,7 @@
             <div class="viewer-count" id="viewerCount">00 / 06</div>
           </header>
           <div class="stage-window" id="stageWindow" data-role="product-stage">
-            <div class="photo-rig" id="photoRig">
+            <div class="photo-rig" id="angleTrack">
               <img class="master-image" id="masterImage" src="assets/gallery/pill-blue-earbuds-out.jpg" alt="" draggable="false" />
               <div class="stage-grid" aria-hidden="true"></div>
               <div class="stage-meta" id="stageMeta">MASTER / HD<span>FRONT · PRODUCT &amp; EARBUDS</span></div>
@@ -381,7 +406,7 @@
             <div class="panel-head"><div class="panel-kicker" id="panelKicker"></div><button class="panel-close" id="panelClose" type="button" aria-label="Close feature details">×</button></div>
             <h2 class="panel-title" id="panelTitle"></h2>
             <p class="panel-body" id="panelBody"></p>
-            <figure class="media-card"><div class="media-frame"><img id="mediaImage" src="" alt="" /></div><div class="media-controls"><button id="mediaPrevious" type="button" aria-label="Previous image">←</button><span class="media-index" id="mediaIndex">01 / 02</span><button id="mediaNext" type="button" aria-label="Next image">→</button></div><figcaption class="media-caption" id="mediaCaption"></figcaption></figure>
+            <figure class="media-card"><div class="media-frame" id="mediaFrame"><img id="mediaImage" src="" alt="" /></div><div class="media-controls"><button id="mediaPrevious" type="button" aria-label="Previous image">←</button><span class="media-index" id="mediaIndex">01 / 02</span><button id="mediaNext" type="button" aria-label="Next image">→</button></div><figcaption class="media-caption" id="mediaCaption"></figcaption></figure>
             <div class="subfeature-list" id="subfeatureList"></div>
             <section class="panel-section"><h3 id="showKicker">SHOW IT</h3><p id="showText"></p></section>
             <section class="panel-section"><h3 id="sayKicker">SAY THIS</h3><p class="say-line" id="sayText"></p></section>
@@ -408,10 +433,10 @@
       const accentMap = { sound: '#ffab2f', awareness: '#39d2e5', comfort: '#ad82ff', calls: '#ff4f6a', case: '#c7f64a', everyday: '#6c9cff' };
       const copy = {
         en: {
-          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Specifications, customer benefits, and sales lines', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', gallery: 'HD Image Library', gallerySub: 'Product visuals for customer demonstrations', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.', emptyBody: 'See the customer benefit, key specification, demonstration, and recommended sales line for each feature.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', galleryNote: 'Choose an image for customer demonstrations, color comparison, or follow-up.'
+          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Customer benefits, demonstrations, and key proof', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', reviews: 'Media Reviews', reviewsSub: 'Sound, fit, and everyday experience', gallery: 'HD Image Library', gallerySub: 'Design, colorways, and product details', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'START HERE', emptyTitle: 'Choose one<br />selling point.', emptyBody: 'Learn the customer benefit, demonstration, recommended line, and key proof.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', reviewIntroTitle: 'Three reviews across sound, fit, and everyday use.', openReview: 'Watch the full review ↗', galleryNote: 'Select an image to inspect the original in high resolution.'
         },
         zh: {
-          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '规格、顾客利益与销售话术', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', gallery: '高清图库', gallerySub: '用于顾客演示的产品图片', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。', emptyBody: '每个卖点都包含顾客利益、关键规格、现场演示和推荐话术。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', galleryNote: '选择图片用于顾客演示、颜色对比或后续跟进。'
+          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、演示方法与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '声音、佩戴与日常体验', gallery: '高清图库', gallerySub: '外观、配色与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '从这里开始', emptyTitle: '选择一个<br />核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', reviewIntroTitle: '三条评测，分别观察声音、佩戴与日常体验。', openReview: '观看完整评测 ↗', galleryNote: '点击图片，查看高清原图。'
         }
       };
       let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -422,7 +447,7 @@
       const $ = (id) => document.getElementById(id);
       const els = {
         hub: $('hubView'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
-        storyList: $('storyList'), overviewButton: $('overviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('photoRig'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
+        storyList: $('storyList'), overviewButton: $('productOverviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('angleTrack'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaFrame: $('mediaFrame'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
       };
 
       function t(value) { return typeof value === 'string' ? value : value[language]; }
@@ -461,6 +486,7 @@
         els.mediaNext.setAttribute('aria-label', ui('next'));
         els.lightboxClose.setAttribute('aria-label', ui('closeSection'));
         renderHubButtons();
+        renderHotspots();
         renderStoryList();
         if (currentFeatureId) renderFeature(currentFeatureId, false);
         if (currentSection() !== 'hub' && currentSection() !== 'core') renderBoard(currentSection());
@@ -470,6 +496,7 @@
           { id: 'core', accent: '#c7f64a', tag: language === 'zh' ? '卖点' : 'SELL', title: ui('core'), subtitle: ui('coreSub') },
           { id: 'positioning', accent: '#ffab2f', tag: language === 'zh' ? '定位' : 'POSITION', title: ui('positioning'), subtitle: ui('positioningSub') },
           { id: 'support', accent: '#39d2e5', tag: language === 'zh' ? '售后' : 'OWNERSHIP', title: ui('support'), subtitle: ui('supportSub') },
+          { id: 'reviews', accent: '#ad82ff', tag: language === 'zh' ? '评测' : 'REVIEWS', title: ui('reviews'), subtitle: ui('reviewsSub') },
           { id: 'gallery', accent: '#6c9cff', tag: language === 'zh' ? '素材' : 'ASSETS', title: ui('gallery'), subtitle: ui('gallerySub') }
         ];
         els.hubSectionGrid.innerHTML = sections.map((section) => '<button class="hub-section-button" type="button" data-section="' + section.id + '" style="--section-accent:' + section.accent + '"><span class="hub-section-number">' + section.tag + '</span><span class="hub-section-arrow" aria-hidden="true">↗</span><span class="hub-section-copy"><b>' + section.title + '</b><span>' + section.subtitle + '</span></span></button>').join('');
@@ -492,7 +519,7 @@
         els.hotspotLayer.querySelectorAll('[data-feature]').forEach((button) => button.classList.toggle('active', button.dataset.feature === currentFeatureId));
         els.overviewButton.classList.toggle('active', !currentFeatureId);
       }
-      function fitDrag() {
+      function dragBounds() {
         const zoom = Number(els.photoRig.dataset.zoom || 1);
         const maxX = Math.max(0, (zoom - 1) * els.stageWindow.clientWidth / 2);
         const maxY = Math.max(0, (zoom - 1) * els.stageWindow.clientHeight / 2);
@@ -509,7 +536,7 @@
         const height = els.stageWindow.clientHeight;
         drag.x = -((feature.focus.x / 100) - .5) * width * (zoom - 1);
         drag.y = -((feature.focus.y / 100) - .5) * height * (zoom - 1);
-        fitDrag();
+        dragBounds();
         els.stageWindow.classList.toggle('is-focused', Boolean(feature));
         els.stageWindow.classList.toggle('is-draggable', Boolean(feature));
         els.stageWindow.classList.toggle('is-dragging', false);
@@ -521,7 +548,7 @@
         document.documentElement.style.setProperty('--accent', '#c7f64a');
         els.photoRig.style.transition = 'transform .72s var(--ease)';
         els.photoRig.dataset.zoom = 1;
-        drag.x = 0; drag.y = 0; fitDrag();
+        drag.x = 0; drag.y = 0; dragBounds();
         els.stageWindow.classList.remove('is-focused', 'is-draggable', 'is-dragging');
         els.viewerTitle.textContent = ui('viewerOverview');
         els.viewerSubtitle.textContent = ui('viewerSubtitle');
@@ -563,7 +590,9 @@
       }
       function renderMedia(feature) {
         const item = feature.media[mediaIndex % feature.media.length];
-        els.mediaImage.src = item.image;
+        els.mediaFrame.dataset.layout = item.layout || 'photo';
+        els.mediaFrame.dataset.tone = item.tone || 'dark';
+        els.mediaImage.src = t(item.image);
         els.mediaImage.alt = t(item.alt);
         els.mediaCaption.textContent = t(item.caption);
         els.mediaIndex.textContent = String((mediaIndex % feature.media.length) + 1).padStart(2, '0') + ' / ' + String(feature.media.length).padStart(2, '0');
@@ -593,23 +622,28 @@
       }
       function renderBoard(section) {
         const boardData = {
-          positioning: { accent: '#ffab2f', kicker: language === 'zh' ? '产品定位' : 'PRODUCT POSITIONING', title: language === 'zh' ? '产品定位' : 'Product positioning' },
+          positioning: { accent: '#ffab2f', kicker: language === 'zh' ? '产品定位' : 'PRODUCT POSITIONING', title: data.positioning[language].title },
           support: { accent: '#39d2e5', kicker: t(data.support[language].kicker), title: t(data.support[language].title) },
-          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '把好看的产品图用在对的地方。' : 'Show the product at its best.' }
+          reviews: { accent: '#ad82ff', kicker: language === 'zh' ? '媒体评测' : 'MEDIA REVIEWS', title: language === 'zh' ? '从实际使用体验认识 PILL。' : 'See PILL through real-world use.' },
+          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 PILL 的外观、配色与结构细节。' : 'Inspect PILL design, colorways, and product details.' }
         }[section];
         if (!boardData) { navigateSection('hub', false); return; }
         els.board.style.setProperty('--accent', boardData.accent); els.boardKicker.textContent = boardData.kicker; els.boardTitle.textContent = boardData.title;
         if (section === 'positioning') els.boardContent.innerHTML = positioningMarkup();
         if (section === 'support') els.boardContent.innerHTML = supportMarkup();
+        if (section === 'reviews') { els.boardContent.innerHTML = reviewsMarkup(); }
         if (section === 'gallery') { els.boardContent.innerHTML = galleryMarkup(); bindGallery(); }
+      }
+      function reviewsMarkup() {
+        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
       }
       function positioningMarkup() {
         const pack = data.positioning[language];
-        return '<div class="positioning-intro"><div class="board-copy"><h3>' + pack.title + '</h3><p>' + pack.body + '</p><p class="position-question">' + pack.question + '</p></div><div class="board-image"><img src="' + data.positioning.image + '" alt="' + (language === 'zh' ? '三种颜色的 PILL 产品' : 'Three PILL colorways') + '" /></div></div><div class="comparison-grid">' + pack.comparisons.map((item) => '<article class="comparison-card"><h4>' + item[0] + '</h4><p>' + item[1] + '</p></article>').join('') + '</div>';
+        return '<div class="positioning-intro"><div class="board-copy"><p>' + pack.body + '</p><p class="position-question">' + pack.question + '</p></div><div class="board-image"><img src="' + data.positioning.image + '" alt="' + (language === 'zh' ? '三种颜色的 PILL 产品' : 'Three PILL colorways') + '" /></div></div><div class="comparison-grid">' + pack.comparisons.map((item) => '<article class="comparison-card"><h4>' + item[0] + '</h4><p>' + item[1] + '</p></article>').join('') + '</div>';
       }
       function supportMarkup() {
         const pack = data.support[language];
-        return '<div class="support-intro"><div class="board-copy support-copy"><h3>' + pack.packageTitle + '</h3></div><div class="board-image support-image"><img src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 透明充电盒与耳机' : 'PILL transparent charging case and earbuds') + '" /></div></div><div class="support-blocks"><section class="support-block package-list-block"><ul class="contents-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></section><section class="support-block warranty-block"><h4>' + pack.warrantyTitle + '</h4><div class="warranty-grid">' + pack.periods.map((item) => '<div class="warranty-cell"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-note">' + pack.policy + '</p></section><section class="support-block exclusions-block"><h4>' + pack.exclusionsTitle + '</h4><ul class="exclusions-list">' + pack.exclusions.map((item) => '<li>' + item + '</li>').join('') + '</ul></section></div>';
+        return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 透明充电盒与耳机' : 'PILL transparent charging case and earbuds') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
       }
       function galleryMarkup() {
         return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="assets/gallery/' + item[0] + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
@@ -630,14 +664,13 @@
       els.lightboxClose.addEventListener('click', closeLightbox);
       els.lightbox.addEventListener('click', (event) => { if (event.target === els.lightbox) closeLightbox(); });
       els.stageWindow.addEventListener('pointerdown', (event) => { if (!currentFeatureId || event.button !== 0 || event.target.closest('.hotspot')) return; drag.active = true; drag.pointerId = event.pointerId; drag.startX = event.clientX; drag.startY = event.clientY; drag.originX = drag.x; drag.originY = drag.y; els.stageWindow.classList.add('is-dragging'); els.stageWindow.setPointerCapture(event.pointerId); event.preventDefault(); });
-      els.stageWindow.addEventListener('pointermove', (event) => { if (!drag.active || event.pointerId !== drag.pointerId) return; drag.x = drag.originX + event.clientX - drag.startX; drag.y = drag.originY + event.clientY - drag.startY; fitDrag(); });
+      els.stageWindow.addEventListener('pointermove', (event) => { if (!drag.active || event.pointerId !== drag.pointerId) return; drag.x = drag.originX + event.clientX - drag.startX; drag.y = drag.originY + event.clientY - drag.startY; dragBounds(); });
       function stopDrag(event) { if (!drag.active || (event.pointerId != null && event.pointerId !== drag.pointerId)) return; drag.active = false; els.stageWindow.classList.remove('is-dragging'); }
       els.stageWindow.addEventListener('pointerup', stopDrag); els.stageWindow.addEventListener('pointercancel', stopDrag); els.stageWindow.addEventListener('lostpointercapture', stopDrag);
-      window.addEventListener('resize', () => { if (currentFeatureId) setFocusedView(featureById[currentFeatureId], false); else fitDrag(); });
+      window.addEventListener('resize', () => { if (currentFeatureId) setFocusedView(featureById[currentFeatureId], false); else dragBounds(); });
       window.addEventListener('popstate', () => { currentFeatureId = currentSection() === 'core' ? currentFeatureId : null; applyLanguage(); renderRoute(); });
       window.addEventListener('keydown', (event) => { if (event.key === 'Escape') { if (els.lightbox.classList.contains('open')) closeLightbox(); else if (els.board.classList.contains('open') || currentSection() === 'core') navigateSection('hub'); } });
 
-      renderHotspots();
       applyLanguage();
       renderRoute();
     })();

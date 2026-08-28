@@ -34,8 +34,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 19, y: 57 },
       focus: { x: 19, y: 57, zoom: 1.58 },
       media: [
-        { image: "assets/gallery/pill-red-case-open.jpg", alt: { en: "Red PILL earbuds in the transparent charging case", zh: "红色 PILL 耳机放在透明充电盒中" }, caption: { en: "The 13mm driver and adaptive bass algorithm build a stronger low-frequency foundation.", zh: "13mm 单元与自适应低频算法，为声音建立更充足的低频基础。" } },
-        { image: "assets/gallery/pill-blue-front.jpg", alt: { en: "Blue PILL open-ear earbud close-up", zh: "蓝色 PILL 开放式耳机特写" }, caption: { en: "The 13mm driver sits at the acoustic end of the earbud.", zh: "13mm 发声单元位于耳机的发声端。" } }
+        { image: { en: "assets/official/pill-official-adaptive-bass.jpg", zh: "assets/official/cn/pill-cn-06.jpg" }, layout: "poster", tone: "light", alt: { en: "Official PILL adaptive bass enhancement chart and product image", zh: "官方 PILL 自适应低频增强曲线与产品图" }, caption: { en: "This curve shows how the adaptive bass enhancement is used to build a fuller low-frequency foundation.", zh: "这张曲线展示了自适应低频增强如何帮助建立更充足的低频基础。" } },
+        { image: { en: "assets/official/pill-official-vdsf.jpg", zh: "assets/official/cn/pill-cn-07.jpg" }, layout: "poster", tone: "dark", alt: { en: "Official PILL VDSF for OWS reference tuning chart", zh: "官方 PILL 面向 OWS 的 VDSF 参考调音曲线" }, caption: { en: "MOONDROP developed a dedicated OWS target from B&K 5128 measurement and tuning work.", zh: "MOONDROP 基于 B&K 5128 的测量与调音工作，为 OWS 开发了专属目标。" } }
       ],
       subfeatures: [
         { label: { en: "13mm dynamic driver", zh: "13mm 动圈单元" }, text: { en: "A large circular driver for a fuller acoustic foundation.", zh: "大尺寸圆形单元，提供更充足的声音基础。" } },
@@ -46,7 +46,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Play a familiar track, then point to the acoustic end of the earbud. Let the customer hear the bass foundation before you introduce the three bass tunings.", zh: "播放顾客熟悉的音乐，再指向耳机的发声端。先让顾客听到低频基础，再介绍三种低频调音。" },
       say: { en: "“It is open-ear, but the sound is not thin: the 13mm driver and adaptive bass tuning give it a fuller foundation.”", zh: "“它是开放式佩戴，但声音并不单薄；13mm 单元和自适应低频调校让整体听感更饱满。”" },
       spec: { en: "13mm circular low-distortion dynamic driver · patented adaptive bass enhancement · three bass tunings", zh: "13mm 圆形低失真动圈单元 · 专利自适应低频增强算法 · 三种低频调音" },
-      source: "PILL training material pp.4, 6; official MOONDROP PILL product page"
+      source: "PILL training material pp.4, 6; official MOONDROP PILL CN/EN product pages"
     },
     {
       id: "awareness",
@@ -58,8 +58,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 12, y: 45 },
       focus: { x: 14, y: 48, zoom: 1.62 },
       media: [
-        { image: "assets/gallery/pill-blue-earbuds-out.jpg", alt: { en: "PILL earbud shown outside the case", zh: "PILL 耳机从充电盒中取出" }, caption: { en: "The open-ear form keeps the ear canal unobstructed while music plays.", zh: "开放式形态让耳道保持开放，同时享受音乐。" } },
-        { image: "assets/gallery/pill-red-earbuds-out.jpg", alt: { en: "Red PILL earbuds shown beside the case", zh: "红色 PILL 耳机与充电盒并置" }, caption: { en: "A natural fit for walking, commuting, and staying aware of nearby conversations.", zh: "适合步行、通勤，也方便留意身边的对话。" } }
+        { image: "assets/gallery/pill-blue-earbuds-out.jpg", alt: { en: "Blue PILL earbuds shown outside the case with open acoustic ends visible", zh: "蓝色 PILL 耳机取出展示，开放式发声端清晰可见" }, caption: { en: "The exposed acoustic ends make the open-ear form visible: PILL does not seal the ear canal.", zh: "外露的发声端把开放式形态展示出来：PILL 不封闭耳道。" } },
+        { image: "assets/gallery/pill-red-earbuds-out.jpg", alt: { en: "Red PILL earbuds shown outside the case with open acoustic ends visible", zh: "红色 PILL 耳机取出展示，开放式发声端清晰可见" }, caption: { en: "With the ear canal left open, customers can keep nearby environmental sound available while listening.", zh: "耳道保持开放，聆听音乐时也能保留对身边环境声音的感知。" } }
       ],
       subfeatures: [
         { label: { en: "Ambient awareness", zh: "环境感知" }, text: { en: "Keep environmental sounds available without removing the earbuds.", zh: "不必摘下耳机，也能保留对环境声音的感知。" } },
@@ -70,7 +70,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Use a commute scenario: music on, a colleague or customer nearby, and no need to remove the earbuds before responding.", zh: "用通勤场景来演示：耳机播放音乐，身边有人说话，也不必先摘下耳机再回应。" },
       say: { en: "“You can enjoy music while keeping the surroundings available — especially useful when walking or commuting.”", zh: "“听音乐的同时还能感知周围环境，步行和通勤时会更方便。”" },
       spec: { en: "Open-ear ear-clip form · ambient awareness · unobstructed ear canal", zh: "开放式耳夹形态 · 环境感知 · 不封闭耳道" },
-      source: "PILL training material pp.4, 9–10; official MOONDROP PILL product page"
+      source: "PILL training material pp.4, 9–10; official MOONDROP PILL CN/EN product pages"
     },
     {
       id: "comfort",
@@ -82,8 +82,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 88, y: 48 },
       focus: { x: 86, y: 51, zoom: 1.64 },
       media: [
-        { image: "assets/gallery/pill-red-single-earbud.jpg", alt: { en: "One red PILL earbud beside the charging case", zh: "一只红色 PILL 耳机与充电盒并置" }, caption: { en: "The C-bridge and rounded contact surface are designed for a secure, comfortable hold.", zh: "C 形耳挂与圆润接触面，让佩戴更稳定、更舒适。" } },
-        { image: "assets/gallery/pill-blue-open.jpg", alt: { en: "Blue PILL open-ear earbuds in the case", zh: "蓝色 PILL 开放式耳机放在充电盒中" }, caption: { en: "IPX4 protection helps cover daily use and workouts where sweat or light splashes are expected.", zh: "IPX4 防护覆盖日常使用及有汗水或轻微泼溅的运动场景。" } }
+        { image: { en: "assets/official/pill-official-cbridge.jpg", zh: "assets/official/cn/pill-cn-11.jpg" }, layout: "poster", tone: "light", alt: { en: "Official PILL shape-memory silicone C-bridge structure graphic", zh: "官方 PILL 记忆形变硅胶 C 形耳挂结构图" }, caption: { en: "The C-bridge combines a soft silicone outer layer with shape-memory titanium-alloy support for elastic, durable wear.", zh: "C 形耳挂以柔软硅胶包覆记忆形变钛合金支撑，兼顾弹性与耐用性。" } },
+        { image: "assets/gallery/pill-red-single-earbud.jpg", layout: "photo", tone: "light", alt: { en: "PILL earbud and charging case showing the rounded contact surface and C-bridge", zh: "展示圆润接触面与 C 形耳挂的 PILL 耳机及充电盒" }, caption: { en: "The product close-up makes the smooth contact surface and pressure-distributing C-bridge easy to explain at the counter.", zh: "产品近景可直接看清圆润接触面与分散压力的 C 形耳挂，方便门店讲解。" } }
       ],
       subfeatures: [
         { label: { en: "Shape-memory C-bridge", zh: "记忆形变 C 形耳挂" }, text: { en: "TPU and titanium alloy combine softness, elasticity, and durability.", zh: "TPU 与钛合金结合，兼顾柔软、弹性与耐用性。" } },
@@ -94,7 +94,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Let the customer hold one earbud first. Demonstrate the soft C-bridge and rounded contact surface, then place it naturally around the auricle.", zh: "先让顾客拿起一只耳机，展示柔软的 C 形耳挂和圆润接触面，再自然地夹在耳廓上。" },
       say: { en: "“The C-bridge holds the earbud without filling the ear canal, so it stays light and comfortable when you move.”", zh: "“C 形耳挂不需要塞进耳道，佩戴轻巧，活动时也更舒服、更稳。”" },
       spec: { en: "TPU body · titanium-alloy elastic C-bridge · skin-friendly contact surface · IPX4", zh: "TPU 机身 · 钛合金弹性 C 形耳挂 · 亲肤接触面 · IPX4 防护" },
-      source: "PILL training material pp.4–5; official MOONDROP PILL product page"
+      source: "PILL training material pp.4–5; official MOONDROP PILL CN/EN product pages"
     },
     {
       id: "calls",
@@ -106,8 +106,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 77, y: 62 },
       focus: { x: 78, y: 60, zoom: 1.62 },
       media: [
-        { image: "assets/gallery/pill-blue-rear.jpg", alt: { en: "Rear view of the blue PILL charging case", zh: "蓝色 PILL 充电盒背面" }, caption: { en: "NPU-based AI call noise reduction is designed to improve voice pickup in noisy surroundings.", zh: "NPU 硬件级 AI 通话降噪用于提升嘈杂环境中的人声拾取。" } },
-        { image: "assets/gallery/pill-red-side.jpg", alt: { en: "Side view of the red PILL charging case and earbuds", zh: "红色 PILL 充电盒与耳机侧面" }, caption: { en: "Directional transmission helps reduce sound leakage in quiet surroundings.", zh: "定向传声有助于减少安静环境中的声音泄漏。" } }
+        { image: { en: "assets/official/pill-official-npu.jpg", zh: "assets/official/cn/pill-cn-09.jpg" }, layout: "poster", tone: "dark", alt: { en: "Official PILL NPU hardware-level AI noise cancellation diagram", zh: "官方 PILL NPU 硬件级 AI 降噪示意图" }, caption: { en: "The NPU and voice-versus-ambient-noise graphic explains how the microphone is designed to improve voice pickup in noisy places.", zh: "NPU 与人声、环境噪声的示意图，解释了麦克风如何在嘈杂环境下提升人声拾取。" } },
+        { image: { en: "assets/official/pill-official-dipole.jpg", zh: "assets/official/cn/pill-cn-08.jpg" }, layout: "poster", tone: "dark", alt: { en: "Official PILL dipole directional sound transmission diagram", zh: "官方 PILL 偶极定向传声示意图" }, caption: { en: "The ear-worn diagram explains the directional transmission design and its stated leakage measurement.", zh: "佩戴示意图解释了定向传声设计及其标注的漏音测量结果。" } }
       ],
       subfeatures: [
         { label: { en: "NPU AI noise cancellation", zh: "NPU 硬件级 AI 降噪" }, text: { en: "Environmental noise cancellation helps the microphone focus on your voice.", zh: "环境噪声消除帮助麦克风更集中地拾取人声。" } },
@@ -118,7 +118,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Make a short call in a noisy area if possible. Then lower the volume and explain that directional transmission is designed to reduce leakage in quieter surroundings.", zh: "条件允许时，在较嘈杂的环境中进行简短通话；再把音量调低，说明定向传声有助于在安静环境中减少漏音。" },
       say: { en: "“For calls, the microphone is built to keep your voice clear, while directional transmission helps keep the sound closer to you.”", zh: "“通话时，麦克风会尽量把人声收清楚；定向传声则帮助声音更集中在你周围，减少旁人听到。”" },
       spec: { en: "NPU hardware-level AI noise-cancellation microphone · dipole directional sound transmission", zh: "NPU 硬件级 AI 通话降噪麦克风 · 偶极定向传声技术" },
-      source: "PILL training material pp.4, 6, 9; official MOONDROP PILL product page"
+      source: "PILL training material pp.4, 6, 9; official MOONDROP PILL CN/EN product pages"
     },
     {
       id: "case",
@@ -130,8 +130,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 43, y: 31 },
       focus: { x: 43, y: 34, zoom: 1.56 },
       media: [
-        { image: "assets/gallery/pill-blue-case-open.jpg", alt: { en: "Blue PILL earbuds inside the transparent charging case", zh: "蓝色 PILL 耳机放在透明充电盒中" }, caption: { en: "The rotatable case is designed for a quick, visible place-and-charge routine.", zh: "可旋转充电盒，让放入和充电的动作更直观。" } },
-        { image: "assets/gallery/pill-blue-top.jpg", alt: { en: "Top view of the blue PILL case and earbuds", zh: "蓝色 PILL 充电盒与耳机顶部视图" }, caption: { en: "The universal case does not require left/right distinction when placing the earbuds.", zh: "通用充电盒放入耳机时不必区分左右。" } }
+        { image: { en: "assets/official/pill-official-concept.jpg", zh: "assets/official/cn/pill-cn-02.jpg" }, layout: "poster", tone: "light", alt: { en: "Official PILL concept image showing the capsule case and earbuds", zh: "官方 PILL 概念图展示胶囊形充电盒与耳机" }, caption: { en: "The capsule case, retracting earbuds, and twist-led mechanism make the daily storage routine distinctive.", zh: "胶囊形充电盒、收回式耳机与旋转结构，让日常收纳动作更有辨识度。" } },
+        { image: "assets/gallery/pill-red-side.jpg", alt: { en: "Red PILL charging case with both earbuds placed outside", zh: "红色 PILL 充电盒与两只取出的耳机" }, caption: { en: "The case and separated earbuds make the universal placement idea easy to demonstrate without checking left or right.", zh: "充电盒与取出的两只耳机便于演示放回时不必先确认左右。" } }
       ],
       subfeatures: [
         { label: { en: "Rotatable charging case", zh: "可旋转充电盒" }, text: { en: "A distinctive case design that makes the product easy to recognize.", zh: "有辨识度的充电盒设计，让产品更容易被记住。" } },
@@ -142,7 +142,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Rotate the case in your hand, place both earbuds back without checking L/R, and use the touch area once to show the response.", zh: "在手中旋转充电盒，展示不分左右放回两只耳机，再轻触一次触控区域，展示操作反馈。" },
       say: { en: "“The case is designed to be easy to recognize and easy to use — you can put either earbud into either side.”", zh: "“这个充电盒既有辨识度，也很容易使用；耳机放回去时不用区分左右。”" },
       spec: { en: "Rotatable charging case · universal placement without L/R distinction · wear detection · touch control", zh: "可旋转充电盒 · 放入时不分左右 · 佩戴检测 · 触控操作" },
-      source: "PILL training material pp.5, 7; official MOONDROP PILL product page"
+      source: "PILL training material pp.5, 7; official MOONDROP PILL CN/EN product pages"
     },
     {
       id: "everyday",
@@ -154,8 +154,8 @@ window.MOONDROP_PILL_DATA = {
       position: { x: 55, y: 72 },
       focus: { x: 55, y: 69, zoom: 1.62 },
       media: [
-        { image: "assets/gallery/pill-blue-rear-light.jpg", alt: { en: "Blue PILL charging case from the rear on a light background", zh: "浅色背景下的蓝色 PILL 充电盒背面" }, caption: { en: "The charging case uses a USB-C port for everyday recharging.", zh: "充电盒采用 USB-C 接口进行日常充电。" } },
-        { image: "assets/gallery/pill-three-colorways.jpg", alt: { en: "Three PILL colorways arranged together", zh: "三种颜色的 PILL 产品组合" }, caption: { en: "Bluetooth 6.0, dual-device connection, and app control support everyday use.", zh: "Bluetooth 6.0、双设备连接和 App 控制，满足日常使用需求。" } }
+        { image: { en: "assets/official/pill-official-battery.jpg", zh: "assets/official/cn/pill-cn-14.jpg" }, layout: "poster", tone: "light", alt: { en: "Official PILL battery life graphic showing 8 plus 20 hours playback and 35 plus 90 hours standby", zh: "官方 PILL 续航图，展示 8+20 小时播放与 35+90 小时待机" }, caption: { en: "The stated 8+20 hours playback and 35+90 hours standby figures are shown with their test condition.", zh: "图中标注了 8+20 小时播放与 35+90 小时待机，并保留测试条件说明。" } },
+        { image: { en: "assets/official/pill-official-app.jpg", zh: "assets/official/cn/pill-cn-16.jpg" }, layout: "poster", tone: "light", alt: { en: "Official MOONDROP App and dual-device connectivity screens for PILL", zh: "官方 MOONDROP App 与 PILL 双设备连接界面" }, caption: { en: "The App screens show three bass settings, touch customization, and two-device connectivity.", zh: "App 界面展示三档低频、触控自定义与双设备连接。" } }
       ],
       subfeatures: [
         { label: { en: "8 + 20 hours playback", zh: "8 + 20 小时续航" }, text: { en: "Up to 8 hours from the earbuds and 20 hours from the case under the stated AAC condition.", zh: "在标注的 AAC 条件下，耳机最长 8 小时，充电盒额外提供 20 小时。" } },
@@ -166,7 +166,7 @@ window.MOONDROP_PILL_DATA = {
       show: { en: "Turn the product in your hand to show the USB-C charging port, then open the MOONDROP App and use one visible setting to complete the demo.", zh: "拿起产品展示 USB-C 充电接口，再打开 MOONDROP App，用一个可见设置完成演示。" },
       say: { en: "“It covers the whole day with the case, stays flexible across two devices, and gives you more control through the MOONDROP App.”", zh: "“充电盒可以覆盖全天使用，还能连接两台设备；想进一步调整，也可以交给 MOONDROP App。”" },
       spec: { en: "8h earbuds + 20h case playback · 35h + 90h standby · Bluetooth 6.0 · SBC/AAC · 10m · dual-device · MOONDROP App", zh: "耳机 8 小时 + 充电盒 20 小时续航 · 35 + 90 小时待机 · Bluetooth 6.0 · SBC/AAC · 10 米 · 双设备 · MOONDROP App" },
-      source: "PILL training material pp.6–7; official MOONDROP PILL product page"
+      source: "PILL training material pp.6–7; official MOONDROP PILL CN/EN product pages"
     }
   ],
   positioning: {
@@ -174,7 +174,7 @@ window.MOONDROP_PILL_DATA = {
     en: {
       kicker: "PRODUCT POSITIONING",
       title: "For customers who want music without closing off the world.",
-      body: "PILL is an open-ear ear-clip wireless earphone for commuting, exercise, calls, and everyday listening. It sits between conventional OWS products and in-ear Bluetooth earphones: more aware and comfortable than a sealed fit, with fuller sound and more control than a basic open-ear product.",
+      body: "PILL is an open-ear ear-clip wireless earphone for commuting, exercise, calls, and everyday listening. It keeps the ear canal open, then adds a 13mm driver, adaptive bass enhancement, directional sound transmission, dual-device connectivity, and app control to strengthen the everyday open-ear experience.",
       question: "Start with one question: “When do you want to keep hearing what is around you?”",
       comparisons: [
         ["Other OWS", "PILL adds a 13mm driver, adaptive bass enhancement, and directional transmission to answer bass depth and leakage concerns."],
@@ -186,7 +186,7 @@ window.MOONDROP_PILL_DATA = {
     zh: {
       kicker: "产品定位",
       title: "给想听音乐、又不想与环境隔绝的顾客。",
-      body: "PILL 是一款面向通勤、运动、通话与日常聆听的开放式耳夹式无线耳机。它处在传统 OWS 与入耳式蓝牙耳机之间：比封闭式佩戴更容易感知环境，也比基础开放式产品拥有更完整的声音与操控体验。",
+      body: "PILL 是一款面向通勤、运动、通话与日常聆听的开放式耳夹式无线耳机。它不封闭耳道，再通过 13mm 单元、自适应低频增强、定向传声、双设备连接和 App 控制，补足开放式耳机的日常使用体验。",
       question: "先问顾客一个问题：“你通常在什么场景下，需要同时听见周围的声音？”",
       comparisons: [
         ["对比其他 OWS", "PILL 用 13mm 单元、自适应低频增强和定向传声，回应低频深度与漏音顾虑。"],
@@ -207,8 +207,8 @@ window.MOONDROP_PILL_DATA = {
       warrantyTitle: "Warranty periods",
       periods: [["PILL main unit", "1 year"], ["Charging case", "1 year"], ["Package accessories", "90 days"]],
       policy: "The warranty period starts on the purchase date. Non-human-induced performance faults of the main unit are covered for 1 year; applicable package accessories are covered for 90 days.",
-      exclusionsTitle: "Not covered",
-      exclusions: ["Unauthorized modification, disassembly, or repair", "Accidental or human-caused damage, including deformation, corrosion, liquid ingress, drops, or unsuitable voltage", "Expired warranty", "Force majeure such as fire, earthquake, or flood"]
+      serviceTitle: "When a customer asks for service",
+      serviceAction: "Confirm the purchase date and the issue first. For drops, liquid damage, disassembly, or other human-caused damage, contact the applicable after-sales channel before promising coverage."
     },
     zh: {
       kicker: "包装与保修",
@@ -219,10 +219,30 @@ window.MOONDROP_PILL_DATA = {
       warrantyTitle: "保修期限",
       periods: [["PILL 主机", "1 年"], ["充电盒", "1 年"], ["包装配件", "90 天"]],
       policy: "保修期从购买日起计算。主机出现非人为性能故障，保修期为 1 年；适用的包装配件保修 90 天。",
-      exclusionsTitle: "不在保修范围",
-      exclusions: ["未经授权的改装、拆卸或维修", "人为或意外损坏，包括变形、腐蚀、进液、跌落或输入不适当电压", "超过保修期限", "火灾、地震、洪水等不可抗力造成的故障或损坏"]
+      serviceTitle: "顾客提出售后问题时",
+      serviceAction: "先确认购买日期和问题现象。遇到跌落、进液、拆修等人为损坏时，不要直接承诺保修，先联系对应渠道售后确认。"
     }
   },
+  reviews: [
+    {
+      channel: "Gamesky",
+      title: "MOONDROP Pill : Audiophile Clip-On Wireless Earbuds?",
+      url: "https://www.youtube.com/watch?v=uIIhR0FyoBY",
+      image: "assets/reviews/gamesky-youtube.jpg"
+    },
+    {
+      channel: "ian fann",
+      title: "MOONDROP PILL Ear-Clip Wireless Headphone (OWS) Review - The Audiophile's Take",
+      url: "https://www.youtube.com/watch?v=jcUjeNoHhI0",
+      image: "assets/reviews/ian-fann-youtube.jpg"
+    },
+    {
+      channel: "Soundignity",
+      title: "More Comfortable Than All Existing TWS? - OWS MOONDROP PILL REVIEW",
+      url: "https://www.youtube.com/watch?v=slBn_BDxPoE",
+      image: "assets/reviews/soundignity-youtube.jpg"
+    }
+  ],
   gallery: [
     ["pill-blue-front.jpg", "Blue PILL front view", "蓝色 PILL 正面"],
     ["pill-blue-back.jpg", "Blue PILL rear and USB-C", "蓝色 PILL 背面与 USB-C 接口"],
