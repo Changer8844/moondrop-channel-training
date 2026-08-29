@@ -676,6 +676,8 @@
     }
     .panel-empty, .panel-content { position: absolute; inset: 0; padding: 30px 28px; }
     .panel-empty { display: grid; align-content: center; color: #67726e; transition: opacity .3s ease; }
+    .panel-empty-close { position: absolute; top: 24px; right: 24px; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aeb9b3; font-size: 22px; line-height: 1; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
+    .panel-empty-close:hover { color: var(--lime); border-color: rgba(199,246,74,.45); }
     .panel-empty span { color: var(--lime); font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; letter-spacing: .12em; }
     .panel-empty h2 { margin: 15px 0 10px; color: #dce3df; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 36px; font-weight: 520; line-height: 1.08; letter-spacing: -.025em; }
     .panel-empty p { margin: 0; max-width: 280px; font-size: 12px; line-height: 1.65; }
@@ -1159,6 +1161,7 @@
 
       <aside class="detail-panel" id="detailPanel" data-role="feature-detail" aria-label="Feature training detail">
         <div class="panel-empty">
+          <button class="panel-empty-close" id="overviewClose" type="button" aria-label="Return to training menu">×</button>
           <span id="emptyKicker">READY FOR INPUT</span>
           <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
           <p id="emptyBody">Each selling point includes the customer benefit, core specification, demonstration, and recommended sales line.</p>
@@ -1568,6 +1571,7 @@
       const angleValue = document.getElementById('angleValue');
       const angleTrack = document.getElementById('angleTrack');
       const productOverviewButton = document.getElementById('productOverviewButton');
+      const overviewClose = document.getElementById('overviewClose');
       const trainingApp = document.getElementById('trainingApp');
       const sectionBoard = document.getElementById('sectionBoard');
       const sectionBoardContent = document.getElementById('sectionBoardContent');
@@ -1869,6 +1873,7 @@
         stage.setAttribute('aria-label', ui.stageAria);
         document.querySelector('.sequence-bar').setAttribute('aria-label', currentLanguage === 'zh' ? '细节聚焦进度' : 'Detail focus progress');
         detailPanel.setAttribute('aria-label', currentLanguage === 'zh' ? '卖点培训详情' : 'Feature training detail');
+        overviewClose.setAttribute('aria-label', ui.closeDetail);
         document.getElementById('closePanel').setAttribute('aria-label', ui.closeDetail);
         document.getElementById('galleryBoard').setAttribute('aria-label', currentLanguage === 'zh' ? 'SPACE TRAVEL 2 高清图库' : 'SPACE TRAVEL 2 HD image library');
         document.getElementById('closeGallery').setAttribute('aria-label', ui.closeGallery);
@@ -2149,6 +2154,7 @@
       }
 
       productOverviewButton.addEventListener('click', resetOverview);
+      overviewClose.addEventListener('click', closeActiveSection);
       document.getElementById('closePanel').addEventListener('click', closeActiveSection);
       document.getElementById('previousFeature').addEventListener('click', () => openFeature(features[(activeIndex - 1 + features.length) % features.length].id));
       document.getElementById('nextFeature').addEventListener('click', () => openFeature(features[(activeIndex + 1) % features.length].id));

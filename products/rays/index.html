@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
-  <meta name="description" content="MOONDROP PILL bilingual offline channel training" />
-  <title>MOONDROP PILL · Channel Training</title>
+  <meta name="description" content="MOONDROP RAYS bilingual offline channel training" />
+  <title>MOONDROP RAYS · Channel Training</title>
   <style>
     :root {
       --ink: #080b0b;
@@ -83,7 +83,7 @@
     .hub-view { position: relative; height: 100%; min-height: 0; overflow: hidden; isolation: isolate; background: #050807; }
     .hub-view::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(2,5,4,.72) 0%, rgba(2,5,4,.30) 40%, rgba(2,5,4,.08) 73%, rgba(2,5,4,.24) 100%), linear-gradient(0deg, rgba(2,5,4,.48), transparent 58%); pointer-events: none; }
     .hub-view::after { content: ""; position: absolute; inset: 0; z-index: 2; opacity: .22; background-image: linear-gradient(rgba(199,246,74,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(199,246,74,.09) 1px, transparent 1px); background-size: 80px 80px; pointer-events: none; }
-    .hub-hero-image { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 56%; opacity: 1; filter: none; }
+    .hub-hero-image { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 56%; opacity: 1; filter: none; transform: scale(1.1) translate(-4%, -4%); transform-origin: center; }
     .hub-layout { position: relative; z-index: 3; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, 520px); align-items: end; gap: clamp(24px, 4vw, 64px); padding: clamp(30px, 5vw, 74px); }
     .hub-copy { align-self: end; max-width: 690px; padding-bottom: 4px; }
     .hub-kicker, .hub-menu-kicker { font-family: Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
@@ -133,7 +133,7 @@
     .stage-window.is-draggable { cursor: grab; }
     .stage-window.is-dragging { cursor: grabbing; }
     .photo-rig { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
-    .master-image { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 50%; user-select: none; -webkit-user-drag: none; }
+    .master-image { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 50%; transform: scale(1.32); transform-origin: 50% 50%; user-select: none; -webkit-user-drag: none; }
     .stage-grid { position: absolute; inset: 0; pointer-events: none; opacity: .37; background-image: linear-gradient(rgba(77,97,93,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(77,97,93,.18) 1px, transparent 1px); background-size: 42px 42px; mix-blend-mode: multiply; }
     .stage-meta { display: none; position: absolute; left: 22px; top: 20px; z-index: 3; color: #4a5550; font: 800 10px/1.35 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; pointer-events: none; }
     .stage-meta span { display: block; margin-top: 5px; color: #85908a; font-size: 9px; font-weight: 500; letter-spacing: .07em; }
@@ -149,12 +149,11 @@
     .hotspot.flip-label .hotspot-label { left: auto; right: 38px; text-align: right; box-shadow: 0 9px 24px rgba(18,26,23,.16), inset -3px 0 0 var(--hotspot-color); }
     .hotspot:hover .hotspot-label, .hotspot:focus-visible .hotspot-label, .hotspot.active .hotspot-label { opacity: 1; transform: translate(3px, -50%); }
     .hotspot.flip-label:hover .hotspot-label, .hotspot.flip-label:focus-visible .hotspot-label, .hotspot.flip-label.active .hotspot-label { transform: translate(-3px, -50%); }
-    .viewer-footer { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 2px; }
+    .viewer-footer { min-height: 48px; display: flex; align-items: center; justify-content: flex-start; gap: 18px; padding: 0 2px; }
     .progress { display: grid; grid-template-columns: repeat(7, minmax(8px, 16px)); justify-content: start; align-items: center; height: 26px; gap: 3px; }
     .progress span { height: 5px; display: block; border-radius: 1px; background: #303936; }
     .progress span:first-child { height: 11px; }
     .progress span.active { height: 22px; background: var(--lime); box-shadow: 0 0 10px rgba(199,246,74,.35); }
-    .viewer-footer-note { color: #8a9590; font: 9px/1 Menlo, Monaco, Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
 
     .detail-panel { position: relative; min-width: 0; min-height: 0; overflow: hidden; border-left: 1px solid var(--line); background: #0d1211; }
     .panel-empty, .panel-content { position: absolute; inset: 0; }
@@ -230,7 +229,7 @@
     .support-policy { margin: 0; color: #a4afaa; font-size: 11px; line-height: 1.65; }
     .support-exclusions .support-policy { margin-top: 13px; }
     .exclusion-list { margin: 13px 0 0; padding-left: 18px; color: #7f8a85; font-size: 10px; line-height: 1.65; }
-    .review-intro { min-height: 200px; position: relative; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background-color: #080c0b; background-image: linear-gradient(90deg, rgba(4,7,7,.97), rgba(4,7,7,.58) 46%, rgba(4,7,7,.12)), url('assets/gallery/pill-colorways.jpg'); background-position: center, right 46%; background-repeat: no-repeat; background-size: cover, 72% auto; }
+    .review-intro { min-height: 200px; position: relative; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background-color: #080c0b; background-image: linear-gradient(90deg, rgba(4,7,7,.97), rgba(4,7,7,.58) 46%, rgba(4,7,7,.12)), url('assets/official/hires/rays-hero-5271.jpg'); background-position: center, 50% 67%; background-repeat: no-repeat; background-size: cover, cover; }
     .review-intro h3 { max-width: 650px; margin: 0; font-size: clamp(30px, 4.4vw, 58px); font-weight: 350; letter-spacing: -.075em; line-height: .96; text-wrap: balance; }
     .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
     .review-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); background: #111615; color: inherit; text-decoration: none; transition: transform .28s var(--ease), border-color .25s ease; }
@@ -274,7 +273,7 @@
       .brand-kicker { font-size: 8px; }
       .brand-name { font-size: 13px; }
       .hub-view { height: auto; min-height: calc(100vh - 64px); }
-      .hub-hero-image { object-position: 48% 50%; }
+      .hub-hero-image { object-position: 48% 50%; transform: scale(1.07) translate(-2.5%, -2.5%); }
       .hub-layout { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: flex-end; gap: 24px; padding: 32px 18px 36px; }
       .hub-copy { width: 100%; padding-bottom: 0; }
       .hub-copy h1 { margin: 12px 0 13px; font-size: 58px; }
@@ -340,14 +339,14 @@
     html[lang^="zh"] .board-copy h3 { letter-spacing: -.018em; }
   </style>
 </head>
-<body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pill/index.html">
+<body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/rays/index.html">
   <div class="app">
     <header class="topbar">
-      <div class="brand" aria-label="MOONDROP PILL">
+      <div class="brand" aria-label="MOONDROP RAYS">
         <span class="brand-orbit" aria-hidden="true"></span>
         <div>
           <div class="brand-kicker">MOONDROP · CHANNEL TRAINING</div>
-          <div class="brand-name">PILL</div>
+          <div class="brand-name">RAYS</div>
         </div>
       </div>
       <div class="top-status">
@@ -361,22 +360,22 @@
     </header>
 
     <main class="view">
-      <section class="hub-view" id="hubView" aria-label="PILL product training overview">
-        <img class="hub-hero-image" id="hubHeroImage" src="assets/gallery/pill-colorways.jpg" alt="PILL colorways" />
+      <section class="hub-view" id="hubView" aria-label="RAYS product training overview">
+        <img class="hub-hero-image" id="hubHeroImage" src="assets/official/hires/rays-hero-5271.jpg" alt="RAYS earphones illuminated against a deep blue background" />
         <div class="hub-layout">
           <div class="hub-copy">
-            <div class="hub-kicker" id="hubKicker">MOONDROP · PILL</div>
-            <h1 id="hubTitle">PILL</h1>
-            <p id="hubIntro">Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.</p>
+            <div class="hub-kicker" id="hubKicker">MOONDROP · RAYS</div>
+            <h1 id="hubTitle">RAYS</h1>
+            <p id="hubIntro">A wired gaming IEM built around low-latency sound, game-specific tuning, clear communication, and stable long-session wear.</p>
           </div>
-          <nav class="hub-menu" aria-label="PILL training sections">
+          <nav class="hub-menu" aria-label="RAYS training sections">
             <div class="hub-menu-kicker" id="hubMenuKicker">CHOOSE A TOPIC</div>
             <div class="hub-section-grid" id="hubSectionGrid"></div>
           </nav>
         </div>
       </section>
 
-      <section class="workspace" id="workspace" aria-label="Interactive PILL product view" data-core-template-version="1.0.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
+      <section class="workspace" id="workspace" aria-label="Interactive RAYS product view" data-core-template-version="1.0.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
         <aside class="story-rail">
           <div class="rail-kicker" id="railKicker">SIX CORE SALES STORIES</div>
           <h1 class="rail-title" id="railTitle">Learn it by<br />touching it.</h1>
@@ -387,23 +386,23 @@
 
         <section class="viewer-column">
           <header class="viewer-header">
-            <div><h1 id="viewerTitle">Product overview</h1><p id="viewerSubtitle">Main view · PILL earbuds and charging case</p></div>
+            <div><h1 id="viewerTitle">Product overview</h1><p id="viewerSubtitle">Main view · RAYS IEMs and USB-C DSP cable</p></div>
             <div class="viewer-count" id="viewerCount">00 / 06</div>
           </header>
           <div class="stage-window" id="stageWindow" data-role="product-stage">
             <div class="photo-rig" id="angleTrack">
-              <img class="master-image" id="masterImage" src="assets/gallery/pill-blue-earbuds-out.jpg" alt="" draggable="false" />
+              <img class="master-image" id="masterImage" src="assets/official/hires/rays-master-2933-enhanced.jpg" alt="" draggable="false" />
               <div class="stage-grid" aria-hidden="true"></div>
               <div class="stage-meta" id="stageMeta">MASTER / HD<span>FRONT · PRODUCT &amp; EARBUDS</span></div>
               <div id="hotspotLayer"></div>
             </div>
           </div>
-          <footer class="viewer-footer"><div class="progress" id="progress" data-role="product-progress" aria-label="Training progress"></div><div class="viewer-footer-note" id="viewerFooterNote">Product overview</div></footer>
+          <footer class="viewer-footer"><div class="progress" id="progress" data-role="product-progress" aria-label="Training progress"></div></footer>
         </section>
 
         <aside class="detail-panel" id="detailPanel" data-role="feature-detail" aria-label="Feature details" aria-hidden="false">
           <div class="panel-empty">
-            <button class="panel-empty-close" id="overviewClose" type="button" aria-label="Back to PILL training menu">×</button>
+            <button class="panel-empty-close" id="overviewClose" type="button" aria-label="Back to RAYS training menu">×</button>
             <span id="emptyKicker">READY FOR INPUT</span>
             <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
             <p id="emptyBody">Each selling point includes the customer benefit, key specification, demonstration, and recommended sales line.</p>
@@ -431,18 +430,18 @@
   <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">×</button><figure class="lightbox-figure"><img id="lightboxImage" src="" alt="" /><figcaption id="lightboxCaption"></figcaption></figure></div>
 
   <script src="../../auth.js?v=20260826a"></script>
-  <script src="content.js"></script>
+  <script src="content.js?v=20260828e"></script>
   <script>
     (() => {
-      const data = window.MOONDROP_PILL_DATA;
+      const data = window.MOONDROP_RAYS_DATA;
       const featureById = Object.fromEntries(data.features.map((feature) => [feature.id, feature]));
-      const accentMap = { sound: '#ffab2f', awareness: '#39d2e5', comfort: '#ad82ff', calls: '#ff4f6a', case: '#c7f64a', everyday: '#6c9cff' };
+      const accentMap = { game: '#ffab2f', tuning: '#c7f64a', hybrid: '#ad82ff', mic: '#ff4f6a', fit: '#39d2e5', cable: '#6c9cff' };
       const copy = {
         en: {
-          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Customer benefits, demonstrations, and key proof', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', reviews: 'Media Reviews', reviewsSub: 'Sound, fit, and everyday experience', gallery: 'HD Image Library', gallerySub: 'Design, colorways, and product details', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'START HERE', emptyTitle: 'Choose one<br />selling point.', emptyBody: 'Learn the customer benefit, demonstration, recommended line, and key proof.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', reviewIntroTitle: 'Three reviews across sound, fit, and everyday use.', openReview: 'Watch the full review ↗', galleryNote: 'Select an image to inspect the original in high resolution.'
+          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · RAYS', hubTitle: 'RAYS', hubIntro: 'A wired gaming IEM built around low-latency sound, game-specific tuning, clear communication, and stable long-session wear.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Customer benefits, demonstrations, and key proof', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', reviews: 'Media Reviews', reviewsSub: 'Gaming, tuning, fit, and sound', gallery: 'HD Image Library', gallerySub: 'Design, wear, and product details', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>using it.</span>', overview: 'Overview', back: 'Back to RAYS training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · RAYS IEMs and USB-C DSP cable', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'ANGLED · IEMS & CABLE', emptyKicker: 'START HERE', emptyTitle: 'Choose one<br />selling point.', emptyBody: 'Learn the customer benefit, demonstration, recommended line, and key proof.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to RAYS training', reviewIntroTitle: 'Independent views on RAYS for gaming and everyday listening.', openReview: 'Watch the full review ↗', galleryNote: 'Select an image to inspect the original in high resolution.'
         },
         zh: {
-          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、演示方法与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '声音、佩戴与日常体验', gallery: '高清图库', gallerySub: '外观、配色与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '从这里开始', emptyTitle: '选择一个<br />核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', reviewIntroTitle: '三条评测，分别观察声音、佩戴与日常体验。', openReview: '观看完整评测 ↗', galleryNote: '点击图片，查看高清原图。'
+          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · RAYS', hubTitle: 'RAYS', hubIntro: '面向游戏与日常聆听的 USB-C 有线入耳式耳机，把低延迟、可调音、清晰通话和稳定佩戴放在一起。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、现场演示与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '游戏、调音、佩戴与声音', gallery: '高清图库', gallerySub: '外观、佩戴与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边用产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 RAYS 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · RAYS 耳机与 USB-C DSP 线', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '斜侧 · 耳机与线材', emptyKicker: '从这里开始', emptyTitle: '选择一个<br />核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 RAYS 培训', reviewIntroTitle: '从游戏、调音、佩戴与声音四个角度看 RAYS。', openReview: '观看完整评测 ↗', galleryNote: '点击图片，查看高清原图。'
         }
       };
       let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -452,8 +451,8 @@
 
       const $ = (id) => document.getElementById(id);
       const els = {
-        hub: $('hubView'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
-        storyList: $('storyList'), overviewButton: $('productOverviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('angleTrack'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaFrame: $('mediaFrame'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), overviewClose: $('overviewClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
+        hub: $('hubView'), hubHeroImage: $('hubHeroImage'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
+        storyList: $('storyList'), overviewButton: $('productOverviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('angleTrack'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaFrame: $('mediaFrame'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), overviewClose: $('overviewClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
       };
 
       function t(value) { return typeof value === 'string' ? value : value[language]; }
@@ -471,6 +470,11 @@
         els.languageToggle.setAttribute('aria-label', ui('language'));
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
+        els.hubHeroImage.src = data.campaign.image;
+        els.hubHeroImage.alt = t(data.campaign.alt);
+        els.hubHeroImage.style.objectPosition = data.campaign.position || '50% 50%';
+        els.masterImage.src = data.master.image;
+        els.masterImage.alt = t(data.master.alt);
         els.hubKicker.textContent = ui('hubKicker');
         els.hubTitle.textContent = ui('hubTitle');
         els.hubIntro.textContent = ui('hubIntro');
@@ -482,12 +486,11 @@
         els.viewerSubtitle.textContent = ui('viewerSubtitle');
         els.viewerCount.textContent = ui('mainView');
         els.stageMeta.innerHTML = ui('stageOverview') + '<span>' + ui('stageSub') + '</span>';
-        els.viewerFooterNote.textContent = ui('overviewNote');
         $('emptyKicker').textContent = ui('emptyKicker');
         $('emptyTitle').innerHTML = ui('emptyTitle');
         $('emptyBody').textContent = ui('emptyBody');
-        els.overviewClose.setAttribute('aria-label', language === 'zh' ? '返回 PILL 培训菜单' : 'Back to PILL training menu');
-        els.panelClose.setAttribute('aria-label', language === 'zh' ? '返回 PILL 培训菜单' : 'Back to PILL training menu');
+        els.overviewClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : 'Back to RAYS training menu');
+        els.panelClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : 'Back to RAYS training menu');
         els.boardClose.setAttribute('aria-label', ui('closeSection'));
         els.mediaPrevious.setAttribute('aria-label', ui('previous'));
         els.mediaNext.setAttribute('aria-label', ui('next'));
@@ -515,7 +518,7 @@
         updateStoryState();
       }
       function renderHotspots() {
-        els.hotspotLayer.innerHTML = data.features.map((feature) => '<button class="hotspot ' + (feature.id === 'comfort' || feature.id === 'calls' || feature.id === 'everyday' ? 'flip-label' : '') + '" type="button" data-feature="' + feature.id + '" style="--hx:' + feature.position.x + '%;--hy:' + feature.position.y + '%;--hotspot-color:' + accentMap[feature.id] + '" aria-label="' + t(feature.chapter) + '"><span class="hotspot-label">' + t(feature.chapter) + '</span></button>').join('');
+        els.hotspotLayer.innerHTML = data.features.map((feature) => '<button class="hotspot ' + (feature.id === 'mic' || feature.id === 'fit' || feature.id === 'cable' ? 'flip-label' : '') + '" type="button" data-feature="' + feature.id + '" style="--hx:' + feature.position.x + '%;--hy:' + feature.position.y + '%;--hotspot-color:' + accentMap[feature.id] + '" aria-label="' + t(feature.chapter) + '"><span class="hotspot-label">' + t(feature.chapter) + '</span></button>').join('');
         els.hotspotLayer.querySelectorAll('[data-feature]').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); focusFeature(button.dataset.feature); }));
       }
       function renderProgress() {
@@ -560,7 +563,6 @@
         els.viewerTitle.textContent = ui('viewerOverview');
         els.viewerSubtitle.textContent = ui('viewerSubtitle');
         els.viewerCount.textContent = ui('mainView');
-        els.viewerFooterNote.textContent = ui('overviewNote');
         els.detailPanel.classList.remove('open');
         els.detailPanel.setAttribute('aria-hidden', 'false');
         els.workspace.classList.remove('panel-open');
@@ -576,7 +578,6 @@
         els.viewerTitle.textContent = t(feature.chapter);
         els.viewerSubtitle.textContent = t(feature.label);
         els.viewerCount.textContent = String(index + 1).padStart(2, '0') + ' / 06';
-        els.viewerFooterNote.textContent = t(feature.chapter) + ' · ' + t(feature.label);
         els.panelKicker.textContent = t(feature.kicker);
         els.panelTitle.textContent = t(feature.title);
         els.panelBody.textContent = t(feature.body);
@@ -601,6 +602,7 @@
         els.mediaFrame.dataset.tone = item.tone || 'dark';
         els.mediaImage.src = t(item.image);
         els.mediaImage.alt = t(item.alt);
+        els.mediaImage.style.objectPosition = item.position || '50% 50%';
         els.mediaCaption.textContent = t(item.caption);
         els.mediaIndex.textContent = String((mediaIndex % feature.media.length) + 1).padStart(2, '0') + ' / ' + String(feature.media.length).padStart(2, '0');
       }
@@ -631,8 +633,8 @@
         const boardData = {
           positioning: { accent: '#ffab2f', kicker: language === 'zh' ? '产品定位' : 'PRODUCT POSITIONING', title: data.positioning[language].title },
           support: { accent: '#39d2e5', kicker: t(data.support[language].kicker), title: t(data.support[language].title) },
-          reviews: { accent: '#ad82ff', kicker: language === 'zh' ? '媒体评测' : 'MEDIA REVIEWS', title: language === 'zh' ? '从实际使用体验认识 PILL。' : 'See PILL through real-world use.' },
-          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 PILL 的外观、配色与结构细节。' : 'Inspect PILL design, colorways, and product details.' }
+          reviews: { accent: '#ad82ff', kicker: language === 'zh' ? '媒体评测' : 'MEDIA REVIEWS', title: language === 'zh' ? '从实际使用体验认识 RAYS。' : 'See RAYS through real-world use.' },
+          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 RAYS 的外观、佩戴与结构细节。' : 'Inspect RAYS design, wear, and product details.' }
         }[section];
         if (!boardData) { navigateSection('hub', false); return; }
         els.board.style.setProperty('--accent', boardData.accent); els.boardKicker.textContent = boardData.kicker; els.boardTitle.textContent = boardData.title;
@@ -646,19 +648,19 @@
       }
       function positioningMarkup() {
         const pack = data.positioning[language];
-        return '<div class="positioning-intro"><div class="board-copy"><p>' + pack.body + '</p><p class="position-question">' + pack.question + '</p></div><div class="board-image"><img src="' + data.positioning.image + '" alt="' + (language === 'zh' ? '三种颜色的 PILL 产品' : 'Three PILL colorways') + '" /></div></div><div class="comparison-grid">' + pack.comparisons.map((item) => '<article class="comparison-card"><h4>' + item[0] + '</h4><p>' + item[1] + '</p></article>').join('') + '</div>';
+        return '<div class="positioning-intro"><div class="board-copy"><p>' + pack.body + '</p><p class="position-question">' + pack.question + '</p></div><div class="board-image"><img src="' + data.positioning.image + '" style="object-position:' + (data.positioning.position || '50% 50%') + '" alt="' + (language === 'zh' ? 'RAYS 耳机产品图' : 'RAYS earphone product image') + '" /></div></div><div class="comparison-grid">' + pack.comparisons.map((item) => '<article class="comparison-card"><h4>' + item[0] + '</h4><p>' + item[1] + '</p></article>').join('') + '</div>';
       }
       function supportMarkup() {
         const pack = data.support[language];
-        return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 透明充电盒与耳机' : 'PILL transparent charging case and earbuds') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
+        return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'RAYS 耳机、耳机线与收纳包' : 'RAYS IEMs, cable, and storage bag') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
       }
       function galleryMarkup() {
-        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="assets/gallery/' + item[0] + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
+        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="' + item[0] + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
       }
       function bindGallery() { els.boardContent.querySelectorAll('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => openLightbox(Number(button.dataset.galleryIndex)))); }
       function openLightbox(index) {
         const item = data.gallery[index];
-        els.lightboxImage.src = 'assets/gallery/' + item[0]; els.lightboxImage.alt = item[language === 'zh' ? 2 : 1]; els.lightboxCaption.textContent = item[language === 'zh' ? 2 : 1]; els.lightbox.classList.add('open'); els.lightbox.setAttribute('aria-hidden', 'false'); document.body.classList.add('is-locked'); els.lightboxClose.focus();
+        els.lightboxImage.src = item[0]; els.lightboxImage.alt = item[language === 'zh' ? 2 : 1]; els.lightboxCaption.textContent = item[language === 'zh' ? 2 : 1]; els.lightbox.classList.add('open'); els.lightbox.setAttribute('aria-hidden', 'false'); document.body.classList.add('is-locked'); els.lightboxClose.focus();
       }
       function closeLightbox() { els.lightbox.classList.remove('open'); els.lightbox.setAttribute('aria-hidden', 'true'); document.body.classList.remove('is-locked'); }
 

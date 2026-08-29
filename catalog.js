@@ -113,9 +113,21 @@ window.MOONDROP_TRAINING_CATALOG = {
       categoryId: "true-wireless",
       name: { en: "PILL", zh: "音乐胶囊 PILL" },
       type: { en: "Open-ear ear-clip wireless", zh: "开放式耳夹式无线耳机" },
-      image: "products/pill/assets/gallery/pill-blue-earbuds-out.jpg",
-      imagePosition: "50% 52%",
+      image: "assets/products/pill-red-white-category-card.jpg",
+      imagePosition: "50% 55%",
+      imageFit: "cover",
       href: "products/pill/index.html",
+      status: "live"
+    },
+    {
+      id: "rays",
+      categoryId: "wired-in-ear",
+      name: { en: "RAYS", zh: "RAYS 光束" },
+      type: { en: "USB-C DSP gaming IEM", zh: "USB-C DSP 游戏入耳耳机" },
+      image: "products/rays/assets/official/rays-product-angled.jpg",
+      imagePosition: "50% 52%",
+      imageFit: "cover",
+      href: "products/rays/index.html",
       status: "live"
     }
   ]
