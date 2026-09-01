@@ -131,13 +131,13 @@ window.SPACE_TRAVEL_2_DATA = {
     },
     comparisons: {
       en: [
-        { title: 'Compared with wired earphones', customer: '“I already have wired earphones.”', answer: 'SPACE TRAVEL 2 removes cable tangles and interface restrictions, while maintaining a stated 10m Bluetooth connection in an open environment.', proof: 'Wireless freedom · broader device compatibility · 10m stated range' },
+        { title: 'Compared with wired earphones', customer: '“I already have wired earphones.”', answer: 'SPACE TRAVEL 2 is easier for commuting and switching between daily devices: no cable to untangle or port to match, plus automatic reconnection out of the case. Bluetooth 6.0 dual-device switching, ANC, transparency, AI call noise reduction, and app tuning add practical controls that a basic wired earphone does not provide.', proof: 'No cable or port matching · automatic reconnection · Bluetooth 6.0 dual-device · ANC + transparency + AI call noise reduction · app tuning' },
         { title: 'Compared with OWS earphones', customer: '“I want awareness, not isolation.”', answer: 'Transparency mode keeps environmental awareness available, while ANC can be selected when the customer wants more isolation and focus.', proof: 'Transparency + active noise cancellation' },
         { title: 'Compared with over-ear Bluetooth headphones', customer: '“I need something easier to carry.”', answer: 'The compact semi-in-ear form is pocketable, supports independent left/right use, and avoids the heat and storage demands of an over-ear design.', proof: 'Pocketable · single-ear use · lighter daily carry' },
         { title: 'Compared with other budget ANC earbuds', customer: '“Will ANC change the sound?”', answer: 'The single-feedforward wide-band ANC was repeatedly tuned to reduce environmental noise while minimizing unwanted impact on sound quality.', proof: 'Single-feedforward wide-band ANC · repeated acoustic tuning' }
       ],
       zh: [
-        { title: '对比有线耳机', customer: '“我已经有有线耳机了。”', answer: 'SPACE TRAVEL 2 摆脱线材缠绕与接口限制，并在开放环境下提供标称 10 米蓝牙连接距离。', proof: '无线自由 · 更广设备兼容性 · 标称 10 米连接' },
+        { title: '对比有线耳机', customer: '“我已经有有线耳机了。”', answer: 'SPACE TRAVEL 2 更适合通勤和多设备日常：不用整理线材或寻找接口，耳机出仓即可自动回连。Bluetooth 6.0 双设备切换、ANC、通透模式、AI 通话降噪和 App 调音，也比基础有线耳机多出一整套日常功能。', proof: '免整理线材 · 出仓自动回连 · Bluetooth 6.0 双设备 · ANC + 通透 + AI 通话降噪 · App 调音' },
         { title: '对比 OWS 耳机', customer: '“我需要听见环境声音。”', answer: '通透模式可以保留环境感知；需要隔绝噪声与专注时，则可切换到主动降噪。', proof: '通透模式 + 主动降噪' },
         { title: '对比头戴式蓝牙耳机', customer: '“我需要更方便携带的耳机。”', answer: '紧凑的半入耳形态可以直接放入口袋，支持左右耳独立使用，也减少头戴式耳机的闷热感与收纳负担。', proof: '便携 · 单耳使用 · 日常携带更轻巧' },
         { title: '对比其他入门降噪耳机', customer: '“开启降噪会不会影响声音？”', answer: '单前馈宽频 ANC 经过反复调校，在降低环境噪声的同时，尽量减少对音质的影响。', proof: '单前馈宽频 ANC · 反复声学调校' }
@@ -148,13 +148,13 @@ window.SPACE_TRAVEL_2_DATA = {
       contentsImage: 'assets/package-and-accessories.jpg',
       en: {
         contents: ['SPACE TRAVEL 2 earbuds', 'S / M / L ear tips', 'Charging cable', 'User manual', 'Qualification certificate', 'After-sales card', 'Prompt card', 'Service card'],
-        periods: [['Main unit', '1 year'], ['Charging case', '1 year'], ['Upgrade cable', '1 year'], ['Packaged accessories', '90 days']],
+        periods: [['Main unit', '1 year'], ['Charging case', '1 year'], ['Packaged accessories', '90 days']],
         policy: 'For non-human-induced performance failures within the warranty period, follow the applicable after-sales process for service.',
         exclusions: ['Unauthorized modification, disassembly, or repair', 'Accidental or human-caused damage, including deformation, corrosion, liquid ingress, drops, or unsuitable voltage', 'Expired coverage', 'Force majeure, including fire, earthquake, or flood']
       },
       zh: {
         contents: ['SPACE TRAVEL 2 耳机', '大 / 中 / 小号耳塞', '充电线', '用户手册', '合格证', '售后卡', '提示卡', '服务卡'],
-        periods: [['主机', '1 年'], ['充电盒', '1 年'], ['升级线', '1 年'], ['包装配件', '90 天']],
+        periods: [['主机', '1 年'], ['充电盒', '1 年'], ['包装配件', '90 天']],
         policy: '保修期内如出现非人为性能故障，请按适用的售后流程处理。',
         exclusions: ['未经授权的改装、拆卸或维修', '人为或意外损坏，包括变形、腐蚀、进液、跌落或输入不适当电压', '超过保修期限', '火灾、地震、洪水等不可抗力造成的故障或损坏']
       }
