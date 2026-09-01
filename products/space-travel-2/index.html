@@ -1538,7 +1538,7 @@
           boards: {
             comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
             support: { kicker: 'PACKAGE & WARRANTY', title: 'Package & After-sales', introTitle: 'Standard package contents', intro: '', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
-            reviews: { kicker: 'EXTERNAL REVIEW LINKS', title: 'Media Reviews', introTitle: 'Six real-world reviews, one click away.', intro: 'Need a third-party perspective? Select a cover to open the matching YouTube review.', open: 'Open review on YouTube ↗' }
+            reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open review on YouTube ↗' }
           }
         },
         zh: {
@@ -1557,7 +1557,7 @@
           boards: {
             comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
             support: { kicker: '包装与保修', title: '包装与售后', introTitle: '标准包装清单', intro: '', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
-            reviews: { kicker: '外部评测链接', title: '媒体评测', introTitle: '六个真实评测，一键直达。', intro: '需要第三方观点时，点击封面即可打开对应的 YouTube 评测。', open: '前往 YouTube 观看 ↗' }
+            reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '前往 YouTube 观看 ↗' }
           }
         }
       };
@@ -1676,7 +1676,7 @@
       function reviewsBoardMarkup(copy) {
         return `
           <section class="board-intro review-intro" style="background-image:url('${data.portal.campaign.portrait}')">
-            <div><h3>${copy.introTitle}</h3><p>${copy.intro}</p></div>
+            <div><h3>${copy.introTitle}</h3></div>
           </section>
           <div class="review-grid">
             ${data.portal.reviews.map((review) => `
