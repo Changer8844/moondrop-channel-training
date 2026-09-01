@@ -230,8 +230,10 @@
     .support-policy { margin: 0; color: #a4afaa; font-size: 11px; line-height: 1.65; }
     .support-exclusions .support-policy { margin-top: 13px; }
     .exclusion-list { margin: 13px 0 0; padding-left: 18px; color: #7f8a85; font-size: 10px; line-height: 1.65; }
-    .review-intro { min-height: 200px; position: relative; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background-color: #080c0b; background-image: linear-gradient(90deg, rgba(4,7,7,.97), rgba(4,7,7,.58) 46%, rgba(4,7,7,.12)), url('assets/official/hires/rays-hero-5271.jpg'); background-position: center, 50% 67%; background-repeat: no-repeat; background-size: cover, cover; }
-    .review-intro h3 { max-width: 650px; margin: 0; font-size: clamp(30px, 4.4vw, 58px); font-weight: 350; letter-spacing: -.075em; line-height: .96; text-wrap: balance; }
+    .review-intro { min-height: 220px; position: relative; isolation: isolate; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background: #030505; }
+    .review-intro::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #030505 0, #030505 38%, rgba(3,5,5,.9) 48%, rgba(3,5,5,.24) 74%, rgba(3,5,5,0) 100%); pointer-events: none; }
+    .review-intro-product { position: absolute; top: 7%; right: clamp(18px, 4vw, 58px); z-index: 0; width: 56%; height: 86%; display: block; object-fit: contain; object-position: right center; }
+    .review-intro h3 { position: relative; z-index: 2; max-width: 48%; margin: 0; font-size: clamp(30px, 4.4vw, 58px); font-weight: 350; letter-spacing: -.075em; line-height: .96; text-wrap: balance; }
     .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
     .review-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); background: #111615; color: inherit; text-decoration: none; transition: transform .28s var(--ease), border-color .25s ease; }
     .review-card:hover { transform: translateY(-4px); border-color: rgba(199,246,74,.5); }
@@ -304,7 +306,10 @@
       .board-content { padding: 14px 16px 36px; }
       .positioning-intro { grid-template-columns: 1fr; gap: 24px; }
       .comparison-grid { margin-top: 28px; }
-      .review-intro { background-size: cover, auto 100%; background-position: center, center; }
+      .review-intro { min-height: 220px; align-items: end; }
+      .review-intro::before { background: linear-gradient(0deg, #030505 0, rgba(3,5,5,.9) 42%, rgba(3,5,5,.18) 100%); }
+      .review-intro-product { top: 6%; right: 8px; width: 80%; height: 58%; opacity: .78; }
+      .review-intro h3 { max-width: 100%; }
       .review-grid { grid-template-columns: 1fr; }
       .support-block--package, .support-copy--warranty { grid-template-columns: 1fr; }
       .support-visual { min-height: 300px; }
@@ -645,7 +650,8 @@
         if (section === 'gallery') { els.boardContent.innerHTML = galleryMarkup(); bindGallery(); }
       }
       function reviewsMarkup() {
-        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
+        const heroAlt = language === 'zh' ? 'RAYS 双耳完整产品图' : 'Complete pair of RAYS in-ear monitors';
+        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3><img class="review-intro-product" src="assets/official/hires/rays-hero-5273.jpg" alt="' + heroAlt + '" /></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
       }
       function positioningMarkup() {
         const pack = data.positioning[language];
