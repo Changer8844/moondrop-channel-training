@@ -648,8 +648,8 @@
         if (section === 'gallery') { els.boardContent.innerHTML = galleryMarkup(); bindGallery(); }
       }
       function reviewsMarkup() {
-        const heroAlt = language === 'zh' ? 'PILL 蓝白配色耳机与充电盒完整产品图' : 'Complete PILL blue-and-white earbuds and charging case';
-        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3><img class="review-intro-product" src="assets/gallery/pill-blue-front.jpg" alt="' + heroAlt + '" /></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
+        const heroAlt = language === 'zh' ? 'PILL 多配色充电盒完整产品图' : 'Complete PILL charging cases in multiple colorways';
+        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3><img class="review-intro-product" src="assets/gallery/pill-colorways.jpg" alt="' + heroAlt + '" /></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
       }
       function positioningMarkup() {
         const pack = data.positioning[language];
