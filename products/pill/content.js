@@ -197,7 +197,7 @@ window.MOONDROP_PILL_DATA = {
     }
   },
   support: {
-    image: "assets/gallery/pill-blue-case-open.jpg",
+    image: "assets/gallery/pill-package-contents.jpg",
     en: {
       kicker: "PACKAGE & WARRANTY",
       title: "Package & After-sales",
