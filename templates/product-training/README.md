@@ -25,6 +25,7 @@ SPACE TRAVEL 2 is the visual and interaction reference. Every product core-selli
 - Desktop columns: `minmax(236px, 272px) minmax(520px, 1fr) minmax(332px, 390px)`.
 - Hotspots: `36px × 36px`; labels begin `38px` from the hotspot center.
 - Feature media stage: `clamp(190px, 20vh, 240px)`.
+- Package and after-sales desktop columns: both the package row and warranty row use `minmax(0, 1.05fr) minmax(340px, .95fr)`. This keeps the package image restrained and aligns the upper package-copy column with the lower after-sales-copy column.
 - Product-specific copy may change, but these measurements and the Overview-first interaction may not.
 
 ## Required structure
