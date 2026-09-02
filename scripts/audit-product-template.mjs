@@ -51,6 +51,12 @@ for (const slug of productSlugs) {
   if (!/height:\s*clamp\(190px,\s*20vh,\s*240px\)/.test(html)) fail('feature media frame size drifted from the SPACE TRAVEL 2 template');
   if (!new RegExp(`\\.support-block--package\\s*\\{[^}]*grid-template-columns\\s*:\\s*${cssValuePattern(contract.supportPackageColumns)}`).test(html)) fail('package row columns drifted from the product template');
   if (!new RegExp(`\\.support-copy--warranty\\s*\\{[^}]*grid-template-columns\\s*:\\s*${cssValuePattern(contract.supportWarrantyColumns)}`).test(html)) fail('warranty row columns drifted from the product template');
+  if (!new RegExp(`\\.hub-section-button\\s*\\{[^}]*position\\s*:\\s*relative[^}]*grid-template-columns\\s*:\\s*${cssValuePattern(contract.hubSectionColumns)}`).test(html)) fail('hub card text column drifted from the product template');
+  if (!/\.hub-section-arrow\s*\{[^}]*position\s*:\s*absolute/.test(html)) fail('hub card arrow still consumes text width');
+  for (const selector of ['b', 'span']) {
+    const copyRule = new RegExp(`\\.hub-section-copy\\s+${selector}\\s*\\{[^}]*max-width\\s*:\\s*${cssValuePattern(contract.hubSectionCopyMaxWidth)}[^}]*overflow-wrap\\s*:\\s*normal[^}]*word-break\\s*:\\s*normal[^}]*text-wrap\\s*:\\s*${cssValuePattern(contract.hubSectionTextWrap)}`);
+    if (!copyRule.test(html)) fail(`hub card ${selector === 'b' ? 'title' : 'subtitle'} wrapping drifted from the product template`);
+  }
   if (!/event\.target\.closest\(['"]\.hotspot['"]\)/.test(html)) fail('drag handler can intercept hotspot switching');
   for (const pattern of contract.forbiddenCopyPatterns || []) {
     if (new RegExp(pattern, 'i').test(copySource)) fail(`contains production-note copy matching /${pattern}/i`);

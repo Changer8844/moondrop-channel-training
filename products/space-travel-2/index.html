@@ -240,10 +240,11 @@
     .hub-section-button {
       --section-accent: var(--lime);
       min-height: 92px;
+      position: relative;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-rows: auto 1fr;
-      gap: 6px 12px;
+      gap: 6px;
       padding: 14px;
       border: 1px solid rgba(203,219,213,.16);
       border-radius: 0;
@@ -255,10 +256,10 @@
     .hub-section-button:first-child { grid-column: 1 / -1; min-height: 116px; border-color: rgba(199,246,74,.45); background: rgba(199,246,74,.08); }
     .hub-section-button:hover { transform: translateY(-3px); border-color: var(--section-accent); background: rgba(255,255,255,.055); }
     .hub-section-number { color: var(--section-accent); font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; }
-    .hub-section-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--section-accent); font-size: 21px; }
-    .hub-section-copy { align-self: end; }
-    .hub-section-copy b { display: block; font-size: 17px; font-weight: 700; line-height: 1.15; }
-    .hub-section-copy span { display: block; margin-top: 5px; color: #a9b4ae; font-size: 11px; line-height: 1.35; }
+    .hub-section-arrow { position: absolute; top: 14px; right: 14px; color: var(--section-accent); font-size: 21px; line-height: 1; }
+    .hub-section-copy { min-width: 0; align-self: end; }
+    .hub-section-copy b { display: block; max-width: none; font-size: 17px; font-weight: 700; line-height: 1.15; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
+    .hub-section-copy span { display: block; max-width: none; margin-top: 5px; color: #a9b4ae; font-size: 11px; line-height: 1.35; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
 
     .section-board {
       position: fixed;
