@@ -362,7 +362,7 @@
     .review-play { position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,7,7,.78); color: var(--lime); }
     .review-copy { display: grid; align-content: start; gap: 8px; padding: 15px; }
     .review-channel { color: var(--lime); font-size: 7px; }
-    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; text-wrap: balance; }
+    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; letter-spacing: -.01em; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
     .review-copy span { color: #7f8a85; font-size: 9px; }
 
     .workspace {
@@ -681,8 +681,8 @@
     .panel-empty-close { position: absolute; top: 24px; right: 24px; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aeb9b3; font-size: 22px; line-height: 1; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
     .panel-empty-close:hover { color: var(--lime); border-color: rgba(199,246,74,.45); }
     .panel-empty span { color: var(--lime); font-family: Menlo, Monaco, Consolas, monospace; font-size: 9px; letter-spacing: .12em; }
-    .panel-empty h2 { margin: 15px 0 10px; color: #dce3df; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 36px; font-weight: 520; line-height: 1.08; letter-spacing: -.025em; }
-    .panel-empty p { margin: 0; max-width: 280px; font-size: 12px; line-height: 1.65; }
+    .panel-empty h2 { max-width: none; margin: 15px 0 10px; color: #dce3df; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: clamp(25px, 1.55vw, 30px); font-weight: 520; line-height: 1.08; letter-spacing: -.025em; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
+    .panel-empty p { max-width: none; margin: 0; font-size: 12px; line-height: 1.65; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
     .panel-content {
       overflow-y: auto;
       opacity: 0;
@@ -1134,7 +1134,7 @@
       </div>
     </main>
 
-    <main class="workspace" data-core-template-version="1.0.0" data-core-initial-state="overview" data-core-layout="three-column">
+    <main class="workspace" data-core-template-version="1.1.0" data-core-initial-state="overview" data-core-layout="three-column">
       <nav class="story-rail" aria-label="Product feature stories">
         <div class="eyebrow" id="storyEyebrow">Six core sales stories</div>
         <h1 id="storyHeadline">Learn it by<br />touching it.</h1>
@@ -1170,7 +1170,7 @@
         <div class="panel-empty">
           <button class="panel-empty-close" id="overviewClose" type="button" aria-label="Return to training menu">×</button>
           <span id="emptyKicker">READY FOR INPUT</span>
-          <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
+          <h2 id="emptyTitle">Choose a selling point.</h2>
           <p id="emptyBody">Each selling point includes the customer benefit, core specification, demonstration, and recommended sales line.</p>
         </div>
         <div class="panel-content">
@@ -1395,7 +1395,7 @@
             viewKicker: 'Real-photo inspection field', overviewTitle: 'Product overview',
             master: 'MAIN VIEW', masterNumber: 'MAIN VIEW / HD', masterLabel: 'FRONT · PRODUCT & EARBUDS', focusNumber: 'FOCUS',
             stageAria: 'Select a product signal to inspect its detail', dragStageAria: 'Drag the enlarged product to find another signal, or use the feature list.', masterState: 'PRODUCT OVERVIEW',
-            emptyKicker: 'READY FOR INPUT', emptyTitle: 'Select a signal<br />on the product.',
+            emptyKicker: 'READY FOR INPUT', emptyTitle: 'Choose a selling point.',
             emptyBody: 'Choose a feature to see its customer benefit, key specification, demonstration, and recommended sales line.',
             showLabel: 'Show it', sayLabel: 'Sales line', specLabel: 'Core spec', sourcePrefix: 'Source: ',
             previous: '← Previous story', next: 'Next story →', previousMedia: 'Previous feature image', nextMedia: 'Next feature image',
@@ -1416,7 +1416,7 @@
             viewKicker: '实拍产品检视区', overviewTitle: '产品总览',
             master: '主图', masterNumber: '主图 / 高清', masterLabel: '正面 · 产品与耳机', focusNumber: '聚焦',
             stageAria: '点击产品卖点查看对应细节', dragStageAria: '拖曳放大后的产品画面寻找其他光点，也可以使用左侧卖点列表。', masterState: '产品总览',
-            emptyKicker: '等待选择', emptyTitle: '点击产品上的<br />一个卖点。',
+            emptyKicker: '等待选择', emptyTitle: '选择一个核心卖点。',
             emptyBody: '选择一个卖点，查看顾客利益、关键规格、现场演示和推荐话术。',
             showLabel: '现场展示', sayLabel: '核心话术', specLabel: '核心规格', sourcePrefix: '资料来源：',
             previous: '← 上一个卖点', next: '下一个卖点 →', previousMedia: '上一张卖点图片', nextMedia: '下一张卖点图片',

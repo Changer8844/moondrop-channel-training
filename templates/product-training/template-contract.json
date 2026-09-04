@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "referenceProduct": "space-travel-2",
   "initialState": "overview",
   "desktopLayout": "three-column",
@@ -12,6 +12,9 @@
   "hubSectionColumns": "minmax(0, 1fr)",
   "hubSectionCopyMaxWidth": "none",
   "hubSectionTextWrap": "pretty",
+  "panelEmptyCopyMaxWidth": "none",
+  "panelEmptyTextWrap": "pretty",
+  "reviewCardTitleTextWrap": "pretty",
   "forbiddenCopyPatterns": [
     "顾客买到什么.{0,12}讲清楚",
     "也要讲清楚",

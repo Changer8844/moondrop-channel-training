@@ -162,8 +162,8 @@
     .panel-empty-close { position: absolute; top: 24px; right: 24px; width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: #aeb9b3; font-size: 22px; line-height: 1; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
     .panel-empty-close:hover { color: var(--lime); border-color: rgba(199,246,74,.45); }
     .panel-empty span { color: var(--lime); font: 800 9px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
-    .panel-empty h2 { margin: 18px 0 13px; color: #e8edea; font-size: clamp(30px, 2.45vw, 42px); font-weight: 760; letter-spacing: -.055em; line-height: 1.02; }
-    .panel-empty p { max-width: 29ch; margin: 0; color: #829089; font-size: 12px; line-height: 1.65; }
+    .panel-empty h2 { max-width: none; margin: 18px 0 13px; color: #e8edea; font-size: clamp(25px, 1.55vw, 30px); font-weight: 760; letter-spacing: -.045em; line-height: 1.05; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
+    .panel-empty p { max-width: none; margin: 0; color: #829089; font-size: 12px; line-height: 1.65; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
     .panel-content { height: 100%; overflow: auto; padding: 30px 28px; opacity: 0; pointer-events: none; transform: translateX(22px); transition: opacity .3s ease, transform .4s var(--ease); scrollbar-width: thin; scrollbar-color: #394640 transparent; }
     .detail-panel.open .panel-empty { opacity: 0; pointer-events: none; }
     .detail-panel.open .panel-content { opacity: 1; pointer-events: auto; transform: translateX(0); }
@@ -243,11 +243,11 @@
     .review-play { position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,7,7,.78); color: var(--lime); }
     .review-copy { display: grid; align-content: start; gap: 8px; padding: 15px; }
     .review-channel { color: var(--lime); font: 800 8px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
-    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; text-wrap: balance; }
+    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; letter-spacing: -.01em; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
     .review-copy span:last-child { color: #7f8a85; font-size: 9px; }
     .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
     .gallery-heading h3 { margin: 0; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 30px; font-weight: 540; letter-spacing: -.025em; line-height: 1.08; }
-    .gallery-heading p { max-width: 34ch; margin: 0; color: #9aa59f; font-size: 11px; line-height: 1.6; text-align: right; }
+    .gallery-heading p { max-width: none; margin: 0; color: #9aa59f; font-size: 11px; line-height: 1.6; text-align: right; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
     .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-top: 16px; }
     .gallery-card { min-width: 0; padding: 0; border: 1px solid rgba(192,214,206,.18); background: #111816; color: var(--text); text-align: left; cursor: pointer; }
     .gallery-card:hover { border-color: var(--lime); }
@@ -382,7 +382,7 @@
         </div>
       </section>
 
-      <section class="workspace" id="workspace" aria-label="Interactive PILL product view" data-core-template-version="1.0.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
+      <section class="workspace" id="workspace" aria-label="Interactive PILL product view" data-core-template-version="1.1.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
         <aside class="story-rail">
           <div class="rail-kicker" id="railKicker">SIX CORE SALES STORIES</div>
           <h1 class="rail-title" id="railTitle">Learn it by<br />touching it.</h1>
@@ -411,7 +411,7 @@
           <div class="panel-empty">
             <button class="panel-empty-close" id="overviewClose" type="button" aria-label="Back to PILL training menu">×</button>
             <span id="emptyKicker">READY FOR INPUT</span>
-            <h2 id="emptyTitle">Select a signal<br />on the product.</h2>
+            <h2 id="emptyTitle">Choose a selling point.</h2>
             <p id="emptyBody">Each selling point includes the customer benefit, key specification, demonstration, and recommended sales line.</p>
           </div>
           <div class="panel-content">
@@ -445,10 +445,10 @@
       const accentMap = { sound: '#ffab2f', awareness: '#39d2e5', comfort: '#ad82ff', calls: '#ff4f6a', case: '#c7f64a', everyday: '#6c9cff' };
       const copy = {
         en: {
-          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Customer benefits, demonstrations, and key proof', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', reviews: 'Media Reviews', reviewsSub: 'Sound, fit, and everyday experience', gallery: 'HD Image Library', gallerySub: 'Design, colorways, and product details', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'START HERE', emptyTitle: 'Choose one<br />selling point.', emptyBody: 'Learn the customer benefit, demonstration, recommended line, and key proof.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', reviewIntroTitle: 'Real reviews, one click away', openReview: 'Watch the full review ↗', galleryNote: 'Select an image to inspect the original in high resolution.'
+          home: 'Training home', language: 'Switch to Chinese', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: 'Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.', hubMenuKicker: 'CHOOSE A TOPIC', core: 'Core Selling Points', coreSub: 'Customer benefits, demonstrations, and key proof', positioning: 'Product Positioning', positioningSub: 'Who it fits and how it compares', support: 'Package & After-sales', supportSub: 'Package contents and warranty periods', reviews: 'Media Reviews', reviewsSub: 'Sound, fit, and everyday experience', gallery: 'HD Image Library', gallerySub: 'Design, colorways, and product details', railKicker: 'SIX CORE SALES STORIES', railTitle: '<span>Learn it by</span><br><span>touching it.</span>', overview: 'Overview', back: 'Back to PILL training', viewerOverview: 'Product overview', viewerSubtitle: 'Main view · PILL earbuds and charging case', mainView: 'MAIN VIEW', stageOverview: 'MAIN VIEW / HD', stageSub: 'FRONT · PRODUCT & EARBUDS', overviewNote: 'Product overview', emptyKicker: 'START HERE', emptyTitle: 'Choose a selling point.', emptyBody: 'Learn the customer benefit, demonstration, recommended line, and key proof.', closeFeature: 'Close feature details', show: 'SHOW IT', say: 'SAY THIS', spec: 'KEY SPEC', previous: 'Previous image', next: 'Next image', closeSection: 'Back to PILL training', reviewIntroTitle: 'Real reviews, one click away', openReview: 'Watch the full review ↗', galleryNote: 'Select an image to inspect the original in high resolution.'
         },
         zh: {
-          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、演示方法与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '声音、佩戴与日常体验', gallery: '高清图库', gallerySub: '外观、配色与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '从这里开始', emptyTitle: '选择一个<br />核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', reviewIntroTitle: '真实评测，一键直达', openReview: '观看完整评测 ↗', galleryNote: '点击图片，查看高清原图。'
+          home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、演示方法与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '声音、佩戴与日常体验', gallery: '高清图库', gallerySub: '外观、配色与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '从这里开始', emptyTitle: '选择一个核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', reviewIntroTitle: '真实评测，一键直达', openReview: '观看完整评测 ↗', galleryNote: '点击图片，查看高清原图。'
         }
       };
       let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';

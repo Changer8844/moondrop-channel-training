@@ -27,6 +27,9 @@ SPACE TRAVEL 2 is the visual and interaction reference. Every product core-selli
 - Feature media stage: `clamp(190px, 20vh, 240px)`.
 - Package and after-sales desktop columns: both the package row and warranty row use `minmax(0, 1.05fr) minmax(340px, .95fr)`. This keeps the package image restrained and aligns the upper package-copy column with the lower after-sales-copy column.
 - English hub-card wrapping: section buttons use one unrestricted `minmax(0, 1fr)` text column, with the arrow absolutely positioned so it does not steal line width. Titles and subtitles must use the full card width, normal word breaking, and `text-wrap: pretty`; do not add `ch`-based caps that create isolated final words when space remains.
+- Empty-state wrapping: the right-side guidance heading and body use the full available panel width with normal word breaking and `text-wrap: pretty`. Do not author `<br>` tags in empty-state copy or add `ch`/pixel caps that force early wrapping while horizontal space remains.
+- Section-board wrapping: short English headings, labels, and one-sentence instructions should use their available column before wrapping. Do not add a narrow `ch`/pixel cap merely for decoration; reserve readable line-length caps for genuinely long paragraphs.
+- Review-card titles keep normal word boundaries, slightly compact tracking, and `text-wrap: pretty`; do not balance a title into two lines when it can fit naturally on one.
 - Product-specific copy may change, but these measurements and the Overview-first interaction may not.
 
 ## Required structure

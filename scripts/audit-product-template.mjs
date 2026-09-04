@@ -57,6 +57,18 @@ for (const slug of productSlugs) {
     const copyRule = new RegExp(`\\.hub-section-copy\\s+${selector}\\s*\\{[^}]*max-width\\s*:\\s*${cssValuePattern(contract.hubSectionCopyMaxWidth)}[^}]*overflow-wrap\\s*:\\s*normal[^}]*word-break\\s*:\\s*normal[^}]*text-wrap\\s*:\\s*${cssValuePattern(contract.hubSectionTextWrap)}`);
     if (!copyRule.test(html)) fail(`hub card ${selector === 'b' ? 'title' : 'subtitle'} wrapping drifted from the product template`);
   }
+  for (const selector of ['h2', 'p']) {
+    const emptyCopyRule = new RegExp(`\\.panel-empty\\s+${selector}\\s*\\{[^}]*max-width\\s*:\\s*${cssValuePattern(contract.panelEmptyCopyMaxWidth)}[^}]*overflow-wrap\\s*:\\s*normal[^}]*word-break\\s*:\\s*normal[^}]*text-wrap\\s*:\\s*${cssValuePattern(contract.panelEmptyTextWrap)}`);
+    if (!emptyCopyRule.test(html)) fail(`empty-state ${selector === 'h2' ? 'heading' : 'body'} wrapping drifted from the product template`);
+  }
+  if (/<h2[^>]*id=["']emptyTitle["'][^>]*>[^<]*<br\s*\/?>/i.test(html)) fail('empty-state heading contains an authored line break');
+  if (/emptyTitle\s*:\s*["'`][^"'`]*<br\s*\/?>/i.test(copySource)) fail('localized empty-state heading contains an authored line break');
+  if (/\.gallery-heading\s+p\s*\{/i.test(html) && !/\.gallery-heading\s+p\s*\{[^}]*max-width\s*:\s*none[^}]*overflow-wrap\s*:\s*normal[^}]*word-break\s*:\s*normal[^}]*text-wrap\s*:\s*pretty/i.test(html)) {
+    fail('gallery instruction is capped before using its available row width');
+  }
+  if (!new RegExp(`\\.review-copy\\s+h3\\s*\\{[^}]*letter-spacing\\s*:\\s*-.01em[^}]*overflow-wrap\\s*:\\s*normal[^}]*word-break\\s*:\\s*normal[^}]*text-wrap\\s*:\\s*${cssValuePattern(contract.reviewCardTitleTextWrap)}`).test(html)) {
+    fail('review-card title wrapping drifted from the product template');
+  }
   if (!/event\.target\.closest\(['"]\.hotspot['"]\)/.test(html)) fail('drag handler can intercept hotspot switching');
   for (const pattern of contract.forbiddenCopyPatterns || []) {
     if (new RegExp(pattern, 'i').test(copySource)) fail(`contains production-note copy matching /${pattern}/i`);
