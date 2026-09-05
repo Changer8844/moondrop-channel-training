@@ -15,7 +15,7 @@
   <aside class="story-rail">
     <div class="rail-kicker">{{SIX_CORE_STORIES}}</div>
     <h1 class="rail-title">{{LEARN_BY_TOUCHING}}</h1>
-    <div class="story-list" id="storyList"><!-- six source-led feature buttons --></div>
+    <div class="story-list" id="storyList"><!-- all source-led features, including hotspot:false stories --></div>
     <div class="rail-spacer"></div>
     <button class="overview-button active" data-role="product-overview" type="button" aria-pressed="true">
       {{OVERVIEW}}
@@ -28,10 +28,11 @@
       <div class="viewer-count">{{MAIN_VIEW}}</div>
     </header>
     <div class="stage-window" data-role="product-stage">
+      <!-- Background layer: below the photograph, outside the zoom/pan transform. -->
+      <div class="stage-grid" aria-hidden="true"></div>
       <div class="photo-rig">
         <img class="master-image" src="{{MASTER_IMAGE}}" alt="{{MASTER_IMAGE_ALT}}" draggable="false" />
-        <div class="stage-grid" aria-hidden="true"></div>
-        <div class="hotspot-layer"><!-- all six hotspots visible in Overview --></div>
+        <div class="hotspot-layer"><!-- only physical hotspots; hotspot:false suppresses the marker, not the story --></div>
       </div>
     </div>
     <footer class="viewer-footer">

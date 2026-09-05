@@ -99,6 +99,9 @@ for (const slug of productSlugs) {
   const inlineStyles = [...html.matchAll(/<style(?:\s[^>]*)?>([\s\S]*?)<\/style>/gi)].map((match) => match[1]).join('\n');
   const fail = (message) => failures.push(`${slug}: ${message}`);
 
+  // Opt-in contract: legacy ST2 keeps its package record in a separate support board.
+  if (html.includes('data-hotspot-policy="optional"') && /hotspot\s*:\s*false/.test(copySource) && /data\.features\.filter\([^;]*hotspot/.test(html)) fail('list-only stories were removed from training instead of suppressing only their markers');
+
   if (!html.includes(`data-core-template-version="${contract.version}"`)) fail(`missing template version ${contract.version}`);
   if (!html.includes(`data-core-initial-state="${contract.initialState}"`)) fail('initial state is not declared as Overview');
   if (!html.includes(`data-core-layout="${contract.desktopLayout}"`)) fail('desktop layout is not declared as three columns');

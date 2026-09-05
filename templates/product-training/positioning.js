@@ -3,7 +3,7 @@ window.MoondropPositioning = (() => {
   const escape = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
   const copy = {
     en: { title: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
-    zh: { title: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' }
+    zh: { title: '先听懂顾客在比较什么。', intro: '先问顾客现在使用什么设备，再用一个差异和一个证据回答。' }
   };
   function render({ language, cards, image, imageAlt, campaign = false, scale = 1, origin = 'right center' }) {
     const words = copy[language] || copy.en;

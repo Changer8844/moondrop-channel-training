@@ -98,6 +98,17 @@ window.MOONDROP_TRAINING_CATALOG = {
   ],
   products: [
     {
+      id: "mm3a",
+      categoryId: "desktop-digital",
+      name: { en: "MM3A", zh: "MM3A" },
+      type: { en: "3-inch active desktop stereo", zh: "3 英寸有源桌面音箱" },
+      image: "products/mm3a/assets/hd-gallery/DSC_2593.jpg",
+      imagePosition: "50% 53%",
+      imageFit: "cover",
+      href: "products/mm3a/index.html",
+      status: "live"
+    },
+    {
       id: "pudding",
       categoryId: "true-wireless",
       name: { en: "PUDDING", zh: "布丁 PUDDING" },

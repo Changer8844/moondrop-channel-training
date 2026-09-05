@@ -2,12 +2,15 @@
 
 SPACE TRAVEL 2 is the visual and interaction reference. Every product core-selling-points page must preserve the same training flow while changing only product content, imagery, hotspot coordinates, crop values, and bilingual copy.
 
+For new models, follow [production-workflow.md](production-workflow.md). MM3A demonstrates six source-mapped feature entries and exactly two English reviews. Reuse shared board components rather than its product claims or coordinates.
+
 ## Required initial state
 
 - Enter on Overview, never on the first feature.
 - Keep the desktop view in three columns: feature list, complete product view, and right-side guidance.
 - Highlight the Overview button.
-- Show the complete product and all six hotspots.
+- Show the complete product and every physical hotspot. A `hotspot: false` story remains in the list and progress sequence, without an invented physical marker.
+- When all-story navigation is requested, provide one marker per story and verify the count. Label internal or system-level functions as feature guides; do not invent an external control. MM3A uses six entries, with its internal DSP explicitly identified.
 - Keep the thin progress indicator decorative and on its first step.
 - Open a feature only after the user selects a hotspot or a feature-list item.
 
@@ -24,6 +27,7 @@ SPACE TRAVEL 2 is the visual and interaction reference. Every product core-selli
 
 - Desktop columns: `minmax(236px, 272px) minmax(520px, 1fr) minmax(332px, 390px)`.
 - Hotspots: `36px × 36px`; labels begin `38px` from the hotspot center.
+- Layer order is background grid (0), original photo (2), feature markers. The grid must be outside the photo's zoom/pan transform and never over its surface. An opaque original naturally hides the grid underneath; do not use blend modes to force it through. Check Overview, all focused states and drag extremes.
 - Composed feature stages retain `clamp(190px, 20vh, 240px)`. Original image/poster slides instead load shared `feature-media.css`: full column width and natural height. Never squeeze a portrait graphic into that fixed landscape frame.
 - Package and after-sales desktop columns: both the package row and warranty row use `minmax(0, 1.05fr) minmax(340px, .95fr)`. This keeps the package image restrained and aligns the upper package-copy column with the lower after-sales-copy column.
 - English hub-card wrapping: section buttons use one unrestricted `minmax(0, 1fr)` text column, with the arrow absolutely positioned so it does not steal line width. Titles and subtitles must use the full card width, normal word breaking, and `text-wrap: pretty`; do not add `ch`-based caps that create isolated final words when space remains.
