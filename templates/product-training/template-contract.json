@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "referenceProduct": "space-travel-2",
   "initialState": "overview",
   "desktopLayout": "three-column",
@@ -14,6 +14,20 @@
   "hubSectionTextWrap": "pretty",
   "panelEmptyCopyMaxWidth": "none",
   "panelEmptyTextWrap": "pretty",
+  "reviewHeroVersion": "1.0.0",
+  "reviewHeroStylesheet": "../../templates/product-training/media-reviews.css?v=1.0.0",
+  "reviewHeroMinHeight": "220px",
+  "reviewHeroPadding": "clamp(28px, 4vw, 54px)",
+  "reviewHeroCopyWidth": "60%",
+  "reviewHeroProductWidth": "42%",
+  "reviewHeroHeadingSize": "clamp(30px, 4.4vw, 58px)",
+  "reviewHeroHeadingWeight": "350",
+  "reviewHeroHeadingLetterSpacing": "-.075em",
+  "reviewHeroHeadingLineHeight": ".96",
+  "reviewHeroHeadingTextWrap": "pretty",
+  "reviewHeroMobileBreakpoint": "840px",
+  "reviewHeroTitleEn": "Real reviews, one click away",
+  "reviewHeroTitleZh": "真实评测，一键直达",
   "reviewCardTitleTextWrap": "pretty",
   "forbiddenCopyPatterns": [
     "顾客买到什么.{0,12}讲清楚",
@@ -44,6 +58,11 @@
   "requiredClasses": [
     "workspace",
     "panel-empty",
-    "panel-content"
+    "panel-content",
+    "review-intro",
+    "review-intro-copy",
+    "review-intro-product-frame",
+    "review-intro-product",
+    "review-grid"
   ]
 }

@@ -1,0 +1,79 @@
+/* SPACE TRAVEL 2 positioning template, shared by all products. */
+[data-positioning-open="true"] { background: #090c0b; }
+[data-positioning-open="true"] > :is(.board-header, .section-board-header) {
+  min-height: 68px;
+  padding: 12px 28px;
+  background: rgba(8,11,11,.9);
+}
+[data-positioning-open="true"] > header h2 {
+  max-width: none;
+  margin: 3px 0 0;
+  color: #eef3f0;
+  font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-size: 28px;
+  font-weight: 560;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+[data-positioning-open="true"] > :is(.board-content, .section-board-content) {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(22px, 3vw, 46px);
+}
+.positioning-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: center;
+  min-height: 230px;
+  margin-bottom: 14px;
+  padding: clamp(24px, 4vw, 52px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #030505;
+  font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+.positioning-hero-copy { position: relative; z-index: 2; width: 68%; min-width: 0; }
+.positioning-hero h3 {
+  margin: 0;
+  color: #eef3f0;
+  font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(38px, 4.2vw, 66px);
+  font-weight: 520;
+  line-height: .98;
+  letter-spacing: -.04em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: pretty;
+}
+.positioning-hero p { margin: 14px 0 0; color: #a9b3af; font-size: 12px; line-height: 1.65; text-wrap: pretty; }
+.positioning-hero-art { position: absolute; z-index: 0; inset: 0 0 0 auto; width: 43%; display: flex; align-items: center; justify-content: flex-end; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 97%, transparent), linear-gradient(0deg, transparent, #000 7%, #000 93%, transparent); mask-composite: intersect; }
+.positioning-hero-art img { display: block; flex: 0 0 auto; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; object-position: right center; transform: scale(var(--positioning-scale, 1)); transform-origin: var(--positioning-origin, right center); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 96%, transparent), linear-gradient(0deg, transparent, #000 12%, #000 90%, transparent); mask-composite: intersect; }
+.positioning-hero-art--campaign { width: 72%; display: block; mask-image: none; }
+.positioning-hero-art--campaign img { width: 100%; height: 100%; object-fit: cover; object-position: center 48%; mask-image: none; }
+.positioning-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, #030505 0, rgba(3,5,5,.92) 34%, rgba(3,5,5,.38) 62%, rgba(3,5,5,.03) 100%);
+}
+.positioning-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.positioning-card { min-width: 0; padding: 24px; border: 1px solid var(--line); background: #111615; font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+.positioning-card h3 { margin: 0 0 15px; color: #eef3f0; font-size: 19px; font-weight: 700; line-height: 1.3; letter-spacing: -.02em; text-wrap: pretty; }
+.positioning-customer { margin: 0 0 12px; color: var(--lime); font-size: 14px; line-height: 1.45; }
+.positioning-answer { margin: 0; color: #9ca7a2; font-size: 12px; line-height: 1.7; }
+.positioning-proof { margin-top: 18px; padding-top: 13px; border-top: 1px solid var(--line); color: #7e8985; font-family: Menlo, Monaco, Consolas, monospace; font-size: 8px; line-height: 1.45; letter-spacing: .05em; text-transform: uppercase; }
+html[lang^="zh"] .positioning-hero h3,
+html[lang^="zh"] [data-positioning-open="true"] > header h2 { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
+@media (max-width: 840px) {
+  [data-positioning-open="true"] > :is(.board-content, .section-board-content) { padding: 14px; }
+  .positioning-hero { padding: 24px; }
+  .positioning-hero-copy { width: 100%; }
+  .positioning-hero-art { width: 62%; opacity: .5; }
+  .positioning-hero-art--campaign { width: 100%; }
+  .positioning-cards { grid-template-columns: 1fr; }
+}

@@ -217,9 +217,10 @@
     .support-visual { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: cover; object-position: center; background: #eef0ed; }
     .support-copy { padding: 22px; }
     .support-block--package .support-copy { align-self: center; padding: clamp(28px, 3.2vw, 46px); }
-    .support-copy--warranty { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr); gap: clamp(28px, 4vw, 64px); padding: clamp(28px, 3.2vw, 46px); }
+    .support-copy--warranty { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr); gap: 0; padding: 0; }
+    .support-warranty-summary { padding: clamp(28px, 3.2vw, 46px); }
     .support-warranty-summary, .support-exclusions { min-width: 0; }
-    .support-exclusions { padding-left: clamp(0px, 2vw, 30px); border-left: 1px solid var(--line); }
+    .support-exclusions { padding: clamp(28px, 3.2vw, 46px); border-left: 1px solid var(--line); }
     .support-label { color: var(--cyan); font: 800 10px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; }
     .support-copy h3 { margin: 9px 0 16px; font-size: 24px; line-height: 1.15; text-wrap: balance; }
     .package-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0; padding: 0; list-style: none; color: #a7b1ad; font-size: 11px; }
@@ -230,20 +231,6 @@
     .support-policy { margin: 0; color: #a4afaa; font-size: 11px; line-height: 1.65; }
     .support-exclusions .support-policy { margin-top: 13px; }
     .exclusion-list { margin: 13px 0 0; padding-left: 18px; color: #7f8a85; font-size: 10px; line-height: 1.65; }
-    .review-intro { min-height: 220px; position: relative; isolation: isolate; display: grid; align-items: center; padding: clamp(28px, 4vw, 54px); overflow: hidden; border: 1px solid var(--line); background: #030505; }
-    .review-intro::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #030505 0, #030505 38%, rgba(3,5,5,.9) 48%, rgba(3,5,5,.24) 74%, rgba(3,5,5,0) 100%); pointer-events: none; }
-    .review-intro-product { position: absolute; top: 0; right: 0; z-index: 0; width: 60%; height: 100%; display: block; object-fit: cover; object-position: center 60%; }
-    .review-intro h3 { position: relative; z-index: 2; max-width: 48%; margin: 0; font-size: clamp(30px, 4.4vw, 58px); font-weight: 350; letter-spacing: -.075em; line-height: .96; text-wrap: balance; }
-    .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
-    .review-card { min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); background: #111615; color: inherit; text-decoration: none; transition: transform .28s var(--ease), border-color .25s ease; }
-    .review-card:hover { transform: translateY(-4px); border-color: rgba(199,246,74,.5); }
-    .review-image-wrap { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #050707; }
-    .review-image-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .review-play { position: absolute; right: 12px; bottom: 12px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,7,7,.78); color: var(--lime); }
-    .review-copy { display: grid; align-content: start; gap: 8px; padding: 15px; }
-    .review-channel { color: var(--lime); font: 800 8px/1.2 Menlo, Monaco, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
-    .review-copy h3 { margin: 0; color: #e9eeeb; font-size: 13px; line-height: 1.35; letter-spacing: -.01em; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
-    .review-copy span:last-child { color: #7f8a85; font-size: 9px; }
     .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
     .gallery-heading h3 { margin: 0; font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; font-size: 30px; font-weight: 540; letter-spacing: -.025em; line-height: 1.08; }
     .gallery-heading p { max-width: none; margin: 0; color: #9aa59f; font-size: 11px; line-height: 1.6; text-align: right; overflow-wrap: normal; word-break: normal; text-wrap: pretty; }
@@ -267,7 +254,7 @@
       .story-rail { padding-left: 14px; padding-right: 14px; }
       .viewer-column { padding: 0 16px; }
       .panel-scroll { padding-left: 20px; padding-right: 20px; }
-      .comparison-grid, .gallery-grid, .review-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .comparison-grid, .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
     @media (max-width: 840px) {
       .app { height: auto; min-height: 100vh; grid-template-rows: 64px auto; }
@@ -306,14 +293,9 @@
       .board-content { padding: 14px 16px 36px; }
       .positioning-intro { grid-template-columns: 1fr; gap: 24px; }
       .comparison-grid { margin-top: 28px; }
-      .review-intro { min-height: 220px; align-items: end; }
-      .review-intro::before { background: linear-gradient(0deg, #030505 0, rgba(3,5,5,.9) 42%, rgba(3,5,5,.18) 100%); }
-      .review-intro-product { top: 0; right: 0; width: 72%; height: 64%; opacity: .82; }
-      .review-intro h3 { max-width: 100%; }
-      .review-grid { grid-template-columns: 1fr; }
       .support-block--package, .support-copy--warranty { grid-template-columns: 1fr; }
       .support-visual { min-height: 300px; }
-      .support-exclusions { padding-top: 24px; padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+      .support-exclusions { padding-top: 24px; border-top: 1px solid var(--line); border-left: 0; }
       .gallery-heading { display: block; }
       .gallery-heading p { margin-top: 14px; text-align: left; }
       .gallery-card img { height: 170px; }
@@ -334,7 +316,7 @@
       .stage-meta { left: 14px; top: 14px; font-size: 8px; }
       .progress span { width: 17px; height: 5px; }
       .progress span.active { width: 17px; height: 24px; }
-      .comparison-grid, .gallery-grid, .review-grid { grid-template-columns: 1fr; }
+      .comparison-grid, .gallery-grid { grid-template-columns: 1fr; }
       .package-list, .warranty-periods { grid-template-columns: 1fr; }
       .support-visual { min-height: 220px; }
     }
@@ -344,6 +326,9 @@
     html[lang^="zh"] .board-title, html[lang^="zh"] .gallery-heading h3 { font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.025em; }
     html[lang^="zh"] .board-copy h3 { letter-spacing: -.018em; }
   </style>
+  <link rel="stylesheet" href="../../templates/product-training/media-reviews.css?v=1.0.0" />
+  <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
+  <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/rays/index.html">
   <div class="app">
@@ -381,7 +366,7 @@
         </div>
       </section>
 
-      <section class="workspace" id="workspace" aria-label="Interactive RAYS product view" data-core-template-version="1.1.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
+      <section class="workspace" id="workspace" aria-label="Interactive RAYS product view" data-core-template-version="1.2.0" data-core-initial-state="overview" data-core-layout="three-column" hidden>
         <aside class="story-rail">
           <div class="rail-kicker" id="railKicker">SIX CORE SALES STORIES</div>
           <h1 class="rail-title" id="railTitle">Learn it by<br />touching it.</h1>
@@ -437,6 +422,7 @@
 
   <script src="../../auth.js?v=20260826a"></script>
   <script src="content.js?v=20260828e"></script>
+  <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
     (() => {
       const data = window.MOONDROP_RAYS_DATA;
@@ -596,6 +582,7 @@
         els.subfeatureList.innerHTML = feature.subfeatures.map((item) => '<article class="subfeature"><b>' + t(item.label) + '</b><p>' + t(item.text) + '</p></article>').join('');
         els.workspace.classList.add('panel-open');
         els.detailPanel.classList.add('open');
+        els.detailPanel.querySelector('.panel-content').scrollTop = 0;
         els.detailPanel.setAttribute('aria-hidden', 'false');
         setFocusedView(feature, animate);
         renderMedia(feature);
@@ -637,12 +624,13 @@
       }
       function renderBoard(section) {
         const boardData = {
-          positioning: { accent: '#ffab2f', kicker: language === 'zh' ? '产品定位' : 'PRODUCT POSITIONING', title: data.positioning[language].title },
+          positioning: { accent: '#ffab2f', kicker: '', title: ui('positioning') },
           support: { accent: '#39d2e5', kicker: t(data.support[language].kicker), title: t(data.support[language].title) },
           reviews: { accent: '#ad82ff', kicker: '', title: ui('reviews') },
           gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 RAYS 的外观、佩戴与结构细节。' : 'Inspect RAYS design, wear, and product details.' }
         }[section];
         if (!boardData) { navigateSection('hub', false); return; }
+        els.board.dataset.positioningOpen = String(section === 'positioning');
         els.board.style.setProperty('--accent', boardData.accent); els.boardKicker.textContent = boardData.kicker; els.boardTitle.textContent = boardData.title;
         if (section === 'positioning') els.boardContent.innerHTML = positioningMarkup();
         if (section === 'support') els.boardContent.innerHTML = supportMarkup();
@@ -651,11 +639,11 @@
       }
       function reviewsMarkup() {
         const heroAlt = language === 'zh' ? 'RAYS 双耳完整产品图' : 'Complete pair of RAYS in-ear monitors';
-        return '<section class="review-intro"><h3>' + ui('reviewIntroTitle') + '</h3><img class="review-intro-product" src="assets/official/hires/rays-hero-5273.jpg" alt="' + heroAlt + '" /></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
+        return '<section class="review-intro" data-review-template-version="1.0.0"><div class="review-intro-copy"><h3>' + ui('reviewIntroTitle') + '</h3></div><span class="review-intro-product-frame" data-review-image-mode="photo" style="--review-product-scale: 1.4; --review-product-origin: right 68%;"><img class="review-intro-product" src="assets/official/hires/rays-hero-5273.jpg" alt="' + heroAlt + '" /></span></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
       }
       function positioningMarkup() {
         const pack = data.positioning[language];
-        return '<div class="positioning-intro"><div class="board-copy"><p>' + pack.body + '</p><p class="position-question">' + pack.question + '</p></div><div class="board-image"><img src="' + data.positioning.image + '" style="object-position:' + (data.positioning.position || '50% 50%') + '" alt="' + (language === 'zh' ? 'RAYS 耳机产品图' : 'RAYS earphone product image') + '" /></div></div><div class="comparison-grid">' + pack.comparisons.map((item) => '<article class="comparison-card"><h4>' + item[0] + '</h4><p>' + item[1] + '</p></article>').join('') + '</div>';
+        return MoondropPositioning.render({ language, cards: pack.comparisons.map(([title, answer]) => ({ title, answer })), image: data.positioning.image, imageAlt: language === 'zh' ? 'RAYS 双耳产品图' : 'RAYS in-ear monitors', scale: 1.45, origin: 'right 68%' });
       }
       function supportMarkup() {
         const pack = data.support[language];

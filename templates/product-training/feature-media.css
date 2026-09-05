@@ -1,0 +1,33 @@
+/* Source graphics use their natural ratio: full width, no letterboxing or text crop. */
+.panel-media-stage[data-layout="image"] {
+  height: auto;
+  background: transparent;
+}
+
+.panel-media-stage[data-layout="image"] .panel-media-visual {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+.panel-media-stage[data-layout="image"] .panel-media-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.media-frame[data-layout="poster"] {
+  height: auto;
+  overflow: visible;
+}
+
+.media-frame[data-layout="poster"] img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

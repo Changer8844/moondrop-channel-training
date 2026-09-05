@@ -98,6 +98,17 @@ window.MOONDROP_TRAINING_CATALOG = {
   ],
   products: [
     {
+      id: "pudding",
+      categoryId: "true-wireless",
+      name: { en: "PUDDING", zh: "布丁 PUDDING" },
+      type: { en: "Adaptive ANC true wireless", zh: "实时自适应降噪真无线耳机" },
+      image: "products/pudding/assets/campaign/catalog-cover.jpg",
+      imagePosition: "50% 50%",
+      imageFit: "cover",
+      href: "products/pudding/index.html",
+      status: "live"
+    },
+    {
       id: "space-travel-2",
       categoryId: "true-wireless",
       name: { en: "SPACE TRAVEL 2", zh: "太空漫游 2" },

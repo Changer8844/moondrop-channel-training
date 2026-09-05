@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
-  <meta name="description" content="SPACE TRAVEL 2 single-image guided product inspection for offline channel training" />
-  <title>SPACE TRAVEL 2 · HD Photo Channel Training</title>
+  <meta name="description" content="PUDDING bilingual channel training: adaptive ANC, sound, fit, calls, battery and app control." />
+  <title>PUDDING · Channel Training</title>
   <style>
     :root {
       --ink: #080b0b;
@@ -172,13 +172,14 @@
     .app:not(.hub-mode) .training-hub { display: none; }
     .hub-hero-image {
       position: absolute;
-      inset: -1.5%;
-      width: 103%;
-      height: 103%;
-      object-fit: cover;
-      object-position: 50% 45%;
-      transform: translateX(-18%);
-      filter: saturate(.9) contrast(1.06) brightness(.82);
+      left: 0;
+      top: 0;
+      width: 60%;
+      height: 72%;
+      object-fit: contain;
+      object-position: left top;
+      mask-image: linear-gradient(90deg, #000 94%, transparent), linear-gradient(0deg, transparent, #000 6%, #000 94%, transparent);
+      mask-composite: intersect;
       z-index: -3;
     }
     .training-hub::before {
@@ -187,8 +188,8 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(2,4,4,.88) 0, rgba(2,4,4,.42) 34%, rgba(2,4,4,.12) 57%, rgba(2,4,4,.74) 100%),
-        linear-gradient(0deg, rgba(2,4,4,.9) 0, transparent 52%);
+        linear-gradient(90deg, transparent 32%, rgba(3,5,5,.18) 44%, #030505 61%),
+        linear-gradient(0deg, #030505 14%, rgba(3,5,5,.85) 32%, transparent 58%);
     }
     .training-hub::after {
       content: "";
@@ -331,7 +332,7 @@
     .support-layout { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: stretch; }
     .support-block { border: 1px solid var(--line); background: #111615; }
     .support-block--package { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(340px,.95fr); }
-    .support-visual { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: cover; object-position: center; background: #eef0ed; }
+    .support-visual { width: 100%; height: 100%; min-height: 390px; display: block; object-fit: contain; object-position: center; background: #eef0ed; }
     .support-copy { padding: 22px; }
     .support-block--package .support-copy { align-self: center; padding: clamp(28px, 3.2vw, 46px); }
     .support-copy--warranty { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(340px,.95fr); gap: 0; padding: 0; }
@@ -473,7 +474,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 22px;
-      background: #fff;
+      background: #ededed;
       border: 1px solid rgba(228, 241, 233, .16);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.35), 0 24px 60px rgba(0,0,0,.24);
       cursor: default;
@@ -494,40 +495,6 @@
         radial-gradient(circle at 50% 45%, transparent 45%, rgba(111, 129, 121, .12) 100%);
       background-size: 36px 36px, 36px 36px, auto;
     }
-    .stage::after {
-      content: "";
-      position: absolute;
-      left: 10%;
-      right: 10%;
-      bottom: 9%;
-      height: 12%;
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(9, 13, 12, .18), transparent 68%);
-      filter: blur(15px);
-      z-index: -1;
-      transform: scaleX(.75);
-    }
-    .orbit-guide {
-      position: absolute;
-      width: min(78%, 720px);
-      aspect-ratio: 1;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -49%) rotateX(70deg);
-      border: 1px solid rgba(36, 49, 44, .14);
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .orbit-guide::before, .orbit-guide::after {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      border: 1px dashed rgba(36, 49, 44, .11);
-      border-radius: 50%;
-    }
-    .orbit-guide::after { inset: 24%; border-style: solid; }
-
     .photo-rig {
       --pan-x: 0%;
       --pan-y: 2%;
@@ -547,7 +514,7 @@
       will-change: transform;
     }
     .photo-rig.no-transition { transition: none; }
-    .photo-rig.turning { filter: saturate(1.05) contrast(1.025); }
+    .photo-rig.turning { filter: none; }
     .product-photo {
       position: absolute;
       inset: 0;
@@ -555,7 +522,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: saturate(1.02) contrast(1.015);
+      filter: none;
       pointer-events: none;
       user-select: none;
       -webkit-user-drag: none;
@@ -699,7 +666,7 @@
     .panel-media-stage { position: relative; height: clamp(190px, 20vh, 240px); overflow: hidden; background: #eef0f4; }
     .panel-media-stage[data-layout^="driver"] { height: clamp(230px, 24vh, 300px); }
     .panel-media-stage[data-layout="app"] { height: clamp(206px, 20vh, 228px); }
-    .panel-media-visual { position: absolute; inset: 0; overflow: hidden; background: #eef0f4; }
+    .panel-media-visual { position: absolute; inset: 0; overflow: hidden; background: #eef0f4; border: 0; padding: 0; cursor: zoom-in; }
     .panel-media-image { width: 100%; height: 100%; display: block; object-fit: cover; transition: opacity .18s ease; }
     .panel-media-image[data-fit="contain"] { object-fit: contain; }
     .media-driver {
@@ -991,7 +958,7 @@
       .language-option { min-width: 30px; padding-inline: 6px; }
       .workspace { display: block; }
       .training-hub { min-height: calc(100vh - 62px); }
-      .hub-hero-image { transform: translateX(-6%); }
+      .hub-hero-image { width: 100%; height: 42%; }
       .hub-layout { min-height: calc(100vh - 62px); display: flex; flex-direction: column; justify-content: flex-end; gap: 22px; padding: 24px 14px; }
       .hub-copy { align-self: stretch; }
       .hub-copy h1 { font-size: 58px; }
@@ -1074,14 +1041,14 @@
   <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
 </head>
-<body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/space-travel-2/index.html">
+<body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pudding/index.html">
   <div class="app hub-mode" id="trainingApp">
     <header class="topbar">
       <div class="brand">
         <span class="brand-orbit" aria-hidden="true"></span>
         <div>
           <div class="brand-kicker" id="brandKicker">MOONDROP · CHANNEL TRAINING</div>
-          <div class="brand-name">SPACE TRAVEL 2</div>
+          <div class="brand-name">PUDDING</div>
         </div>
       </div>
       <div class="top-status" id="topStatus" aria-label="Page tools">
@@ -1100,14 +1067,13 @@
       </div>
     </header>
 
-    <main class="training-hub" id="trainingHub" aria-label="SPACE TRAVEL 2 training menu">
-      <img class="hub-hero-image" id="hubHeroImage" src="assets/campaign/space-travel-2-hero.jpg" alt="SPACE TRAVEL 2 campaign visual with the product held beside a futuristic portrait" />
+    <main class="training-hub" id="trainingHub" aria-label="PUDDING training menu">
+      <img class="hub-hero-image" id="hubHeroImage" src="assets/campaign/hub-hero-black.png" alt="PUDDING earbuds and cases in three colorways against a black background" />
       <div class="hub-layout">
         <div class="hub-copy">
-          <div class="hub-kicker" id="hubKicker">MOONDROP · SPACE TRAVEL 2</div>
-          <h1 id="hubTitle">SPACE<br />TRAVEL 2</h1>
-          <p id="hubIntro">Transparent case design, a 13mm dynamic driver, noise control, app tuning, a light fit, and all-day battery life.</p>
-          <img class="hub-mark" src="assets/campaign/space-travel-2-mark.png" alt="SPACE TRAVEL 2 graphic mark" />
+          <div class="hub-kicker" id="hubKicker">MOONDROP · PUDDING</div>
+          <h1 id="hubTitle">PUDDING</h1>
+          <p id="hubIntro">Real-time adaptive ANC, personalized sound, and everyday flexibility.</p>
         </div>
         <nav class="hub-menu" aria-label="Training sections">
           <div class="hub-section-grid" id="hubSectionGrid"></div>
@@ -1136,9 +1102,8 @@
         </div>
 
         <div class="stage" id="stage" data-role="product-stage" aria-label="Select a product signal to inspect its detail">
-          <div class="orbit-guide" aria-hidden="true"></div>
           <div class="photo-rig" id="photoRig">
-            <img class="product-photo" id="productPhoto" src="assets/hd-gallery/front-symmetry.jpg" alt="Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case" draggable="false" />
+            <img class="product-photo" id="productPhoto" src="assets/hd-gallery/overview.jpg" alt="PUDDING earbuds and charging cases in three colorways" draggable="false" />
           </div>
         </div>
 
@@ -1175,7 +1140,7 @@
           </div>
           <figure class="panel-media">
             <div class="panel-media-stage">
-              <div class="panel-media-visual" id="panelMediaVisual" role="img"></div>
+              <button class="panel-media-visual" id="panelMediaVisual" type="button"></button>
             </div>
             <div class="panel-media-controls" id="panelMediaControls" hidden>
               <button class="panel-media-nav" id="previousPanelMedia" type="button" aria-label="Previous feature image">←</button>
@@ -1189,6 +1154,7 @@
             <h3 id="showLabel">Show it</h3>
             <p id="panelShow"></p>
           </div>
+          <p class="panel-source" id="panelSource"></p>
           <div class="panel-nav">
             <button id="previousFeature" type="button">← Previous story</button>
             <button id="nextFeature" type="button">Next story →</button>
@@ -1208,11 +1174,11 @@
     <div class="section-board-content" id="sectionBoardContent"></div>
   </section>
 
-  <section class="gallery-board" id="galleryBoard" aria-label="SPACE TRAVEL 2 HD image library" aria-hidden="true">
+  <section class="gallery-board" id="galleryBoard" aria-label="PUDDING HD image library" aria-hidden="true">
     <header class="gallery-header">
       <div>
-        <div class="gallery-kicker" id="galleryKicker">MOONDROP · SOURCE PHOTOGRAPHY · 11 FILES</div>
-        <h2 id="galleryTitle">SPACE TRAVEL 2 HD Image Library</h2>
+        <div class="gallery-kicker" id="galleryKicker">MOONDROP · SOURCE PHOTOGRAPHY · 12 FILES</div>
+        <h2 id="galleryTitle">PUDDING HD Image Library</h2>
       </div>
       <button class="gallery-close" id="closeGallery" type="button" aria-label="Close HD image library">×</button>
     </header>
@@ -1230,326 +1196,15 @@
 
   <script src="../../auth.js?v=20260826a"></script>
   <script src="content.js"></script>
+  <script src="view-data.js"></script>
   <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
     (() => {
-      const data = window.SPACE_TRAVEL_2_DATA;
+      const data = window.PUDDING_DATA;
       const features = data.features.filter((feature) => feature.hotspot !== false);
-      const accentMap = { lime: '#c7f64a', orange: '#ff7c32', cyan: '#6ce4e7', violet: '#b49cf7', blue: '#78a8ff' };
-      const featureAccentMap = {
-        design: '#ff4fb8',
-        sound: '#ffb020',
-        noise: '#00cfe8',
-        app: '#c7f64a',
-        wear: '#9a6cff',
-        daily: '#347dff'
-      };
-      const masterView = {
-        id: 'master',
-        index: 0,
-        image: 'assets/hd-gallery/front-symmetry.jpg',
-        alt: 'Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case',
-        label: 'PRODUCT OVERVIEW',
-        preset: { x: 0, y: 0, zoom: 1.02, yaw: 0, pitch: 0 }
-      };
-      const masterHotspots = {
-        design: [50, 27], sound: [19, 45], noise: [74, 45],
-        app: [63, 58], wear: [80, 49], daily: [50, 58]
-      };
-      const featureViews = {
-        design: {
-          id: 'design', index: 1, label: 'SHELL · TRANSPARENT CRADLE', hotspot: [50, 27],
-          preset: { x: 0, y: 15, zoom: 1.55, yaw: 0, pitch: -1 },
-          panelImage: 'assets/hd-gallery/dark-material.jpg', panelPosition: '50% 34%',
-          panelCaption: 'Directional light makes the thickness, edges, and internal charging geometry easier to inspect.'
-        },
-        sound: {
-          id: 'sound', index: 2, label: 'SOUND · LEFT EARBUD BODY', hotspot: [19, 45],
-          preset: { x: 24, y: 3, zoom: 1.86, yaw: -5, pitch: -1 },
-          panelImage: 'assets/hd-gallery/oblique-close.jpg', panelPosition: '50% 48%',
-          panelCaption: 'The oblique earbud view shows the compact acoustic body that houses the 13mm driver.'
-        },
-        noise: {
-          id: 'noise', index: 3, label: 'NOISE · RIGHT EARBUD', hotspot: [74, 45],
-          preset: { x: -24, y: 3, zoom: 1.84, yaw: 5, pitch: -1 },
-          panelImage: 'assets/hd-gallery/front-symmetry.jpg', panelPosition: '50% 44%',
-          panelCaption: 'Both earbuds are visible together, supporting the ANC, transparency, and call-mode demonstration.'
-        },
-        app: {
-          id: 'app', index: 4, label: 'APP · DSP & PERSONALIZATION', hotspot: [63, 58],
-          preset: { x: -8, y: -12, zoom: 1.66, yaw: 2, pitch: 1 },
-          panelImage: 'assets/official/app-dsp-en.jpg', panelPosition: '50% 50%',
-          panelCaption: 'The MOONDROP app adds a DSP graphic interface, AutoEQ, tune sharing, touch mapping, and ANC switching.'
-        },
-        wear: {
-          id: 'wear', index: 5, label: 'WEAR · FORM & SCALE', hotspot: [80, 49],
-          preset: { x: -24, y: 0, zoom: 1.82, yaw: 6, pitch: -1 },
-          panelImage: 'assets/wearing-guide.jpg', panelPosition: '50% 39%',
-          panelCaption: 'The on-ear reference shows the semi-in-ear scale and how the long stem sits in daily use.'
-        },
-        daily: {
-          id: 'daily', index: 6, label: 'DAILY · CASE & BATTERY', hotspot: [50, 58],
-          preset: { x: 0, y: -13, zoom: 1.62, yaw: 0, pitch: 2 },
-          panelImage: 'assets/hd-gallery/package-spread.jpg', panelPosition: '50% 50%',
-          panelCaption: 'The packaging spread confirms battery life, Bluetooth version, codec support, and the standard in-box contents.'
-        }
-      };
-      const featureMedia = {
-        design: {
-          en: [
-            { image: 'assets/hd-gallery/dark-material.jpg', position: '50% 34%', caption: 'Directional light makes the thickness, edges, and internal charging geometry easier to inspect.' }
-          ],
-          zh: [
-            { image: 'assets/hd-gallery/dark-material.jpg', position: '50% 34%', caption: '定向光线清楚呈现透明材质的厚度、边缘与内部充电结构。' }
-          ]
-        },
-        sound: {
-          en: [
-            { layout: 'driver-parts', image: 'assets/official/driver-art-en.jpg', position: '100% 50%', size: '114% auto', labels: ['Beryllium-plated dome diaphragm', 'Flexible diaphragm suspension', 'Ultra-thin CCAW voice coil', 'N52 magnetic assembly'], caption: 'Exploded driver structure: beryllium-plated dome, flexible suspension, CCAW voice coil, and N52 magnetic assembly.' },
-            { layout: 'driver-schematic-full', image: 'assets/official/driver-schematic.png', caption: 'The complete schematic shows the low-distortion large dynamic driver and beryllium-plated dome diaphragm together.' }
-          ],
-          zh: [
-            { layout: 'driver-parts', image: 'assets/official/driver-art-zh.jpg', position: '100% 50%', size: '114% auto', labels: ['镀铍振膜球顶', '柔性振膜悬边', '特细 CCAW 音圈', 'N52 钕磁体和磁路组件'], caption: '驱动单元分解结构：镀铍振膜球顶、柔性振膜悬边、特细 CCAW 音圈与 N52 钕磁体和磁路组件。' },
-            { layout: 'driver-schematic-full', image: 'assets/official/driver-schematic.png', caption: '完整结构图同时呈现低失真大尺寸动圈单元与镀铍球顶振膜。' }
-          ]
-        },
-        noise: {
-          en: [
-            { layout: 'hero', image: 'assets/official/ST2-6.jpg', position: '50% 89%', size: 'cover', eyebrow: 'SINGLE FEEDFORWARD', label: 'WIDE-BAND\nANC', caption: 'The official ANC graphic visualizes single-feedforward wide-band noise reduction while preserving sound quality.' },
-            { layout: 'hero', image: 'assets/official/ST2-7.jpg', position: '50% 88%', size: 'cover', eyebrow: 'BUILT-IN NPU', label: 'AI NOISE\nCANCELING', caption: 'The built-in NPU provides the hardware foundation for AI environmental-noise reduction during calls.' }
-          ],
-          zh: [
-            { layout: 'hero', image: 'assets/official/CN-6.jpg', position: '50% 89%', size: 'cover', eyebrow: '单前馈', label: '宽频 ANC\n主动降噪', caption: '官网 ANC 图直观呈现单前馈宽频主动降噪与音质兼顾的原理。' },
-            { layout: 'hero', image: 'assets/official/CN-7.jpg', position: '50% 88%', size: 'cover', eyebrow: '内置 NPU 内核', label: '硬件级 AI\n通话降噪', caption: '内置 NPU 为通话中的 AI 环境噪声抑制提供硬件基础。' }
-          ]
-        },
-        app: {
-          en: [
-            { layout: 'app', image: 'assets/official/app-dsp-en.jpg', eyebrow: 'MOONDROP APP', label: 'DSP GRAPHIC INTERFACE', points: ['Parameterized equalizer', 'Filter / frequency / gain / Q', 'Original response reference'], caption: 'The DSP graphic interface supports precise parameterized equalizer adjustment with the original frequency response as a reference.' },
-            { layout: 'app', image: 'assets/official/app-control-en.jpg', eyebrow: 'MOONDROP APP', label: 'CUSTOM TOUCH & ANC', points: ['Custom touch operation', 'ANC / transparency / standard mode', 'Custom switching logic'], caption: 'The app can customize touch operation and the switching logic for ANC, transparency, and standard modes.' }
-          ],
-          zh: [
-            { layout: 'app', image: 'assets/official/app-dsp-zh.jpg', eyebrow: 'MOONDROP APP', label: '专业 DSP 图形化界面', points: ['参数化均衡器', '滤波器类型 / 频点 / 增益 / Q 值', '原始频响曲线参考'], caption: '专业 DSP 图形化界面支持对参数化均衡器进行精确调节，并以原始频响曲线作为调音参考。' },
-            { layout: 'app', image: 'assets/official/app-control-zh.jpg', eyebrow: 'MOONDROP APP', label: '自定义触控与降噪切换', points: ['自定义耳机触控操作', '降噪 / 透传 / 普通模式', '自定义切换逻辑'], caption: 'App 支持自定义耳机触控操作，并调整降噪、透传与普通模式的切换逻辑。' }
-          ]
-        },
-        wear: {
-          en: [
-            { image: 'assets/wearing-guide.jpg', position: '50% 39%', caption: 'The on-ear reference shows the semi-in-ear scale and how the long stem sits in daily use.' }
-          ],
-          zh: [
-            { image: 'assets/wearing-guide.jpg', position: '50% 39%', caption: '佩戴参考图展示半入耳结构的实际大小，以及长柄在日常佩戴中的位置。' }
-          ]
-        },
-        daily: {
-          en: [
-            { layout: 'hero', image: 'assets/hd-gallery/hero-earbuds-launch.jpg', position: '77% 66%', size: 'cover', eyebrow: 'BATTERY LIFE', label: '7 + 24 HOURS', caption: 'The earbuds provide about 7 hours of playback, with about 24 additional hours from the charging case.' },
-            { layout: 'hero', image: 'assets/official/ST2-14.jpg', position: '50% 82%', size: '124% auto', eyebrow: 'DUAL-DEVICE CONNECTIVITY', label: 'SEAMLESS\nSWITCHING', caption: 'Dual-device connectivity supports seamless switching between two devices.' },
-            { layout: 'hero', image: 'assets/official/ST2-15.jpg', position: '50% 82%', size: 'cover', eyebrow: 'AUTOMATIC RECONNECTION', label: 'MONAURAL /\nBINAURAL', caption: 'Automatic reconnection and seamless monaural-binaural switching support an easier daily routine.' }
-          ],
-          zh: [
-            { layout: 'hero', image: 'assets/hd-gallery/hero-earbuds-launch.jpg', position: '77% 66%', size: 'cover', eyebrow: '耳机续航 + 充电仓续航', label: '7 + 24 小时', caption: '耳机单次续航约 7 小时，充电仓可额外提供约 24 小时续航。' },
-            { layout: 'hero', image: 'assets/official/CN-14.jpg', position: '50% 82%', size: '124% auto', eyebrow: '支持双设备连接', label: '手机平板\n无缝切换', caption: '双设备连接支持手机、平板或电脑之间的无缝切换。' },
-            { layout: 'hero', image: 'assets/official/CN-15.jpg', position: '50% 82%', size: 'cover', eyebrow: '出仓自动回连', label: '单双耳\n无缝切换', caption: '出仓自动回连与单双耳无缝切换，让日常使用更加顺畅。' }
-          ]
-        }
-      };
-      const galleryItems = [
-        { image: 'assets/hd-gallery/hero-earbuds-launch.jpg', title: 'Earbuds launch hero', meta: 'Hero · Both colorways' },
-        { image: 'assets/hd-gallery/front-symmetry.jpg', title: 'Front symmetry', meta: 'Product · Black / Green' },
-        { image: 'assets/hd-gallery/oblique-close.jpg', title: 'Oblique earbud close-up', meta: 'Detail · Black / Green' },
-        { image: 'assets/hd-gallery/wide-lineup.jpg', title: 'Wide product lineup', meta: 'Product · Black / Green' },
-        { image: 'assets/hd-gallery/colorway-detail.png', title: 'Transparent structure', meta: 'Detail · Both colorways' },
-        { image: 'assets/hd-gallery/dual-colorways.jpg', title: 'Dual colorways', meta: 'Product · White / Orange + Black / Green' },
-        { image: 'assets/hd-gallery/design-process.jpg', title: 'Design-process composition', meta: 'Product · Three-quarter view' },
-        { image: 'assets/hd-gallery/topdown-layout.jpg', title: 'Top-down layout', meta: 'Product · Black / Green' },
-        { image: 'assets/hd-gallery/dark-material.jpg', title: 'Transparent material under light', meta: 'Material · Low-light close-up' },
-        { image: 'assets/hd-gallery/package-spread.jpg', title: 'Packaging spread', meta: 'Package · Both colorways' },
-        { image: 'assets/hd-gallery/package-specs.jpg', title: 'Packaging and specifications', meta: 'Package · Retail proof' }
-      ];
-      const languagePacks = {
-        en: {
-          ui: {
-            documentTitle: 'SPACE TRAVEL 2 · HD Photo Channel Training',
-            brandKicker: 'MOONDROP · CHANNEL TRAINING', languageLabel: '切换至中文', trainingHome: 'Training home',
-            storyEyebrow: 'Six core sales stories', storyHeadline: 'Learn it by<br />touching it.',
-            productOverview: 'Overview', overviewButton: 'Return to training menu',
-            viewKicker: 'Real-photo inspection field', overviewTitle: 'Product overview',
-            master: 'MAIN VIEW', masterNumber: 'MAIN VIEW / HD', masterLabel: 'FRONT · PRODUCT & EARBUDS', focusNumber: 'FOCUS',
-            stageAria: 'Select a product signal to inspect its detail', dragStageAria: 'Drag the enlarged product to find another signal, or use the feature list.', masterState: 'PRODUCT OVERVIEW',
-            emptyKicker: 'READY FOR INPUT', emptyTitle: 'Choose a selling point.',
-            emptyBody: 'Choose a feature to see its customer benefit, key specification, demonstration, and recommended sales line.',
-            showLabel: 'Show it', sayLabel: 'Sales line', specLabel: 'Core spec', sourcePrefix: 'Source: ',
-            previous: '← Previous story', next: 'Next story →', previousMedia: 'Previous feature image', nextMedia: 'Next feature image',
-            galleryKicker: 'MOONDROP · SOURCE PHOTOGRAPHY · 11 FILES', galleryTitle: 'SPACE TRAVEL 2 HD Image Library',
-            galleryIntro: 'Choose an image for customer demonstrations, colorway comparison, packaging confirmation, or follow-up. Select any image to open the original high-resolution file.',
-            closeDetail: 'Return to training menu', closeGallery: 'Close HD image library', closeFullscreen: 'Close full-screen image',
-            previousImage: 'Previous image', nextImage: 'Next image', openFeature: 'Open', openImage: 'Open high-resolution image:',
-            masterAlt: 'Front product photograph of the black-green SPACE TRAVEL 2 charging case with both earbuds outside the case'
-          },
-          viewLabels: {}, panelCaptions: {}, features: {}, gallery: galleryItems
-        },
-        zh: {
-          ui: {
-            documentTitle: 'SPACE TRAVEL 2 · 高清产品渠道培训',
-            brandKicker: 'MOONDROP · 渠道培训', languageLabel: 'Switch to English', trainingHome: '返回培训首页',
-            storyEyebrow: '六个核心销售卖点', storyHeadline: '点击产品，<br />掌握卖点。',
-            productOverview: '产品总览', overviewButton: '返回培训菜单',
-            viewKicker: '实拍产品检视区', overviewTitle: '产品总览',
-            master: '主图', masterNumber: '主图 / 高清', masterLabel: '正面 · 产品与耳机', focusNumber: '聚焦',
-            stageAria: '点击产品卖点查看对应细节', dragStageAria: '拖曳放大后的产品画面寻找其他光点，也可以使用左侧卖点列表。', masterState: '产品总览',
-            emptyKicker: '等待选择', emptyTitle: '选择一个核心卖点。',
-            emptyBody: '选择一个卖点，查看顾客利益、关键规格、现场演示和推荐话术。',
-            showLabel: '现场展示', sayLabel: '核心话术', specLabel: '核心规格', sourcePrefix: '资料来源：',
-            previous: '← 上一个卖点', next: '下一个卖点 →', previousMedia: '上一张卖点图片', nextMedia: '下一张卖点图片',
-            galleryKicker: 'MOONDROP · 产品高清素材 · 11 张', galleryTitle: 'SPACE TRAVEL 2 高清图库',
-            galleryIntro: '选择图片用于顾客演示、配色对比、包装确认或后续跟进。点击任意图片即可查看高清原图。',
-            closeDetail: '返回培训菜单', closeGallery: '关闭高清图库', closeFullscreen: '关闭全屏图片',
-            previousImage: '上一张图片', nextImage: '下一张图片', openFeature: '打开', openImage: '打开高清图片：',
-            masterAlt: 'SPACE TRAVEL 2 黑绿配色充电盒与两只盒外耳机的正面产品照片'
-          },
-          viewLabels: {
-            design: '外壳 · 透明充电座', sound: '声音 · 左侧耳机腔体', noise: '降噪 · 右侧耳机',
-            app: '手机 App · DSP 与个性化', wear: '佩戴 · 形态与尺寸', daily: '日用 · 充电盒与续航'
-          },
-          panelCaptions: {
-            design: '定向光线清楚呈现透明材质的厚度、边缘与内部充电结构。',
-            sound: '斜侧耳机特写，让你可以从真实结构自然过渡到 13mm 驱动单元的讲解。',
-            noise: '两只耳机同时可见，方便连贯讲解主动降噪、通透模式与通话降噪。',
-            app: 'MOONDROP App 提供专业 DSP 调音、自定义触控以及降噪模式切换。',
-            wear: '佩戴参考图展示半入耳结构的实际大小，以及长柄在日常佩戴中的位置。',
-            daily: '包装与产品同框，可作为续航、蓝牙、编码格式和包装内容的成交佐证。'
-          },
-          features: {
-            design: {
-              chapter: '设计', label: '透明充电盒 + 太空设计', title: '透明太空舱设计，内部结构一目了然', kicker: '设计与材质',
-              subfeatures: [
-                { label: '透明外壳', text: '半透明上层充电座，让内部耳机槽与充电结构清晰可见。' },
-                { label: '太空视觉', text: '独特图形与配色让产品在演示开始前就具有辨识度。' },
-                { label: '开放式充电座', text: '无盒盖的上层结构让耳机与充电槽始终一眼可见。' }
-              ],
-              body: '先从充电盒讲起：无盒盖的透明上层、可见的充电槽与太空主题图形，让产品一眼就有辨识度。',
-              show: '让顾客同时看到开放式上层、充电槽、正面指示灯、充电接口与 SPACE TRAVEL 2 图形。',
-              say: '“开放式充电座就像一枚小型太空舱——透明、紧凑，而且一眼就能认出来。”',
-              spec: '无盒盖半透明充电座 · 可见充电槽 · 太空幻想视觉语言', source: '原培训材料第 5、7 页；水月雨官网产品页与官方图片'
-            },
-            sound: {
-              chapter: '声音', label: '13mm 铍镀层球顶', title: '更大尺寸的驱动单元，兼顾细节、规模感与更低失真', kicker: '声音表现',
-              subfeatures: [
-                { label: '驱动单元', text: '13mm 动圈单元提供更充足的声学基础。' },
-                { label: '球顶振膜', text: '铍镀层球顶搭配柔性悬边复合振膜。' },
-                { label: '零售表达', text: '用具体硬件解释更清晰的细节、更饱满的低频与更低失真。' }
-              ],
-              body: '13mm 动圈单元采用柔性悬边复合振膜与铍镀层球顶，让你可以从真实硬件自然讲到声音细节、低频表现与失真控制。',
-              show: '从充电盒旁拿起一只耳机，指向紧凑的声学腔体，再说明内部采用 13mm 动圈单元。',
-              say: '“13mm 驱动单元给声音更充足的发挥空间，细节更清晰，低频也更饱满。”',
-              spec: '13mm 动圈单元 · 铍镀层球顶 · CCAW 音圈 · N52 磁路', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 4、6 页'
-            },
-            noise: {
-              chapter: '降噪', label: 'ANC + 通透 + AI 通话降噪', title: '安静专注、环境感知与清晰通话', kicker: '降噪与通话',
-              subfeatures: [
-                { label: '宽频主动降噪', text: '单前馈 ANC 适用于学习、办公、火车与飞行场景。' },
-                { label: '通透模式', text: '无需摘下耳机，也能听到周围环境声音。' },
-                { label: 'AI ENC', text: '内置 NPU 支持环境噪声抑制，让通话语音更清晰。' }
-              ],
-              body: '把三种模式对应到简单场景：需要专注时用 ANC，需要感知环境时用通透模式，嘈杂环境通话时用 AI ENC。',
-              show: '用三个简单场景切换演示：书桌或列车对应 ANC，附近交谈对应通透模式，嘈杂街道通话对应 AI ENC。',
-              say: '“环境变化时，同一副耳机可以帮你安静下来、保持对周围的感知，或让自己的声音更清楚。”',
-              spec: '单前馈宽频 ANC · 通透模式 · 内置 NPU AI ENC', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 4、6、10 页'
-            },
-            app: {
-              chapter: '手机 App', label: 'DSP + AutoEQ + 调音分享', title: '专业调音与个性化控制集中在一个 App 中', kicker: 'MOONDROP APP',
-              subfeatures: [
-                { label: 'DSP 图形化界面', text: '可调节滤波器类型、频点、增益和 Q 值，并参考原始频响曲线。' },
-                { label: 'AutoEQ 与分享', text: '可在 MOONDROP App 中使用 AutoEQ 与调音分享功能。' },
-                { label: '自定义控制', text: '可自定义触控操作，以及降噪、透传、普通模式的切换逻辑。' }
-              ],
-              body: '顾客希望进一步个性化时，可用 MOONDROP App 调节参数化 DSP EQ，并使用 AutoEQ、调音分享、自定义触控与降噪切换。',
-              show: '在 App 中打开 SPACE TRAVEL 2 设备页，先展示 DSP 图形化界面，再进入触控设置与降噪设置。',
-              say: '“App 可以精细调整声音，也能使用 AutoEQ 或分享调音，并自定义触控和降噪模式的切换方式。”',
-              spec: 'MOONDROP App · 参数化 DSP EQ · AutoEQ · 调音分享 · 自定义触控 · 自定义降噪切换', source: '水月雨 SPACE TRAVEL 2 官网产品页'
-            },
-            wear: {
-              chapter: '佩戴与便利', label: '半入耳 + 佩戴检测 + 单耳使用', title: '轻巧的半入耳结构，适应日常活动', kicker: '舒适与便利',
-              subfeatures: [
-                { label: '半入耳佩戴', text: '先确认 L/R 标识，再将左右耳机自然放入对应耳道。' },
-                { label: '佩戴检测', text: '耳机取下或戴上时，可自然响应使用状态。' },
-                { label: '独立使用', text: '左右耳机可独立工作，也支持单耳聆听。' }
-              ],
-              body: '先讲轻巧的半入耳佩戴，再补充佩戴检测与左右耳独立使用，说明它在日常行动中的便利性。',
-              show: '把两只耳机拿到盒外，先指出 L/R 标识，再展示圆润声学腔体如何自然放入对应耳朵。',
-              say: '“半入耳结构让日常佩戴与携带更轻巧，而且左右两边都能独立使用。”',
-              spec: '半入耳结构 · 佩戴检测 · 左右耳独立工作 · 支持单耳使用', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 5、7、10 页'
-            },
-            daily: {
-              chapter: '续航与连接', label: '7 + 24 小时 + Bluetooth 6.0', title: '全天续航与稳定连接，支撑真实日常使用', kicker: '续航与连接',
-              subfeatures: [
-                { label: '续航', text: '耳机单次约 7 小时，充电盒额外提供约 24 小时续航。' },
-                { label: '蓝牙', text: 'Bluetooth 6.0，支持 SBC/AAC，开放环境标称距离 10m。' },
-                { label: '双设备日常使用', text: '支持双设备连接、自动回连与单双耳切换。' }
-              ],
-              body: '顾客问到日常使用时，用续航、Bluetooth 6.0 与双设备连接说明它如何适配通勤、工作日和手机加电脑的使用流程。',
-              show: '最后把充电盒拿在手中，将 7 + 24 小时换算成真实的一天，再结合顾客的手机、平板或电脑使用习惯。',
-              say: '“耳机负责一次完整使用，充电盒接力全天续航，两台设备也能保持在同一套使用流程里。”',
-              spec: '耳机约 7 小时 + 充电盒约 24 小时 · Bluetooth 6.0 · SBC/AAC · 10m · 双设备连接', source: '水月雨 SPACE TRAVEL 2 官网产品页；原培训材料第 6、7 页'
-            }
-          },
-          gallery: [
-            { title: '耳机飞出主视觉', meta: '主视觉 · 两种配色' },
-            { title: '正面对称产品图', meta: '产品 · 黑绿配色' },
-            { title: '耳机斜侧特写', meta: '细节 · 黑绿配色' },
-            { title: '横向产品组合', meta: '产品 · 黑绿配色' },
-            { title: '透明结构细节', meta: '细节 · 两种配色' },
-            { title: '双配色组合', meta: '产品 · 白橙与黑绿' },
-            { title: '设计过程构图', meta: '产品 · 四分之三视角' },
-            { title: '俯拍产品布局', meta: '产品 · 黑绿配色' },
-            { title: '暗光透明材质', meta: '材质 · 低光特写' },
-            { title: '包装与产品组合', meta: '包装 · 两种配色' },
-            { title: '包装与规格信息', meta: '包装 · 零售佐证' }
-          ]
-        }
-      };
-
-      const portalLanguagePacks = {
-        en: {
-          hubKicker: 'MOONDROP · SPACE TRAVEL 2',
-          hubTitle: 'SPACE<br />TRAVEL 2',
-          hubIntro: 'Transparent case design, a 13mm dynamic driver, noise control, app tuning, a light fit, and all-day battery life.',
-          hubMenuKicker: 'CHOOSE A TOPIC',
-          sectionClose: 'Back to SPACE TRAVEL 2 training',
-          sections: {
-            core: { tag: 'SELL', title: 'Core Selling Points', subtitle: 'Specifications, customer benefits, and sales lines' },
-            comparison: { tag: 'POSITION', title: 'Product Positioning', subtitle: 'Who it fits and how it compares' },
-            support: { tag: 'OWNERSHIP', title: 'Package & After-sales', subtitle: 'Package contents and warranty periods' },
-            reviews: { tag: 'REVIEWS', title: 'Media Reviews', subtitle: 'Independent real-world perspectives' },
-            gallery: { tag: 'ASSETS', title: 'HD Image Library', subtitle: 'Product visuals for customer demonstrations' }
-          },
-          boards: {
-            comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
-            support: { kicker: 'PACKAGE & WARRANTY', title: 'Package & After-sales', introTitle: 'Standard package contents', intro: '', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
-            reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open review on YouTube ↗' }
-          }
-        },
-        zh: {
-          hubKicker: 'MOONDROP · SPACE TRAVEL 2',
-          hubTitle: '太空漫游 2',
-          hubIntro: '透明太空舱设计、13mm 动圈单元、降噪、App、轻巧佩戴与全天续航。',
-          hubMenuKicker: '选择培训内容',
-          sectionClose: '返回 SPACE TRAVEL 2 培训',
-          sections: {
-            core: { tag: '卖点', title: '核心卖点', subtitle: '规格、顾客利益与销售话术' },
-            comparison: { tag: '定位', title: '产品定位', subtitle: '适合谁，以及应该跟谁比较' },
-            support: { tag: '售后', title: '包装与售后', subtitle: '包装清单与保修期限' },
-            reviews: { tag: '评测', title: '媒体评测', subtitle: '来自外部的真实使用视角' },
-            gallery: { tag: '素材', title: '高清图库', subtitle: '用于顾客演示的产品图片' }
-          },
-          boards: {
-            comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
-            support: { kicker: '包装与保修', title: '包装与售后', introTitle: '标准包装清单', intro: '', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
-            reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '前往 YouTube 观看 ↗' }
-          }
-        }
-      };
+      const accentMap = { lime: "#c7f64a", orange: "#ff7c32", cyan: "#6ce4e7", violet: "#b49cf7", blue: "#78a8ff" };
+      const featureAccentMap = { "adaptive-anc": "#c7f64a", sound: "#ffb020", transparency: "#00cfe8", calls: "#b49cf7", battery: "#347dff", app: "#c7f64a" };
+      const { masterView, masterHotspots, featureViews, featureMedia, galleryItems, languagePacks, portalLanguagePacks } = window.PUDDING_VIEW;
 
       const featureList = document.getElementById('featureList');
       const photoRig = document.getElementById('photoRig');
@@ -1568,6 +1223,7 @@
       let activePreset = masterView.preset;
       let panelTimer = 0;
       let lightboxIndex = 0;
+      let lightboxFeatureId = null;
       let panelMediaIndex = 0;
       let dragOffset = { x: 0, y: 0 };
       let stageDrag = null;
@@ -1614,22 +1270,20 @@
       }
 
       function comparisonBoardMarkup(copy) {
-        return MoondropPositioning.render({ language: currentLanguage, cards: data.portal.comparisons[currentLanguage], image: data.portal.campaign.hero, imageAlt: currentLanguage === 'zh' ? 'SPACE TRAVEL 2 产品宣传图' : 'SPACE TRAVEL 2 campaign photograph', campaign: true });
+        return MoondropPositioning.render({ language: currentLanguage, cards: data.portal.comparisons[currentLanguage], image: data.portal.campaign.hero, imageAlt: currentLanguage === 'zh' ? 'PUDDING 三色产品，原图黑底处理版' : 'PUDDING in three colorways, photograph with a black background edit', scale: 1.25 });
       }
 
       function supportBoardMarkup(copy) {
         const support = data.portal.support[currentLanguage];
         return `
-          <section class="board-intro support-intro" style="background-image:url('${data.portal.support.packageImage}')">
-            <div><h3>${copy.introTitle}</h3>${copy.intro ? `<p>${copy.intro}</p>` : ''}</div>
-          </section>
           <div class="support-layout">
             <article class="support-block support-block--package">
-              <img class="support-visual" src="${data.portal.support.contentsImage}" alt="SPACE TRAVEL 2 package contents" />
+              <img class="support-visual" src="${data.portal.support.contentsImage}" alt="${data.portal.support.imageAlt[currentLanguage]}" />
               <div class="support-copy">
                 <div class="support-label">${copy.packageLabel}</div>
                 <h3>${copy.packageTitle}</h3>
                 <ul class="package-list">${support.contents.map((item) => `<li>${item}</li>`).join('')}</ul>
+                <p class="support-policy">${support.packageNote}</p>
               </div>
             </article>
             <article class="support-block support-block--warranty">
@@ -1653,14 +1307,14 @@
         return `
           <section class="board-intro review-intro" data-review-template-version="1.0.0">
             <div class="review-intro-copy"><h3>${copy.introTitle}</h3></div>
-            <span class="review-intro-product-frame" data-review-image-mode="cutout" style="--review-product-scale: 1.8; --review-product-origin: right center; --review-product-shift: calc(48.891% - 16px);"><img class="review-intro-product" src="assets/hd-gallery/colorway-detail.png" alt="${currentLanguage === 'zh' ? 'SPACE TRAVEL 2 黑绿与白橙双配色充电盒完整产品图' : 'Complete SPACE TRAVEL 2 black-green and white-orange charging cases'}" /></span>
+            <span class="review-intro-product-frame" style="--review-product-scale: 1.55; --review-product-origin: right center;"><img class="review-intro-product" src="assets/campaign/reviews-three-color-black.png" alt="${currentLanguage === 'zh' ? 'PUDDING 三色耳机与充电盒，原图黑底处理版' : 'PUDDING earbuds and cases in three colorways, photograph with a black background edit'}" /></span>
           </section>
           <div class="review-grid">
             ${data.portal.reviews.map((review) => `
               <a class="review-card" href="${review.url}" target="_blank" rel="noopener noreferrer">
                 <span class="review-image-wrap">
                   <img src="${review.image}" alt="${review.title}" loading="lazy"${review.fallback ? ` data-fallback="${review.fallback}"` : ''} />
-                  <span class="review-play" aria-hidden="true">▶</span>
+                  <span class="review-play" aria-hidden="true">${/youtube\.com|bilibili\.com/.test(review.url) ? '▶' : '↗'}</span>
                 </span>
                 <span class="review-copy">
                   <span class="review-channel">${review.channel}</span>
@@ -1731,7 +1385,7 @@
         if (options.history === false) return;
         try {
           const method = options.replace ? 'replaceState' : 'pushState';
-          window.history[method]({ st2Section: target }, '', sectionUrl(target));
+          window.history[method]({ puddingSection: target }, '', sectionUrl(target));
         } catch (error) {
           // Direct file opening can limit history updates; the visual state still works.
         }
@@ -1743,7 +1397,7 @@
           return;
         }
         try {
-          if (window.history.state?.st2Section && window.history.state.st2Section !== 'hub') {
+          if (window.history.state?.puddingSection && window.history.state.puddingSection !== 'hub') {
             window.history.back();
             return;
           }
@@ -1800,7 +1454,7 @@
         card.innerHTML = `
           <img src="${item.image}" alt="${item.title}" loading="lazy" />
           <span class="gallery-card-copy"><b>${item.title}</b><span>${item.meta}</span></span>`;
-        card.addEventListener('click', () => openLightbox(index));
+        card.addEventListener('click', () => { lightboxFeatureId = null; openLightbox(index); });
         galleryGrid.appendChild(card);
       });
 
@@ -1817,8 +1471,8 @@
         document.getElementById('hubKicker').textContent = portalPack.hubKicker;
         document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
         document.getElementById('hubIntro').textContent = portalPack.hubIntro;
-        document.getElementById('trainingHub').setAttribute('aria-label', currentLanguage === 'zh' ? 'SPACE TRAVEL 2 培训菜单' : 'SPACE TRAVEL 2 training menu');
-        document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? '模特手持 SPACE TRAVEL 2 的太空主题主视觉' : 'SPACE TRAVEL 2 campaign visual with the product held beside a futuristic portrait';
+        document.getElementById('trainingHub').setAttribute('aria-label', currentLanguage === 'zh' ? 'PUDDING 培训菜单' : 'PUDDING training menu');
+        document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? 'PUDDING 三色耳机与充电盒，原图黑底处理版' : 'PUDDING earbuds and cases in three colorways, photograph with a black background edit';
         document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
         renderHubButtons();
         document.getElementById('trainingHomeLink').href = `../../index.html?lang=${currentLanguage}`;
@@ -1853,7 +1507,7 @@
         detailPanel.setAttribute('aria-label', currentLanguage === 'zh' ? '卖点培训详情' : 'Feature training detail');
         overviewClose.setAttribute('aria-label', ui.closeDetail);
         document.getElementById('closePanel').setAttribute('aria-label', ui.closeDetail);
-        document.getElementById('galleryBoard').setAttribute('aria-label', currentLanguage === 'zh' ? 'SPACE TRAVEL 2 高清图库' : 'SPACE TRAVEL 2 HD image library');
+        document.getElementById('galleryBoard').setAttribute('aria-label', currentLanguage === 'zh' ? 'PUDDING 高清图库' : 'PUDDING HD image library');
         document.getElementById('closeGallery').setAttribute('aria-label', ui.closeGallery);
         document.getElementById('closeLightbox').setAttribute('aria-label', ui.closeFullscreen);
         document.getElementById('lightboxPrevious').setAttribute('aria-label', ui.previousImage);
@@ -1913,6 +1567,16 @@
       }
 
       function applyPreset(immediate = false) {
+        const rigWidth = photoRig.offsetWidth;
+        const rigHeight = photoRig.offsetHeight;
+        if (!rigWidth || !rigHeight || !stage.clientWidth || !stage.clientHeight) return;
+        const maxPanX = Math.max(0, (rigWidth * activePreset.zoom - stage.clientWidth) / (2 * rigWidth)) * 100;
+        const maxPanY = Math.max(0, (rigHeight * activePreset.zoom - stage.clientHeight) / (2 * rigHeight)) * 100;
+        activePreset = {
+          ...activePreset,
+          x: Math.max(-maxPanX, Math.min(maxPanX, activePreset.x)),
+          y: Math.max(-maxPanY, Math.min(maxPanY, activePreset.y))
+        };
         photoRig.classList.toggle('no-transition', immediate);
         photoRig.style.setProperty('--pan-x', `${activePreset.x}%`);
         photoRig.style.setProperty('--pan-y', `${activePreset.y}%`);
@@ -1934,8 +1598,8 @@
         const scaledHeight = rigHeight * activePreset.zoom;
         const presetX = rigWidth * activePreset.x / 100;
         const presetY = rigHeight * activePreset.y / 100;
-        const maxCenterX = Math.max(Math.abs(presetX), Math.max(0, (scaledWidth - stageRect.width) / 2));
-        const maxCenterY = Math.max(Math.abs(presetY), Math.max(0, (scaledHeight - stageRect.height) / 2));
+        const maxCenterX = Math.max(0, (scaledWidth - stageRect.width) / 2);
+        const maxCenterY = Math.max(0, (scaledHeight - stageRect.height) / 2);
         return {
           minX: -maxCenterX - presetX,
           maxX: maxCenterX - presetX,
@@ -2028,7 +1692,8 @@
         const slide = slides[panelMediaIndex];
         const panelMediaVisual = document.getElementById('panelMediaVisual');
         panelMediaVisual.innerHTML = panelMediaMarkup(slide);
-        panelMediaVisual.setAttribute('aria-label', slide.caption);
+        panelMediaVisual.setAttribute('aria-label', currentPack().ui.openImage + ' ' + slide.caption);
+        panelMediaVisual.title = currentPack().ui.openImage;
         document.querySelector('.panel-media-stage').dataset.layout = slide.layout || 'image';
         document.getElementById('panelPhotoCaption').textContent = slide.caption;
         document.getElementById('panelMediaCount').textContent = `${String(panelMediaIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
@@ -2042,6 +1707,7 @@
         if (slides.length < 2) return;
         panelMediaIndex = (panelMediaIndex + direction + slides.length) % slides.length;
         renderPanelMedia(featureId);
+        document.querySelector('.panel-media').scrollIntoView({ block: 'start', behavior: 'instant' });
       }
 
       function populatePanel(feature, index) {
@@ -2056,6 +1722,7 @@
         document.getElementById('panelShow').textContent = localized.show;
         document.getElementById('panelSay').textContent = localized.say;
         document.getElementById('panelSpec').textContent = localized.spec;
+        document.getElementById('panelSource').textContent = currentPack().ui.sourcePrefix + localized.source;
       }
 
       function openFeature(id, options = {}) {
@@ -2111,13 +1778,14 @@
       }
 
       function openLightbox(index) {
-        lightboxIndex = (index + galleryItems.length) % galleryItems.length;
-        const item = localizedGalleryItem(lightboxIndex);
+        const items = lightboxFeatureId ? panelMediaFor(lightboxFeatureId).map(slide => ({ image: slide.image, title: slide.caption, meta: '' })) : galleryItems.map((_, i) => localizedGalleryItem(i));
+        lightboxIndex = (index + items.length) % items.length;
+        const item = items[lightboxIndex];
         const lightbox = document.getElementById('lightbox');
         const image = document.getElementById('lightboxImage');
         image.src = item.image;
         image.alt = item.title;
-        document.getElementById('lightboxCaption').innerHTML = `<b>${item.title}</b>${item.meta} · ${String(lightboxIndex + 1).padStart(2, '0')} / ${String(galleryItems.length).padStart(2, '0')}`;
+        document.getElementById('lightboxCaption').innerHTML = `<b>${item.title}</b>${item.meta} · ${String(lightboxIndex + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}`;
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
       }
@@ -2139,6 +1807,11 @@
       document.getElementById('nextFeature').addEventListener('click', () => openFeature(features[(activeIndex + 1) % features.length].id));
       document.getElementById('previousPanelMedia').addEventListener('click', () => stepPanelMedia(-1));
       document.getElementById('nextPanelMedia').addEventListener('click', () => stepPanelMedia(1));
+      document.getElementById('panelMediaVisual').addEventListener('click', () => {
+        if (activeIndex < 0) return;
+        lightboxFeatureId = features[activeIndex].id;
+        openLightbox(panelMediaIndex);
+      });
       document.getElementById('languageToggle').addEventListener('click', () => {
         currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
         try {
@@ -2182,6 +1855,7 @@
       stage.addEventListener('pointerup', (event) => finishStageDrag(event.pointerId));
       stage.addEventListener('pointercancel', (event) => finishStageDrag(event.pointerId));
       window.addEventListener('resize', () => {
+        applyPreset(true);
         if (activeIndex >= 0) setDragOffset(dragOffset.x, dragOffset.y);
       });
 
@@ -2201,7 +1875,7 @@
       });
 
       window.addEventListener('popstate', (event) => {
-        const requested = event.state?.st2Section || new URLSearchParams(window.location.search).get('section') || 'hub';
+        const requested = event.state?.puddingSection || new URLSearchParams(window.location.search).get('section') || 'hub';
         showSectionVisual(requested);
         applyLanguage();
       });
@@ -2213,10 +1887,10 @@
         try {
           if (initial !== 'hub') {
             const targetUrl = sectionUrl(initial);
-            window.history.replaceState({ st2Section: 'hub' }, '', sectionUrl('hub'));
-            window.history.pushState({ st2Section: initial }, '', targetUrl);
+            window.history.replaceState({ puddingSection: 'hub' }, '', sectionUrl('hub'));
+            window.history.pushState({ puddingSection: initial }, '', targetUrl);
           } else {
-            window.history.replaceState({ st2Section: 'hub' }, '', sectionUrl('hub'));
+            window.history.replaceState({ puddingSection: 'hub' }, '', sectionUrl('hub'));
           }
         } catch (error) {
           // Direct file opening can restrict history updates; section navigation still works.

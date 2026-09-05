@@ -1,0 +1,18 @@
+<!--
+  MOONDROP channel-training media-review board, version 1.0.0.
+  Layout and typography come from media-reviews.css. Only product image, crop variables,
+  accessible alt text, review data, and localized copy may vary by product.
+-->
+<section class="review-intro" data-review-template-version="1.0.0">
+  <div class="review-intro-copy">
+    <h3>{{REVIEW_INTRO_TITLE}}</h3>
+  </div>
+  <span
+    class="review-intro-product-frame"
+    style="--review-product-scale: {{PRODUCT_SCALE}}; --review-product-origin: {{PRODUCT_ORIGIN}};"
+  >
+    <img class="review-intro-product" src="{{COMPLETE_PRODUCT_IMAGE}}" alt="{{COMPLETE_PRODUCT_IMAGE_ALT}}" />
+  </span>
+</section>
+
+<div class="review-grid"><!-- exact linked review cards --></div>
