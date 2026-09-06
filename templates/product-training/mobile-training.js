@@ -133,7 +133,6 @@
     } else {
       add(text('产品培训首页', 'Product training home'), s.section === 'hub', () => adapter.navigate('hub'));
       adapter.sections().forEach(item => add(item.title, s.section === item.id, () => adapter.navigate(item.id)));
-      add(text('返回培训系统首页', 'Training system home'), false, () => location.href = new URL(`index.html?lang=${s.lang}`, base).href);
     }
     sheet.querySelector('.mobile-icon').setAttribute('aria-label', text('关闭目录', 'Close menu'));
     openModal(sheet);
@@ -232,8 +231,9 @@
     adapter=config;
     createOverlays();
     const topbar=document.querySelector('.topbar'),status=document.querySelector('.top-status');
-    back=button('mobile-only mobile-icon mobile-back','',navigateBack); menu=button('mobile-only mobile-icon','☰',()=>openMenu());
+    back=button('mobile-only mobile-icon mobile-back','',navigateBack); menu=button('mobile-only mobile-icon','',()=>openMenu());
     back.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>';
+    menu.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
     topbar.prepend(back);status.append(menu);
     dock=el('nav','mobile-only mobile-dock'); dock.setAttribute('aria-label',text('卖点导航','Selling-point navigation'));
     dock.append(button('','',()=>{
