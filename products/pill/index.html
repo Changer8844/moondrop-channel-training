@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script src="../../mobile-previews.js?v=1.0.0"></script>
+  <script src="../../templates/product-training/mobile-training.js?v=1.0.0"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
   <meta name="description" content="MOONDROP PILL bilingual offline channel training" />
@@ -330,6 +332,7 @@
   <link rel="stylesheet" href="../../templates/product-training/media-reviews.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
+  <link rel="stylesheet" href="../../templates/product-training/mobile-training.css?v=1.0.0" />
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pill/index.html">
   <div class="app">
@@ -457,6 +460,7 @@
       }
       function currentSection() { return new URLSearchParams(location.search).get('section') || 'hub'; }
       function applyLanguage() {
+        window.MoondropMobile?.notify();
         document.documentElement.lang = language;
         const active = els.languageToggle.querySelector('[data-language-option="' + language + '"]');
         els.languageToggle.querySelectorAll('[data-language-option]').forEach((item) => item.classList.toggle('active', item === active));
@@ -542,6 +546,7 @@
         window.requestAnimationFrame(() => { if (!animate) els.photoRig.style.transition = ''; });
       }
       function resetOverview() {
+        window.MoondropMobile?.notify();
         currentFeatureId = null;
         mediaIndex = 0;
         document.documentElement.style.setProperty('--accent', '#c7f64a');
@@ -560,6 +565,7 @@
         renderProgress();
       }
       function renderFeature(id, animate = true) {
+        window.MoondropMobile?.notify();
         const feature = featureById[id];
         if (!feature) return;
         currentFeatureId = id;
@@ -589,6 +595,7 @@
         renderProgress();
       }
       function renderMedia(feature) {
+        window.MoondropMobile?.notify();
         const item = feature.media[mediaIndex % feature.media.length];
         els.mediaFrame.dataset.layout = item.layout || 'photo';
         els.mediaFrame.dataset.tone = item.tone || 'dark';
@@ -607,6 +614,7 @@
         renderRoute();
       }
       function renderRoute() {
+        window.MoondropMobile?.notify();
         const section = currentSection();
         closeLightbox();
         if (section === 'core') {
@@ -648,7 +656,7 @@
         return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 包装与配件全家福' : 'PILL package contents and accessories') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
       }
       function galleryMarkup() {
-        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="assets/gallery/' + item[0] + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
+        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="' + window.MoondropMobile.preview('assets/gallery/'+item[0]) + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
       }
       function bindGallery() { els.boardContent.querySelectorAll('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => openLightbox(Number(button.dataset.galleryIndex)))); }
       function openLightbox(index) {
@@ -676,6 +684,20 @@
 
       applyLanguage();
       renderRoute();
+
+      window.MoondropMobile.mount({
+        id: 'pill', category: 'true-wireless',
+        state: () => ({ section: currentSection(), feature: currentFeatureId, lang: language }),
+        title: () => els.hubTitle.textContent,
+        features: () => data.features.map(f => ({id:f.id, title:t(f.chapter)})),
+        sections: () => [...els.hubSectionGrid.querySelectorAll('[data-section]')].map(b => ({id:b.dataset.section, title:b.querySelector('b').textContent})),
+        select: id => focusFeature(id, false), overview: resetOverview,
+        navigate: id => navigateSection(id),
+        master: () => ({image:els.masterImage.src, title:ui('viewerOverview')}),
+        gallery: () => data.gallery.map(item => ({image:'assets/gallery/'+item[0], title:item[language==='zh'?2:1]})),
+        media: () => currentFeatureId ? featureById[currentFeatureId].media.map(item => ({image:t(item.image), title:t(item.caption)})) : [],
+        mediaIndex: () => mediaIndex
+      });
     })();
   </script>
 </body>

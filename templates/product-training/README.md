@@ -2,6 +2,10 @@
 
 SPACE TRAVEL 2 is the visual and interaction reference. Every product core-selling-points page must preserve the same training flow while changing only product content, imagery, hotspot coordinates, crop values, and bilingual copy.
 
+The column measurements and dragging rules below describe desktop. At mobile breakpoints, load the shared [mobile reading contract](mobile-layout.md); do not create a second product-content copy or add page-specific phone styles.
+
+Mobile core reading has no hotspots or manual enlargement: story selection still automatically zooms/positions the original photograph using its existing focus preset, and Overview restores the whole product. The HD gallery keeps its separate original-image viewer.
+
 For new models, follow [production-workflow.md](production-workflow.md). MM3A demonstrates six source-mapped feature entries and exactly two English reviews. Reuse shared board components rather than its product claims or coordinates.
 
 ## Required initial state

@@ -30,6 +30,31 @@ const productSlugs = fs.readdirSync(productDir, { withFileTypes: true })
 const failures = [];
 if (!productSlugs.length) failures.push('No matching product pages found');
 
+const mobileCSS = fs.readFileSync(path.join(root, 'templates/product-training/mobile-training.css'), 'utf8');
+const mobileJS = fs.readFileSync(path.join(root, 'templates/product-training/mobile-training.js'), 'utf8');
+for (const token of ['html.mobile-ui .mobile-dock', 'width: 44px', 'env(safe-area-inset-bottom', 'touch-action: pan-y', 'font-size: 16px']) {
+  if (!mobileCSS.includes(token)) failures.push(`mobile contract missing ${token}`);
+}
+for (const token of ['moondropTrainingReading:v1', 'adapter.gallery()', 'adapter.select(id)', 'adapter.overview()', 'mobileOverlay', 'setInert', 'max-width: 900px']) {
+  if (!mobileJS.includes(token)) failures.push(`mobile behavior missing ${token}`);
+}
+for (const token of ['mobile-hotspot', 'mobile-proof-open', 'showImages([adapter.master()]', 'showImages(adapter.media()']) {
+  if (mobileJS.includes(token)) failures.push(`mobile core reader must not recreate manual image controls: ${token}`);
+}
+const previewContext = {window:{}};
+vm.runInNewContext(fs.readFileSync(path.join(root, 'mobile-previews.js'), 'utf8'), previewContext, {timeout:1000});
+for (const [source, preview] of Object.entries(previewContext.window.MOONDROP_MOBILE_PREVIEWS)) {
+  for (const file of [source, preview]) if (!fs.existsSync(path.join(root, file))) failures.push(`Mobile preview source/asset missing: ${file}`);
+}
+for (const [page, prefix] of [['index.html',''], ...productSlugs.map(slug=>[`products/${slug}/index.html`,'../../'])]) {
+  const html=fs.readFileSync(path.join(root,page),'utf8');
+  for (const asset of ['mobile-previews.js?v=1.0.0', 'templates/product-training/mobile-training.js?v=1.0.0', 'templates/product-training/mobile-training.css?v=1.0.0']) {
+    if (!html.includes(prefix+asset)) failures.push(`${page}: shared mobile asset missing: ${asset}`);
+  }
+  if (!html.includes('viewport-fit=cover')) failures.push(`${page}: mobile safe-area viewport missing`);
+  if (prefix && !html.includes('window.MoondropMobile.mount({')) failures.push(`${page}: mobile adapter missing`);
+}
+
 const cssValuePattern = (value) => value
   .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   .replace(/\s+/g, '\\s*');
@@ -40,6 +65,9 @@ const cssRuleHas = (source, selector, declarations) => {
   if (!match) return false;
   return declarations.every(([property, value]) => new RegExp(`${property.replace(/-/g, '\\-')}\\s*:\\s*${cssValuePattern(value)}(?:\\s*;|\\s*$)`).test(match[1]));
 };
+
+if (!cssRuleHas(mobileCSS, 'html.mobile-ui .photo-rig .hotspot', [['display', 'none !important']])) failures.push('mobile core hotspots must be hidden without affecting desktop');
+if (!cssRuleHas(mobileCSS, 'html.mobile-ui .mobile-view-tools[hidden]', [['display', 'none']])) failures.push('mobile overview must hide its redundant restore button');
 
 const sharedReviewChecks = [
   ['.review-intro', [['min-height', contract.reviewHeroMinHeight], ['padding', contract.reviewHeroPadding]]],

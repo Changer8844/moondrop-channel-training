@@ -80,7 +80,7 @@
     button.dataset.categoryId = category.id;
     button.setAttribute("aria-haspopup", "dialog");
     button.innerHTML = `
-      <img class="category-card__image" src="${category.image}" alt="" style="object-position:${category.imagePosition}" />
+      <img class="category-card__image" src="${window.MoondropMobile.preview(category.image)}" alt="" style="object-position:${category.imagePosition}" />
       <span class="category-card__shade" aria-hidden="true"></span>
       <span class="category-card__availability${products.length ? " is-live" : ""}"></span>
       <span class="category-card__copy">
@@ -101,7 +101,7 @@
     return `
       <a class="product-card" href="${href}" aria-label="${localized(product.name)} · ${ui.openTraining}">
         <span class="product-card__image-wrap">
-          <img src="${product.image}" alt="${localized(product.name)}" style="object-position:${product.imagePosition};object-fit:${product.imageFit || "contain"}" />
+          <img src="${window.MoondropMobile.preview(product.image)}" alt="${localized(product.name)}" style="object-position:${product.imagePosition};object-fit:${product.imageFit || "contain"}" />
         </span>
         <span class="product-card__copy">
           <span class="product-card__status"><i aria-hidden="true"></i>${ui.available}</span>
@@ -192,7 +192,7 @@
     document.documentElement.lang = currentLanguage === "zh" ? "zh-CN" : "en";
     document.title = ui.documentTitle;
     document.getElementById("brandKicker").textContent = ui.brandKicker;
-    document.getElementById("pageTitle").innerHTML = ui.pageTitle.replace("\n", "<br />");
+    document.getElementById("pageTitle").innerHTML = ui.pageTitle.replace("\n", '<span class="intro-title-break"><br /></span>');
     document.getElementById("tagline").textContent = ui.tagline;
     document.getElementById("selectCategory").textContent = ui.selectCategory;
     [languageToggle, overlayLanguageToggle].forEach((toggle) => {

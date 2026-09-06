@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script src="../../mobile-previews.js?v=1.0.0"></script>
+  <script src="../../templates/product-training/mobile-training.js?v=1.0.0"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
   <meta name="description" content="PUDDING bilingual channel training: adaptive ANC, sound, fit, calls, battery and app control." />
@@ -1040,6 +1042,7 @@
   <link rel="stylesheet" href="../../templates/product-training/media-reviews.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
+  <link rel="stylesheet" href="../../templates/product-training/mobile-training.css?v=1.0.0" />
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pudding/index.html">
   <div class="app hub-mode" id="trainingApp">
@@ -1345,6 +1348,7 @@
       }
 
       function showSectionVisual(id) {
+        window.MoondropMobile?.notify();
         currentSection = id;
         sectionBoard.classList.remove('open');
         sectionBoard.setAttribute('aria-hidden', 'true');
@@ -1452,7 +1456,7 @@
         card.className = 'gallery-card';
         card.setAttribute('aria-label', `Open high-resolution image: ${item.title}`);
         card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <img src="${window.MoondropMobile.preview(item.image)}" alt="${item.title}" loading="lazy" />
           <span class="gallery-card-copy"><b>${item.title}</b><span>${item.meta}</span></span>`;
         card.addEventListener('click', () => { lightboxFeatureId = null; openLightbox(index); });
         galleryGrid.appendChild(card);
@@ -1461,6 +1465,7 @@
       const featureById = (id) => features.find((feature) => feature.id === id);
 
       function applyLanguage() {
+        window.MoondropMobile?.notify();
         const pack = currentPack();
         const ui = pack.ui;
         const portalPack = currentPortalPack();
@@ -1726,6 +1731,7 @@
       }
 
       function openFeature(id, options = {}) {
+        window.MoondropMobile?.notify();
         const index = features.findIndex((feature) => feature.id === id);
         if (index < 0) return;
         const feature = features[index];
@@ -1748,10 +1754,11 @@
           detailPanel.classList.add('open');
           detailPanel.querySelector('.panel-content').scrollTop = 0;
           photoRig.classList.remove('turning');
-        }, options.instant ? 0 : 620);
+        }, options.instant || window.MoondropMobile?.isMobile() ? 0 : 620);
       }
 
       function resetOverview() {
+        window.MoondropMobile?.notify();
         window.clearTimeout(panelTimer);
         activeIndex = -1;
         photoRig.removeAttribute('data-focus');
@@ -1901,6 +1908,20 @@
       applyLanguage();
       focusMaster(masterView, null, true);
       initializeSectionHistory();
+
+      window.MoondropMobile.mount({
+        id: 'pudding', category: 'true-wireless',
+        state: () => ({section:currentSection, feature:activeIndex >= 0 ? features[activeIndex].id : null, lang:currentLanguage}),
+        title: () => document.getElementById('hubTitle').textContent,
+        features: () => features.map(f => ({id:f.id, title:localizedFeature(f).chapter})),
+        sections: () => [...document.querySelectorAll('#hubSectionGrid [data-section]')].map(b => ({id:b.dataset.section, title:b.querySelector('b').textContent})),
+        select: id => openFeature(id, {instant:true}), overview: resetOverview,
+        navigate: id => navigateSection(id),
+        master: () => ({image:masterView.image, title:currentPack().ui.overviewTitle}),
+        gallery: () => galleryItems.map((_,i) => localizedGalleryItem(i)),
+        media: () => activeIndex >= 0 ? panelMediaFor(features[activeIndex].id).map(item => ({image:item.image, title:item.caption})) : [],
+        mediaIndex: () => panelMediaIndex
+      });
     })();
   </script>
 </body>
