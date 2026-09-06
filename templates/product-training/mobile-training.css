@@ -38,6 +38,7 @@ html.mobile-ui .category-grid { display: grid; grid-template-columns: repeat(2, 
 html.mobile-ui .category-card { grid-column: auto; grid-row: auto; height: auto; min-height: 260px; border: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 120px 34px 1fr; align-items: stretch; background: #0c110f; }
 html.mobile-ui .category-card__image { position: relative; inset: auto; grid-row: 1; height: 120px; transform: none; }
 html.mobile-ui .category-card__shade { display: none; }
+html.mobile-ui .category-card::after { display: none; }
 html.mobile-ui .category-card__copy { position: relative; inset: auto; grid-row: 3; align-content: start; padding: 8px 12px 16px; width: 100%; }
 html.mobile-ui .category-card__copy strong, html.mobile-ui .category-card:not(.category-card--featured) .category-card__copy strong { font-size: clamp(16px, 4.9vw, 19px); line-height: 1.2; padding-right: 20px; overflow-wrap: normal; }
 html.mobile-ui .category-card__copy span, html.mobile-ui .category-card:not(.category-card--featured) .category-card__copy span { display: block; font-size: 13px; line-height: 1.45; margin-top: 8px; }
@@ -68,6 +69,7 @@ html.mobile-ui .product-card__arrow { font-size: 28px; }
 html.mobile-ui .product-card__type { font-size: 15px; line-height: 1.5; }
 
 /* Product hub: a real photograph, followed by readable full-width topics. */
+html.mobile-ui .lightbox { display: none !important; }
 html.mobile-ui .view { overflow: visible; }
 html.mobile-ui .training-hub, html.mobile-ui .hub-view { height: auto; min-height: 0; overflow: hidden; background: #040706; }
 html.mobile-ui .training-hub::before, html.mobile-ui .training-hub::after, html.mobile-ui .hub-view::before, html.mobile-ui .hub-view::after { display: none; }
