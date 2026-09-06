@@ -137,9 +137,9 @@ for(const lang of ['zh','en']){
     media(){assert.fail('Core evidence must not open a manual viewer');}};
   const context={query:{matches:true},imageAttributes:[],sheet:menuSheet,
     el:tag=>control(tag),button:(cls,label,action)=>Object.assign(control('button'),{action}),
-    document:{body:control(),querySelector:selector=>elements[selector],addEventListener:(type,fn)=>docEvents.set(type,fn)},
+    document:{body:control(),getElementById:()=>control('button'),querySelector:selector=>elements[selector],addEventListener:(type,fn)=>docEvents.set(type,fn)},
     text:(zh,en)=>lang==='zh'?zh:en,state:()=>current,savePosition(){},notify(){},scrollStart(){},
-    createOverlays(){},sync(){},read:()=>({products:{}}),resumeReading(){},
+    createOverlays(){},createLanguageBar:()=>control(),sync(){},read:()=>({products:{}}),resumeReading(){},
     openModal(){},closeModal:action=>action?.(),
     showImages(items,index){assert.equal(items[0],item);assert.equal(index,0);context.galleryOpens++;},
     galleryOpens:0,URLSearchParams,location:{search:''}};

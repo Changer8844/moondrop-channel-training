@@ -11,7 +11,8 @@
   const read = () => { try { const r = JSON.parse(localStorage.getItem(storageKey)); return r?.version === 1 && r.products && typeof r.products === 'object' ? r : {version:1, products:{}}; } catch { return {version:1, products:{}}; } };
   const write = (record) => { try { localStorage.setItem(storageKey, JSON.stringify(record)); } catch { /* Reading works without persistence. */ } };
   let adapter, previous, frame, initial = true, restorePending = false;
-  let dock, sheet, lightbox, back, menu, resume, viewTools;
+  let dock, sheet, lightbox, back, menu, resume, viewTools, languageBar, sheetStories = false;
+  const languageBars = [];
   const imageAttributes = [];
   let modal = null, modalFocus, pendingClose, inertNodes = [], lastImageTap = 0;
   let imageItems = [], imageIndex = 0, imageScale = 1, imageX = 0, imageY = 0;
@@ -20,6 +21,31 @@
   root.classList.toggle('mobile-ui', query.matches);
 
   function state() { return adapter?.state(); }
+  function placeLanguageControls() {
+    languageBars.forEach(({toggle, slot, bar}) => {
+      if (query.matches) bar.append(toggle);
+      else slot.after(toggle);
+    });
+  }
+  function createLanguageBar(toggle, parent = document.body) {
+    const slot = document.createComment('Desktop language control position');
+    toggle.before(slot);
+    const bar = el('div', 'mobile-only mobile-language-bar');
+    // Existing product language handlers replace the URL state. Keep the
+    // active overlay marker so closing it still consumes exactly one entry.
+    bar.addEventListener('click', () => {
+      if (modal) history.replaceState({...history.state, mobileOverlay:true}, '', location.href);
+    });
+    parent.append(bar);
+    languageBars.push({toggle, slot, bar});
+    placeLanguageControls();
+    return bar;
+  }
+  function closeButton(action) {
+    const node = button('mobile-icon', '', action);
+    node.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
+    return node;
+  }
   function notify() { if (!frame) frame = requestAnimationFrame(() => { frame = 0; sync(); }); }
   function scrollStart() { requestAnimationFrame(() => window.scrollTo({top:0, behavior:'instant'})); }
   function savePosition() {
@@ -70,6 +96,8 @@
     if (modal) return;
     modal = node; modalFocus = document.activeElement;
     setInert(true); document.body.classList.add('mobile-modal-open');
+    (node === sheet ? node.querySelector('.mobile-sheet-card') : node).append(languageBar);
+    languageBar.inert = false; dock.hidden = true;
     node.classList.add('open'); node.setAttribute('aria-hidden', 'false');
     history.pushState({...history.state, mobileOverlay:true}, '', location.href);
     node.querySelector('button')?.focus({preventScroll:true});
@@ -77,8 +105,10 @@
   function dismissModal() {
     if (!modal) return;
     modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+    document.body.append(languageBar);
     modal = null; pointers.clear(); gesture = null;
     document.body.classList.remove('mobile-modal-open'); setInert(false);
+    notify();
     modalFocus?.focus({preventScroll:true});
     const action = pendingClose; pendingClose = null; action?.();
   }
@@ -88,6 +118,7 @@
     if (history.state?.mobileOverlay) history.back(); else dismissModal();
   }
   function openMenu(stories = false) {
+    sheetStories = stories;
     const s = state();
     const heading = sheet.querySelector('h2'), list = sheet.querySelector('.mobile-sheet-list');
     heading.textContent = stories ? text('选择卖点', 'Choose a selling point') : text('培训目录', 'Training menu');
@@ -163,10 +194,10 @@
     sheet=el('div','mobile-sheet'); sheet.setAttribute('aria-hidden','true');
     const card=el('section','mobile-sheet-card'); card.setAttribute('role','dialog'); card.setAttribute('aria-modal','true'); card.setAttribute('aria-labelledby','mobileMenuTitle');
     const head=el('div','mobile-sheet-head'),title=el('h2'); title.id='mobileMenuTitle';
-    head.append(title,button('mobile-icon','×',()=>closeModal())); card.append(head,el('div','mobile-sheet-list'));sheet.append(card);
+    head.append(title,closeButton(()=>closeModal())); card.append(head,el('div','mobile-sheet-list'));sheet.append(card);
     sheet.addEventListener('click',e=>{if(e.target===sheet)closeModal();});
     lightbox=el('section','mobile-lightbox'); lightbox.setAttribute('role','dialog'); lightbox.setAttribute('aria-modal','true'); lightbox.setAttribute('aria-label',text('高清图片','Full-size image')); lightbox.setAttribute('aria-hidden','true');
-    const imageHead=el('div','mobile-lightbox-header');imageCounter=el('span');imageHead.append(imageCounter,button('mobile-icon','×',()=>closeModal()));
+    const imageHead=el('div','mobile-lightbox-header');imageCounter=el('span');imageHead.append(imageCounter,closeButton(()=>closeModal()));
     imageView=el('div','mobile-image-viewport');imageElement=el('img');imageElement.draggable=false;imageElement.addEventListener('load',imageTransform);imageView.append(imageElement);
     const foot=el('div','mobile-lightbox-footer'),controls=el('div','mobile-image-controls');imageCaption=el('div','mobile-image-caption');
     imagePrev=button('','←',()=>stepImage(-1));imageNext=button('','→',()=>stepImage(1));imageReset=button('','',()=>{imageScale=imageScale>1?1:2.5;imageX=imageY=0;imageTransform();});
@@ -210,7 +241,9 @@
     }),button('','',()=>openMenu(true)),button('','',()=>{
       const list=adapter.features(),i=list.findIndex(f=>f.id===state().feature);
       if(i<list.length-1)chooseFeature(list[i+1].id);else{savePosition();adapter.navigate('hub');notify();scrollStart();}
-    }));document.body.append(dock);
+    }));
+    languageBar=createLanguageBar(document.getElementById('languageToggle'));
+    languageBar.prepend(dock);
     viewTools=el('div','mobile-only mobile-view-tools');
     viewTools.append(button('mobile-text-button','',()=>{savePosition();adapter.overview();notify();scrollStart();}));
     const stage=document.querySelector('[data-role="product-stage"]');stage.after(viewTools);
@@ -247,7 +280,8 @@
     const s=state();
     if(query.matches)try{localStorage.setItem('moondropChannelTrainingLanguage',s.lang);}catch{}
     document.body.dataset.mobileSection=s.section;document.body.dataset.mobileFeature=s.feature||'';
-    dock.hidden=s.section!=='core';
+    dock.hidden=s.section!=='core'||Boolean(modal);
+    dock.setAttribute('aria-label',text('卖点导航','Selling-point navigation'));
     const index=adapter.features().findIndex(f=>f.id===s.feature);
     dock.children[0].textContent=index>0?text('← 上一项','← Previous'):text('产品总览','Overview');
     dock.children[1].textContent=text('目录','Contents');
@@ -262,11 +296,17 @@
     document.querySelector('#specText')?.closest('.panel-section')?.classList.add('mobile-proof');
     document.querySelector('#sayText')?.closest('.panel-section')?.classList.add('mobile-sales-line');
     updateResume();
+    if(previous && s.lang!==previous.lang){
+      if(modal===sheet)openMenu(sheetStories);
+      if(modal===lightbox){imageItems=adapter.gallery();renderImage();}
+    }
     previous={...s};
     if(query.matches&&!initial&&!restorePending)savePosition();
   }
   function portal() {
     if(adapter||!window.MOONDROP_TRAINING_CATALOG)return;
+    createLanguageBar(document.getElementById('languageToggle'));
+    createLanguageBar(document.getElementById('overlayLanguageToggle'),document.getElementById('categoryOverlay'));
     const buttonNode=button('mobile-only mobile-resume','',()=>{
       const records=read(),r=records.products[records.latest],p=window.MOONDROP_TRAINING_CATALOG.products.find(p=>p.id===records.latest&&p.status==='live');
       if(!r||!p)return;
@@ -279,13 +319,18 @@
     new MutationObserver(update).observe(root,{attributes:true,attributeFilter:['lang']});window.addEventListener('pageshow',update);update();
   }
   window.addEventListener('popstate',e=>{
-    if(modal){e.stopImmediatePropagation();dismissModal();}
+    if(modal){
+      e.stopImmediatePropagation();
+      const url=new URL(location.href);url.searchParams.set('lang',state().lang);
+      history.replaceState(history.state,'',url);
+      dismissModal();
+    }
   },true);
   window.addEventListener('keydown',e=>{
     if(!modal)return;
     if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeModal();}
     if(e.key==='Tab'){
-      const items=[...modal.querySelectorAll('button,a[href]')].filter(n=>!n.hidden),first=items[0],last=items.at(-1);
+      const items=[...modal.querySelectorAll('button,a[href]')].filter(n=>!n.hidden&&!n.closest('[hidden]')),first=items[0],last=items.at(-1);
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
       else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
     }
@@ -296,7 +341,7 @@
   window.addEventListener('pagehide',savePosition);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)savePosition();});
   window.addEventListener('resize',()=>{notify();if(modal===lightbox)imageTransform();});
-  query.addEventListener('change',()=>{root.classList.toggle('mobile-ui',query.matches);if(!query.matches&&modal)closeModal();notify();});
+  query.addEventListener('change',()=>{root.classList.toggle('mobile-ui',query.matches);placeLanguageControls();if(!query.matches&&modal)closeModal();notify();});
   document.addEventListener('DOMContentLoaded',portal);
   function preview(image) {
     if (!query.matches) return image;
