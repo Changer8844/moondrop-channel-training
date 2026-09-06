@@ -39,6 +39,16 @@ async function inspect(name,{shot=true}={}){
     }
     for(const i of main.querySelectorAll('img'))if(visible(i)&&i.loading!=='lazy'&&i.getAttribute('src')&&!i.naturalWidth)errors.push('Missing image: '+i.getAttribute('src'));
     if(desktop&&document.documentElement.classList.contains('mobile-ui'))errors.push('Mobile rules leaked into desktop');
+    if(!desktop)for(const card of document.querySelectorAll('.category-card')){
+      if(!visible(card))continue;
+      const image=card.querySelector('img').getBoundingClientRect();
+      for(const label of card.querySelectorAll('.category-card__availability,.category-card__copy,.category-card__arrow')){
+        if(!visible(label))continue;
+        const box=label.getBoundingClientRect();
+        if(box.top<image.bottom-1)errors.push('Category label overlaps product image: '+card.querySelector('strong').textContent);
+        if(label.scrollWidth>label.clientWidth+2)errors.push('Category label overflow: '+label.textContent);
+      }
+    }
     if(!desktop&&document.body.dataset.mobileSection==='core'){
       const stage=document.querySelector('[data-role="product-stage"]');
       if(getComputedStyle(stage).touchAction==='none')errors.push('Inline image prevents page scrolling');

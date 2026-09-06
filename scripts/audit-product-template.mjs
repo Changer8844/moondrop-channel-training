@@ -48,7 +48,7 @@ for (const [source, preview] of Object.entries(previewContext.window.MOONDROP_MO
 }
 for (const [page, prefix] of [['index.html',''], ...productSlugs.map(slug=>[`products/${slug}/index.html`,'../../'])]) {
   const html=fs.readFileSync(path.join(root,page),'utf8');
-  for (const asset of ['mobile-previews.js?v=1.0.0', 'templates/product-training/mobile-training.js?v=1.0.0', 'templates/product-training/mobile-training.css?v=1.0.0']) {
+  for (const asset of ['mobile-previews.js?v=1.0.0', 'templates/product-training/mobile-training.js?v=1.0.0', 'templates/product-training/mobile-training.css?v=1.0.1']) {
     if (!html.includes(prefix+asset)) failures.push(`${page}: shared mobile asset missing: ${asset}`);
   }
   if (!html.includes('viewport-fit=cover')) failures.push(`${page}: mobile safe-area viewport missing`);
@@ -68,6 +68,8 @@ const cssRuleHas = (source, selector, declarations) => {
 
 if (!cssRuleHas(mobileCSS, 'html.mobile-ui .photo-rig .hotspot', [['display', 'none !important']])) failures.push('mobile core hotspots must be hidden without affecting desktop');
 if (!cssRuleHas(mobileCSS, 'html.mobile-ui .mobile-view-tools[hidden]', [['display', 'none']])) failures.push('mobile overview must hide its redundant restore button');
+if (!cssRuleHas(mobileCSS, 'html.mobile-ui .category-card', [['display', 'grid'], ['grid-template-rows', '120px 34px 1fr']])) failures.push('mobile category cards must separate image, status and copy rows');
+if (!cssRuleHas(mobileCSS, 'html.mobile-ui .category-card__availability', [['position', 'static'], ['grid-row', '2']])) failures.push('mobile availability labels must not overlay product images');
 
 const sharedReviewChecks = [
   ['.review-intro', [['min-height', contract.reviewHeroMinHeight], ['padding', contract.reviewHeroPadding]]],
