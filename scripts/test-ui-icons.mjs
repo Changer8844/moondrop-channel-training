@@ -30,6 +30,8 @@ assert.ok(mobileJS.includes('M4 6h16M4 12h16M4 18h16'), 'Menu needs a centered v
 assert.ok(!mobileJS.includes('☰'), 'Menu must not depend on font baselines');
 assert.ok(!mobileJS.includes('Training system home'), 'Mobile menu must not duplicate the header Home destination');
 assert.match(mobileCSS, /html\.mobile-ui \.auth-login-button svg\s*\{[^}]*width: 30px; height: 30px;/, 'Access icon must be legible inside its unchanged 44px circle');
+assert.match(mobileCSS, /html\.mobile-ui \.auth-login-button span\s*\{[^}]*clip-path: inset\(50%\)/, 'Icon-only access control must keep its label visually hidden at every mobile width');
+assert.ok(mobileCSS.includes('html.mobile-ui[lang] .category-overlay[data-category-id] .overlay-title { font-size: 27px;'), 'Mobile category heading must override model and language specific desktop sizes');
 assert.ok(mobileJS.includes('M20 12H4m7-7-7 7 7 7'), 'Mobile return control needs a centered SVG, not a baseline-aligned glyph');
 assert.ok(/html\.mobile-ui \.hub-mark\s*\{\s*display: none;\s*\}/.test(mobileCSS), 'Decorative secondary hub mark must not consume mobile reading space');
 assert.ok(/html\.mobile-ui \.overlay-home-link svg\s*\{\s*width: 26px; height: 26px;\s*\}/.test(mobileCSS), 'Mobile circular Home glyph should be 26px');
