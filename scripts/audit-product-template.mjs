@@ -48,7 +48,7 @@ for (const [source, preview] of Object.entries(previewContext.window.MOONDROP_MO
 }
 for (const [page, prefix] of [['index.html',''], ...productSlugs.map(slug=>[`products/${slug}/index.html`,'../../'])]) {
   const html=fs.readFileSync(path.join(root,page),'utf8');
-  for (const asset of ['mobile-previews.js?v=1.0.0', 'templates/product-training/mobile-training.js?v=1.0.2', 'templates/product-training/mobile-training.css?v=1.0.5']) {
+  for (const asset of ['mobile-previews.js?v=1.0.0', 'templates/product-training/mobile-training.js?v=1.0.3', 'templates/product-training/mobile-training.css?v=1.0.6']) {
     if (!html.includes(prefix+asset)) failures.push(`${page}: shared mobile asset missing: ${asset}`);
   }
   if (!html.includes('viewport-fit=cover')) failures.push(`${page}: mobile safe-area viewport missing`);

@@ -11,8 +11,8 @@ Applies to the portal and every live product in both languages. The same URLs, d
 
 ## Layout and image rules
 
-- Header has persistent Back, product identity, language switch and training menu. Controls are at least 44px; safe areas are respected. The language button displays the language available to switch to.
-- Center the return-arrow SVG inside its circular button; circular Back and category Home use 26px SVG canvases inside unchanged 44px controls. Hide secondary decorative product marks below the hub introduction on mobile; keep desktop artwork unchanged.
+- Header has persistent Back, product identity, Home and training menu. Home returns to the training system homepage; Back preserves the category/product hierarchy. The original language control moves to a fixed bottom bar on mobile and returns to its original header position on desktop. The footer remains reachable inside category, contents and gallery dialogs without duplicating language handlers.
+- Center the Back, Home and Close SVGs inside their circular buttons using 26px canvases within unchanged 44px controls. Do not use font-baseline-aligned close glyphs on mobile. Hide secondary decorative product marks below the hub introduction on mobile; keep desktop artwork unchanged.
 - Portal uses a short introduction and two-column category cards. The category has a short title/photo header and full-width product cards, arrow beside name, no redundant action row.
 - Category-card photographs, availability labels and copy occupy separate normal-flow rows on mobile. Availability belongs below the image, never over the product; retain the same title alignment for categories without live training.
 - Suppress the desktop category-card hover inset border on mobile so tapping does not leave a yellow selection box. Keep `:focus-visible` for keyboard access. The mobile gallery owns its viewer; hide the inactive desktop `.lightbox` entirely on mobile, including its controls.
@@ -21,7 +21,7 @@ Applies to the portal and every live product in both languages. The same URLs, d
 - Core starts on the complete product photograph and a readable text list, without hotspots. Selecting a story through the list, contents or Previous/Next automatically zooms and positions the photograph at that story's existing focus preset, above the complete explanation. No right-side/fullscreen explanation panel and no nested article scroll.
 - Use the existing single original master/composite. MM3A retains its front/rear composite. Grid lines remain behind the photograph. Do not create mobile dots, numbered markers or leader lines. Removing hotspots must not remove automatic focus or any story's content.
 - The Full product / Overview action resets the photograph to its complete view. The restore action below the image appears only while a story is selected. Desktop hotspots, labels and dragging remain unchanged.
-- Fixed bottom navigation offers Previous / Contents / Next. First previous returns to Overview; final next returns to the training menu. Leave bottom padding so the last paragraph remains reachable.
+- Fixed bottom navigation offers Previous / Contents / Next beside the language control. First previous returns to Overview; final next returns to the training menu. Other pages retain the language control alone. Reserve bottom space on pages and dialogs so the last paragraph remains reachable.
 - Positioning and reviews stack their complete hero image and title, then full-width cards. Package flows image → contents → warranty → service. Gallery uses two columns, one below 360px.
 - Body text is 16px with approximately 1.6 line height; normal auxiliary copy is at least 13px. Feature titles are 28px, hub titles 32–40px. Compact brand/category tags may be smaller; no tiny instructional or evidence text.
 

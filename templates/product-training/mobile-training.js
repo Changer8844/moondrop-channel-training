@@ -178,6 +178,7 @@
   }
   function renderImage() {
     const item=imageItems[imageIndex]; imageScale=1; imageX=imageY=0;
+    lightbox.setAttribute('aria-label',text('高清图片','Full-size image'));
     imageElement.src=item.image; imageElement.alt=item.title || '';
     imageCaption.textContent=item.title || ''; imageCounter.textContent=`${imageIndex+1} / ${imageItems.length}`;
     imagePrev.hidden=imageNext.hidden=imageItems.length<2;

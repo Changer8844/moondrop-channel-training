@@ -156,6 +156,7 @@ html.mobile-ui body.overlay-open > .mobile-language-bar { display: none; }
 html.mobile-ui .mobile-language-bar .language-toggle { display: inline-flex; flex: 0 0 80px; width: 80px; min-width: 80px; gap: 5px; border: 1px solid #354037; background: transparent; }
 html.mobile-ui .mobile-language-bar .language-option { display: block; padding: 0; font-size: 12px; line-height: 1; background: transparent; color: #aebbb3; }
 html.mobile-ui .mobile-language-bar .language-option.active { color: #c7f64a; }
+html.mobile-ui .mobile-language-bar .language-toggle .language-option:not(.active) { color: #aebbb3; }
 html.mobile-ui .mobile-language-bar .language-divider { display: block; color: #526056; }
 html.mobile-ui .mobile-dock { display: grid; flex: 1; min-width: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
 html.mobile-ui .mobile-dock[hidden] { display: none; }

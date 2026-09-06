@@ -9,7 +9,20 @@ Date: 2026-09-06. Scope: portal and MM3A, PILL, PUDDING, SPACE TRAVEL 2, RAYS; C
 - Mobile core images automatically focus on the selected story without hotspots or manual enlargement controls; Overview restores the product. Inline evidence and image carousels remain. The HD gallery retains its original-image viewer. Language-preserving navigation, optional local Continue reading and existing access control remain.
 - 72 catalog/gallery WebP previews: 1,238,944 bytes compared with 160,341,371 source bytes. Original full-size files still open in the viewer. This comparison concerns the preview set, not a measured page-load time.
 
-## Latest interaction revision · 2026-09-06
+## Current navigation follow-up · 2026-09-06
+
+This section supersedes the earlier access-blocked status below for the public site only. Local preview access remains denied; no bypass was used. The user logged into the permitted public GitHub Pages tab.
+
+- Revision `29de1ba` was pushed, and Pages run `34053185921` completed successfully for that exact revision.
+- Public Chrome mobile checks: 21 recorded navigation states across the portal and all five products, covering widths 320, 390 and 430 (not a full cross-product/width matrix). No page/button horizontal overflow; exactly one visible, non-inert language control in the fixed bottom bar; 48 observed Back/Home/Close SVG instances had zero horizontal/vertical center offset within their 44px circles.
+- Visually inspected category Close/Home, the 320px RAYS hub/core bottom navigation, and the original-image viewer. All five products' English menus were opened, switched to Chinese from the footer, and closed; language and product routes remained correct.
+- RAYS: category → product → core, language change within Contents, close, gallery opening, image next, gallery language change/close, and Home → system homepage were operated. At 1440×900 the original language button returned to the header, the mobile footer disappeared, and no horizontal overflow appeared.
+- MM3A: positioning, support, reviews and gallery each retained one usable footer with no horizontal overflow at 390×844.
+- Browser inspection found a low-contrast inactive language label in the light category overlay; the follow-up style raises it to `#aebbb3`. The gallery dialog's accessible label now also follows language changes. These two small follow-ups require their deployment/live spot check separately from the recorded `29de1ba` checks.
+- Source tests passed: UI icons, mobile focus/overview/callback checks, mobile language node/handler ownership and desktop restoration, and the five-product template audit.
+- These are focused regression checks for navigation, not fresh full visual acceptance of every story/section at every size or a physical-iPhone test.
+
+## Earlier interaction revision · 2026-09-06
 
 - User clarification: remove mobile dots/manual enlargement, but retain automatic zoom and positioning when a selling point is selected. Applied in the shared mobile runtime/styles; no product copy, original assets or desktop camera implementation changed.
 - `node scripts/test-mobile-focus.mjs`: passed for all five products and thirty stories, with six simulated stage widths (320/360/390/430/768/844), 180 focus checks and 180 overview resets. Shared selection delegation and desktop accessibility-label restoration passed. Additional Chinese/English callback checks execute the actual mount/menu functions with element/event doubles: all six contents actions, next/previous boundaries, full-product restoration, core image click suppression, unsuppressed evidence-carousel controls, gallery routing, and restored desktop click/drag/labels passed. These are source-function unit checks with stubbed dimensions/events, not browser renders or real taps.
