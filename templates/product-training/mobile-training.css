@@ -17,6 +17,7 @@ html.mobile-ui .language-option:not(.active) { display: block; color: #e9eee8; }
 html.mobile-ui .training-home-link { display: none; }
 html.mobile-ui .mobile-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex: 0 0 44px; padding: 0; border: 1px solid var(--line, #303936); border-radius: 50%; background: transparent; color: #e9eee8; font-size: 22px; line-height: 1; cursor: pointer; }
 html.mobile-ui .mobile-back { order: -1; }
+html.mobile-ui .mobile-icon svg { display: block; flex: 0 0 26px; width: 26px; height: 26px; }
 html.mobile-ui .auth-login-button { min-height: 44px; min-width: 44px; padding: 0 9px; font-size: 11px; letter-spacing: 0; }
 html.mobile-ui .auth-card { max-height: calc(100dvh - 32px); overflow-y: auto; padding: 28px 20px; }
 html.mobile-ui .auth-form__field input { font-size: 16px; }
@@ -45,6 +46,7 @@ html.mobile-ui .category-card__arrow { right: 10px; top: 164px; bottom: auto; wi
 html.mobile-ui .category-overlay { overflow-y: auto; display: block; padding-top: var(--mobile-header); overscroll-behavior-y: contain; }
 html.mobile-ui .overlay-tools { position: fixed; inset: 0 0 auto; height: var(--mobile-header); padding: env(safe-area-inset-top, 0px) 12px 0; background: #eeeae2; border-bottom: 1px solid #d0cec7; display: flex; gap: 8px; align-items: center; justify-content: flex-end; z-index: 4; }
 html.mobile-ui .overlay-home-link, html.mobile-ui .overlay-close { width: 44px; height: 44px; }
+html.mobile-ui .overlay-home-link svg { width: 26px; height: 26px; }
 html.mobile-ui .overlay-language-toggle .language-option:not(.active) { color: #202a23; }
 html.mobile-ui .overlay-visual { min-height: 0; height: auto; display: grid; grid-template-columns: minmax(0, 1fr) 36%; align-items: center; background: #0d1310; }
 html.mobile-ui .overlay-visual > img { position: relative; grid-column: 2; width: 100%; height: 150px; object-fit: cover; opacity: .8; }
@@ -75,7 +77,7 @@ html.mobile-ui .hub-copy { max-width: none; width: 100%; padding: 0; }
 html.mobile-ui .hub-kicker { font-size: 12px; }
 html.mobile-ui .hub-copy h1, html.mobile-ui[lang^="zh"] .hub-copy h1 { max-width: none; font-size: clamp(32px, 9vw, 40px); font-weight: 700; line-height: 1.08; letter-spacing: -.045em; white-space: normal; margin: 10px 0 12px; }
 html.mobile-ui .hub-copy p { max-width: none; font-size: 16px; line-height: 1.55; }
-html.mobile-ui .hub-mark { max-width: 55%; height: auto; margin-top: 12px; }
+html.mobile-ui .hub-mark { display: none; }
 html.mobile-ui .hub-menu { width: 100%; margin-top: 24px; padding: 0; border: 0; background: transparent; box-shadow: none; }
 html.mobile-ui .hub-menu-kicker { font-size: 13px; }
 html.mobile-ui .hub-section-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }

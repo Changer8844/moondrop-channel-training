@@ -12,6 +12,7 @@ Applies to the portal and every live product in both languages. The same URLs, d
 ## Layout and image rules
 
 - Header has persistent Back, product identity, language switch and training menu. Controls are at least 44px; safe areas are respected. The language button displays the language available to switch to.
+- Center the return-arrow SVG inside its circular button; circular Back and category Home use 26px SVG canvases inside unchanged 44px controls. Hide secondary decorative product marks below the hub introduction on mobile; keep desktop artwork unchanged.
 - Portal uses a short introduction and two-column category cards. The category has a short title/photo header and full-width product cards, arrow beside name, no redundant action row.
 - Category-card photographs, availability labels and copy occupy separate normal-flow rows on mobile. Availability belongs below the image, never over the product; retain the same title alignment for categories without live training.
 - Use the shared `icons.css` SVG arrow for category/product entries, topic cards and outbound review labels. Do not use a Unicode arrow or a text/emoji variation selector: physical iPhones can substitute a colored emoji. Keep decorative icons `aria-hidden` and the whole card clickable.

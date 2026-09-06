@@ -24,4 +24,9 @@ for (const token of ['.icon-arrow', 'background-color: currentColor', '-webkit-m
   assert.ok(css.includes(token), `Vector icon primitive missing ${token}`);
 }
 assert.ok(!/https?:\/\//.test(css.replace(/http:\/\/www\.w3\.org\/2000\/svg/g, '')), 'Icons must remain offline, without remote assets');
+const mobileJS = fs.readFileSync(path.join(root, 'templates/product-training/mobile-training.js'), 'utf8');
+const mobileCSS = fs.readFileSync(path.join(root, 'templates/product-training/mobile-training.css'), 'utf8');
+assert.ok(mobileJS.includes('M20 12H4m7-7-7 7 7 7'), 'Mobile return control needs a centered SVG, not a baseline-aligned glyph');
+assert.ok(/html\.mobile-ui \.hub-mark\s*\{\s*display: none;\s*\}/.test(mobileCSS), 'Decorative secondary hub mark must not consume mobile reading space');
+assert.ok(/html\.mobile-ui \.overlay-home-link svg\s*\{\s*width: 26px; height: 26px;\s*\}/.test(mobileCSS), 'Mobile circular Home glyph should be 26px');
 console.log('PASS: six pages share font-independent decorative SVG arrows; bilingual review labels contain no emoji arrows.');

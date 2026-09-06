@@ -200,7 +200,8 @@
     adapter=config;
     createOverlays();
     const topbar=document.querySelector('.topbar'),status=document.querySelector('.top-status');
-    back=button('mobile-only mobile-icon mobile-back','←',navigateBack); menu=button('mobile-only mobile-icon','☰',()=>openMenu());
+    back=button('mobile-only mobile-icon mobile-back','',navigateBack); menu=button('mobile-only mobile-icon','☰',()=>openMenu());
+    back.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4m7-7-7 7 7 7"/></svg>';
     topbar.prepend(back);status.append(menu);
     dock=el('nav','mobile-only mobile-dock'); dock.setAttribute('aria-label',text('卖点导航','Selling-point navigation'));
     dock.append(button('','',()=>{
