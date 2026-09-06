@@ -1043,6 +1043,7 @@
   <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/mobile-training.css?v=1.0.2" />
+  <link rel="stylesheet" href="../../templates/product-training/icons.css?v=1.0.0" />
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/pudding/index.html">
   <div class="app hub-mode" id="trainingApp">
@@ -1199,7 +1200,7 @@
 
   <script src="../../auth.js?v=20260826a"></script>
   <script src="content.js"></script>
-  <script src="view-data.js"></script>
+  <script src="view-data.js?v=20260906-vector-icons"></script>
   <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
     (() => {
@@ -1264,7 +1265,7 @@
           button.style.setProperty('--section-accent', sectionAccentMap[section.id] || '#c7f64a');
           button.innerHTML = `
             <span class="hub-section-number">${copy.tag}</span>
-            <span class="hub-section-arrow" aria-hidden="true">↗</span>
+            <span class="hub-section-arrow icon-arrow" aria-hidden="true"></span>
             <span class="hub-section-copy"><b>${copy.title}</b><span>${copy.subtitle}</span></span>`;
           button.setAttribute('aria-label', `${copy.title}: ${copy.subtitle}`);
           button.addEventListener('click', () => navigateSection(section.id));
@@ -1317,7 +1318,7 @@
               <a class="review-card" href="${review.url}" target="_blank" rel="noopener noreferrer">
                 <span class="review-image-wrap">
                   <img src="${review.image}" alt="${review.title}" loading="lazy"${review.fallback ? ` data-fallback="${review.fallback}"` : ''} />
-                  <span class="review-play" aria-hidden="true">${/youtube\.com|bilibili\.com/.test(review.url) ? '▶' : '↗'}</span>
+                  <span class="review-play" aria-hidden="true">${/youtube\.com|bilibili\.com/.test(review.url) ? '▶' : '<span class="icon-arrow" aria-hidden="true"></span>'}</span>
                 </span>
                 <span class="review-copy">
                   <span class="review-channel">${review.channel}</span>

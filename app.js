@@ -87,7 +87,7 @@
         <strong></strong>
         <span></span>
       </span>
-      <span class="category-card__arrow" aria-hidden="true">↗</span>`;
+      <span class="category-card__arrow icon-arrow" aria-hidden="true"></span>`;
     button.addEventListener("click", () => openCategory(category.id));
     return button;
   }
@@ -105,7 +105,7 @@
         </span>
         <span class="product-card__copy">
           <span class="product-card__status"><i aria-hidden="true"></i>${ui.available}</span>
-          <span class="product-card__heading"><strong>${localized(product.name)}</strong><b class="product-card__arrow" aria-hidden="true">↗</b></span>
+          <span class="product-card__heading"><strong>${localized(product.name)}</strong><b class="product-card__arrow icon-arrow" aria-hidden="true"></b></span>
           <span class="product-card__type">${localized(product.type)}</span>
         </span>
       </a>`;

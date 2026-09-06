@@ -45,7 +45,7 @@ window.MM3A_VIEW = (() => {
         reviews:{tag:'REVIEWS',title:'Media Reviews',subtitle:'Real reviews, one click away'},
         gallery:{tag:'ASSETS',title:'HD Image Library',subtitle:'Drivers, placement, and connections'}
       },
-      boards:{comparison:{title:'Product Positioning'},support:{title:'Package & After-sales',packageLabel:'IN THE BOX',packageTitle:'Standard package contents',warrantyLabel:'WARRANTY',warrantyTitle:'Warranty periods',exclusions:'WHEN SERVICE IS REQUESTED'},reviews:{title:'Media Reviews',introTitle:'Real reviews, one click away',open:'Open full review ↗'}}
+      boards:{comparison:{title:'Product Positioning'},support:{title:'Package & After-sales',packageLabel:'IN THE BOX',packageTitle:'Standard package contents',warrantyLabel:'WARRANTY',warrantyTitle:'Warranty periods',exclusions:'WHEN SERVICE IS REQUESTED'},reviews:{title:'Media Reviews',introTitle:'Real reviews, one click away',open:'Open full review <span class="icon-arrow" aria-hidden="true"></span>'}}
     },
     zh: {
       hubKicker:'MOONDROP · MM3A', hubTitle:'MM3A', hubIntro:'为桌面音乐、影音与日常多音源准备的紧凑型有源立体声音箱。', sectionClose:'返回 MM3A 培训',
@@ -56,7 +56,7 @@ window.MM3A_VIEW = (() => {
         reviews:{tag:'评测',title:'媒体评测',subtitle:'真实评测，一键直达'},
         gallery:{tag:'素材',title:'高清图库',subtitle:'单元、摆位与连接细节'}
       },
-      boards:{comparison:{title:'产品定位'},support:{title:'包装与售后',packageLabel:'包装内容',packageTitle:'标准包装清单',warrantyLabel:'保修期限',warrantyTitle:'保修期限',exclusions:'顾客提出售后问题时'},reviews:{title:'媒体评测',introTitle:'真实评测，一键直达',open:'查看完整评测 ↗'}}
+      boards:{comparison:{title:'产品定位'},support:{title:'包装与售后',packageLabel:'包装内容',packageTitle:'标准包装清单',warrantyLabel:'保修期限',warrantyTitle:'保修期限',exclusions:'顾客提出售后问题时'},reviews:{title:'媒体评测',introTitle:'真实评测，一键直达',open:'查看完整评测 <span class="icon-arrow" aria-hidden="true"></span>'}}
     }
   };
   const presets = {

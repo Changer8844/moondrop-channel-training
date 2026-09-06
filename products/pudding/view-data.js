@@ -176,7 +176,7 @@ window.PUDDING_VIEW = (() => {
       boards: {
         comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
         support: { kicker: 'PACKAGE & WARRANTY', title: 'Package & After-sales', introTitle: 'Product and charging cases', intro: 'Use the verified list below for the complete standard package. Paper documents and service cards can vary by region or batch.', packageLabel: 'IN THE BOX', packageTitle: 'Standard package contents', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty periods', exclusions: 'WHEN SERVICE IS REQUESTED' },
-        reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open full review ↗' }
+        reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open full review <span class="icon-arrow" aria-hidden="true"></span>' }
       }
     },
     zh: {
@@ -193,7 +193,7 @@ window.PUDDING_VIEW = (() => {
       boards: {
         comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
         support: { kicker: '包装与保修', title: '包装与售后', introTitle: '产品与充电盒', intro: '完整标准包装以清单为准；纸质文件与服务卡可能因地区或批次不同。', packageLabel: '包装内容', packageTitle: '标准包装清单', warrantyLabel: '保修期限', warrantyTitle: '保修期限', exclusions: '顾客提出售后问题时' },
-        reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '查看完整评测 ↗' }
+        reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '查看完整评测 <span class="icon-arrow" aria-hidden="true"></span>' }
       }
     }
   };

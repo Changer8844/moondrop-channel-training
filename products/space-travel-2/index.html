@@ -1076,6 +1076,7 @@
   <link rel="stylesheet" href="../../templates/product-training/feature-media.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/positioning.css?v=1.0.0" />
   <link rel="stylesheet" href="../../templates/product-training/mobile-training.css?v=1.0.2" />
+  <link rel="stylesheet" href="../../templates/product-training/icons.css?v=1.0.0" />
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/space-travel-2/index.html">
   <div class="app hub-mode" id="trainingApp">
@@ -1530,7 +1531,7 @@
           boards: {
             comparison: { kicker: '', title: 'Product Positioning', introTitle: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
             support: { kicker: 'PACKAGE & WARRANTY', title: 'Package & After-sales', introTitle: 'Standard package contents', intro: '', packageLabel: 'IN THE BOX', packageTitle: 'What’s included', warrantyLabel: 'WARRANTY', warrantyTitle: 'Warranty at a glance', exclusions: 'NOT COVERED' },
-            reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open review on YouTube ↗' }
+            reviews: { kicker: '', title: 'Media Reviews', introTitle: 'Real reviews, one click away', intro: '', open: 'Open review on YouTube <span class="icon-arrow" aria-hidden="true"></span>' }
           }
         },
         zh: {
@@ -1549,7 +1550,7 @@
           boards: {
             comparison: { kicker: '', title: '产品定位', introTitle: '先听懂顾客在比较什么。', intro: '先问顾客现在使用哪类耳机，再用一个差异和一个证据回答。' },
             support: { kicker: '包装与保修', title: '包装与售后', introTitle: '标准包装清单', intro: '', packageLabel: '包装内容', packageTitle: '包装内含', warrantyLabel: '保修期限', warrantyTitle: '保修期限一览', exclusions: '以下情况不保修' },
-            reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '前往 YouTube 观看 ↗' }
+            reviews: { kicker: '', title: '媒体评测', introTitle: '真实评测，一键直达', intro: '', open: '前往 YouTube 观看 <span class="icon-arrow" aria-hidden="true"></span>' }
           }
         }
       };
@@ -1608,7 +1609,7 @@
           button.style.setProperty('--section-accent', sectionAccentMap[section.id] || '#c7f64a');
           button.innerHTML = `
             <span class="hub-section-number">${copy.tag}</span>
-            <span class="hub-section-arrow" aria-hidden="true">↗</span>
+            <span class="hub-section-arrow icon-arrow" aria-hidden="true"></span>
             <span class="hub-section-copy"><b>${copy.title}</b><span>${copy.subtitle}</span></span>`;
           button.setAttribute('aria-label', `${copy.title}: ${copy.subtitle}`);
           button.addEventListener('click', () => navigateSection(section.id));
