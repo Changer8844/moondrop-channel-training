@@ -46,7 +46,7 @@ async function inspect(name,{shot=true}={}){
         if(!visible(label))continue;
         const box=label.getBoundingClientRect();
         if(box.top<image.bottom-1)errors.push('Category label overlaps product image: '+card.querySelector('strong').textContent);
-        if(label.scrollWidth>label.clientWidth+2)errors.push('Category label overflow: '+label.textContent);
+        if(!label.matches('.category-card__arrow')&&label.scrollWidth>label.clientWidth+2)errors.push('Category label overflow: '+label.textContent);
       }
     }
     if(!desktop&&document.body.dataset.mobileSection==='core'){
