@@ -1,10 +1,25 @@
-# Mobile local acceptance record
+# Mobile acceptance record
 
 Date: 2026-09-06. Scope: portal and MM3A, PILL, PUDDING, SPACE TRAVEL 2, RAYS; Chinese and English. The user has now authorized publishing the current mobile version to GitHub, followed by an attempt to inspect the public deployment. Publication is not evidence of visual acceptance.
 
+## Latest public-browser verification · 2026-09-06–07
+
+This section supersedes the older pending-browser gates below. The existing, user-authenticated public Chrome tab was used through the permitted browser controls. Local-file access remained denied; no alternate browser runner, auth fixture, loopback server or direct CDP workaround was used.
+
+- Published UI: `87cd8834f2fac54dde07968436941c6ee5da998d`; GitHub Pages run `34062070806` completed successfully. The browser loaded `mobile-training.js?v=1.0.4` and `mobile-training.css?v=1.0.8`.
+- 804 distinct current layout states passed after targeted corrections: 5 products × 2 languages × 12 states (hub, core overview, six stories, positioning, support, reviews, gallery) × 6 sizes = 720; portal plus six categories × 2 languages × 6 sizes = 84. Sizes: 320×568, 360×800, 390×844, 430×932, 844×390, 768×1024. The session recorded 912 measurements including retries; only the latest per route/language/story/size counted. Zero remaining measured failures or pending inline-image loads.
+- Checks included horizontal and text overflow, instructional text size, broken images, separate image/detail flow, story-specific automatic focus and overview reset, hidden mobile hotspots, usable navigation targets, one bottom language control and status labels outside category photographs. Browser screenshots of representative hubs, stories, galleries, portal and menus were also visually inspected; the 804 count is a DOM/layout-state count, not 804 manually reviewed screenshots or physical-phone taps.
+- RAYS: visual inspection caught a misnamed packaging photo in the wearing story/gallery. Replaced those two references with the existing 1460×877 real wearing photo, `assets/campaign/rays-wearing.jpg` (about 50 KB, used directly). Original files were not overwritten. Corrected bilingual story and full-size gallery image were loaded and inspected on the public site.
+- Latest requests: removed the duplicate system-home action from the shared training menu; kept product-home plus five modules. Menu, Back, Home and Close use centered 26px SVG canvases in 44px circles. Lock icon increased from 14px to 30px in the unchanged 44px circle. Measured center offsets were zero. Verified the icon-only access label remains hidden at all mobile widths.
+- Portal regression exposed two issues and they were fixed: desktop-specific category heading sizes overriding mobile sizing, and the access label spilling beyond its icon button at tablet widths. All six categories were rechecked in both languages at all six sizes after the fix.
+- Actual actions exercised story progression, contents selection, overview reset, language changes and section navigation across all products. The PILL gallery original viewer was opened, zoomed to 2.5×, switched to English, advanced to the next original and closed with browser Back; language and gallery route were retained. RAYS corrected gallery original was opened. Home/category/product entry and the category Close button were operated. These do not replace the historical gesture/keyboard coverage below.
+- Desktop spot regression at 1024×768, 1366×768, 1440×900 and 1920×1080 retained header language switching, hid the mobile footer and showed no horizontal overflow; MM3A's fully loaded desktop hub was visually inspected. Earlier broader desktop reports remain historical evidence, not newly rerun coverage.
+- Source checks passed: shared icon checks, mobile navigation/handler ownership, 30-story focus and overview unit checks, and all-five-product template audit.
+- Limit: no connected physical iPhone or Android was available. This is public Chrome responsive-browser verification, not a claim of current physical-device or fresh WebKit testing. The user's iPhone screenshots remain the evidence for the reported icon issues.
+
 ## Implemented
 
-- Shared mobile CSS/runtime and small product adapters; existing product content and original image files are unchanged.
+- Shared mobile CSS/runtime and small product adapters preserve training content and originals, except the evidence-backed RAYS wearing-photo reference/caption correction recorded above.
 - Short portal/category screens, full-card product entry, image-above-text product reading, bottom previous/contents/next navigation.
 - Mobile core images automatically focus on the selected story without hotspots or manual enlargement controls; Overview restores the product. Inline evidence and image carousels remain. The HD gallery retains its original-image viewer. Language-preserving navigation, optional local Continue reading and existing access control remain.
 - 72 catalog/gallery WebP previews: 1,238,944 bytes compared with 160,341,371 source bytes. Original full-size files still open in the viewer. This comparison concerns the preview set, not a measured page-load time.
