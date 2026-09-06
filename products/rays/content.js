@@ -115,7 +115,7 @@ window.MOONDROP_RAYS_DATA = {
       kicker: { en: "FIT & CRAFTSMANSHIP", zh: "佩戴与工艺" }, accent: "cyan",
       position: { x: 61, y: 85 }, focus: { x: 61, y: 85, zoom: 1.58 },
       media: [
-        { image: "assets/official/hires/rays-hires-wearing.jpg", alt: { en: "RAYS worn around the ear during phone use", zh: "连接手机使用时绕耳佩戴 RAYS" }, caption: { en: "The high-resolution wearing image makes the around-ear route and stable in-ear placement easy to explain for long sessions.", zh: "这张高清佩戴图清楚展示绕耳走线和入耳位置，便于说明长时间使用时的稳定性。" } },
+        { image: "assets/campaign/rays-wearing.jpg", alt: { en: "RAYS worn around the ear during phone use", zh: "连接手机使用时绕耳佩戴 RAYS" }, caption: { en: "The wearing photograph shows the around-ear cable route and in-ear placement. Follow it with a real fit and eartip trial.", zh: "佩戴实拍展示绕耳走线和入耳位置，讲解后再通过实际佩戴和耳塞试配确认舒适度。" } },
         { image: { en: "assets/official/en/rays-fit-3d-print.jpg", zh: "assets/official/cn/rays-fit-3d-print.jpg" }, layout: "poster", tone: "dark", alt: { en: "Official RAYS ergonomic medical-grade 3D-printing graphic", zh: "RAYS 人体工学医用级 3D 打印官方说明图" }, caption: { en: "The official production graphic directly supports the medical-grade 3D-printed cavity claim; finish with a real fit and eartip trial.", zh: "官方生产图直接对应医用级 3D 打印腔体依据，讲解后仍要通过实际佩戴和耳塞试配确认舒适度。" } }
       ],
       subfeatures: [
@@ -216,7 +216,7 @@ window.MOONDROP_RAYS_DATA = {
     ["assets/official/hires/rays-hero-5275.jpg", "RAYS clean white-background product pair", "RAYS 白底双耳产品图"],
     ["assets/official/hires/rays-cable-2pin-detail.jpg", "RAYS 0.78-2pin connection and cable detail", "RAYS 0.78-2pin 连接与线材细节图"],
     ["assets/official/hires/rays-hires-faceplate.jpg", "RAYS faceplate detail", "RAYS 面板细节图"],
-    ["assets/official/hires/rays-hires-wearing.jpg", "RAYS worn around the ear", "绕耳佩戴 RAYS"],
+    ["assets/campaign/rays-wearing.jpg", "RAYS worn around the ear", "绕耳佩戴 RAYS"],
     ["assets/official/hires/rays-hires-mic.jpg", "RAYS inline microphone detail", "RAYS 线控麦克风细节"],
     ["assets/official/hires/rays-hires-usbc-laptop.jpg", "RAYS USB-C connection product view", "RAYS USB-C 连接产品图"],
     ["assets/official/hires/rays-hires-usb-a-cable.jpg", "RAYS USB-C to A extension cable", "RAYS USB-C 转 A 延长线"],
