@@ -4,10 +4,11 @@ select.language-toggle {
   -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
-  width: 136px;
-  min-width: 136px;
-  height: 36px;
-  padding: 0 31px 0 12px;
+  width: 136px !important;
+  min-width: 136px !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  padding: 0 29px 0 11px !important;
   border: 1px solid rgba(199, 246, 74, .3);
   border-radius: 10px;
   background-color: rgba(199, 246, 74, .045);
@@ -16,7 +17,8 @@ select.language-toggle {
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
   color: #eaf0e9;
-  font: 700 11px/1 "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  font: 700 11px/1 "Avenir Next", "Helvetica Neue", Arial, sans-serif !important;
+  -webkit-text-size-adjust: 100%;
   letter-spacing: .02em;
   cursor: pointer;
 }
@@ -25,13 +27,14 @@ select.language-toggle:focus-visible { outline: 2px solid #c7f64a; outline-offse
 select.language-toggle option { background: #101813; color: #f2f5f2; }
 
 html.mobile-ui select.language-toggle {
-  width: min(156px, calc(100vw - 32px));
-  min-width: min(156px, calc(100vw - 32px));
-  height: 44px;
-  padding-left: 13px;
-  font-size: 12px;
+  width: min(132px, calc(100vw - 32px)) !important;
+  min-width: min(132px, calc(100vw - 32px)) !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 27px 0 11px !important;
+  font-size: 12px !important;
 }
 html.mobile-ui .mobile-language-bar select.language-toggle {
-  flex: 0 1 156px;
-  width: min(156px, calc(100vw - 32px));
+  flex: 0 1 132px !important;
+  width: min(132px, calc(100vw - 32px)) !important;
 }

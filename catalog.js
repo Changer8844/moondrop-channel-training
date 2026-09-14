@@ -165,3 +165,48 @@ window.MOONDROP_TRAINING_CATALOG = {
     }
   ]
 };
+
+(() => {
+  const catalog = window.MOONDROP_TRAINING_CATALOG;
+  const ui = {
+    de: { documentTitle: 'MOONDROP · Vertriebsschulung', brandKicker: 'VERTRIEBSSCHULUNG', pageTitle: 'Vertrieb\nSchulung', tagline: 'Musik im Mittelpunkt. Bereit für jeden Weg.', selectCategory: 'Produktkategorie wählen', languageLabel: 'Sprache wählen', home: 'Trainingsstart', close: 'Kategorie schließen', available: 'Training verfügbar', openTraining: 'Produktschulung öffnen', emptyTitle: 'Noch keine Produktschulung verfügbar.', emptyBody: 'Bitte eine andere Kategorie wählen.', categoryDialog: 'Produktschulung nach Kategorie', productType: 'True Wireless' },
+    es: { documentTitle: 'MOONDROP · Formación comercial', brandKicker: 'FORMACIÓN COMERCIAL', pageTitle: 'Formación\ncomercial', tagline: 'La música en el centro. Siempre en movimiento.', selectCategory: 'Elegir categoría', languageLabel: 'Elegir idioma', home: 'Inicio de formación', close: 'Cerrar categoría', available: 'Formación disponible', openTraining: 'Abrir formación del producto', emptyTitle: 'Aún no hay formación disponible.', emptyBody: 'Elige otra categoría.', categoryDialog: 'Formación por categoría', productType: 'True Wireless' },
+    pt: { documentTitle: 'MOONDROP · Treinamento comercial', brandKicker: 'TREINAMENTO COMERCIAL', pageTitle: 'Treinamento\ncomercial', tagline: 'A música no centro. Sempre em movimento.', selectCategory: 'Escolher categoria', languageLabel: 'Escolher idioma', home: 'Início do treinamento', close: 'Fechar categoria', available: 'Treinamento disponível', openTraining: 'Abrir treinamento do produto', emptyTitle: 'Ainda não há treinamento disponível.', emptyBody: 'Escolha outra categoria.', categoryDialog: 'Treinamento por categoria', productType: 'True Wireless' },
+    fr: { documentTitle: 'MOONDROP · Formation réseau', brandKicker: 'FORMATION RÉSEAU', pageTitle: 'Formation\nréseau', tagline: 'La musique au centre. Toujours en mouvement.', selectCategory: 'Choisir une catégorie', languageLabel: 'Choisir la langue', home: 'Accueil formation', close: 'Fermer la catégorie', available: 'Formation disponible', openTraining: 'Ouvrir la formation produit', emptyTitle: 'Aucune formation disponible pour le moment.', emptyBody: 'Choisir une autre catégorie.', categoryDialog: 'Formation par catégorie', productType: 'True Wireless' },
+    it: { documentTitle: 'MOONDROP · Formazione canale', brandKicker: 'FORMAZIONE CANALE', pageTitle: 'Formazione\ncanale', tagline: 'La musica al centro. Sempre in viaggio.', selectCategory: 'Scegli categoria', languageLabel: 'Scegli lingua', home: 'Home formazione', close: 'Chiudi categoria', available: 'Formazione disponibile', openTraining: 'Apri formazione prodotto', emptyTitle: 'Formazione non ancora disponibile.', emptyBody: 'Scegli un’altra categoria.', categoryDialog: 'Formazione per categoria', productType: 'True Wireless' },
+    ru: { documentTitle: 'MOONDROP · Обучение канала', brandKicker: 'ОБУЧЕНИЕ КАНАЛА', pageTitle: 'Обучение\nканала', tagline: 'Музыка в центре. Всегда в пути.', selectCategory: 'Выберите категорию', languageLabel: 'Выберите язык', home: 'Главная обучения', close: 'Закрыть категорию', available: 'Обучение доступно', openTraining: 'Открыть обучение продукта', emptyTitle: 'Обучение пока недоступно.', emptyBody: 'Выберите другую категорию.', categoryDialog: 'Обучение по категориям', productType: 'True Wireless' }
+  };
+  Object.assign(catalog.ui, ui);
+
+  const categories = {
+    'true-wireless': {
+      de: ['True Wireless', 'Kabelloser Hörgenuss mit dem akustischen Charakter von MOONDROP.'], es: ['True Wireless', 'Libertad inalámbrica con el carácter acústico de MOONDROP.'], pt: ['True Wireless', 'Liberdade sem fios com a assinatura acústica da MOONDROP.'], fr: ['True Wireless', 'Liberté sans fil avec la signature acoustique de MOONDROP.'], it: ['True Wireless', 'Libertà wireless con la firma acustica di MOONDROP.'], ru: ['True Wireless', 'Беспроводное прослушивание с фирменной акустикой MOONDROP.']
+    },
+    'wired-in-ear': {
+      de: ['Kabelgebundene In-Ears', 'Akustische Präzision für persönliches Hören.'], es: ['In-ear con cable', 'Ingeniería acústica para la escucha personal.'], pt: ['In-ear com fio', 'Engenharia acústica para ouvir com precisão.'], fr: ['Intra-auriculaires filaires', 'Ingénierie acoustique pour l’écoute personnelle.'], it: ['In-ear cablati', 'Ingegneria acustica per l’ascolto personale.'], ru: ['Проводные внутриканальные', 'Точная акустика для персонального прослушивания.']
+    },
+    headphones: {
+      de: ['Kopfhörer', 'Große Treiber, offener Klang und Komfort für lange Sessions.'], es: ['Auriculares', 'Grandes transductores, sonido abierto y comodidad prolongada.'], pt: ['Fones de ouvido', 'Drivers grandes, som aberto e conforto para longas sessões.'], fr: ['Casques', 'Grands transducteurs, son ouvert et confort longue durée.'], it: ['Cuffie', 'Driver di grandi dimensioni, suono ampio e comfort prolungato.'], ru: ['Полноразмерные наушники', 'Крупные излучатели, открытая подача и комфорт на долгие сессии.']
+    },
+    'dac-accessories': {
+      de: ['DAC/AMP & Zubehör', 'Portables Decoding, Verstärkung und Signalsteuerung.'], es: ['DAC/AMP y accesorios', 'Conversión, amplificación y control de señal portátil.'], pt: ['DAC/AMP e acessórios', 'Conversão, amplificação e controle de sinal portátil.'], fr: ['DAC/AMP & accessoires', 'Conversion, amplification et contrôle du signal nomades.'], it: ['DAC/AMP e accessori', 'Conversione, amplificazione e controllo del segnale portatili.'], ru: ['ЦАП/усилители и аксессуары', 'Портативное преобразование, усиление и контроль сигнала.']
+    },
+    'desktop-digital': {
+      de: ['Desktop & Digital Audio', 'Hörsysteme für Schreibtisch, Studio und Wohnraum.'], es: ['Audio de escritorio y digital', 'Sistemas de escucha para escritorio, estudio y hogar.'], pt: ['Áudio de mesa e digital', 'Sistemas de áudio para mesa, estúdio e sala.'], fr: ['Audio de bureau & numérique', 'Systèmes d’écoute pour bureau, studio et intérieur.'], it: ['Audio desktop e digitale', 'Sistemi d’ascolto per scrivania, studio e ambiente domestico.'], ru: ['Настольное и цифровое аудио', 'Системы прослушивания для стола, студии и дома.']
+    },
+    collaborations: {
+      de: ['Kooperationen', 'Akustikprodukte, verbunden mit Kultur und Fantasie.'], es: ['Colaboraciones', 'Productos acústicos unidos a la cultura y la imaginación.'], pt: ['Colaborações', 'Produtos acústicos ligados à cultura e à imaginação.'], fr: ['Collaborations', 'Des produits audio reliés à la culture et à l’imaginaire.'], it: ['Collaborazioni', 'Prodotti acustici tra cultura e immaginazione.'], ru: ['Коллаборации', 'Акустические продукты на стыке культуры и воображения.']
+    }
+  };
+  catalog.categories.forEach((category) => Object.entries(categories[category.id] || {}).forEach(([lang, [name, description]]) => { category.name[lang] = name; category.description[lang] = description; }));
+
+  const productTypes = {
+    edge2: { de: 'Over-Ear-Kopfhörer mit adaptivem ANC', es: 'Auriculares circumaurales con ANC adaptativo', pt: 'Fones over-ear com ANC adaptativo', fr: 'Casque circum-aural à ANC adaptatif', it: 'Cuffie over-ear con ANC adattivo', ru: 'Полноразмерные наушники с адаптивным ANC' },
+    mm3a: { de: 'Aktives 3-Zoll-Stereosystem', es: 'Estéreo activo de 3 pulgadas', pt: 'Estéreo ativo de 3 polegadas', fr: 'Enceintes stéréo actives 3 pouces', it: 'Stereo attivo da 3 pollici', ru: 'Активная стереосистема с 3-дюймовыми динамиками' },
+    pudding: { de: 'True Wireless mit adaptivem ANC', es: 'True Wireless con ANC adaptativo', pt: 'True Wireless com ANC adaptativo', fr: 'True Wireless à ANC adaptatif', it: 'True Wireless con ANC adattivo', ru: 'TWS с адаптивным ANC' },
+    'space-travel-2': { de: 'True Wireless Stereo', es: 'Estéreo True Wireless', pt: 'Estéreo True Wireless', fr: 'Stéréo True Wireless', it: 'Stereo True Wireless', ru: 'Стерео True Wireless' },
+    pill: { de: 'Kabellose Open-Ear-Ohrbügel', es: 'Open-ear inalámbricos de clip', pt: 'Open-ear sem fios com gancho', fr: 'Open-ear sans fil à clip', it: 'Open-ear wireless ad archetto', ru: 'Открытые беспроводные наушники-клипсы' },
+    rays: { de: 'Gaming-In-Ears mit USB-C-DSP', es: 'IEM gaming con DSP USB-C', pt: 'IEM para jogos com DSP USB-C', fr: 'IEM gaming avec DSP USB-C', it: 'IEM gaming con DSP USB-C', ru: 'Игровые внутриканальные наушники с USB-C DSP' }
+  };
+  catalog.products.forEach((product) => Object.assign(product.type, productTypes[product.id] || {}));
+})();

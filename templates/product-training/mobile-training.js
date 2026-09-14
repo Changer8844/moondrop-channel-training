@@ -5,7 +5,11 @@
   const root = document.documentElement;
   const storageKey = 'moondropTrainingReading:v1';
   const base = new URL('../../', document.currentScript.src);
-  const text = (zh, en) => root.lang.startsWith('zh') ? zh : en;
+  const languageCode = () => window.MoondropLanguage?.normalize(new URLSearchParams(location.search).get('lang')) || (root.lang.startsWith('zh') ? 'zh' : 'en');
+  const text = (zh, en) => {
+    const code = languageCode();
+    return code === 'zh' ? zh : (window.MoondropLanguage?.mobile?.[code]?.[en] || en);
+  };
   const el = (tag, cls, value) => { const node = document.createElement(tag); if (cls) node.className = cls; if (value != null) node.textContent = value; return node; };
   const button = (cls, value, action) => { const node = el('button', cls, value); node.type = 'button'; node.addEventListener('click', action); return node; };
   const read = () => { try { const r = JSON.parse(localStorage.getItem(storageKey)); return r?.version === 1 && r.products && typeof r.products === 'object' ? r : {version:1, products:{}}; } catch { return {version:1, products:{}}; } };

@@ -8,7 +8,7 @@
   <script src="../../language-menu.js?v=20260914-languages"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
-  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages" />
+  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages-compact" />
   <meta name="description" content="PUDDING bilingual channel training: adaptive ANC, sound, fit, calls, battery and app control." />
   <title>PUDDING · Channel Training</title>
   <style>
@@ -1238,8 +1238,8 @@
       const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
       const normalizeLanguage = (value) => window.MoondropLanguage?.normalize(value) || (value === 'zh' ? 'zh' : 'en');
       let currentLanguage = normalizeLanguage(requestedLanguage);
-      const currentPack = () => languagePacks[currentLanguage] || languagePacks.en;
-      const currentPortalPack = () => portalLanguagePacks[currentLanguage] || portalLanguagePacks.en;
+      const currentPack = () => { const source = languagePacks[currentLanguage] || languagePacks.en; const system = currentLanguage === 'zh' ? {} : (window.MoondropLanguage?.ui(currentLanguage).product || {}); return { ...source, ui: { ...source.ui, ...system } }; };
+      const currentPortalPack = () => { const source = portalLanguagePacks[currentLanguage] || portalLanguagePacks.en; const system = currentLanguage === 'zh' ? {} : (window.MoondropLanguage?.ui(currentLanguage).portal || {}); return { ...source, ...system, sections: { ...source.sections, ...system.sections }, boards: { ...source.boards, ...system.boards } }; };
       const localizedFeature = (feature) => currentLanguage === 'zh'
         ? { ...feature, ...currentPack().features[feature.id] }
         : feature;
@@ -1504,7 +1504,7 @@
         document.getElementById('galleryIntro').textContent = ui.galleryIntro;
 
         const toggle = document.getElementById('languageToggle');
-        toggle.setAttribute('aria-label', currentLanguage === 'zh' ? '选择语言' : 'Choose language');
+        toggle.setAttribute('aria-label', window.MoondropLanguage?.ui(currentLanguage).compact.language || (currentLanguage === 'zh' ? '选择语言' : 'Choose language'));
         toggle.value = currentLanguage;
 
         document.querySelector('.story-rail').setAttribute('aria-label', currentLanguage === 'zh' ? '产品卖点列表' : 'Product feature stories');

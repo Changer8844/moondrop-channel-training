@@ -8,7 +8,7 @@
   <script src="../../language-menu.js?v=20260914-languages"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
-  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages" />
+  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages-compact" />
   <meta name="description" content="MOONDROP RAYS bilingual offline channel training" />
   <title>MOONDROP RAYS · Channel Training</title>
   <style>
@@ -458,7 +458,7 @@
       };
 
       function t(value) { return typeof value === 'string' ? value : (value[language] || value[contentLanguage()] || value.en || value.zh); }
-      function ui(key) { return (copy[language] || copy[contentLanguage()] || copy.en)[key]; }
+      function ui(key) { const pack = copy[language] || copy[contentLanguage()] || copy.en; const system = language === 'zh' ? {} : (window.MoondropLanguage?.ui(language).compact || {}); return system[key] || pack[key]; }
       function setQuery(values, replace = false) {
         const url = new URL(location.href);
         Object.entries(values).forEach(([key, value]) => value == null ? url.searchParams.delete(key) : url.searchParams.set(key, value));
@@ -469,7 +469,7 @@
         window.MoondropMobile?.notify();
         document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
         els.languageToggle.value = language;
-        els.languageToggle.setAttribute('aria-label', language === 'zh' ? '选择语言' : 'Choose language');
+        els.languageToggle.setAttribute('aria-label', window.MoondropLanguage?.ui(language).compact.language || (language === 'zh' ? '选择语言' : 'Choose language'));
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
         els.hubHeroImage.src = data.campaign.image;
