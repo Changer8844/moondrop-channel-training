@@ -1243,6 +1243,7 @@
   <script src="../../auth.js?v=20260914-auth-languages"></script>
   <script src="content.js?v=20260914-edge2"></script>
   <script src="view-data.js?v=20260914-edge2"></script>
+  <script src="translations.js?v=20260914-edge2-languages"></script>
   <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
     (() => {
@@ -1280,9 +1281,11 @@
       let currentLanguage = normalizeLanguage(requestedLanguage);
       const currentPack = () => { const source = languagePacks[currentLanguage] || languagePacks.en; const system = currentLanguage === 'zh' ? {} : (window.MoondropLanguage?.ui(currentLanguage).product || {}); return { ...source, ui: { ...source.ui, ...system } }; };
       const currentPortalPack = () => { const source = portalLanguagePacks[currentLanguage] || portalLanguagePacks.en; const system = currentLanguage === 'zh' ? {} : (window.MoondropLanguage?.ui(currentLanguage).portal || {}); return { ...source, ...system, sections: { ...source.sections, ...system.sections }, boards: { ...source.boards, ...system.boards } }; };
-      const localizedFeature = (feature) => currentLanguage === 'zh'
-        ? { ...feature, ...currentPack().features[feature.id] }
-        : feature;
+      const localizedFeature = (feature) => ({
+        ...feature,
+        ...(currentPack().features[feature.id] || {}),
+        ...(window.EDGE2_TRANSLATIONS?.[currentLanguage]?.[feature.id] || {})
+      });
       const localizedGalleryItem = (index) => ({ ...galleryItems[index], ...currentPack().gallery[index] });
       const localizedViewLabel = (view) => currentPack().viewLabels[view.id] || view.label;
 
