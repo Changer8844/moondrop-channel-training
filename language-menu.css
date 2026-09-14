@@ -1,0 +1,37 @@
+/* Native select keeps language choice accessible and usable on touch devices. */
+select.language-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  width: 136px;
+  min-width: 136px;
+  height: 36px;
+  padding: 0 31px 0 12px;
+  border: 1px solid rgba(199, 246, 74, .3);
+  border-radius: 10px;
+  background-color: rgba(199, 246, 74, .045);
+  background-image: linear-gradient(45deg, transparent 50%, #c7f64a 50%), linear-gradient(135deg, #c7f64a 50%, transparent 50%);
+  background-position: calc(100% - 16px) 15px, calc(100% - 11px) 15px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  color: #eaf0e9;
+  font: 700 11px/1 "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: .02em;
+  cursor: pointer;
+}
+select.language-toggle:hover { border-color: rgba(199, 246, 74, .68); }
+select.language-toggle:focus-visible { outline: 2px solid #c7f64a; outline-offset: 3px; }
+select.language-toggle option { background: #101813; color: #f2f5f2; }
+
+html.mobile-ui select.language-toggle {
+  width: min(156px, calc(100vw - 32px));
+  min-width: min(156px, calc(100vw - 32px));
+  height: 44px;
+  padding-left: 13px;
+  font-size: 12px;
+}
+html.mobile-ui .mobile-language-bar select.language-toggle {
+  flex: 0 1 156px;
+  width: min(156px, calc(100vw - 32px));
+}

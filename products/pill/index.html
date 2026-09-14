@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <script src="../../mobile-previews.js?v=1.0.1"></script>
   <script src="../../templates/product-training/mobile-training.js?v=1.0.5"></script>
+  <script src="../../language-menu.js?v=20260914-languages"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
+  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages" />
   <meta name="description" content="MOONDROP PILL bilingual offline channel training" />
   <title>MOONDROP PILL · Channel Training</title>
   <style>
@@ -349,9 +351,11 @@
         <a class="training-home-link" id="homeLink" href="../../index.html?lang=en" aria-label="Training home">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5 12 3.8l8.5 6.7"/><path d="M5.8 9.2v10.4h12.4V9.2"/><path d="M9.4 19.6v-6.2h5.2v6.2"/></svg>
         </a>
-        <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to Chinese">
-          <span class="language-option" data-language-option="zh">中文</span><span class="language-divider" aria-hidden="true">/</span><span class="language-option active" data-language-option="en">EN</span>
-        </button>
+        <select class="language-toggle" id="languageToggle" aria-label="Choose language">
+          <option value="zh">中文</option><option value="en">English</option><option value="de">Deutsch</option>
+          <option value="es">Español</option><option value="pt">Português</option><option value="fr">Français</option>
+          <option value="it">Italiano</option><option value="ru">Русский</option>
+        </select>
       </div>
     </header>
 
@@ -441,7 +445,9 @@
           home: '返回培训首页', language: 'Switch to English', hubKicker: 'MOONDROP · PILL', hubTitle: 'PILL', hubIntro: '开放式耳夹佩戴，兼顾声音、环境感知、舒适、通话与日常无线使用。', hubMenuKicker: '选择培训内容', core: '核心卖点', coreSub: '顾客利益、演示方法与关键证明', positioning: '产品定位', positioningSub: '适合谁，以及应该跟谁比较', support: '包装与售后', supportSub: '包装清单与保修期限', reviews: '媒体评测', reviewsSub: '声音、佩戴与日常体验', gallery: '高清图库', gallerySub: '外观、配色与产品细节', railKicker: '六个核心销售卖点', railTitle: '<span>边看产品，</span><br><span>掌握卖点。</span>', overview: '产品总览', back: '返回 PILL 培训', viewerOverview: '产品总览', viewerSubtitle: '主图 · PILL 耳机与充电盒', mainView: '主图', stageOverview: '主图 / 高清', stageSub: '正面 · 产品与耳机', overviewNote: '产品总览', emptyKicker: '从这里开始', emptyTitle: '选择一个核心卖点。', emptyBody: '掌握顾客利益、现场演示、推荐话术和关键证明。', closeFeature: '关闭卖点详情', show: '现场展示', say: '推荐话术', spec: '关键参数', previous: '上一张图片', next: '下一张图片', closeSection: '返回 PILL 培训', reviewIntroTitle: '真实评测，一键直达', openReview: '观看完整评测 <span class="icon-arrow" aria-hidden="true"></span>', galleryNote: '点击图片，查看高清原图。'
         }
       };
-      let language = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
+      const normalizeLanguage = (value) => window.MoondropLanguage?.normalize(value) || (value === 'zh' ? 'zh' : 'en');
+      let language = normalizeLanguage(new URLSearchParams(location.search).get('lang'));
+      const contentLanguage = () => language === 'zh' ? 'zh' : 'en';
       let currentFeatureId = null;
       let mediaIndex = 0;
       let drag = { active: false, pointerId: null, startX: 0, startY: 0, originX: 0, originY: 0, x: 0, y: 0 };
@@ -452,8 +458,8 @@
         storyList: $('storyList'), overviewButton: $('productOverviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('angleTrack'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaFrame: $('mediaFrame'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), overviewClose: $('overviewClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
       };
 
-      function t(value) { return typeof value === 'string' ? value : value[language]; }
-      function ui(key) { return copy[language][key]; }
+      function t(value) { return typeof value === 'string' ? value : (value[language] || value[contentLanguage()] || value.en || value.zh); }
+      function ui(key) { return (copy[language] || copy[contentLanguage()] || copy.en)[key]; }
       function setQuery(values, replace = false) {
         const url = new URL(location.href);
         Object.entries(values).forEach(([key, value]) => value == null ? url.searchParams.delete(key) : url.searchParams.set(key, value));
@@ -462,10 +468,9 @@
       function currentSection() { return new URLSearchParams(location.search).get('section') || 'hub'; }
       function applyLanguage() {
         window.MoondropMobile?.notify();
-        document.documentElement.lang = language;
-        const active = els.languageToggle.querySelector('[data-language-option="' + language + '"]');
-        els.languageToggle.querySelectorAll('[data-language-option]').forEach((item) => item.classList.toggle('active', item === active));
-        els.languageToggle.setAttribute('aria-label', ui('language'));
+        document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
+        els.languageToggle.value = language;
+        els.languageToggle.setAttribute('aria-label', language === 'zh' ? '选择语言' : 'Choose language');
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
         els.hubKicker.textContent = ui('hubKicker');
@@ -632,7 +637,7 @@
       function renderBoard(section) {
         const boardData = {
           positioning: { accent: '#ffab2f', kicker: '', title: ui('positioning') },
-          support: { accent: '#39d2e5', kicker: t(data.support[language].kicker), title: t(data.support[language].title) },
+          support: { accent: '#39d2e5', kicker: t(data.support[contentLanguage()].kicker), title: t(data.support[contentLanguage()].title) },
           reviews: { accent: '#ad82ff', kicker: '', title: ui('reviews') },
           gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 PILL 的外观、配色与结构细节。' : 'Inspect PILL design, colorways, and product details.' }
         }[section];
@@ -649,11 +654,11 @@
         return '<section class="review-intro" data-review-template-version="1.0.0"><div class="review-intro-copy"><h3>' + ui('reviewIntroTitle') + '</h3></div><span class="review-intro-product-frame" data-review-image-mode="photo" style="--review-product-scale: 1.25; --review-product-origin: right center;"><img class="review-intro-product" src="assets/gallery/pill-colorways.jpg" alt="' + heroAlt + '" /></span></section><div class="review-grid">' + data.reviews.map((review) => '<a class="review-card" href="' + review.url + '" target="_blank" rel="noopener noreferrer"><span class="review-image-wrap"><img src="' + review.image + '" alt="' + review.title + '" loading="lazy" /><span class="review-play" aria-hidden="true">▶</span></span><span class="review-copy"><span class="review-channel">' + review.channel + '</span><h3>' + review.title + '</h3><span>' + ui('openReview') + '</span></span></a>').join('') + '</div>';
       }
       function positioningMarkup() {
-        const pack = data.positioning[language];
+        const pack = data.positioning[contentLanguage()];
         return MoondropPositioning.render({ language, cards: pack.comparisons.map(([title, answer]) => ({ title, answer })), image: 'assets/gallery/pill-colorways.jpg', imageAlt: language === 'zh' ? 'PILL 三色产品图' : 'PILL in three colorways', scale: 1.25 });
       }
       function supportMarkup() {
-        const pack = data.support[language];
+        const pack = data.support[contentLanguage()];
         return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'PILL 包装与配件全家福' : 'PILL package contents and accessories') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
       }
       function galleryMarkup() {
@@ -672,7 +677,7 @@
       els.boardClose.addEventListener('click', () => navigateSection('hub'));
       els.mediaPrevious.addEventListener('click', () => { if (!currentFeatureId) return; const feature = featureById[currentFeatureId]; mediaIndex = (mediaIndex - 1 + feature.media.length) % feature.media.length; renderMedia(feature); });
       els.mediaNext.addEventListener('click', () => { if (!currentFeatureId) return; const feature = featureById[currentFeatureId]; mediaIndex = (mediaIndex + 1) % feature.media.length; renderMedia(feature); });
-      els.languageToggle.addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; setQuery({ lang: language }, true); applyLanguage(); renderRoute(); });
+      els.languageToggle.addEventListener('change', (event) => { language = normalizeLanguage(event.target.value); setQuery({ lang: language }, true); applyLanguage(); renderRoute(); });
       els.lightboxClose.addEventListener('click', closeLightbox);
       els.lightbox.addEventListener('click', (event) => { if (event.target === els.lightbox) closeLightbox(); });
       els.stageWindow.addEventListener('pointerdown', (event) => { if (!currentFeatureId || event.button !== 0 || event.target.closest('.hotspot')) return; drag.active = true; drag.pointerId = event.pointerId; drag.startX = event.clientX; drag.startY = event.clientY; drag.originX = drag.x; drag.originY = drag.y; els.stageWindow.classList.add('is-dragging'); els.stageWindow.setPointerCapture(event.pointerId); event.preventDefault(); });

@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <script src="../../mobile-previews.js?v=1.0.1"></script>
   <script src="../../templates/product-training/mobile-training.js?v=1.0.5"></script>
+  <script src="../../language-menu.js?v=20260914-languages"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
+  <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages" />
   <meta name="description" content="PUDDING bilingual channel training: adaptive ANC, sound, fit, calls, battery and app control." />
   <title>PUDDING · Channel Training</title>
   <style>
@@ -1063,11 +1065,11 @@
             <path d="M9.4 19.6v-6.2h5.2v6.2" />
           </svg>
         </a>
-        <button class="language-toggle" id="languageToggle" type="button" aria-label="切换至中文" aria-pressed="false">
-          <span class="language-option" data-language-option="zh">中文</span>
-          <span class="language-divider" aria-hidden="true">/</span>
-          <span class="language-option active" data-language-option="en">EN</span>
-        </button>
+        <select class="language-toggle" id="languageToggle" aria-label="选择语言">
+          <option value="zh">中文</option><option value="en">English</option><option value="de">Deutsch</option>
+          <option value="es">Español</option><option value="pt">Português</option><option value="fr">Français</option>
+          <option value="it">Italiano</option><option value="ru">Русский</option>
+        </select>
       </div>
     </header>
 
@@ -1234,9 +1236,10 @@
       let currentSection = 'hub';
       const languageStorageKey = 'moondropChannelTrainingLanguage';
       const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
-      let currentLanguage = requestedLanguage === 'zh' ? 'zh' : 'en';
-      const currentPack = () => languagePacks[currentLanguage];
-      const currentPortalPack = () => portalLanguagePacks[currentLanguage];
+      const normalizeLanguage = (value) => window.MoondropLanguage?.normalize(value) || (value === 'zh' ? 'zh' : 'en');
+      let currentLanguage = normalizeLanguage(requestedLanguage);
+      const currentPack = () => languagePacks[currentLanguage] || languagePacks.en;
+      const currentPortalPack = () => portalLanguagePacks[currentLanguage] || portalLanguagePacks.en;
       const localizedFeature = (feature) => currentLanguage === 'zh'
         ? { ...feature, ...currentPack().features[feature.id] }
         : feature;
@@ -1274,15 +1277,16 @@
       }
 
       function comparisonBoardMarkup(copy) {
-        return MoondropPositioning.render({ language: currentLanguage, cards: data.portal.comparisons[currentLanguage], image: data.portal.campaign.hero, imageAlt: currentLanguage === 'zh' ? 'PUDDING 三色产品，原图黑底处理版' : 'PUDDING in three colorways, photograph with a black background edit', scale: 1.25 });
+        const comparisons = data.portal.comparisons[currentLanguage] || data.portal.comparisons.en;
+        return MoondropPositioning.render({ language: currentLanguage, cards: comparisons, image: data.portal.campaign.hero, imageAlt: currentLanguage === 'zh' ? 'PUDDING 三色产品，原图黑底处理版' : 'PUDDING in three colorways, photograph with a black background edit', scale: 1.25 });
       }
 
       function supportBoardMarkup(copy) {
-        const support = data.portal.support[currentLanguage];
+        const support = data.portal.support[currentLanguage] || data.portal.support.en;
         return `
           <div class="support-layout">
             <article class="support-block support-block--package">
-              <img class="support-visual" src="${data.portal.support.contentsImage}" alt="${data.portal.support.imageAlt[currentLanguage]}" />
+              <img class="support-visual" src="${data.portal.support.contentsImage}" alt="${data.portal.support.imageAlt[currentLanguage] || data.portal.support.imageAlt.en}" />
               <div class="support-copy">
                 <div class="support-label">${copy.packageLabel}</div>
                 <h3>${copy.packageTitle}</h3>
@@ -1471,7 +1475,7 @@
         const ui = pack.ui;
         const portalPack = currentPortalPack();
         rememberLanguage();
-        document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : 'en';
+        document.documentElement.lang = currentLanguage === 'zh' ? 'zh-CN' : currentLanguage;
         document.title = ui.documentTitle;
         document.getElementById('brandKicker').textContent = ui.brandKicker;
         document.getElementById('hubKicker').textContent = portalPack.hubKicker;
@@ -1500,11 +1504,8 @@
         document.getElementById('galleryIntro').textContent = ui.galleryIntro;
 
         const toggle = document.getElementById('languageToggle');
-        toggle.setAttribute('aria-label', ui.languageLabel);
-        toggle.setAttribute('aria-pressed', String(currentLanguage === 'zh'));
-        toggle.querySelectorAll('[data-language-option]').forEach((option) => {
-          option.classList.toggle('active', option.dataset.languageOption === currentLanguage);
-        });
+        toggle.setAttribute('aria-label', currentLanguage === 'zh' ? '选择语言' : 'Choose language');
+        toggle.value = currentLanguage;
 
         document.querySelector('.story-rail').setAttribute('aria-label', currentLanguage === 'zh' ? '产品卖点列表' : 'Product feature stories');
         document.querySelector('.viewer-column').setAttribute('aria-label', currentLanguage === 'zh' ? '互动产品视图' : 'Interactive product view');
@@ -1820,8 +1821,8 @@
         lightboxFeatureId = features[activeIndex].id;
         openLightbox(panelMediaIndex);
       });
-      document.getElementById('languageToggle').addEventListener('click', () => {
-        currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
+      document.getElementById('languageToggle').addEventListener('change', (event) => {
+        currentLanguage = normalizeLanguage(event.target.value);
         try {
           const url = new URL(window.location.href);
           url.searchParams.set('lang', currentLanguage);

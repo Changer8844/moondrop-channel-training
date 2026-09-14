@@ -311,12 +311,14 @@
     const buttonNode=button('mobile-only mobile-resume','',()=>{
       const records=read(),r=records.products[records.latest],p=window.MOONDROP_TRAINING_CATALOG.products.find(p=>p.id===records.latest&&p.status==='live');
       if(!r||!p)return;
-      const url=new URL(p.href,base);url.searchParams.set('lang',root.lang.startsWith('zh')?'zh':'en');url.searchParams.set('resume','1');
+      const url=new URL(p.href,base);
+      const pageLanguage=window.MoondropLanguage?.normalize(new URLSearchParams(location.search).get('lang')) || (root.lang.startsWith('zh')?'zh':'en');
+      url.searchParams.set('lang',pageLanguage);url.searchParams.set('resume','1');
       const go=()=>location.href=window.MoondropAuth?.protectHref(url.href)||url.href;
       if(window.MoondropAuth&&!window.MoondropAuth.isAuthenticated())window.MoondropAuth.requireAccess(go);else go();
     });
     document.querySelector('.intro-lower').prepend(buttonNode);
-    const update=()=>{const records=read(),r=records.products[records.latest],p=window.MOONDROP_TRAINING_CATALOG.products.find(p=>p.id===records.latest&&p.status==='live');buttonNode.hidden=!r||!p;if(!buttonNode.hidden)buttonNode.replaceChildren(el('span','',text('继续上次阅读','Continue reading')),el('small','',p.name[root.lang.startsWith('zh')?'zh':'en']));};
+    const update=()=>{const records=read(),r=records.products[records.latest],p=window.MOONDROP_TRAINING_CATALOG.products.find(p=>p.id===records.latest&&p.status==='live');buttonNode.hidden=!r||!p;if(!buttonNode.hidden)buttonNode.replaceChildren(el('span','',text('继续上次阅读','Continue reading')),el('small','',p.name[root.lang.startsWith('zh')?'zh':'en']||p.name.en));};
     new MutationObserver(update).observe(root,{attributes:true,attributeFilter:['lang']});window.addEventListener('pageshow',update);update();
   }
   window.addEventListener('popstate',e=>{

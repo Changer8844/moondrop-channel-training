@@ -18,17 +18,18 @@
   const returningCategoryLanguage = initialParams.has("category") && navigationType === "back_forward"
     ? storedLanguage()
     : null;
-  let currentLanguage = returningCategoryLanguage || (requestedLanguage === "zh" ? "zh" : "en");
+  const normalizeLanguage = (value) => window.MoondropLanguage?.normalize(value) || (value === "zh" ? "zh" : "en");
+  let currentLanguage = returningCategoryLanguage || normalizeLanguage(requestedLanguage);
   let activeCategoryId = null;
   let previousFocus = null;
 
   const localized = (value) => value[currentLanguage] || value.en;
-  const currentUi = () => catalog.ui[currentLanguage];
+  const currentUi = () => catalog.ui[currentLanguage] || catalog.ui.en;
 
   function storedLanguage() {
     try {
       const value = window.localStorage.getItem(languageStorageKey);
-      return value === "zh" || value === "en" ? value : null;
+      return window.MoondropLanguage?.normalize(value) || (value === "zh" || value === "en" ? value : null);
     } catch (error) {
       return null;
     }
@@ -175,7 +176,7 @@
 
   function restoreUrlState() {
     const params = new URLSearchParams(window.location.search);
-    const urlLanguage = params.get("lang") === "zh" ? "zh" : "en";
+    const urlLanguage = normalizeLanguage(params.get("lang"));
     currentLanguage = storedLanguage() || urlLanguage;
     applyLanguage();
 
@@ -189,7 +190,7 @@
 
   function applyLanguage() {
     const ui = currentUi();
-    document.documentElement.lang = currentLanguage === "zh" ? "zh-CN" : "en";
+    document.documentElement.lang = currentLanguage === "zh" ? "zh-CN" : currentLanguage;
     document.title = ui.documentTitle;
     document.getElementById("brandKicker").textContent = ui.brandKicker;
     document.getElementById("pageTitle").innerHTML = ui.pageTitle.replace("\n", '<span class="intro-title-break"><br /></span>');
@@ -197,10 +198,7 @@
     document.getElementById("selectCategory").textContent = ui.selectCategory;
     [languageToggle, overlayLanguageToggle].forEach((toggle) => {
       toggle.setAttribute("aria-label", ui.languageLabel);
-      toggle.setAttribute("aria-pressed", String(currentLanguage === "zh"));
-      toggle.querySelectorAll("[data-language-option]").forEach((option) => {
-        option.classList.toggle("active", option.dataset.languageOption === currentLanguage);
-      });
+      toggle.value = currentLanguage;
     });
     overlayHomeLink.href = `./index.html?lang=${currentLanguage}`;
     overlayHomeLink.setAttribute("aria-label", ui.home);
@@ -223,8 +221,8 @@
     setUrlLanguage();
   }
 
-  function toggleLanguage() {
-    currentLanguage = currentLanguage === "en" ? "zh" : "en";
+  function chooseLanguage(event) {
+    currentLanguage = normalizeLanguage(event.target.value);
     applyLanguage();
   }
 
@@ -252,8 +250,8 @@
   }
 
   closeOverlayButton.addEventListener("click", closeCategory);
-  languageToggle.addEventListener("click", toggleLanguage);
-  overlayLanguageToggle.addEventListener("click", toggleLanguage);
+  languageToggle.addEventListener("change", chooseLanguage);
+  overlayLanguageToggle.addEventListener("change", chooseLanguage);
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeCategory();
     trapOverlayFocus(event);
