@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <script src="../../mobile-previews.js?v=1.0.1"></script>
   <script src="../../templates/product-training/mobile-training.js?v=1.0.5"></script>
-  <script src="../../language-menu.js?v=20260914-languages-system"></script>
+  <script src="../../language-menu.js?v=20260914-languages-system-2"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
   <link rel="stylesheet" href="../../language-menu.css?v=20260914-languages-compact" />
@@ -342,7 +342,7 @@
       <div class="brand" aria-label="MOONDROP RAYS">
         <span class="brand-orbit" aria-hidden="true"></span>
         <div>
-          <div class="brand-kicker">MOONDROP · CHANNEL TRAINING</div>
+          <div class="brand-kicker" id="brandKicker">MOONDROP · CHANNEL TRAINING</div>
           <div class="brand-name">RAYS</div>
         </div>
       </div>
@@ -428,7 +428,7 @@
 
   <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image">×</button><figure class="lightbox-figure"><img id="lightboxImage" src="" alt="" /><figcaption id="lightboxCaption"></figcaption></figure></div>
 
-  <script src="../../auth.js?v=20260826a"></script>
+  <script src="../../auth.js?v=20260914-auth-languages"></script>
   <script src="content.js?v=20260906-fit"></script>
   <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
@@ -470,8 +470,16 @@
         document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
         els.languageToggle.value = language;
         els.languageToggle.setAttribute('aria-label', window.MoondropLanguage?.ui(language).compact.language || (language === 'zh' ? '选择语言' : 'Choose language'));
+        $('brandKicker').textContent = language === 'zh' ? 'MOONDROP · 渠道培训' : (window.MoondropLanguage?.ui(language).product.brandKicker || 'MOONDROP · CHANNEL TRAINING');
+        document.title = 'MOONDROP RAYS · ' + (language === 'zh' ? '渠道培训' : (window.MoondropLanguage?.ui(language).product.documentTitle || 'Channel Training'));
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
+        els.hub.setAttribute('aria-label', ui('trainingHubAria') || 'RAYS product training overview');
+        els.workspace.setAttribute('aria-label', ui('interactiveViewAria') || 'Interactive RAYS product view');
+        els.stageWindow.setAttribute('aria-label', ui('stageAria') || 'Select a product detail or sales point');
+        els.detailPanel.setAttribute('aria-label', ui('featureDetailAria') || 'Feature training detail');
+        els.progress.setAttribute('aria-label', ui('focusProgressAria') || 'Training progress');
+        els.board.setAttribute('aria-label', ui('galleryBoardAria') || 'Training section');
         els.hubHeroImage.src = data.campaign.image;
         els.hubHeroImage.alt = t(data.campaign.alt);
         els.hubHeroImage.style.objectPosition = data.campaign.position || '50% 50%';
@@ -491,8 +499,8 @@
         $('emptyKicker').textContent = ui('emptyKicker');
         $('emptyTitle').innerHTML = ui('emptyTitle');
         $('emptyBody').textContent = ui('emptyBody');
-        els.overviewClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : 'Back to RAYS training menu');
-        els.panelClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : 'Back to RAYS training menu');
+        els.overviewClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : (ui('closeFeature') || 'Back to RAYS training menu'));
+        els.panelClose.setAttribute('aria-label', language === 'zh' ? '返回 RAYS 培训菜单' : (ui('closeFeature') || 'Back to RAYS training menu'));
         els.boardClose.setAttribute('aria-label', ui('closeSection'));
         els.mediaPrevious.setAttribute('aria-label', ui('previous'));
         els.mediaNext.setAttribute('aria-label', ui('next'));
@@ -505,11 +513,11 @@
       }
       function renderHubButtons() {
         const sections = [
-          { id: 'core', accent: '#c7f64a', tag: language === 'zh' ? '卖点' : 'SELL', title: ui('core'), subtitle: ui('coreSub') },
-          { id: 'positioning', accent: '#ffab2f', tag: language === 'zh' ? '定位' : 'POSITION', title: ui('positioning'), subtitle: ui('positioningSub') },
-          { id: 'support', accent: '#39d2e5', tag: language === 'zh' ? '售后' : 'OWNERSHIP', title: ui('support'), subtitle: ui('supportSub') },
-          { id: 'reviews', accent: '#ad82ff', tag: language === 'zh' ? '评测' : 'REVIEWS', title: ui('reviews'), subtitle: ui('reviewsSub') },
-          { id: 'gallery', accent: '#6c9cff', tag: language === 'zh' ? '素材' : 'ASSETS', title: ui('gallery'), subtitle: ui('gallerySub') }
+          { id: 'core', accent: '#c7f64a', tag: language === 'zh' ? '卖点' : (ui('coreTag') || 'SELL'), title: ui('core'), subtitle: ui('coreSub') },
+          { id: 'positioning', accent: '#ffab2f', tag: language === 'zh' ? '定位' : (ui('positioningTag') || 'POSITION'), title: ui('positioning'), subtitle: ui('positioningSub') },
+          { id: 'support', accent: '#39d2e5', tag: language === 'zh' ? '售后' : (ui('supportTag') || 'OWNERSHIP'), title: ui('support'), subtitle: ui('supportSub') },
+          { id: 'reviews', accent: '#ad82ff', tag: language === 'zh' ? '评测' : (ui('reviewsTag') || 'REVIEWS'), title: ui('reviews'), subtitle: ui('reviewsSub') },
+          { id: 'gallery', accent: '#6c9cff', tag: language === 'zh' ? '素材' : (ui('galleryTag') || 'ASSETS'), title: ui('gallery'), subtitle: ui('gallerySub') }
         ];
         els.hubSectionGrid.innerHTML = sections.map((section) => '<button class="hub-section-button" type="button" data-section="' + section.id + '" style="--section-accent:' + section.accent + '"><span class="hub-section-number">' + section.tag + '</span><span class="hub-section-arrow icon-arrow" aria-hidden="true"></span><span class="hub-section-copy"><b>' + section.title + '</b><span>' + section.subtitle + '</span></span></button>').join('');
         els.hubSectionGrid.querySelectorAll('[data-section]').forEach((button) => button.addEventListener('click', () => navigateSection(button.dataset.section)));
@@ -639,9 +647,9 @@
       function renderBoard(section) {
         const boardData = {
           positioning: { accent: '#ffab2f', kicker: '', title: ui('positioning') },
-          support: { accent: '#39d2e5', kicker: t(data.support[contentLanguage()].kicker), title: t(data.support[contentLanguage()].title) },
+          support: { accent: '#39d2e5', kicker: language === 'zh' ? t(data.support.zh.kicker) : (ui('supportKicker') || t(data.support.en.kicker)), title: language === 'zh' ? t(data.support.zh.title) : (ui('support') || t(data.support.en.title)) },
           reviews: { accent: '#ad82ff', kicker: '', title: ui('reviews') },
-          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : 'HD IMAGE LIBRARY', title: language === 'zh' ? '查看 RAYS 的外观、佩戴与结构细节。' : 'Inspect RAYS design, wear, and product details.' }
+          gallery: { accent: '#6c9cff', kicker: language === 'zh' ? '高清图库' : (ui('galleryKicker') || 'HD IMAGE LIBRARY'), title: language === 'zh' ? '查看 RAYS 的外观、佩戴与结构细节。' : (ui('gallery') || 'HD Image Library') }
         }[section];
         if (!boardData) { navigateSection('hub', false); return; }
         els.board.dataset.positioningOpen = String(section === 'positioning');
@@ -661,10 +669,10 @@
       }
       function supportMarkup() {
         const pack = data.support[contentLanguage()];
-        return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'RAYS 耳机、耳机线与收纳包' : 'RAYS IEMs, cable, and storage bag') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : 'IN THE BOX') + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : 'WARRANTY') + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
+        return '<div class="support-layout"><article class="support-block support-block--package"><img class="support-visual" src="' + data.support.image + '" alt="' + (language === 'zh' ? 'RAYS 耳机、耳机线与收纳包' : 'RAYS IEMs, cable, and storage bag') + '" /><div class="support-copy"><div class="support-label">' + (language === 'zh' ? '包装内容' : (ui('inBox') || 'IN THE BOX')) + '</div><h3>' + pack.packageTitle + '</h3><ul class="package-list">' + pack.contents.map((item) => '<li>' + item + '</li>').join('') + '</ul></div></article><article class="support-block support-block--warranty"><div class="support-copy support-copy--warranty"><div class="support-warranty-summary"><div class="support-label">' + (language === 'zh' ? '保修期限' : (ui('warranty') || 'WARRANTY')) + '</div><h3>' + pack.warrantyTitle + '</h3><div class="warranty-periods">' + pack.periods.map((item) => '<div class="warranty-period"><span>' + item[0] + '</span><b>' + item[1] + '</b></div>').join('') + '</div><p class="support-policy">' + pack.policy + '</p></div><div class="support-exclusions"><div class="support-label">' + pack.serviceTitle + '</div><p class="support-policy">' + pack.serviceAction + '</p></div></div></article></div>';
       }
       function galleryMarkup() {
-        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : 'HD product library') + '</h3><p>' + ui('galleryNote') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="' + window.MoondropMobile.preview(item[0]) + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
+        return '<div class="gallery-heading"><h3>' + (language === 'zh' ? '高清产品图库' : (ui('galleryHeading') || 'HD product library')) + '</h3><p>' + (ui('galleryNote') || '') + '</p></div><div class="gallery-grid">' + data.gallery.map((item, index) => '<button class="gallery-card" type="button" data-gallery-index="' + index + '"><img src="' + window.MoondropMobile.preview(item[0]) + '" alt="' + item[language === 'zh' ? 2 : 1] + '" loading="lazy" /><span>' + item[language === 'zh' ? 2 : 1] + '</span></button>').join('') + '</div>';
       }
       function bindGallery() { els.boardContent.querySelectorAll('[data-gallery-index]').forEach((button) => button.addEventListener('click', () => openLightbox(Number(button.dataset.galleryIndex)))); }
       function openLightbox(index) {

@@ -3,7 +3,13 @@ window.MoondropPositioning = (() => {
   const escape = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
   const copy = {
     en: { title: 'Know what the customer is comparing.', intro: 'Ask what the customer uses now, then answer with one clear difference and one proof point.' },
-    zh: { title: '先听懂顾客在比较什么。', intro: '先问顾客现在使用什么设备，再用一个差异和一个证据回答。' }
+    zh: { title: '先听懂顾客在比较什么。', intro: '先问顾客现在使用什么设备，再用一个差异和一个证据回答。' },
+    de: { title: 'Verstehen Sie, was der Kunde vergleicht.', intro: 'Fragen Sie, was der Kunde derzeit nutzt, und antworten Sie mit einem klaren Unterschied und einem Beleg.' },
+    es: { title: 'Entiende qué compara el cliente.', intro: 'Pregunta qué usa ahora y responde con una diferencia clara y una prueba.' },
+    pt: { title: 'Entenda o que o cliente está comparando.', intro: 'Pergunte o que ele usa hoje e responda com uma diferença clara e uma prova.' },
+    fr: { title: 'Comprendre ce que le client compare.', intro: 'Demandez ce qu’il utilise aujourd’hui, puis répondez par une différence claire et une preuve.' },
+    it: { title: 'Capisci cosa sta confrontando il cliente.', intro: 'Chiedi cosa usa oggi e rispondi con una differenza chiara e una prova.' },
+    ru: { title: 'Поймите, что сравнивает клиент.', intro: 'Уточните, чем клиент пользуется сейчас, и ответьте одним ясным отличием и доказательством.' }
   };
   function render({ language, cards, image, imageAlt, campaign = false, scale = 1, origin = 'right center' }) {
     const words = copy[language] || copy.en;

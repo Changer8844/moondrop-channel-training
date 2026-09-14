@@ -41,6 +41,114 @@
       invalid: "密码不正确，请重新输入。",
       unsupported: "当前浏览器无法验证密码，请使用新版浏览器打开。",
       note: "本浏览器将在 12 小时内保持登录状态。"
+    },
+    de: {
+      login: "ANMELDEN",
+      loggedIn: "FREIGESCHALTET",
+      loginLabel: "Kanalzugang öffnen",
+      logoutLabel: "Trainingsportal sperren",
+      kicker: "KANALZUGANG",
+      title: "Trainingsportal öffnen",
+      password: "Passwort",
+      show: "Passwort anzeigen",
+      hide: "Passwort ausblenden",
+      close: "Anmeldung schließen",
+      cancel: "Abbrechen",
+      submit: "Training öffnen",
+      checking: "Wird geprüft…",
+      invalid: "Passwort falsch. Bitte erneut versuchen.",
+      unsupported: "Dieser Browser kann das Passwort nicht prüfen. Bitte einen aktuellen Browser verwenden.",
+      note: "Der Zugang bleibt in diesem Browser 12 Stunden gespeichert."
+    },
+    es: {
+      login: "INICIAR SESIÓN",
+      loggedIn: "DESBLOQUEADO",
+      loginLabel: "Abrir acceso de canal",
+      logoutLabel: "Bloquear el portal de formación",
+      kicker: "ACCESO DE CANAL",
+      title: "Entrar en el portal de formación",
+      password: "Contraseña",
+      show: "Mostrar contraseña",
+      hide: "Ocultar contraseña",
+      close: "Cerrar inicio de sesión",
+      cancel: "Cancelar",
+      submit: "Entrar en la formación",
+      checking: "Comprobando…",
+      invalid: "Contraseña incorrecta. Inténtalo de nuevo.",
+      unsupported: "Este navegador no puede verificar la contraseña. Abre la página en un navegador actualizado.",
+      note: "El acceso se recuerda en este navegador durante 12 horas."
+    },
+    pt: {
+      login: "ENTRAR",
+      loggedIn: "DESBLOQUEADO",
+      loginLabel: "Abrir acesso do canal",
+      logoutLabel: "Bloquear o portal de treinamento",
+      kicker: "ACESSO DO CANAL",
+      title: "Entrar no portal de treinamento",
+      password: "Senha",
+      show: "Mostrar senha",
+      hide: "Ocultar senha",
+      close: "Fechar login",
+      cancel: "Cancelar",
+      submit: "Entrar no treinamento",
+      checking: "Verificando…",
+      invalid: "Senha incorreta. Tente novamente.",
+      unsupported: "Este navegador não pode verificar a senha. Abra a página em um navegador atual.",
+      note: "O acesso fica lembrado neste navegador por 12 horas."
+    },
+    fr: {
+      login: "CONNEXION",
+      loggedIn: "DÉVERROUILLÉ",
+      loginLabel: "Ouvrir l’accès réseau",
+      logoutLabel: "Verrouiller le portail de formation",
+      kicker: "ACCÈS RÉSEAU",
+      title: "Entrer dans le portail de formation",
+      password: "Mot de passe",
+      show: "Afficher le mot de passe",
+      hide: "Masquer le mot de passe",
+      close: "Fermer la connexion",
+      cancel: "Annuler",
+      submit: "Entrer en formation",
+      checking: "Vérification…",
+      invalid: "Mot de passe incorrect. Réessayez.",
+      unsupported: "Ce navigateur ne peut pas vérifier le mot de passe. Ouvrez la page dans un navigateur récent.",
+      note: "L’accès est mémorisé dans ce navigateur pendant 12 heures."
+    },
+    it: {
+      login: "ACCEDI",
+      loggedIn: "SBLOCCATO",
+      loginLabel: "Apri accesso canale",
+      logoutLabel: "Blocca il portale formazione",
+      kicker: "ACCESSO CANALE",
+      title: "Entra nel portale formazione",
+      password: "Password",
+      show: "Mostra password",
+      hide: "Nascondi password",
+      close: "Chiudi accesso",
+      cancel: "Annulla",
+      submit: "Entra nella formazione",
+      checking: "Verifica…",
+      invalid: "Password non corretta. Riprova.",
+      unsupported: "Questo browser non può verificare la password. Apri la pagina in un browser aggiornato.",
+      note: "L’accesso resta memorizzato in questo browser per 12 ore."
+    },
+    ru: {
+      login: "ВОЙТИ",
+      loggedIn: "ДОСТУП ОТКРЫТ",
+      loginLabel: "Открыть доступ к каналу",
+      logoutLabel: "Заблокировать портал обучения",
+      kicker: "ДОСТУП К КАНАЛУ",
+      title: "Войти в портал обучения",
+      password: "Пароль",
+      show: "Показать пароль",
+      hide: "Скрыть пароль",
+      close: "Закрыть вход",
+      cancel: "Отмена",
+      submit: "Открыть обучение",
+      checking: "Проверка…",
+      invalid: "Неверный пароль. Попробуйте ещё раз.",
+      unsupported: "Этот браузер не может проверить пароль. Откройте страницу в современном браузере.",
+      note: "Доступ сохраняется в этом браузере на 12 часов."
     }
   };
 
@@ -51,8 +159,9 @@
 
   function languageFromPage() {
     const queryLanguage = new URLSearchParams(window.location.search).get("lang");
-    if (queryLanguage === "zh" || queryLanguage === "en") return queryLanguage;
-    return document.documentElement.lang.toLowerCase().startsWith("zh") ? "zh" : "en";
+    if (queryLanguage) return window.MoondropLanguage?.normalize(queryLanguage) || "en";
+    const documentLanguage = document.documentElement.lang.toLowerCase();
+    return documentLanguage.startsWith("zh") ? "zh" : (window.MoondropLanguage?.normalize(documentLanguage) || "en");
   }
 
   function readAccess() {
@@ -145,7 +254,7 @@
     const productPath = body.dataset.authPath || "";
     const params = new URLSearchParams(window.location.search);
     params.delete("access");
-    const lang = params.get("lang") === "zh" ? "zh" : "en";
+    const lang = window.MoondropLanguage?.normalize(params.get("lang")) || "en";
     const nextQuery = params.toString();
     const next = `${productPath}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash || ""}`;
     const loginUrl = new URL(home, window.location.href);
@@ -192,10 +301,10 @@
   }
 
   function setLanguage(language) {
-    currentLanguage = language === "zh" ? "zh" : "en";
+    currentLanguage = window.MoondropLanguage?.normalize(language) || (language === "zh" ? "zh" : "en");
     const elements = getPortalElements();
     if (!elements) return;
-    const ui = copy[currentLanguage];
+    const ui = copy[currentLanguage] || copy.en;
     elements.kicker.textContent = ui.kicker;
     elements.title.textContent = ui.title;
     elements.passwordLabel.textContent = ui.password;

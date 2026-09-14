@@ -178,6 +178,18 @@ window.MOONDROP_TRAINING_CATALOG = {
   };
   Object.assign(catalog.ui, ui);
 
+  const navigationUi = {
+    en: { skipCategories: 'Skip to categories', categoryWall: 'Product training categories', categoryNavigation: 'Category navigation' },
+    zh: { skipCategories: '跳转到产品分类', categoryWall: '产品培训分类', categoryNavigation: '分类导航' },
+    de: { skipCategories: 'Zu den Kategorien springen', categoryWall: 'Produktschulungskategorien', categoryNavigation: 'Kategorienavigation' },
+    es: { skipCategories: 'Ir a las categorías', categoryWall: 'Categorías de formación de productos', categoryNavigation: 'Navegación de categorías' },
+    pt: { skipCategories: 'Ir para as categorias', categoryWall: 'Categorias de treinamento de produtos', categoryNavigation: 'Navegação de categorias' },
+    fr: { skipCategories: 'Aller aux catégories', categoryWall: 'Catégories de formation produit', categoryNavigation: 'Navigation des catégories' },
+    it: { skipCategories: 'Vai alle categorie', categoryWall: 'Categorie formazione prodotto', categoryNavigation: 'Navigazione categorie' },
+    ru: { skipCategories: 'Перейти к категориям', categoryWall: 'Категории обучения продукту', categoryNavigation: 'Навигация по категориям' }
+  };
+  Object.entries(navigationUi).forEach(([code, values]) => Object.assign(catalog.ui[code] || (catalog.ui[code] = {}), values));
+
   const categories = {
     'true-wireless': {
       de: ['True Wireless', 'Kabelloser Hörgenuss mit dem akustischen Charakter von MOONDROP.'], es: ['True Wireless', 'Libertad inalámbrica con el carácter acústico de MOONDROP.'], pt: ['True Wireless', 'Liberdade sem fios com a assinatura acústica da MOONDROP.'], fr: ['True Wireless', 'Liberté sans fil avec la signature acoustique de MOONDROP.'], it: ['True Wireless', 'Libertà wireless con la firma acustica di MOONDROP.'], ru: ['True Wireless', 'Беспроводное прослушивание с фирменной акустикой MOONDROP.']

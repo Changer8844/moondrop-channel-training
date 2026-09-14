@@ -196,6 +196,9 @@
     document.getElementById("pageTitle").innerHTML = ui.pageTitle.replace("\n", '<span class="intro-title-break"><br /></span>');
     document.getElementById("tagline").textContent = ui.tagline;
     document.getElementById("selectCategory").textContent = ui.selectCategory;
+    document.querySelector(".skip-link").textContent = ui.skipCategories;
+    document.querySelector(".category-wall").setAttribute("aria-label", ui.categoryWall);
+    document.querySelector(".overlay-tools").setAttribute("aria-label", ui.categoryNavigation);
     [languageToggle, overlayLanguageToggle].forEach((toggle) => {
       toggle.setAttribute("aria-label", ui.languageLabel);
       toggle.value = currentLanguage;
