@@ -99,6 +99,25 @@
     if (!(select instanceof HTMLSelectElement)) return;
     const queryLanguage = normalize(new URLSearchParams(window.location.search).get('lang'));
     select.value = queryLanguage;
+    const fitToLabel = () => {
+      const option = select.options[select.selectedIndex];
+      if (!option || !document.body) return;
+      const computed = getComputedStyle(select);
+      const probe = document.createElement('span');
+      probe.textContent = option.textContent.trim();
+      probe.style.cssText = [
+        'position:absolute', 'left:-9999px', 'top:-9999px', 'visibility:hidden',
+        'white-space:pre', `font:${computed.font}`, `letter-spacing:${computed.letterSpacing}`
+      ].join(';');
+      document.body.append(probe);
+      const labelWidth = Math.ceil(probe.getBoundingClientRect().width);
+      probe.remove();
+      const padding = parseFloat(computed.paddingLeft) + parseFloat(computed.paddingRight);
+      const border = parseFloat(computed.borderLeftWidth) + parseFloat(computed.borderRightWidth);
+      const width = Math.max(72, labelWidth + padding + border);
+      select.style.setProperty('--language-toggle-width', `${width}px`);
+    };
+    fitToLabel();
     select.addEventListener('change', (event) => {
       const url = new URL(window.location.href);
       url.searchParams.set('lang', normalize(event.target.value));
