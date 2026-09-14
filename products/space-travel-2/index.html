@@ -1115,7 +1115,7 @@
           <p id="hubIntro">Transparent case design, a 13mm dynamic driver, noise control, app tuning, a light fit, and all-day battery life.</p>
           <img class="hub-mark" src="assets/campaign/space-travel-2-mark.png" alt="SPACE TRAVEL 2 graphic mark" />
         </div>
-        <nav class="hub-menu" aria-label="Training sections">
+        <nav class="hub-menu" id="hubMenu" aria-label="Training sections">
           <div class="hub-section-grid" id="hubSectionGrid"></div>
         </nav>
       </div>
@@ -1829,6 +1829,7 @@
         document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
         document.getElementById('hubIntro').textContent = portalPack.hubIntro;
         document.getElementById('trainingHub').setAttribute('aria-label', ui.trainingHubAria || (currentLanguage === 'zh' ? 'SPACE TRAVEL 2 培训菜单' : 'SPACE TRAVEL 2 training menu'));
+        document.getElementById('hubMenu').setAttribute('aria-label', ui.hubMenuAria || (currentLanguage === 'zh' ? 'SPACE TRAVEL 2 培训模块' : 'Training sections'));
         document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? '模特手持 SPACE TRAVEL 2 的太空主题主视觉' : 'SPACE TRAVEL 2 campaign visual with the product held beside a futuristic portrait';
         document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
         renderHubButtons();

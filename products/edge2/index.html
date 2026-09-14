@@ -1120,7 +1120,7 @@
           <h1 id="hubTitle">EDGE2</h1>
           <p id="hubIntro">Adaptive ANC headphones for commuting, study, travel and computer listening.</p>
         </div>
-        <nav class="hub-menu" aria-label="Training sections">
+        <nav class="hub-menu" id="hubMenu" aria-label="Training sections">
           <div class="hub-section-grid" id="hubSectionGrid"></div>
         </nav>
       </div>
@@ -1525,6 +1525,7 @@
         document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
         document.getElementById('hubIntro').textContent = portalPack.hubIntro;
         document.getElementById('trainingHub').setAttribute('aria-label', ui.trainingHubAria || (currentLanguage === 'zh' ? 'EDGE2 培训菜单' : 'EDGE2 training menu'));
+        document.getElementById('hubMenu').setAttribute('aria-label', ui.hubMenuAria || (currentLanguage === 'zh' ? 'EDGE2 培训模块' : 'Training sections'));
         document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? 'EDGE2 白色耳机原始透明照片' : 'EDGE2 white headphones, original transparent product photograph';
         document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
         renderHubButtons();

@@ -368,7 +368,7 @@
             <h1 id="hubTitle">PILL</h1>
             <p id="hubIntro">Open-ear ear-clip listening built around sound, awareness, comfort, calls, smart control, and everyday wireless use.</p>
           </div>
-          <nav class="hub-menu" aria-label="PILL training sections">
+          <nav class="hub-menu" id="hubMenu" aria-label="PILL training sections">
             <div class="hub-menu-kicker" id="hubMenuKicker">CHOOSE A TOPIC</div>
             <div class="hub-section-grid" id="hubSectionGrid"></div>
           </nav>
@@ -454,7 +454,7 @@
 
       const $ = (id) => document.getElementById(id);
       const els = {
-        hub: $('hubView'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
+        hub: $('hubView'), hubMenu: $('hubMenu'), workspace: $('workspace'), hubSectionGrid: $('hubSectionGrid'), hubKicker: $('hubKicker'), hubTitle: $('hubTitle'), hubIntro: $('hubIntro'), hubMenuKicker: $('hubMenuKicker'),
         storyList: $('storyList'), overviewButton: $('productOverviewButton'), viewerTitle: $('viewerTitle'), viewerSubtitle: $('viewerSubtitle'), viewerCount: $('viewerCount'), stageWindow: $('stageWindow'), photoRig: $('angleTrack'), masterImage: $('masterImage'), stageMeta: $('stageMeta'), hotspotLayer: $('hotspotLayer'), progress: $('progress'), viewerFooterNote: $('viewerFooterNote'), detailPanel: $('detailPanel'), panelKicker: $('panelKicker'), panelTitle: $('panelTitle'), panelBody: $('panelBody'), subfeatureList: $('subfeatureList'), mediaFrame: $('mediaFrame'), mediaImage: $('mediaImage'), mediaCaption: $('mediaCaption'), mediaIndex: $('mediaIndex'), mediaPrevious: $('mediaPrevious'), mediaNext: $('mediaNext'), showKicker: $('showKicker'), showText: $('showText'), sayKicker: $('sayKicker'), sayText: $('sayText'), specKicker: $('specKicker'), specText: $('specText'), panelClose: $('panelClose'), overviewClose: $('overviewClose'), board: $('board'), boardKicker: $('boardKicker'), boardTitle: $('boardTitle'), boardClose: $('boardClose'), boardContent: $('boardContent'), lightbox: $('lightbox'), lightboxImage: $('lightboxImage'), lightboxCaption: $('lightboxCaption'), lightboxClose: $('lightboxClose'), homeLink: $('homeLink'), languageToggle: $('languageToggle')
       };
 
@@ -476,6 +476,7 @@
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
         els.hub.setAttribute('aria-label', ui('trainingHubAria') || (language === 'zh' ? 'PILL 培训菜单' : 'PILL product training overview'));
+        els.hubMenu.setAttribute('aria-label', ui('hubMenuAria') || (language === 'zh' ? 'PILL 培训模块' : 'PILL training sections'));
         els.workspace.setAttribute('aria-label', ui('interactiveViewAria') || (language === 'zh' ? '互动 PILL 产品视图' : 'Interactive PILL product view'));
         els.stageWindow.setAttribute('aria-label', ui('stageAria') || (language === 'zh' ? '点击产品热点或选择卖点' : 'Select a product detail or sales point'));
         els.detailPanel.setAttribute('aria-label', ui('featureDetailAria') || (language === 'zh' ? '卖点培训详情' : 'Feature training detail'));

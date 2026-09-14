@@ -1081,7 +1081,7 @@
           <h1 id="hubTitle">PUDDING</h1>
           <p id="hubIntro">Real-time adaptive ANC, personalized sound, and everyday flexibility.</p>
         </div>
-        <nav class="hub-menu" aria-label="Training sections">
+        <nav class="hub-menu" id="hubMenu" aria-label="Training sections">
           <div class="hub-section-grid" id="hubSectionGrid"></div>
         </nav>
       </div>
@@ -1483,6 +1483,7 @@
         document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
         document.getElementById('hubIntro').textContent = portalPack.hubIntro;
         document.getElementById('trainingHub').setAttribute('aria-label', ui.trainingHubAria || (currentLanguage === 'zh' ? 'PUDDING 培训菜单' : 'PUDDING training menu'));
+        document.getElementById('hubMenu').setAttribute('aria-label', ui.hubMenuAria || (currentLanguage === 'zh' ? 'PUDDING 培训模块' : 'Training sections'));
         document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? 'PUDDING 三色耳机与充电盒，原图黑底处理版' : 'PUDDING earbuds and cases in three colorways, photograph with a black background edit';
         document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
         renderHubButtons();

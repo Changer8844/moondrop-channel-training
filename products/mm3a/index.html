@@ -1094,7 +1094,7 @@
           <h1 id="hubTitle">MM3A</h1>
           <p id="hubIntro">A compact active stereo pair for music, desktop media, and your everyday sources.</p>
         </div>
-        <nav class="hub-menu" aria-label="Training sections">
+        <nav class="hub-menu" id="hubMenu" aria-label="Training sections">
           <div class="hub-section-grid" id="hubSectionGrid"></div>
         </nav>
       </div>
@@ -1499,6 +1499,7 @@
         document.getElementById('hubTitle').innerHTML = portalPack.hubTitle;
         document.getElementById('hubIntro').textContent = portalPack.hubIntro;
         document.getElementById('trainingHub').setAttribute('aria-label', ui.trainingHubAria || (currentLanguage === 'zh' ? 'MM3A 培训菜单' : 'MM3A training menu'));
+        document.getElementById('hubMenu').setAttribute('aria-label', ui.hubMenuAria || (currentLanguage === 'zh' ? 'MM3A 培训模块' : 'Training sections'));
         document.getElementById('hubHeroImage').alt = currentLanguage === 'zh' ? '笔记本两侧的 MM3A 音箱，黑底桌面场景原图' : 'MM3A stereo speakers around a laptop, original dark desktop photograph';
         document.getElementById('closeSectionBoard').setAttribute('aria-label', portalPack.sectionClose);
         renderHubButtons();
