@@ -4,9 +4,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const products = ['mm3a', 'pill', 'pudding', 'rays', 'space-travel-2'];
+const products = ['edge2','mm3a', 'pill', 'pudding', 'rays', 'space-travel-2'];
 const pages = ['index.html', ...products.map(slug => `products/${slug}/index.html`)];
-const sources = ['app.js', ...pages, 'products/mm3a/view-data.js', 'products/pudding/view-data.js'];
+const sources = ['app.js', ...pages, 'products/edge2/view-data.js', 'products/mm3a/view-data.js', 'products/pudding/view-data.js'];
 for (const file of sources) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
   assert.ok(!/[\u2196-\u2199\uFE0E\uFE0F]/u.test(source), `${file}: arrow must not depend on text/emoji fonts`);
@@ -37,4 +37,4 @@ assert.ok(/html\.mobile-ui \.hub-mark\s*\{\s*display: none;\s*\}/.test(mobileCSS
 assert.ok(/html\.mobile-ui \.overlay-home-link svg\s*\{\s*width: 26px; height: 26px;\s*\}/.test(mobileCSS), 'Mobile circular Home glyph should be 26px');
 assert.ok(mobileCSS.includes('html.mobile-ui .category-card::after { display: none; }'), 'Mobile category cards must not retain a desktop hover inset border');
 assert.ok(mobileCSS.includes('html.mobile-ui .lightbox { display: none !important; }'), 'Desktop viewer must not expose invisible controls on mobile');
-console.log('PASS: six pages share font-independent decorative SVG arrows; bilingual review labels contain no emoji arrows.');
+console.log(`PASS: ${pages.length} pages share font-independent decorative SVG arrows; bilingual review labels contain no emoji arrows.`);

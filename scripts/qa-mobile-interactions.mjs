@@ -6,7 +6,7 @@ import {localServer} from './qa-local-server.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const arg=(k,d)=>process.argv.find(a=>a.startsWith(`--${k}=`))?.slice(k.length+3)||d;
 const out=arg('out','/private/tmp/moondrop-mobile-interactions');
-const products=arg('products','mm3a,pill,pudding,space-travel-2,rays').split(',');
+const products=arg('products','edge2,mm3a,pill,pudding,space-travel-2,rays').split(',');
 const browsers=await import(pathToFileURL(path.resolve(path.dirname(process.execPath),'../node_modules/playwright/index.mjs')));
 const engine=arg('engine','chromium');
 const server=engine==='webkit'?await localServer(root):null;

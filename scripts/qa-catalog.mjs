@@ -16,8 +16,9 @@ const home=pathToFileURL(path.join(root,'index.html')).href;
 try {
   for(const [width,height] of [[1920,1080],[1440,900],[1366,768],[1024,768],[390,844]]) for(const lang of ['en','zh']) {
     await page.setViewportSize({width,height});
-    for(const category of ['true-wireless','wired-in-ear','desktop-digital']) {
-      await page.goto(`${home}?lang=${lang}&category=${category}`);
+    for(const category of ['true-wireless','wired-in-ear','desktop-digital','headphones']) {
+      await page.goto(`${home}?lang=${lang}${category==='headphones'?'':`&category=${category}`}`);
+      if(category==='headphones') await page.locator('.category-card[data-category-id="headphones"]').click();
       await page.locator('.product-card').first().waitFor();
       await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.querySelectorAll('.product-card img')].map(i=>i.decode()));});
       const result=await page.locator('.product-card').evaluateAll(cards=>cards.map(card=>{
@@ -29,14 +30,19 @@ try {
         if(r.right>innerWidth+1||r.x<0||card.scrollWidth>card.clientWidth+2)errors.push('Card overflow');
         if([...copy.querySelectorAll('strong,.product-card__type')].some(e=>e.scrollWidth>e.clientWidth+2))errors.push('Copy overflow');
         if(!card.getAttribute('aria-label'))errors.push('Missing accessible action');
+        if(card.dataset.productId==='edge2'){
+          const img=card.querySelector('img'),box=img.getBoundingClientRect();
+          if(Math.abs(box.width/box.height-img.naturalWidth/img.naturalHeight)>.01)errors.push('EDGE2 catalog image crops or letterboxes the original');
+        }
         return {name:card.querySelector('strong').textContent,width:r.width,height:r.height,errors};
       }));
       const state=`${width}x${height}-${lang}-${category}`;
       reports.push({state,cards:result});
       failures.push(...result.flatMap(r=>r.errors.map(error=>({state,product:r.name,error}))));
       if(category!=='wired-in-ear')await page.screenshot({path:path.join(out,`${state}.png`)});
-      if(category==='desktop-digital') {
-        await page.locator('.product-card[href*="products/mm3a/"]').click();
+      if(['desktop-digital','headphones'].includes(category)) {
+        const product = category==='headphones' ? 'edge2' : 'mm3a';
+        await page.locator(`.product-card[href*="products/${product}/"]`).click();
         await page.locator('#trainingApp.hub-mode').waitFor();
         if(new URL(page.url()).searchParams.get('lang')!==lang)failures.push({state,error:'Entry lost language'});
         await page.goBack();await page.locator('#categoryOverlay[aria-hidden="false"]').waitFor();

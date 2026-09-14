@@ -35,7 +35,7 @@ headerToggle.click = () => clicks++;
 const context = {
   query: {matches:true}, languageBars: [], el:node, document:{body, createComment:node, activeElement:headerToggle},
   modal:null, sheet:node(), dock:node(), setInert() {}, history:{pushState() {}, replaceState(value) { this.state=value; }}, location:{href:'test'},
-  pointers:{clear() {}}, pendingClose:null, notify() {}
+  pointers:{clear() {}}, pendingClose:null, notify() {}, sync() { context.dock.hidden = false; }
 };
 vm.runInNewContext(['placeLanguageControls','createLanguageBar','openModal','dismissModal'].map(extract).join('\n'), context);
 const bar = context.createLanguageBar(headerToggle);
@@ -58,5 +58,12 @@ context.dismissModal();
 assert.equal(bar.parentElement, body);
 assert.equal(context.modal, null);
 assert.equal(bar.children.filter(n => n === headerToggle).length, 1, 'Never duplicate the language button');
+let focusReturned = false;
+const contentsButton = node();
+contentsButton.focus = () => { focusReturned = !context.dock.hidden; };
+context.document.activeElement = contentsButton;
+context.openModal(viewer);
+context.dismissModal();
+assert.equal(focusReturned, true, 'Closing a dialog restores its navigation trigger only after the dock is visible');
 assert.match(source, /m6 6 12 12M18 6 6 18/, 'Close icon uses a symmetric SVG');
 console.log('PASS: mobile footer placement, original language handlers, category/modal ownership and desktop restoration.');

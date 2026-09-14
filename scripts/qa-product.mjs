@@ -48,7 +48,11 @@ async function inspect(name, lang, size, screenshot = true) {
       if (el.matches('.review-intro h3,.hub-section-copy span,.panel-empty p') && el.querySelector('br')) errors.push('Forced copy break');
       type.push({text:el.textContent,font:s.fontSize,weight:s.fontWeight,width:r.width});
     }
-    for(const img of active.querySelectorAll('img')) if(img.getBoundingClientRect().width && !img.naturalWidth) errors.push('Missing image: '+img.getAttribute('src'));
+    for(const img of active.querySelectorAll('img')) {
+      const r=img.getBoundingClientRect();
+      if(r.width && !img.naturalWidth) errors.push('Missing image: '+img.getAttribute('src'));
+      if(r.width && img.closest('[data-gallery-image-policy="original-ratio"]') && Math.abs(r.width/r.height-img.naturalWidth/img.naturalHeight)>.01) errors.push('Gallery crops an original: '+img.alt);
+    }
     if(document.documentElement.scrollWidth>innerWidth+2) errors.push('Page horizontal overflow');
     const top=document.querySelector('.support-block--package .support-copy'), bottom=document.querySelector('.support-exclusions');
     if(top && bottom && innerWidth>760 && Math.abs(top.getBoundingClientRect().x+parseFloat(getComputedStyle(top).paddingLeft)-bottom.getBoundingClientRect().x-parseFloat(getComputedStyle(bottom).paddingLeft))>2) errors.push('Support column misalignment');
@@ -57,7 +61,12 @@ async function inspect(name, lang, size, screenshot = true) {
     const stage=document.getElementById('stage'), rig=document.getElementById('photoRig');
     if(stage?.getBoundingClientRect().width && rig) {
       const s=stage.getBoundingClientRect(),r=rig.getBoundingClientRect();
-      if(r.x>s.x+2||r.y>s.y+2||r.right<s.right-2||r.bottom<s.bottom-2) errors.push('Stage exposes area outside original photo');
+      const singleOriginal = document.querySelector('[data-master-view-policy="single-original"]');
+      if(singleOriginal) {
+        const photo=rig.querySelector('.product-photo');
+        if(rig.querySelectorAll('img').length!==1 || getComputedStyle(photo).objectFit!=='contain') errors.push('Transparent original must retain its aspect ratio in one image');
+        if(!rig.dataset.focus && (r.y<s.y-2 || r.bottom>s.bottom+2 || r.x<s.x-2 || r.right>s.right+2)) errors.push('Overview clips the complete original');
+      } else if(r.x>s.x+2||r.y>s.y+2||r.right<s.right-2||r.bottom<s.bottom-2) errors.push('Stage exposes area outside original photo');
       if(document.querySelector('[data-grid-layer="background"]') && Number(getComputedStyle(stage,'::before').zIndex)>=Number(getComputedStyle(rig).zIndex)) errors.push('Background grid overlays the product photograph');
       if(document.querySelector('[data-master-view-policy="single-composite"]')) {
         const photo = rig.querySelector('.product-photo');
@@ -114,7 +123,7 @@ try {
           if(feature===data.features[0] && size===sizes[0]) {
             const r=await page.locator('#stage').boundingBox();
             for(const direction of [-1,1]) {
-              const before=await page.locator('#photoRig').evaluate(el=>el.style.getPropertyValue('--drag-x'));
+              const before=await page.locator('#photoRig').evaluate(el=>['--drag-x','--drag-y'].map(k=>el.style.getPropertyValue(k)).join(','));
               const start = await page.evaluate(r => {
                 for(const fy of [.1,.25,.5,.75,.9]) for(const fx of [.1,.25,.5,.75,.9]) {
                   const x=r.x+r.width*fx,y=r.y+r.height*fy,hit=document.elementFromPoint(x,y);
@@ -125,7 +134,7 @@ try {
               await page.mouse.move(start.x,start.y); await page.mouse.down();
               // Keep synthetic pointer travel inside the browser viewport.
               await page.mouse.move(Math.max(5,Math.min(size[0]-5,start.x+direction*r.width*2)),Math.max(70,Math.min(size[1]-5,start.y+direction*r.height*2)),{steps:8}); await page.mouse.up();
-              const after=await page.locator('#photoRig').evaluate(el=>el.style.getPropertyValue('--drag-x'));
+              const after=await page.locator('#photoRig').evaluate(el=>['--drag-x','--drag-y'].map(k=>el.style.getPropertyValue(k)).join(','));
               if(before===after) failures.push({state:`${size.join('x')}-${lang}-pan-${direction}`,error:'Pointer did not move the enlarged photograph'});
               await inspect(`pan-${direction}`,lang,size,false);
             }

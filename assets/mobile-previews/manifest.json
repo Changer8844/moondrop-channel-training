@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "originalBytes": 160341371,
-  "previewBytes": 1238944,
+  "originalBytes": 193911330,
+  "previewBytes": 1420580,
   "images": [
     {
       "source": "assets/categories/collaborations.jpg",
@@ -64,6 +64,86 @@
       "preview": "assets/mobile-previews/fcbb25a852c54407.webp",
       "sourceBytes": 129388,
       "previewBytes": 28786,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_1113.jpg",
+      "preview": "assets/mobile-previews/aab2baf065962331.webp",
+      "sourceBytes": 4069764,
+      "previewBytes": 33800,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_1130.jpg",
+      "preview": "assets/mobile-previews/7912af50c0796d2c.webp",
+      "sourceBytes": 3634551,
+      "previewBytes": 35100,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_1135.jpg",
+      "preview": "assets/mobile-previews/1eaa38247d74c525.webp",
+      "sourceBytes": 3099583,
+      "previewBytes": 21452,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6268.jpg",
+      "preview": "assets/mobile-previews/473a94d699e0f397.webp",
+      "sourceBytes": 3298805,
+      "previewBytes": 13166,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6275.jpg",
+      "preview": "assets/mobile-previews/b0b6f6fd1368046f.webp",
+      "sourceBytes": 3644675,
+      "previewBytes": 15812,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6282.jpg",
+      "preview": "assets/mobile-previews/286323467df9ab33.webp",
+      "sourceBytes": 2794325,
+      "previewBytes": 14958,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6298.jpg",
+      "preview": "assets/mobile-previews/eec6924a18cdb9e7.webp",
+      "sourceBytes": 2616967,
+      "previewBytes": 12204,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6355.jpg",
+      "preview": "assets/mobile-previews/b35f69481086bcbb.webp",
+      "sourceBytes": 4034640,
+      "previewBytes": 14460,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6360.jpg",
+      "preview": "assets/mobile-previews/8e3325514b9c858f.webp",
+      "sourceBytes": 5151661,
+      "previewBytes": 18536,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/edge2/assets/hd-gallery/DSC_6380.jpg",
+      "preview": "assets/mobile-previews/bd5e468642ec06e8.webp",
+      "sourceBytes": 4785493,
+      "previewBytes": 16710,
       "width": 533,
       "height": 800
     },
@@ -404,6 +484,14 @@
       "height": 800
     },
     {
+      "source": "products/rays/assets/campaign/rays-wearing.jpg",
+      "preview": "assets/mobile-previews/8665c81e9bb826a0.webp",
+      "sourceBytes": 51385,
+      "previewBytes": 16580,
+      "width": 800,
+      "height": 481
+    },
+    {
       "source": "products/rays/assets/official/hires/rays-cable-2pin-detail.jpg",
       "preview": "assets/mobile-previews/49d3482942a8e1ba.webp",
       "sourceBytes": 3675431,
@@ -472,14 +560,6 @@
       "preview": "assets/mobile-previews/95a48cd8f957ff45.webp",
       "sourceBytes": 2730445,
       "previewBytes": 20400,
-      "width": 800,
-      "height": 533
-    },
-    {
-      "source": "products/rays/assets/official/hires/rays-hires-wearing.jpg",
-      "preview": "assets/mobile-previews/65e8571bc6ed4123.webp",
-      "sourceBytes": 3611890,
-      "previewBytes": 31142,
       "width": 800,
       "height": 533
     },

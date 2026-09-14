@@ -108,7 +108,7 @@
     document.body.append(languageBar);
     modal = null; pointers.clear(); gesture = null;
     document.body.classList.remove('mobile-modal-open'); setInert(false);
-    notify();
+    sync(); // Restore the hidden navigation dock before returning keyboard focus to it.
     modalFocus?.focus({preventScroll:true});
     const action = pendingClose; pendingClose = null; action?.();
   }

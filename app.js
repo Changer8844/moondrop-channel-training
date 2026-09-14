@@ -99,7 +99,7 @@
     const rawHref = `${product.href}?lang=${currentLanguage}`;
     const href = window.MoondropAuth?.protectHref(rawHref) || rawHref;
     return `
-      <a class="product-card" href="${href}" aria-label="${localized(product.name)} · ${ui.openTraining}">
+      <a class="product-card" data-product-id="${product.id}" href="${href}" aria-label="${localized(product.name)} · ${ui.openTraining}">
         <span class="product-card__image-wrap">
           <img src="${window.MoondropMobile.preview(product.image)}" alt="${localized(product.name)}" style="object-position:${product.imagePosition};object-fit:${product.imageFit || "contain"}" />
         </span>

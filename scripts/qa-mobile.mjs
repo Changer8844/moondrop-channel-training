@@ -7,7 +7,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const arg=(key,fallback)=>process.argv.find(a=>a.startsWith(`--${key}=`))?.slice(key.length+3)||fallback;
 const out=arg('out','/private/tmp/moondrop-mobile-qa');
 const sizes=arg('sizes','390x844').split(',').map(s=>s.split('x').map(Number));
-const products=arg('products','mm3a,pill,pudding,space-travel-2,rays').split(',');
+const products=arg('products','edge2,mm3a,pill,pudding,space-travel-2,rays').split(',');
 const langs=arg('langs','zh,en').split(',');
 const full=process.argv.includes('--full');
 const desktop=process.argv.includes('--desktop');
@@ -38,6 +38,10 @@ async function inspect(name,{shot=true}={}){
       if(!desktop&&getComputedStyle(n).fontSize.replace('px','')<13)errors.push('Text too small: '+n.textContent.slice(0,65));
     }
     for(const i of main.querySelectorAll('img'))if(visible(i)&&i.loading!=='lazy'&&i.getAttribute('src')&&!i.naturalWidth)errors.push('Missing image: '+i.getAttribute('src'));
+    for(const i of main.querySelectorAll('[data-gallery-image-policy="original-ratio"] img'))if(visible(i)&&i.naturalWidth){
+      const r=i.getBoundingClientRect();
+      if(Math.abs(r.width/r.height-i.naturalWidth/i.naturalHeight)>.01)errors.push('Gallery crops an original: '+i.alt);
+    }
     if(desktop&&document.documentElement.classList.contains('mobile-ui'))errors.push('Mobile rules leaked into desktop');
     if(!desktop)for(const card of document.querySelectorAll('.category-card')){
       if(!visible(card))continue;
@@ -71,7 +75,7 @@ async function inspect(name,{shot=true}={}){
 }
 try{
 for(const [width,height]of sizes){await page.setViewportSize({width,height});for(const lang of langs){
-  for(const category of process.argv.includes('--skip-portal')?[]:['', 'true-wireless','desktop-digital']){
+  for(const category of process.argv.includes('--skip-portal')?[]:['', 'true-wireless','desktop-digital','headphones']){
     await page.goto(`${base}index.html?lang=${lang}${category?'&category='+category:''}`);await inspect(`${width}-${lang}-${category||'home'}`);
   }
   for(const product of products){

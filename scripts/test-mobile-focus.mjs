@@ -22,7 +22,8 @@ const near=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-8,`${actual
 const widths=[320,360,390,430,768,844];
 let focusChecks=0,overviewChecks=0;
 
-for(const product of ['mm3a','pill','pudding','space-travel-2','rays']){
+const products = ['edge2','mm3a','pill','pudding','space-travel-2','rays'];
+for(const product of products){
   const html=read(`products/${product}/index.html`),dataContext={window:{}};
   vm.runInNewContext(read(`products/${product}/content.js`),dataContext);
   const legacy=['pill','rays'].includes(product);
@@ -178,4 +179,4 @@ for(const lang of ['zh','en']){
   const desktopDrag=event(stage);stage.listeners.get('pointerdown')(desktopDrag);assert.equal(desktopDrag.stopped,false);
   routeChecks.push({lang,contentsStories:6,navigation:'passed',inlineImages:'passed',gallery:'passed',desktopRestoration:'passed'});
 }
-console.log(JSON.stringify({products:5,stories:30,simulatedWidths:widths,focusChecks,overviewChecks,sharedSelection:'passed',desktopLabelRestoration:'passed',routeChecks,rendered:false},null,2));
+console.log(JSON.stringify({products:products.length,stories:products.length*6,simulatedWidths:widths,focusChecks,overviewChecks,sharedSelection:'passed',desktopLabelRestoration:'passed',routeChecks,rendered:false},null,2));

@@ -25,7 +25,7 @@ try {
     check(await opener.evaluate(n=>n===document.activeElement),selector+' restored focus');
     check(await page.evaluate(()=>![...document.body.children].some(n=>n.inert)),selector+' restored page access');
   }
-  for(const product of ['mm3a','pill','pudding','space-travel-2','rays'])for(const lang of ['zh','en']) {
+  for(const product of ['edge2','mm3a','pill','pudding','space-travel-2','rays'])for(const lang of ['zh','en']) {
     try {
       await page.goto(pathToFileURL(`${root}/products/${product}/index.html`).href+`?lang=${lang}&section=core`);
       await page.locator('.mobile-dock button').last().focus();await page.keyboard.press('Enter');

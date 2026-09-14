@@ -13,7 +13,7 @@ const context=await browser.newContext({offline:true});
 await context.addInitScript(()=>{if(location.protocol==='file:')localStorage.setItem('moondropChannelTrainingAccess',JSON.stringify({version:1,expires:Date.now()+3600000}));});
 const page=await context.newPage(),sources=new Set();
 try{
-  for(const product of ['mm3a','pill','pudding','space-travel-2','rays']){
+  for(const product of ['edge2','mm3a','pill','pudding','space-travel-2','rays']){
     await page.goto(pathToFileURL(path.join(root,'products',product,'index.html')).href+'?lang=en&section=gallery');
     for(const src of await page.locator('.gallery-card img').evaluateAll(ns=>ns.map(n=>n.src)))sources.add(fileURLToPath(src));
   }
