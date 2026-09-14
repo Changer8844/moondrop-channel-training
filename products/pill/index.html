@@ -475,12 +475,12 @@
         document.title = 'MOONDROP PILL · ' + (language === 'zh' ? '渠道培训' : (window.MoondropLanguage?.ui(language).product.documentTitle || 'Channel Training'));
         els.homeLink.href = '../../index.html?lang=' + language;
         els.homeLink.setAttribute('aria-label', ui('home'));
-        els.hub.setAttribute('aria-label', ui('trainingHubAria') || 'PILL product training overview');
-        els.workspace.setAttribute('aria-label', ui('interactiveViewAria') || 'Interactive PILL product view');
-        els.stageWindow.setAttribute('aria-label', ui('stageAria') || 'Select a product detail or sales point');
-        els.detailPanel.setAttribute('aria-label', ui('featureDetailAria') || 'Feature training detail');
-        els.progress.setAttribute('aria-label', ui('focusProgressAria') || 'Training progress');
-        els.board.setAttribute('aria-label', ui('galleryBoardAria') || 'Training section');
+        els.hub.setAttribute('aria-label', ui('trainingHubAria') || (language === 'zh' ? 'PILL 培训菜单' : 'PILL product training overview'));
+        els.workspace.setAttribute('aria-label', ui('interactiveViewAria') || (language === 'zh' ? '互动 PILL 产品视图' : 'Interactive PILL product view'));
+        els.stageWindow.setAttribute('aria-label', ui('stageAria') || (language === 'zh' ? '点击产品热点或选择卖点' : 'Select a product detail or sales point'));
+        els.detailPanel.setAttribute('aria-label', ui('featureDetailAria') || (language === 'zh' ? '卖点培训详情' : 'Feature training detail'));
+        els.progress.setAttribute('aria-label', ui('focusProgressAria') || (language === 'zh' ? '卖点聚焦进度' : 'Training progress'));
+        els.board.setAttribute('aria-label', ui('galleryBoardAria') || (language === 'zh' ? '培训模块' : 'Training section'));
         els.hubKicker.textContent = ui('hubKicker');
         els.hubTitle.textContent = ui('hubTitle');
         els.hubIntro.textContent = ui('hubIntro');
