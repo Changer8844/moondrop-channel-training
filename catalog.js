@@ -102,7 +102,7 @@ window.MOONDROP_TRAINING_CATALOG = {
       categoryId: "headphones",
       name: { en: "EDGE2", zh: "羽翼2 EDGE2" },
       type: { en: "Adaptive ANC over-ear headphones", zh: "自适应降噪头戴式耳机" },
-      image: "products/edge2/assets/hd-gallery/DSC_1130.jpg",
+      image: "products/edge2/assets/campaign/edge2-category-card-wide.png",
       imagePosition: "50% 50%",
       imageFit: "cover",
       href: "products/edge2/index.html",
