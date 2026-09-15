@@ -26,6 +26,19 @@ select.language-toggle:hover { border-color: rgba(199, 246, 74, .68); }
 select.language-toggle:focus-visible { outline: 2px solid #c7f64a; outline-offset: 3px; }
 select.language-toggle option { background: #101813; color: #f2f5f2; }
 
+/* Category overlays use a light paper surface, so keep the native label readable. */
+select.language-toggle.overlay-language-toggle {
+  border-color: var(--line-dark, rgba(12, 16, 13, .18));
+  background-color: rgba(255, 255, 255, .24);
+  color: #202a23;
+  -webkit-text-fill-color: #202a23;
+  color-scheme: light;
+}
+select.language-toggle.overlay-language-toggle option {
+  background: #eeeae2;
+  color: #202a23;
+}
+
 html.mobile-ui select.language-toggle {
   width: min(var(--language-toggle-width, 132px), calc(100vw - 32px)) !important;
   min-width: min(var(--language-toggle-width, 132px), calc(100vw - 32px)) !important;
