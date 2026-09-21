@@ -444,11 +444,11 @@ window.EDGE2_DATA = {
       ]
     },
     "support": {
-      "contentsImage": "assets/hd-gallery/DSC_1113.jpg",
-      "packageImage": "assets/hd-gallery/DSC_1113.jpg",
+      "contentsImage": "assets/hd-gallery/edge2-package-contents-20260921.jpg",
+      "packageImage": "assets/hd-gallery/edge2-package-contents-20260921.jpg",
       "imageAlt": {
-        "en": "EDGE2 retail boxes for the black and white versions; exterior packaging only",
-        "zh": "EDGE2 黑白两款零售外包装展示"
+        "en": "EDGE2 headphones with retail box, art print, storage bag, printed guides and supplied cables",
+        "zh": "EDGE2 耳机、零售包装盒、色纸、收纳袋、说明资料及随附线材实拍"
       },
       "en": {
         "contents": [
@@ -460,7 +460,7 @@ window.EDGE2_DATA = {
           "Service card",
           "Charging cable"
         ],
-        "packageNote": "Exterior packaging only. The photograph does not show all accessories. Contents follow the current official EDGE2 product page.",
+        "packageNote": "Packaging and included contents shown in the supplied photograph. Use the current official EDGE2 product page to confirm the final seven-item list.",
         "periods": [
           [
             "EDGE2 main unit",
@@ -488,7 +488,7 @@ window.EDGE2_DATA = {
           "售后卡",
           "充电线"
         ],
-        "packageNote": "外包装展示，不是全部配件合照。包装清单以当前 EDGE2 官网七项内容为准。",
+        "packageNote": "包装及随附内容实拍；完整七项清单以当前 EDGE2 官网为准。",
         "periods": [
           [
             "EDGE2 主机",
