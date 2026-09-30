@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "originalBytes": 193911330,
-  "previewBytes": 1420580,
+  "originalBytes": 232317295,
+  "previewBytes": 1663412,
   "images": [
     {
       "source": "assets/categories/collaborations.jpg",
@@ -658,6 +658,126 @@
       "previewBytes": 11762,
       "width": 800,
       "height": 533
+    },
+    {
+      "source": "products/chu3/assets/campaign/bamboo-original.jpg",
+      "preview": "assets/mobile-previews/a147775b93253bae.webp",
+      "sourceBytes": 611133,
+      "previewBytes": 11216,
+      "width": 800,
+      "height": 534
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_0157.jpg",
+      "preview": "assets/mobile-previews/4ea5c3a1056ecc79.webp",
+      "sourceBytes": 6160184,
+      "previewBytes": 23308,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_0279.jpg",
+      "preview": "assets/mobile-previews/28ffe2d98cc9d03c.webp",
+      "sourceBytes": 5973034,
+      "previewBytes": 27398,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_2737.jpg",
+      "preview": "assets/mobile-previews/8892123403d7b6c6.webp",
+      "sourceBytes": 1800797,
+      "previewBytes": 15220,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_2749.jpg",
+      "preview": "assets/mobile-previews/1ce16bd25ed666cb.webp",
+      "sourceBytes": 1661215,
+      "previewBytes": 12568,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6654.jpg",
+      "preview": "assets/mobile-previews/0064cc1f13ab5d54.webp",
+      "sourceBytes": 1478319,
+      "previewBytes": 6284,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6712.jpg",
+      "preview": "assets/mobile-previews/03ecff12717aa444.webp",
+      "sourceBytes": 2048970,
+      "previewBytes": 12910,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6742.jpg",
+      "preview": "assets/mobile-previews/1f91de9d863b590e.webp",
+      "sourceBytes": 2312733,
+      "previewBytes": 21596,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6747.jpg",
+      "preview": "assets/mobile-previews/47c4cb6923a64a19.webp",
+      "sourceBytes": 1910090,
+      "previewBytes": 13962,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6765.jpg",
+      "preview": "assets/mobile-previews/5f9dadca8345669e.webp",
+      "sourceBytes": 1921740,
+      "previewBytes": 13606,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6783.jpg",
+      "preview": "assets/mobile-previews/7fccffdbc54959d0.webp",
+      "sourceBytes": 1805573,
+      "previewBytes": 12406,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6839.jpg",
+      "preview": "assets/mobile-previews/b434002102a341df.webp",
+      "sourceBytes": 3449558,
+      "previewBytes": 29616,
+      "width": 800,
+      "height": 533
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_6843.jpg",
+      "preview": "assets/mobile-previews/a5a7e06f5cc1221b.webp",
+      "sourceBytes": 1987223,
+      "previewBytes": 15060,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_8594.jpg",
+      "preview": "assets/mobile-previews/11617794145729f9.webp",
+      "sourceBytes": 2921745,
+      "previewBytes": 13536,
+      "width": 533,
+      "height": 800
+    },
+    {
+      "source": "products/chu3/assets/hd-gallery/DSC_8627.jpg",
+      "preview": "assets/mobile-previews/5e92871b48a89a00.webp",
+      "sourceBytes": 2363651,
+      "previewBytes": 14146,
+      "width": 533,
+      "height": 800
     }
   ]
 }

@@ -107,6 +107,15 @@ for(const product of products)for(const lang of ['zh','en']){
     await page.goto(url+'&section=gallery');await expectSection('gallery');
     const count=await page.locator('.gallery-card').count();
     await page.locator('.gallery-card').first().tap();await imageReady();
+    // Opening a card in any gallery group must show that specific original.
+    for(const index of [0,Math.floor(count/2),count-2,count-1]){
+      if(await page.locator('.mobile-lightbox.open').count()){await page.goBack();await page.locator('.mobile-lightbox.open').waitFor({state:'hidden'});}
+      await page.locator('.gallery-card').nth(index).tap();await imageReady();
+      const expected=await page.evaluate(i=>Object.values(window).find(v=>v&&v.masterView&&Array.isArray(v.galleryItems))?.galleryItems[i]?.image,index);
+      if(expected)check((await page.locator('.mobile-image-viewport img').getAttribute('src')).endsWith(expected),'Gallery card opens the wrong original');
+    }
+    await page.goBack();await page.locator('.mobile-lightbox.open').waitFor({state:'hidden'});
+    await page.locator('.gallery-card').first().tap();await imageReady();
     const sources=new Set();
     for(let i=0;i<count;i++){await imageReady();sources.add(await page.locator('.mobile-image-viewport img').getAttribute('src'));await page.locator('.mobile-image-controls button').last().tap();}
     check(sources.size===count,'Gallery repeats or omits originals');
@@ -142,9 +151,13 @@ for(const product of products)for(const lang of ['zh','en']){
     await tapHeader('.mobile-back');await expectSection('hub');
     await page.reload();check((await bookmark())?.feature===id,'Reload overwrote the bookmark: '+JSON.stringify(await bookmark()));await page.locator('.hub-copy .mobile-resume').tap();await expectFeature(id);
     await page.waitForFunction(y=>Math.abs(scrollY-y)<25,oldY);
-    await tapHeader('#languageToggle');await settle();
+    const nextLanguage=lang==='zh'?'en':'zh';
+    if(await page.locator('#languageToggle').evaluate(el=>el.tagName==='SELECT')) await page.locator('#languageToggle').selectOption(nextLanguage);
+    else await tapHeader('#languageToggle');
+    await page.waitForFunction(lang=>document.documentElement.lang.split('-')[0]===lang,nextLanguage);
+    await expectFeature(id);
     check((await state()).mobileFeature===id,'Language switch lost story');
-    check(await page.locator('html').getAttribute('lang')!==lang,'Language did not change');
+    check(await page.locator('#panelTitle').innerText(),'Language switch lost content');
     await page.goto(base+'index.html?lang='+lang);await page.locator('.intro-lower .mobile-resume').tap();await expectFeature(id);
     check(new URL(page.url()).pathname.includes('/'+product+'/'),'Portal resume opens wrong product');
   });

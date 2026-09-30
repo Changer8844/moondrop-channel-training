@@ -170,9 +170,14 @@ try {
   // Keyboard activation and language retention through close/Home.
   await page.goto(`${entry}?lang=en`);
   await page.locator('[data-section="reviews"]').focus(); await page.keyboard.press('Enter');
-  await page.locator('.section-board.open').waitFor(); await page.locator('#languageToggle').click();
+  await page.locator('.section-board.open').waitFor();
+  if(await page.locator('#languageToggle').evaluate(el=>el.tagName==='SELECT')) {
+    await page.locator('#languageToggle').selectOption('zh');
+    await page.waitForFunction(()=>document.documentElement.lang.startsWith('zh') && document.getElementById('sectionBoardTitle')?.textContent==='媒体评测');
+  } else await page.locator('#languageToggle').click();
   if(await page.locator('#sectionBoardTitle').textContent()!=='媒体评测') failures.push({state:'language',error:'Board did not localize'});
   await page.keyboard.press('Escape'); await page.waitForFunction(()=>!document.querySelector('.section-board.open'));
+  if(slug==='chu3' && new URL(page.url()).searchParams.get('lang')!=='zh') failures.push({state:'back-language-route',error:'Back URL loses selected language'});
   if(!(await page.locator('#trainingHomeLink').getAttribute('href')).includes('lang=zh')) failures.push({state:'home',error:'Home loses language'});
   const gate=await browser.newContext(); const gated=await gate.newPage();
   await gated.goto(`${entry}?lang=en`);

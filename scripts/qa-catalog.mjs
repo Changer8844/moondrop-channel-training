@@ -52,9 +52,9 @@ try {
       reports.push({state,cards:result,language});
       if(language.contrast<4.5)failures.push({state,error:'Language selector contrast below 4.5:1',contrast:language.contrast});
       failures.push(...result.flatMap(r=>r.errors.map(error=>({state,product:r.name,error}))));
-      if(category!=='wired-in-ear')await page.screenshot({path:path.join(out,`${state}.png`)});
-      if(['desktop-digital','headphones'].includes(category)) {
-        const product = category==='headphones' ? 'edge2' : 'mm3a';
+      await page.screenshot({path:path.join(out,`${state}.png`)});
+      if(['desktop-digital','headphones','wired-in-ear'].includes(category)) {
+        const product = category==='headphones' ? 'edge2' : category==='wired-in-ear' ? 'chu3' : 'mm3a';
         await page.locator(`.product-card[href*="products/${product}/"]`).click();
         await page.locator('#trainingApp.hub-mode').waitFor();
         if(new URL(page.url()).searchParams.get('lang')!==lang)failures.push({state,error:'Entry lost language'});

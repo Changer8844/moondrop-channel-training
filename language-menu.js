@@ -119,6 +119,8 @@
     };
     fitToLabel();
     select.addEventListener('change', (event) => {
+      // Complete product language packs can update in place and preserve reading state.
+      if (select.dataset.languageMode === 'inline') { fitToLabel(); return; }
       const url = new URL(window.location.href);
       url.searchParams.set('lang', normalize(event.target.value));
       window.location.assign(url.href);

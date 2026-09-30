@@ -98,6 +98,29 @@ window.MOONDROP_TRAINING_CATALOG = {
   ],
   products: [
     {
+      "id": "chu3",
+      "categoryId": "wired-in-ear",
+      "name": {
+        "en": "CHU III",
+        "zh": "竹3 CHU III"
+      },
+      "type": {
+        "zh": "3.5mm可换线入耳式耳机",
+        "en": "3.5 mm wired IEM · detachable cable",
+        "de": "3,5-mm-In-Ears mit abnehmbarem Kabel",
+        "es": "In-ear de 3,5 mm con cable desmontable",
+        "pt": "In-ear de 3,5 mm com cabo removível",
+        "fr": "Intra-auriculaires 3,5 mm à câble détachable",
+        "it": "In-ear da 3,5 mm con cavo rimovibile",
+        "ru": "Внутриканальные 3,5 мм со съёмным кабелем"
+      },
+      "image": "products/chu3/assets/campaign/bamboo-original.jpg",
+      "imagePosition": "50% 50%",
+      "imageFit": "contain",
+      "href": "products/chu3/index.html",
+      "status": "live"
+    },
+    {
       id: "edge2",
       categoryId: "headphones",
       name: { en: "EDGE2", zh: "羽翼2 EDGE2" },

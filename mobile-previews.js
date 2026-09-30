@@ -81,5 +81,20 @@ window.MOONDROP_MOBILE_PREVIEWS = {
   "products/space-travel-2/assets/hd-gallery/package-specs.jpg": "assets/mobile-previews/2ecffdb3bdd4f796.webp",
   "products/space-travel-2/assets/hd-gallery/package-spread.jpg": "assets/mobile-previews/88f16cd1da042bef.webp",
   "products/space-travel-2/assets/hd-gallery/topdown-layout.jpg": "assets/mobile-previews/0580d435496821a9.webp",
-  "products/space-travel-2/assets/hd-gallery/wide-lineup.jpg": "assets/mobile-previews/1afe0742f16de757.webp"
+  "products/space-travel-2/assets/hd-gallery/wide-lineup.jpg": "assets/mobile-previews/1afe0742f16de757.webp",
+  "products/chu3/assets/campaign/bamboo-original.jpg": "assets/mobile-previews/a147775b93253bae.webp",
+  "products/chu3/assets/hd-gallery/DSC_0157.jpg": "assets/mobile-previews/4ea5c3a1056ecc79.webp",
+  "products/chu3/assets/hd-gallery/DSC_0279.jpg": "assets/mobile-previews/28ffe2d98cc9d03c.webp",
+  "products/chu3/assets/hd-gallery/DSC_2737.jpg": "assets/mobile-previews/8892123403d7b6c6.webp",
+  "products/chu3/assets/hd-gallery/DSC_2749.jpg": "assets/mobile-previews/1ce16bd25ed666cb.webp",
+  "products/chu3/assets/hd-gallery/DSC_6654.jpg": "assets/mobile-previews/0064cc1f13ab5d54.webp",
+  "products/chu3/assets/hd-gallery/DSC_6712.jpg": "assets/mobile-previews/03ecff12717aa444.webp",
+  "products/chu3/assets/hd-gallery/DSC_6742.jpg": "assets/mobile-previews/1f91de9d863b590e.webp",
+  "products/chu3/assets/hd-gallery/DSC_6747.jpg": "assets/mobile-previews/47c4cb6923a64a19.webp",
+  "products/chu3/assets/hd-gallery/DSC_6765.jpg": "assets/mobile-previews/5f9dadca8345669e.webp",
+  "products/chu3/assets/hd-gallery/DSC_6783.jpg": "assets/mobile-previews/7fccffdbc54959d0.webp",
+  "products/chu3/assets/hd-gallery/DSC_6839.jpg": "assets/mobile-previews/b434002102a341df.webp",
+  "products/chu3/assets/hd-gallery/DSC_6843.jpg": "assets/mobile-previews/a5a7e06f5cc1221b.webp",
+  "products/chu3/assets/hd-gallery/DSC_8594.jpg": "assets/mobile-previews/11617794145729f9.webp",
+  "products/chu3/assets/hd-gallery/DSC_8627.jpg": "assets/mobile-previews/5e92871b48a89a00.webp"
 };
