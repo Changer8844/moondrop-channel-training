@@ -39,20 +39,34 @@ try{
  for(const lang of languages){
   await page.goto(entry+`?lang=${lang}&section=core`);
   const copy=await page.evaluate(lang=>CHU3_COPY[lang],lang);
-  assert.equal(copy.stories.length,5);assert.equal(copy.galleryTitles.length,14);assert.equal(copy.reviewNotes.length,3);
+  assert.equal(copy.stories.length,5);assert.equal(copy.galleryTitles.length,12);assert.equal(copy.reviewNotes.length,6);
   const ids=await page.locator('.feature-button').evaluateAll(ns=>ns.map(n=>n.dataset.feature));
+  assert.deepEqual(await page.locator('.hotspot').evaluateAll(ns=>ns.map(n=>n.dataset.feature)),ids,'Every CHU III story must be reachable from the overview photograph');
   for(const [i,id] of ids.entries()){
-   await page.locator(`.feature-button[data-feature="${id}"]`).click();
+   await page.locator('#productOverviewButton').click();
+   await page.locator(`.hotspot[data-feature="${id}"]`).focus();
+   await page.keyboard.press('Enter');
+   assert.equal(await page.locator('.hotspot.active').getAttribute('data-feature'),id,'Keyboard opened the wrong story');
    for(const [selector,index] of [['#panelTitle',2],['#panelBody',3],['#panelShow',5],['#panelSay',6],['#panelSpec',7],['#panelPhotoCaption',8]])assert.equal(await page.locator(selector).textContent(),copy.stories[i][index]);
+   const photo=page.locator('#panelMediaVisual img');
+   const expectedPhoto=['campaign/black-silver-original','hd-gallery/DSC_0279','hd-gallery/DSC_6742','hd-gallery/DSC_6712','hd-gallery/DSC_6765'][i];
+   assert.equal(await photo.getAttribute('src'),`assets/${expectedPhoto}.jpg`,'Story photograph does not match the inspected subject');
   }
   await page.goto(entry+`?lang=${lang}&section=support`);
   assert.deepEqual(await page.locator('.package-list li').allTextContents(),copy.support.contents);
   assert.equal(await page.locator('.support-block--warranty .support-policy').textContent(),copy.support.policy);
   await page.goto(entry+`?lang=${lang}&section=reviews`);
   assert.deepEqual(await page.locator('.chu3-review-note').allTextContents(),copy.reviewNotes);
+  assert.equal(await page.locator('.review-card').count(),6);
+  const reviewLinks=await page.locator('.review-card').evaluateAll(ns=>ns.map(n=>n.href));
+  assert.equal(new Set(reviewLinks).size,6,'Reviews must link to six distinct videos');
   await page.goto(entry+`?lang=${lang}&section=gallery`);
   assert.deepEqual(await page.locator('.gallery-card-copy b').allTextContents(),copy.galleryTitles);
   assert.deepEqual(await page.locator('[data-gallery-group]').allTextContents(),copy.groups);
+  assert.equal(copy.groups.length,2);
+  const gallery=await page.evaluate(()=>CHU3_VIEW.galleryItems.map(i=>i.image));
+  assert.equal(gallery.length,12);
+  assert(!gallery.some(src=>/DSC_6839|DSC_6843/.test(src)),'Packaging must stay out of the gallery');
   reports.push({case:'full-localized-body',lang,stories:5,modules:5});
  }
  // Recheck the two changed hero layouts and the expanded price table.

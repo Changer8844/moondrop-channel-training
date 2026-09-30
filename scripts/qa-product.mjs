@@ -27,7 +27,7 @@ page.on('pageerror', e => failures.push({state:'runtime',error:e.message}));
 await fs.mkdir(out,{recursive:true});
 const entry = pathToFileURL(path.join(root,'products',slug,'index.html')).href;
 const sizes = arg('sizes','') ? arg('sizes','').split(',').map(s=>s.split('x').map(Number)) : smoke ? [[1440,900]] : [[1920,1080],[1440,900],[1366,768],[1024,768]];
-const langs = smoke ? ['en'] : ['en','zh'];
+const langs = arg('langs','') ? arg('langs','').split(',') : smoke ? ['en'] : ['en','zh'];
 async function ready() {
   await page.evaluate(async () => {
     await document.fonts.ready;
@@ -68,10 +68,22 @@ async function inspect(name, lang, size, screenshot = true) {
         if(!rig.dataset.focus && (r.y<s.y-2 || r.bottom>s.bottom+2 || r.x<s.x-2 || r.right>s.right+2)) errors.push('Overview clips the complete original');
       } else if(r.x>s.x+2||r.y>s.y+2||r.right<s.right-2||r.bottom<s.bottom-2) errors.push('Stage exposes area outside original photo');
       if(document.querySelector('[data-grid-layer="background"]') && Number(getComputedStyle(stage,'::before').zIndex)>=Number(getComputedStyle(rig).zIndex)) errors.push('Background grid overlays the product photograph');
-      if(document.querySelector('[data-master-view-policy="single-composite"]')) {
+      if(window.CHU3_VIEW && !rig.dataset.focus) {
+        const photo=rig.querySelector('.product-photo'), p=photo.getBoundingClientRect(), css=getComputedStyle(photo);
+        const scale=css.objectFit==='cover'?Math.max(p.width/photo.naturalWidth,p.height/photo.naturalHeight):Math.min(p.width/photo.naturalWidth,p.height/photo.naturalHeight);
+        const [px,py]=css.objectPosition.split(' ').map(v=>parseFloat(v)/100);
+        const w=photo.naturalWidth*scale,h=photo.naturalHeight*scale,x=p.x+(p.width-w)*px,y=p.y+(p.height-h)*py;
+        // Manually checked bounds of the actual earphones and complete cable,
+        // excluding the empty backdrop and tabletop reflection in image8.jpeg.
+        const subject={left:x+w*.10,right:x+w*.94,top:y+h*.245,bottom:y+h*.59};
+        if(subject.left<s.left || subject.right>s.right || subject.top<s.top || subject.bottom>s.bottom) errors.push('CHU III overview clips the physical product');
+        if(subject.right-subject.left<s.width*.75) errors.push('CHU III product is too small in the overview frame');
+      }
+      if(document.querySelector('[data-master-view-policy="single-composite"], [data-master-view-policy="single-framed-original"]')) {
         const photo = rig.querySelector('.product-photo');
+        const view = window.CHU3_VIEW || window.MM3A_VIEW;
         if(rig.querySelectorAll('img').length!==1 || rig.querySelector('.input-views')) errors.push('Master must be one composite photograph, not separate image panels');
-        if(photo?.getAttribute('src')!==window.MM3A_VIEW.masterView.image) errors.push('Story switched away from the shared master');
+        if(photo?.getAttribute('src')!==view.masterView.image) errors.push('Story switched away from the shared master');
         if(rig.dataset.focus && Number(rig.style.getPropertyValue('--zoom'))<=1) errors.push('Selected story did not enlarge the master');
         const panel = document.querySelector('.detail-panel.open')?.getBoundingClientRect();
         const manuallyPanned = parseFloat(rig.style.getPropertyValue('--drag-x')) || parseFloat(rig.style.getPropertyValue('--drag-y'));
@@ -82,6 +94,10 @@ async function inspect(name, lang, size, screenshot = true) {
           if(panel && panel.left<m.right-2 && panel.right>m.left+2 && panel.top<m.bottom && panel.bottom>m.top) errors.push('Master hotspot obscured by detail panel');
           const label=marker.querySelector('.hotspot-label'), l=label?.getBoundingClientRect();
           if(l?.width && getComputedStyle(label).opacity==='1' && (l.left<s.left-2 || l.right>s.right+2 || l.top<s.top-2 || l.bottom>s.bottom+2)) errors.push('Master hotspot label clipped: '+marker.dataset.feature);
+          if(!rig.dataset.focus) {
+            const hit=document.elementFromPoint(m.x+m.width/2,m.y+m.height/2);
+            if(hit?.closest('.hotspot')!==marker) errors.push('Overview marker covered by another element: '+marker.dataset.feature);
+          }
         }
       }
     }
@@ -97,6 +113,10 @@ try {
     for (const section of sections) {
       await page.goto(`${entry}?lang=${lang}${section==='hub'?'':'&section='+section}`);
       await inspect(section,lang,size);
+      if(section==='reviews' && await page.locator('.review-card').count()>3) {
+        await page.locator('.review-card').last().scrollIntoViewIfNeeded();
+        await inspect('reviews-last-row',lang,size);
+      }
       if(section==='gallery') {
         const cards=await page.locator('.gallery-card').count();
         if(!cards) failures.push({state:'gallery',error:'No gallery entries'});

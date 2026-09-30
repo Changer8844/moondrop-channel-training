@@ -22,7 +22,7 @@ window.CHU3_VIEW = (() => {
   "next": "下一个卖点 →",
   "previousMedia": "上一张卖点图片",
   "nextMedia": "下一张卖点图片",
-  "galleryKicker": "MOONDROP · 产品高清素材 · 14 张",
+  "galleryKicker": "MOONDROP · 产品高清素材 · 12 张",
   "galleryTitle": "竹3 CHU III 高清图库",
   "closeDetail": "返回培训菜单",
   "closeGallery": "关闭高清图库",
@@ -134,20 +134,20 @@ window.CHU3_VIEW = (() => {
     }
   }
 };
-  const files = ['DSC_6654','DSC_6712','DSC_6765','DSC_6783','DSC_6742','DSC_6747','DSC_2737','DSC_2749','DSC_8594','DSC_8627','DSC_0157','DSC_0279','DSC_6839','DSC_6843'];
-  const galleryItems = files.map((file,i)=>({image:`assets/hd-gallery/${file}.jpg`,title:window.CHU3_COPY.en.galleryTitles[i],meta:'CHU III',group:i<10?0:i<12?1:2,width:[0,1,2,3,12].includes(i)?3840:i===10||i===11?3413:2560,height:[0,1,2,3,12].includes(i)?2560:i===10||i===11?5120:3840}));
+  const files = ['DSC_6654','DSC_6712','DSC_6765','DSC_6783','DSC_6742','DSC_6747','DSC_2737','DSC_2749','DSC_8594','DSC_8627','DSC_0157','DSC_0279'];
+  const galleryItems = files.map((file,i)=>({image:`assets/hd-gallery/${file}.jpg`,title:window.CHU3_COPY.en.galleryTitles[i],meta:'CHU III',group:i<10?0:1,width:[0,1,2,3].includes(i)?3840:i===10||i===11?3413:2560,height:[0,1,2,3].includes(i)?2560:i===10||i===11?5120:3840}));
   const languagePacks = {}, portalLanguagePacks = {};
   for (const [lang,c] of Object.entries(window.CHU3_COPY)) {
     const system = window.MoondropLanguage.ui(lang);
     const ui = lang==='zh' ? {...chineseUI} : {...system.product};
-    Object.assign(ui,{storyEyebrow:c.storyEyebrow,masterAlt:c.masterAlt,galleryIntro:c.galleryIntro,galleryKicker:`MOONDROP · ${c.original} · 14`,galleryTitle:`CHU III · ${lang==='zh'?'高清图库':(system.product.galleryTitle||'HD Image Library')}`});
+    Object.assign(ui,{storyEyebrow:c.storyEyebrow,masterAlt:c.masterAlt,galleryIntro:c.galleryIntro,galleryKicker:`MOONDROP · ${c.original} · ${galleryItems.length}`,galleryTitle:`CHU III · ${lang==='zh'?'高清图库':(system.product.galleryTitle||'HD Image Library')}`});
     languagePacks[lang]={ui,features:window.CHU3_DATA.localizedFeatures[lang],viewLabels:{master:ui.overviewTitle,...Object.fromEntries(window.CHU3_DATA.features.map((f,i)=>[f.id,c.stories[i][0]]))},gallery:galleryItems.map((item,i)=>({...item,title:c.galleryTitles[i],meta:`${c.groups[item.group]} · ${c.original}`}))};
     portalLanguagePacks[lang]={...(basePortal[lang]||system.portal),hubKicker:'MOONDROP · CHU III',hubTitle:lang==='zh'?'竹3 · CHU III':'CHU III',hubIntro:c.intro};
   }
   const masterHotspots = Object.fromEntries(window.CHU3_DATA.features.map(f=>[f.id,[f.position.x,f.position.y]]));
-  const presets = {sound:{x:0,y:7,zoom:1.7},fit:{x:16,y:6,zoom:1.8},connections:{x:0,y:5,zoom:1.45},cable:{x:-18,y:22,zoom:1.7},care:{x:-20,y:0,zoom:1.8}};
+  const presets = {sound:{x:19,y:-16,zoom:1.5},fit:{x:-15,y:5,zoom:1.3},connections:{x:-8,y:-25,zoom:1.5},cable:{x:-25,y:-16,zoom:1.5},care:{x:2,y:-20,zoom:1.6}};
   const featureViews = Object.fromEntries(window.CHU3_DATA.features.map((f,i)=>[f.id,{id:f.id,index:i+1,label:f.chapter,hotspot:masterHotspots[f.id],preset:presets[f.id]}]));
-  const media = ['assets/campaign/black-silver-original.jpg','assets/hd-gallery/DSC_0279.jpg','assets/hd-gallery/DSC_6742.jpg','assets/hd-gallery/DSC_6712.jpg','assets/hd-gallery/DSC_6839.jpg'];
+  const media = ['assets/campaign/black-silver-original.jpg','assets/hd-gallery/DSC_0279.jpg','assets/hd-gallery/DSC_6742.jpg','assets/hd-gallery/DSC_6712.jpg','assets/hd-gallery/DSC_6765.jpg'];
   const featureMedia = Object.fromEntries(window.CHU3_DATA.features.map((f,i)=>[f.id,Object.fromEntries(Object.entries(window.CHU3_COPY).map(([lang,c])=>[lang,[{image:media[i],fit:'contain',caption:c.stories[i][8]}]]))]));
   return {masterView:{id:'master',index:0,image:'assets/campaign/master-original.jpg',label:'CHU III',preset:{x:0,y:0,zoom:1}},masterHotspots,featureViews,featureMedia,galleryItems,languagePacks,portalLanguagePacks};
 })();

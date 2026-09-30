@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <script src="../../mobile-previews.js?v=1.0.1&release=20260930-chu3"></script>
+  <script src="../../mobile-previews.js?v=1.0.1&release=20260930-chu3-six-reviews"></script>
   <script src="../../templates/product-training/mobile-training.js?v=1.0.5"></script>
-  <script src="../../language-menu.js?v=20260930-chu3"></script>
+  <script src="../../language-menu.js?v=20260930-chu3-six-reviews"></script>
   <script>document.documentElement.classList.add('auth-protected-pending');</script>
   <link rel="stylesheet" href="../../auth.css?v=20260826a" />
   <link rel="stylesheet" href="../../language-menu.css?v=20260930-mobile-contrast" />
@@ -1061,16 +1061,17 @@
   <link rel="stylesheet" href="../../templates/product-training/icons.css?v=1.0.0" />
 
   <style>
-    .photo-rig { width: auto; height: 100%; aspect-ratio: 2 / 3; max-width: 100%; }
-    .product-photo { object-fit: contain; }
+    /* Frame out empty backdrop only; earphones, hooks and complete cable stay visible. */
+    .photo-rig { width: 100%; height: auto; aspect-ratio: 3 / 2; }
+    .product-photo { object-fit: cover; object-position: 50% 36%; }
     .stage { background: #030505; }
     .hotspot-label { font-size: calc(11px / var(--zoom, 1)); white-space: normal; max-width: calc(170px / var(--zoom, 1)); }
     .hotspot:is([data-feature="cable"],[data-feature="care"]) .hotspot-label { left: auto; right: 38px; text-align: right; }
     .hotspot:is([data-feature="cable"],[data-feature="care"]):is(:hover,:focus-visible,.active) .hotspot-label { transform: translate(-3px, -50%); }
     .hub-hero-image { width: 60%; height: 100%; object-fit: contain; object-position: right center; mask-image: linear-gradient(90deg,transparent,#000 22%); }
     .training-hub::before { background: linear-gradient(90deg,#030505 0%,rgba(3,5,5,.85) 25%,transparent 65%); }
-    html.mobile-ui [data-role="product-stage"] { height: clamp(160px, 45svh, 420px); aspect-ratio: auto; max-width: 100%; }
-    html.mobile-ui .photo-rig { width: auto; height: 100%; aspect-ratio: 2 / 3; max-width: 100%; }
+    html.mobile-ui [data-role="product-stage"] { height: auto; aspect-ratio: 3 / 2; max-width: 100%; }
+    html.mobile-ui .photo-rig { width: 100%; height: auto; aspect-ratio: 3 / 2; }
     html.mobile-ui .hub-hero-image { width: 100%; max-height: 310px; object-position: center; mask-image: none; }
     #galleryGrid { display: block; column-count: 4; column-gap: 12px; }
     #galleryGrid > h3 { column-span: all; margin: 28px 0 16px; font-size: 20px; color: #e9eeeb; }
@@ -1092,7 +1093,7 @@
   </style>
 </head>
 <body data-auth-protected="true" data-auth-home="../../index.html" data-auth-path="products/chu3/index.html">
-  <div class="app hub-mode" id="trainingApp" data-hotspot-policy="optional" data-grid-layer="background" data-master-view-policy="single-original">
+  <div class="app hub-mode" id="trainingApp" data-hotspot-policy="all-stories" data-grid-layer="background" data-master-view-policy="single-framed-original">
     <header class="topbar">
       <div class="brand">
         <span class="brand-orbit" aria-hidden="true"></span>
@@ -1228,12 +1229,12 @@
   <section class="gallery-board" id="galleryBoard" data-gallery-image-policy="original-ratio" aria-label="CHU III HD image library" aria-hidden="true">
     <header class="gallery-header">
       <div>
-        <div class="gallery-kicker" id="galleryKicker">MOONDROP · SOURCE PHOTOGRAPHY · 14 FILES</div>
+        <div class="gallery-kicker" id="galleryKicker">MOONDROP · SOURCE PHOTOGRAPHY · 12 FILES</div>
         <h2 id="galleryTitle">CHU III HD Image Library</h2>
       </div>
       <button class="gallery-close" id="closeGallery" type="button" aria-label="Close HD image library">×</button>
     </header>
-    <p class="gallery-intro" id="galleryIntro">14 original product, wearing and packaging photographs. Select an image to view the original file.</p>
+    <p class="gallery-intro" id="galleryIntro">12 original product and wearing photographs. Select an image to view the original file.</p>
     <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
@@ -1246,9 +1247,9 @@
   </div>
 
   <script src="../../auth.js?v=20260914-auth-languages"></script>
-  <script src="copy.js?v=20260930-chu3"></script>
-  <script src="content.js?v=20260930-chu3"></script>
-  <script src="view-data.js?v=20260930-chu3"></script>
+  <script src="copy.js?v=20260930-chu3-six-reviews"></script>
+  <script src="content.js?v=20260930-chu3-six-reviews"></script>
+  <script src="view-data.js?v=20260930-chu3-six-reviews"></script>
   <script src="../../templates/product-training/positioning.js?v=1.0.0"></script>
   <script>
     (() => {

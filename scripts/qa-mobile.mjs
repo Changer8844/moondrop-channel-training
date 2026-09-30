@@ -82,6 +82,10 @@ for(const [width,height]of sizes){await page.setViewportSize({width,height});for
     for(const section of sections.map(s=>s==='comparison'&&(product==='pill'||product==='rays')?'positioning':s)){
       await page.goto(`${base}products/${product}/index.html?lang=${lang}${section==='hub'?'':'&section='+section}`);
       await inspect(`${width}-${lang}-${product}-${section}`);
+      if(section==='reviews' && await page.locator('.review-card').count()>3) {
+        await page.locator('.review-card').last().scrollIntoViewIfNeeded();
+        await inspect(`${width}-${lang}-${product}-reviews-last-row`);
+      }
       if(section==='core'){
         const ids=await page.locator('.feature-button,.story-button').evaluateAll(ns=>ns.map(n=>n.dataset.feature));
         for(const id of full?ids:ids.slice(0,1)){
