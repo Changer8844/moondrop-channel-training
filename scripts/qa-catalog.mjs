@@ -36,8 +36,21 @@ try {
         }
         return {name:card.querySelector('strong').textContent,width:r.width,height:r.height,errors};
       }));
+      const language=await page.locator('#overlayLanguageToggle').evaluate(select=>{
+        const rgba=value=>value.match(/[\d.]+/g).map(Number);
+        const blend=(front,back)=>front.slice(0,3).map((v,i)=>v*(front[3]??1)+back[i]*(1-(front[3]??1)));
+        const ancestors=[];
+        for(let node=select;node;node=node.parentElement)ancestors.unshift(node);
+        const background=ancestors.reduce((color,node)=>blend(rgba(getComputedStyle(node).backgroundColor),color),[255,255,255]);
+        const style=getComputedStyle(select);
+        const foreground=blend(rgba(style.webkitTextFillColor||style.color),background);
+        const luminance=color=>color.map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+        const light=luminance(foreground),dark=luminance(background);
+        return {contrast:(Math.max(light,dark)+.05)/(Math.min(light,dark)+.05),foreground,background};
+      });
       const state=`${width}x${height}-${lang}-${category}`;
-      reports.push({state,cards:result});
+      reports.push({state,cards:result,language});
+      if(language.contrast<4.5)failures.push({state,error:'Language selector contrast below 4.5:1',contrast:language.contrast});
       failures.push(...result.flatMap(r=>r.errors.map(error=>({state,product:r.name,error}))));
       if(category!=='wired-in-ear')await page.screenshot({path:path.join(out,`${state}.png`)});
       if(['desktop-digital','headphones'].includes(category)) {
