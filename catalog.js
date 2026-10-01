@@ -116,7 +116,7 @@ window.MOONDROP_TRAINING_CATALOG = {
       },
       "image": "products/chu3/assets/campaign/bamboo-original.jpg",
       "imagePosition": "50% 50%",
-      "imageFit": "contain",
+      "imageFit": "cover",
       "href": "products/chu3/index.html",
       "status": "live"
     },
