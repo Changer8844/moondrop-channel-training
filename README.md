@@ -10,7 +10,7 @@ This is a lightweight access gate for a static offline/GitHub Pages site. It dis
 
 ## Access statistics
 
-Cloudflare Web Analytics runs only on the HTTPS production host `changer8844.github.io` under `/moondrop-channel-training/`. Local previews, offline files and other projects do not load its script. The shared `analytics.js` uses `spa: false`, so internal language, section and image-viewer changes do not create extra page views.
+Cloudflare Web Analytics runs only on the HTTPS production host `changer8844.github.io` under `/moondrop-channel-training/`. Local previews, offline files and other projects do not load its script. The shared `analytics.js` uses `spa: false`, so History API and hash changes within a loaded page do not create extra page views. Full page loads still count, including language changes on the homepage and legacy products that reload the page; CHU III changes language in place.
 
 View visits, page views and product paths in Cloudflare's Web Analytics dashboard. Query parameters are not collected, so language and section breakdowns are not available. Visits are not a count of distinct people or completed courses.
 
