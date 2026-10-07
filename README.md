@@ -8,6 +8,14 @@ The homepage remains visible before sign-in, while product categories and direct
 
 This is a lightweight access gate for a static offline/GitHub Pages site. It discourages casual access but is not a substitute for server-side accounts or private hosting.
 
+## Access statistics
+
+Cloudflare Web Analytics runs only on the HTTPS production host `changer8844.github.io` under `/moondrop-channel-training/`. Local previews, offline files and other projects do not load its script. The shared `analytics.js` uses `spa: false`, so internal language, section and image-viewer changes do not create extra page views.
+
+View visits, page views and product paths in Cloudflare's Web Analytics dashboard. Query parameters are not collected, so language and section breakdowns are not available. Visits are not a count of distinct people or completed courses.
+
+Each entry page includes the shared loader once before `</body>`. New product pages should use `../../analytics.js?v=20261007-cloudflare`. Run `node scripts/qa-analytics.mjs` to check entry coverage and production-only loading.
+
 ## Add a product
 
 1. Start from `templates/product-training/core-selling-points.template.html` and follow the template contract in `templates/product-training/README.md`.
